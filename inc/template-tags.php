@@ -1055,6 +1055,8 @@ if ( ! function_exists( 'zc_header_args' ) ) :
 			'show_dark'   => 'off' !== (string) zc_opt( 'general_dark_mode', 'toggle' ) && zc_switch( 'header_dark_toggle', true ),
 			'cta_text'    => (string) zc_opt( 'header_cta_text', 'رزرو جلسه آشنایی' ),
 			'cta_url'     => (string) zc_opt( 'header_cta_url', '#booking' ),
+			'show_cart'    => zc_switch( 'header_cart', true ),
+			'show_account' => zc_switch( 'header_account', true ),
 		);
 	}
 endif;
@@ -1190,6 +1192,11 @@ if ( ! function_exists( 'zc_render_site_header' ) ) :
 			return;
 		}
 
+		// Elementor Pro Theme Builder مقدم است: اگر قالب سراسری header با شرط منطبق تعریف شده باشد همان نمایش داده می‌شود.
+		if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'header' ) ) {
+			return;
+		}
+
 		$id = zc_layout_template_id( 'header' );
 		if ( $id ) {
 			echo '<div class="zc-el-header" data-zc-el-header>';
@@ -1200,9 +1207,6 @@ if ( ! function_exists( 'zc_render_site_header' ) ) :
 			}
 		}
 
-		if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'header' ) ) {
-			return;
-		}
 
 		get_template_part( 'template-parts/site', 'header' );
 	}
@@ -1219,6 +1223,11 @@ if ( ! function_exists( 'zc_render_site_footer' ) ) :
 			return;
 		}
 
+		// Elementor Pro Theme Builder مقدم است: اگر قالب سراسری footer با شرط منطبق تعریف شده باشد همان نمایش داده می‌شود.
+		if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'footer' ) ) {
+			return;
+		}
+
 		$id = zc_layout_template_id( 'footer' );
 		if ( $id ) {
 			echo '<div class="' . esc_attr( zc_is_elementor_page() ? 'zc-el-footer' : 'zc-el-footer mt-10 lg:mt-14' ) . '">';
@@ -1229,9 +1238,6 @@ if ( ! function_exists( 'zc_render_site_footer' ) ) :
 			}
 		}
 
-		if ( function_exists( 'elementor_theme_do_location' ) && elementor_theme_do_location( 'footer' ) ) {
-			return;
-		}
 
 		get_template_part( 'template-parts/site', 'footer' );
 	}

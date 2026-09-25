@@ -1306,6 +1306,11 @@ if ( ! function_exists( 'zc_page_url_by_key' ) ) :
 	 */
 	function zc_page_url_by_key( $key, $fallback = '' ) {
 		static $cache = array();
+		$aliases = array(
+			'refund'  => 'refund-policy',
+			'returns' => 'shipping',
+		);
+		$key     = isset( $aliases[ $key ] ) ? $aliases[ $key ] : (string) $key;
 		if ( ! isset( $cache[ $key ] ) ) {
 			$found = get_posts(
 				array(

@@ -55,6 +55,12 @@ if ( ! class_exists( 'ZC_Elementor' ) ) :
 			'book'         => array( 'file' => 'class-zc-widget-book.php', 'class' => 'ZC_Widget_Book', 'title' => 'معرفی کتاب' ),
 			'toc'          => array( 'file' => 'class-zc-widget-toc.php', 'class' => 'ZC_Widget_Toc', 'title' => 'فهرست مطالب' ),
 			'trust-badges' => array( 'file' => 'class-zc-widget-trust-badges.php', 'class' => 'ZC_Widget_Trust_Badges', 'title' => 'نمادهای اعتماد' ),
+			// فروشگاه (فقط با ووکامرس فعال).
+			'products'          => array( 'file' => 'class-zc-widget-products.php', 'class' => 'ZC_Widget_Products', 'title' => 'فروشگاه — محصولات', 'woo' => true ),
+			'product-cats'      => array( 'file' => 'class-zc-widget-product-cats.php', 'class' => 'ZC_Widget_Product_Cats', 'title' => 'فروشگاه — دسته‌بندی محصولات', 'woo' => true ),
+			'product-spotlight' => array( 'file' => 'class-zc-widget-product-spotlight.php', 'class' => 'ZC_Widget_Product_Spotlight', 'title' => 'فروشگاه — محصول ویژه', 'woo' => true ),
+			'shop-promo'        => array( 'file' => 'class-zc-widget-shop-promo.php', 'class' => 'ZC_Widget_Shop_Promo', 'title' => 'فروشگاه — بنر تخفیف', 'woo' => true ),
+			'shop-benefits'     => array( 'file' => 'class-zc-widget-shop-benefits.php', 'class' => 'ZC_Widget_Shop_Benefits', 'title' => 'فروشگاه — مزایای خرید', 'woo' => true ),
 		);
 
 		/**
@@ -230,9 +236,16 @@ if ( ! class_exists( 'ZC_Elementor' ) ) :
 		 */
 		public function register_widgets( $widgets_manager ) {
 			require_once ZC_DIR . '/inc/elementor/class-zc-widget-base.php';
+			$woo = class_exists( 'WooCommerce' );
+			if ( $woo ) {
+				require_once ZC_DIR . '/inc/elementor/class-zc-shop-widget-base.php';
+			}
 
 			// همه‌ی ویجت‌ها ثبت می‌شوند؛ ویجت غیرفعال فقط در پنل ویرایشگر پنهان است (ZC_Widget_Base::show_in_panel).
 			foreach ( $this->widgets as $slug => $data ) {
+				if ( ! empty( $data['woo'] ) && ! $woo ) {
+					continue;
+				}
 				$file = ZC_DIR . '/inc/elementor/widgets/' . $data['file'];
 				if ( ! file_exists( $file ) ) {
 					continue;

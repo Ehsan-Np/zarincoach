@@ -378,6 +378,13 @@ if ( ! function_exists( 'zc_build_elementor_home' ) ) :
 			array( '_element_id' => 'faq' )
 		);
 
+		/* ---------------------- ۹-ب. فروشگاه (با ووکامرس) ---------------------- */
+		if ( function_exists( 'zc_demo_shop_home_sections' ) ) {
+			foreach ( zc_demo_shop_home_sections() as $zc_shop_section ) {
+				$data[] = $zc_shop_section;
+			}
+		}
+
 		/* ---------------------- ۱۰. نوشته‌ها ---------------------- */
 		$data[] = zc_elementor_section(
 			zc_elementor_widget(

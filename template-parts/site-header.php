@@ -95,6 +95,17 @@ $socials = zc_socials();
 					</button>
 				<?php endif; ?>
 
+				<?php
+				if ( function_exists( 'zc_wc_header_tools' ) ) {
+					echo zc_wc_header_tools( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- خروجی درون تابع escape شده است.
+						array(
+							'show_cart'    => ! empty( $a['show_cart'] ),
+							'show_account' => ! empty( $a['show_account'] ),
+						)
+					);
+				}
+				?>
+
 				<?php if ( '' !== $a['cta_text'] ) : ?>
 					<a href="<?php echo esc_url( $a['cta_url'] ); ?>" class="zc-btn zc-btn-primary zc-btn-sm hidden lg:inline-flex">
 						<?php echo esc_html( $a['cta_text'] ); ?>

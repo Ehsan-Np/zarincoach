@@ -75,9 +75,12 @@ if ( ! function_exists( 'zc_render_demo_page' ) ) :
 						<li><strong>۶</strong><?php esc_html_e( 'خدمت', 'zarincoach' ); ?></li>
 						<li><strong>۶</strong><?php esc_html_e( 'بازخورد بی‌نام', 'zarincoach' ); ?></li>
 						<li><strong>۱۲</strong><?php esc_html_e( 'پرسش پرتکرار', 'zarincoach' ); ?></li>
-						<li><strong>۱۵</strong><?php esc_html_e( 'تصویر اختصاصی', 'zarincoach' ); ?></li>
+						<li><strong><?php echo esc_html( zc_digits_to_persian( (string) ( function_exists( 'zc_demo_media_files' ) ? count( zc_demo_media_files() ) : 15 ) ) ); ?></strong><?php esc_html_e( 'تصویر اختصاصی', 'zarincoach' ); ?></li>
 						<li><strong>۴۷</strong><?php esc_html_e( 'مدخل کتابخانه‌ی طرحواره‌ها و الگوهای ذهنی', 'zarincoach' ); ?></li>
 						<li><strong>۴</strong><?php esc_html_e( 'منو', 'zarincoach' ); ?></li>
+						<?php if ( class_exists( 'WooCommerce' ) && function_exists( 'zc_demo_shop_products' ) ) : ?>
+							<li><strong><?php echo esc_html( zc_digits_to_persian( (string) count( zc_demo_shop_products() ) ) ); ?></strong><?php esc_html_e( 'محصول نمونه (کتاب، کارت، دانلودی، بسته‌ی جلسات) + کد تخفیف', 'zarincoach' ); ?></li>
+						<?php endif; ?>
 						<li><strong><?php echo esc_html( zc_digits_to_persian( (string) ( $zc_page_n + 2 ) ) ); ?></strong><?php esc_html_e( 'طرح المنتور', 'zarincoach' ); ?></li>
 					</ul>
 				</div>

@@ -23,6 +23,7 @@ defined( 'ABSPATH' ) || exit;
 require_once __DIR__ . '/demo-legal-core.php';
 require_once __DIR__ . '/demo-legal-service.php';
 require_once __DIR__ . '/demo-legal-ethics.php';
+require_once __DIR__ . '/demo-legal-shop.php';
 
 if ( ! function_exists( 'zc_demo_legal_fill' ) ) :
 	/**
@@ -106,7 +107,8 @@ if ( ! function_exists( 'zc_demo_legal_pages' ) ) :
 		$pages = array_merge(
 			zc_demo_legal_core(),     // قوانین، حریم خصوصی، کوکی‌ها، لغو و بازگشت وجه.
 			zc_demo_legal_service(),  // ضمانت و شکایات، حساب کاربری، رضایت‌نامه، جلسات آنلاین.
-			zc_demo_legal_ethics()    // مالکیت فکری، اخلاق و رازداری، سلب مسئولیت و اضطرار.
+			zc_demo_legal_ethics(),   // مالکیت فکری، اخلاق و رازداری، سلب مسئولیت و اضطرار.
+			class_exists( 'WooCommerce' ) ? zc_demo_legal_shop() : array() // خرید، ارسال و مرجوعی (فقط با فروشگاه).
 		);
 
 		foreach ( $pages as $key => $page ) {

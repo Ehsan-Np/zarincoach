@@ -17,6 +17,8 @@ module.exports = {
     path.join(__dirname, 'template-parts/**/*.php'),
     path.join(__dirname, 'inc/*.php'),
     path.join(__dirname, 'inc/elementor/**/*.php'),
+    path.join(__dirname, 'inc/woocommerce/*.php'),
+    path.join(__dirname, 'woocommerce/**/*.php'),
     path.join(__dirname, 'assets/js/**/*.js'),
   ],
   // شبکه‌ی ایمنی: کلاس‌های اختصاصی قالب حتی اگر در زمان ساخت شناسایی نشوند، حفظ می‌شوند.

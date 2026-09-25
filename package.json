@@ -1,14 +1,15 @@
 {
   "name": "zarincoach",
-  "version": "1.9.0",
+  "version": "2.0.0",
   "description": "قالب وردپرس زرین‌کوچ — روان‌شناسی الگوهای ذهنی و رفتاری، کوچینگ و رشد فردی (مریم جمالی — Maryam-Jamali.ir) | زرین‌کد",
   "private": true,
   "scripts": {
-    "build": "npm run build:css && npm run build:js",
+    "build": "npm run build:css && npm run build:shop && npm run build:js",
     "build:css": "tailwindcss -i ./src/tailwind.css -o ./assets/css/main.css --minify",
-    "build:js": "terser ./assets/js/main.js --compress passes=2 --mangle --comments false --ecma 2017 -o ./assets/js/main.min.js",
+    "build:js": "terser ./assets/js/main.js --compress passes=2 --mangle --comments false --ecma 2017 -o ./assets/js/main.min.js && terser ./assets/js/shop.js --compress passes=2 --mangle --comments false --ecma 2017 -o ./assets/js/shop.min.js",
     "watch": "tailwindcss -i ./src/tailwind.css -o ./assets/css/main.css --watch",
-    "dev": "tailwindcss -i ./src/tailwind.css -o ./assets/css/main.css"
+    "dev": "tailwindcss -i ./src/tailwind.css -o ./assets/css/main.css",
+    "build:shop": "tailwindcss -i ./src/shop-core.css -o ./assets/css/shop-core.css --minify && tailwindcss -i ./src/shop.css -o ./assets/css/shop.css --minify"
   },
   "keywords": [
     "wordpress",

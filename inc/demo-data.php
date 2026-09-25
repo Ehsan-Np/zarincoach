@@ -660,7 +660,7 @@ if ( ! function_exists( 'zc_demo_media_files' ) ) :
 				'title' => 'فضای امن جلسه',
 				'alt'   => 'مبل سرمه‌ای و نور گرم چراغ در فضای آرام جلسه',
 			),
-		);
+		) + ( class_exists( 'WooCommerce' ) && function_exists( 'zc_demo_shop_media' ) ? zc_demo_shop_media() : array() );
 	}
 endif;
 
@@ -834,6 +834,13 @@ if ( ! function_exists( 'zc_demo_options' ) ) :
 			'float_booking_url'        => '/booking/',
 			'header_mobile_cta_url'    => '/booking/',
 			'header_mobile_cta_icon'   => 'phone',
+
+			// فروشگاه (هماهنگ با برگه‌ی «شرایط خرید، ارسال و مرجوعی»).
+			'shop_free_shipping'       => '1500000',
+			'seo_ship_rate'            => '60000',
+			'seo_ship_handling'        => '1-2',
+			'seo_ship_transit'         => '2-5',
+			'seo_return_days'          => 7,
 		);
 	}
 endif;

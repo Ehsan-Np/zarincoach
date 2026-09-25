@@ -13,6 +13,7 @@ defined( 'ABSPATH' ) || exit;
 
 require_once ZC_DIR . '/inc/options-fields.php';
 require_once ZC_DIR . '/inc/options-sections-home.php';
+require_once ZC_DIR . '/inc/options-sections-shop.php';
 
 if ( ! function_exists( 'zc_redux_is_elementor_mode' ) ) :
 	/**
@@ -65,6 +66,7 @@ if ( ! function_exists( 'zc_redux_sections' ) ) :
 			zc_panel_schemas(),
 			zc_panel_pages(),
 			zc_panel_home_classic(),
+			zc_panel_shop( $for_panel ),
 			zc_panel_contact(),
 			zc_panel_social(),
 			zc_panel_legal(),
@@ -1375,6 +1377,7 @@ if ( ! function_exists( 'zc_panel_seo' ) ) :
 				__( 'عنوان‌ها، متا، robots، canonical، اوپن‌گراف، نقشه‌ی سایت و گراف کامل اسکیما. برای هر برگه/نوشته هم جعبه‌ی «سئو» در ویرایشگر وجود دارد.', 'zarincoach' ),
 				array(
 					zc_f_switch( 'seo_enable', __( 'سیستم سئوی داخلی', 'zarincoach' ), true, __( 'با نصب Yoast، Rank Math، AIOSEO، SEOPress یا The SEO Framework خودکار کنار می‌رود.', 'zarincoach' ) ),
+					zc_f_switch( 'seo_yoast_bridge', __( 'ادغام اسکیمای قالب با Yoast SEO', 'zarincoach' ), true, __( 'با Yoast SEO / Premium فعال: گره‌های تخصصی قالب (مطب، پروانه و اعتبارنامه‌ها، خدمات، محصولات، پرسش‌ها، طرحواره‌ها) در یک گراف واحد با Yoast ادغام می‌شوند و مسیر راهنمای Yoast همان مسیر راهنمای قالب می‌شود.', 'zarincoach' ) ),
 					zc_f_select(
 						'seo_title_sep',
 						__( 'جداکننده‌ی عنوان', 'zarincoach' ),
@@ -1622,6 +1625,15 @@ if ( ! function_exists( 'zc_panel_elementor' ) ) :
 			'skills'       => __( 'حوزه‌های تخصصی', 'zarincoach' ),
 			'book'         => __( 'معرفی کتاب', 'zarincoach' ),
 		);
+		if ( class_exists( 'WooCommerce' ) ) {
+			$widgets += array(
+				'products'          => __( 'فروشگاه — محصولات', 'zarincoach' ),
+				'product-cats'      => __( 'فروشگاه — دسته‌بندی محصولات', 'zarincoach' ),
+				'product-spotlight' => __( 'فروشگاه — محصول ویژه', 'zarincoach' ),
+				'shop-promo'        => __( 'فروشگاه — بنر تخفیف', 'zarincoach' ),
+				'shop-benefits'     => __( 'فروشگاه — مزایای خرید', 'zarincoach' ),
+			);
+		}
 
 		return array(
 			zc_panel_section(

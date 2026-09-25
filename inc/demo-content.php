@@ -179,7 +179,7 @@ if ( ! function_exists( 'zc_demo_steps' ) ) :
 	 * @return array<string, string>
 	 */
 	function zc_demo_steps() {
-		return array(
+		$steps = array(
 			'reset'     => __( 'پاک‌سازی کامل دموی قبلی (بدون حذف محتوای شخصی شما)', 'zarincoach' ),
 			'media'     => __( 'درون‌ریزی تصاویر دمو (عکس‌های مریم جمالی) به کتابخانه رسانه', 'zarincoach' ),
 			'options'   => __( 'بازنشانی و اعمال تنظیمات قالب، اطلاعات تماس و پالت رنگی', 'zarincoach' ),
@@ -187,10 +187,15 @@ if ( ! function_exists( 'zc_demo_steps' ) ) :
 			'posts'     => __( 'ایجاد نوشته‌ها، دسته‌ها، برچسب‌ها و دیدگاه‌ها', 'zarincoach' ),
 			'items'     => __( 'ایجاد خدمات، بازخوردها و پرسش‌های پرتکرار', 'zarincoach' ),
 			'schemas'   => __( 'ایجاد کتابخانه‌ی طرحواره‌ها، ذهنیت‌ها، سبک‌های مقابله و خطاهای شناختی', 'zarincoach' ),
+			'shop'      => __( 'فروشگاه: دسته‌ها، محصولات نمونه (فیزیکی، دانلودی، بسته‌ی جلسات)، کد تخفیف، ارسال و پرداخت', 'zarincoach' ),
 			'menus'     => __( 'ساخت منوهای سربرگ، موبایل، پاورقی و قوانین', 'zarincoach' ),
 			'elementor' => __( 'طراحی صفحات، سربرگ و پاورقی با ویجت‌های المنتور', 'zarincoach' ),
 			'finalize'  => __( 'نهایی‌سازی، پیوندهای یکتا و پاک‌سازی کش', 'zarincoach' ),
 		);
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			unset( $steps['shop'] );
+		}
+		return $steps;
 	}
 endif;
 
@@ -278,6 +283,10 @@ if ( ! function_exists( 'zc_demo_reset_content' ) ) :
 		global $wpdb;
 
 		$stats   = array( 'posts' => 0, 'media' => 0, 'menus' => 0, 'terms' => 0, 'comments' => 0 );
+		// فروشگاه پیش از بقیه (محصولات، گونه‌ها، کوپن، دسته‌ها و ناحیه‌ی ارسال).
+		if ( function_exists( 'zc_demo_shop_reset' ) ) {
+			$stats['posts'] += zc_demo_shop_reset();
+		}
 		$objects = (array) get_option( 'zc_demo_objects', array() );
 		$ids     = array();
 
@@ -891,6 +900,22 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 				};
 				$home = array( 'type' => 'custom', 'url' => home_url( '/' ), 'title' => __( 'خانه', 'zarincoach' ) );
 
+				// فروشگاه (با ووکامرس): برگه‌ی فروشگاه + دسته‌های محصول.
+				$shop_item   = null;
+				$shop_flat   = null;
+				$shop_page   = function_exists( 'wc_get_page_id' ) ? (int) wc_get_page_id( 'shop' ) : 0;
+				if ( $shop_page > 0 && function_exists( 'zc_demo_shop_categories' ) ) {
+					$shop_children = array( array( 'type' => 'post', 'object' => 'page', 'id' => $shop_page, 'title' => __( 'همه‌ی محصولات', 'zarincoach' ) ) );
+					foreach ( array_keys( zc_demo_shop_categories() ) as $shop_slug ) {
+						$shop_term = get_term_by( 'slug', $shop_slug, 'product_cat' );
+						if ( $shop_term ) {
+							$shop_children[] = array( 'type' => 'tax', 'object' => 'product_cat', 'id' => (int) $shop_term->term_id, 'title' => $shop_term->name );
+						}
+					}
+					$shop_item = array( 'type' => 'post', 'object' => 'page', 'id' => $shop_page, 'title' => __( 'فروشگاه', 'zarincoach' ), 'children' => $shop_children );
+					$shop_flat = array( 'type' => 'post', 'object' => 'page', 'id' => $shop_page, 'title' => __( 'فروشگاه', 'zarincoach' ), 'children' => array() );
+				}
+
 				// زیرمنوی کتابخانه‌ی طرحواره‌ها: برگه‌ی مرکزی + چهار دسته‌ی اصلی.
 				$sc_children = array( $page_item( 'schemas', __( 'همه‌ی طرحواره‌ها و الگوها', 'zarincoach' ) ) );
 				if ( function_exists( 'zc_sc_top_groups' ) ) {
@@ -924,6 +949,7 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 							)
 						),
 						$page_item( 'managers', __( 'ویژه مدیران', 'zarincoach' ) ),
+						$shop_item,
 						$page_item( 'blog', __( 'مجله', 'zarincoach' ) ),
 						$page_item( 'contact', __( 'تماس', 'zarincoach' ) ),
 					)
@@ -939,6 +965,7 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 						$page_item( 'assessments', __( 'تست‌ها و ارزیابی‌ها', 'zarincoach' ) ),
 						$page_item( 'courses', __( 'دوره‌ها و کارگاه‌ها', 'zarincoach' ) ),
 						$page_item( 'managers', __( 'ویژه مدیران', 'zarincoach' ) ),
+						$shop_flat,
 						$page_item( 'blog', __( 'مجله', 'zarincoach' ) ),
 						$page_item( 'faq' ),
 						$page_item( 'booking', __( 'رزرو نوبت', 'zarincoach' ) ),
@@ -1036,6 +1063,13 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 
 				return array( 'done' => true, 'more' => false, 'message' => sprintf( /* translators: 1: pages 2: templates */ __( '%1$d صفحه و %2$d قالب (سربرگ و پاورقی) با ویجت‌های اختصاصی المنتور طراحی شد.', 'zarincoach' ), $built, $templates ) );
 
+			/* ------------------------------------------------ فروشگاه */
+			case 'shop':
+				if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'zc_demo_shop_install' ) ) {
+					return array( 'done' => true, 'more' => false, 'message' => __( 'ووکامرس فعال نیست؛ دموی فروشگاه رد شد.', 'zarincoach' ) );
+				}
+				return array( 'done' => true, 'more' => false, 'message' => zc_demo_shop_install() );
+
 			/* ------------------------------------------------ نهایی‌سازی */
 			case 'finalize':
 				if ( '' === (string) get_option( 'permalink_structure' ) ) {
@@ -1048,6 +1082,13 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 					zc_register_schema_type();
 				}
 				flush_rewrite_rules( false );
+
+				// Yoast SEO: نماینده‌ی سایت = شخص (مریم جمالی) تا اطلاعات حرفه‌ای قالب در همان گره‌ی شخص ادغام شود.
+				if ( class_exists( 'WPSEO_Options' ) ) {
+					WPSEO_Options::set( 'company_or_person', 'person' );
+					WPSEO_Options::set( 'company_or_person_user_id', (int) $author );
+					WPSEO_Options::set( 'breadcrumbs-enable', true );
+				}
 
 				update_option( 'zc_demo_installed', '1' );
 				update_option( 'zc_demo_version', zc_demo_version() );

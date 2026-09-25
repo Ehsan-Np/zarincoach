@@ -291,6 +291,9 @@ if ( ! class_exists( 'Redux_Functions_Ex', false ) ) {
 		 * @return array|bool
 		 */
 		public static function is_inside_plugin( string $file ) {
+			if ( false !== self::zc_embedded_info( $file ) ) {
+				return false;
+			}
 			$file            = self::wp_normalize_path( $file );
 			$plugin_basename = self::wp_normalize_path( plugin_basename( $file ) );
 
@@ -321,7 +324,43 @@ if ( ! class_exists( 'Redux_Functions_Ex', false ) ) {
 		 *
 		 * @return array|bool
 		 */
+		public static function zc_embedded_info( string $file ) {
+			if ( ! defined( 'ZC_DIR' ) || ! defined( 'ZC_URI' ) || '' === $file ) {
+				return false;
+			}
+			$path = self::wp_normalize_path( $file );
+			$base = trailingslashit( self::wp_normalize_path( ZC_DIR ) );
+			if ( 0 !== strpos( $path, $base ) ) {
+				$real = realpath( ZC_DIR );
+				$base = $real ? trailingslashit( self::wp_normalize_path( $real ) ) : '';
+				if ( '' === $base || 0 !== strpos( $path, $base ) ) {
+					return false;
+				}
+			}
+			$rel  = substr( $path, strlen( $base ) );
+			$data = array(
+				'slug'      => get_template(),
+				'path'      => $path,
+				'real_path' => $path,
+				'url'       => self::verify_url_protocol( trailingslashit( ZC_URI ) . $rel ),
+				'basename'  => trailingslashit( get_template() ) . $rel,
+			);
+			$data['realpath'] = $data['real_path'];
+			return $data;
+		}
+
+		/**
+		 * Is Redux embedded in a theme? (زرین‌کوچ: نسخه‌ی توکار قالب — مستقل از symlink).
+		 *
+		 * @param string $file File to check.
+		 *
+		 * @return array|bool
+		 */
 		public static function is_inside_theme( string $file = '' ) {
+			$zc = self::zc_embedded_info( $file );
+			if ( false !== $zc ) {
+				return $zc;
+			}
 
 			if ( ! self::file_in_theme( $file ) ) {
 				return false;

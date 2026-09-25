@@ -202,6 +202,36 @@ if ( ! class_exists( 'ZC_Widget_Site_Header' ) ) :
 			);
 
 			$this->add_control(
+				'shop_cart',
+				array(
+					'label'       => __( 'دکمه سبد خرید', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::SELECT,
+					'default'     => '',
+					'options'     => array(
+						''    => __( 'طبق پنل تنظیمات', 'zarincoach' ),
+						'yes' => __( 'نمایش', 'zarincoach' ),
+						'no'  => __( 'پنهان', 'zarincoach' ),
+					),
+					'description' => __( 'فقط وقتی ووکامرس فعال است نمایش داده می‌شود.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'shop_account',
+				array(
+					'label'       => __( 'دکمه حساب کاربری', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::SELECT,
+					'default'     => '',
+					'options'     => array(
+						''    => __( 'طبق پنل تنظیمات', 'zarincoach' ),
+						'yes' => __( 'نمایش', 'zarincoach' ),
+						'no'  => __( 'پنهان', 'zarincoach' ),
+					),
+					'description' => __( 'فقط وقتی ووکامرس فعال است نمایش داده می‌شود.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
 				'cta_text',
 				array(
 					'label'       => __( 'متن دکمه', 'zarincoach' ),
@@ -254,6 +284,11 @@ if ( ! class_exists( 'ZC_Widget_Site_Header' ) ) :
 				'cta_text'    => $this->is_on( $s, 'hide_cta' ) ? '' : $this->value( 'cta_text', 'header_cta_text', __( 'رزرو جلسه آشنایی', 'zarincoach' ) ),
 				'cta_url'     => $this->value( 'cta_url', 'header_cta_url', '#booking' ),
 			);
+			$d = zc_header_args();
+			foreach ( array( 'shop_cart' => 'show_cart', 'shop_account' => 'show_account' ) as $control => $arg ) {
+				$mode         = isset( $s[ $control ] ) ? (string) $s[ $control ] : '';
+				$args[ $arg ] = '' === $mode ? ! empty( $d[ $arg ] ) : 'yes' === $mode;
+			}
 
 			get_template_part( 'template-parts/site', 'header', $args );
 		}

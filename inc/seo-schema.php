@@ -162,6 +162,17 @@ if ( ! function_exists( 'zc_schema_hint' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'zc_schema_enabled' ) ) :
+	/**
+	 * آیا اسکیمای قالب تولید می‌شود؟ (سئوی داخلی، یا پل Yoast که گره‌های قالب را به گراف Yoast می‌افزاید).
+	 *
+	 * @return bool
+	 */
+	function zc_schema_enabled() {
+		return zc_seo_active() || ( function_exists( 'zc_yoast_bridge' ) && zc_yoast_bridge() );
+	}
+endif;
+
 if ( ! function_exists( 'zc_schema_can_collect' ) ) :
 	/**
 	 * جمع‌آوری فقط در فرانت‌اند واقعی (نه ویرایشگر/پیش‌نمایش المنتور).
@@ -169,7 +180,7 @@ if ( ! function_exists( 'zc_schema_can_collect' ) ) :
 	 * @return bool
 	 */
 	function zc_schema_can_collect() {
-		if ( is_admin() || wp_doing_ajax() || ! zc_seo_active() ) {
+		if ( is_admin() || wp_doing_ajax() || ! zc_schema_enabled() ) {
 			return false;
 		}
 		if ( class_exists( '\Elementor\Plugin' ) ) {
@@ -700,6 +711,26 @@ if ( ! function_exists( 'zc_schema_graph' ) ) :
 	 * @return array
 	 */
 	function zc_schema_graph() {
+		$graph = array_values( array_filter( zc_schema_graph_keyed() ) );
+
+		/**
+		 * فیلتر گراف اسکیما (آرایه‌ای از گره‌ها).
+		 *
+		 * @param array $graph گره‌ها.
+		 */
+		return (array) apply_filters( 'zc_schema_graph_nodes', $graph );
+	}
+endif;
+
+if ( ! function_exists( 'zc_schema_graph_keyed' ) ) :
+	/**
+	 * سازنده‌ی گراف: آرایه‌ی گره‌ها با کلید @id (برای خروجی مستقل یا ادغام در گراف Yoast).
+	 *
+	 * کلیدهای ثابت صفحه: {url}#webpage، {url}#breadcrumb، {url}#article، {url}#primaryimage.
+	 *
+	 * @return array<string, array>
+	 */
+	function zc_schema_graph_keyed() {
 		$store = &zc_schema_store();
 		$local = zc_switch( 'seo_local_enable', true );
 		$graph = array();
@@ -876,6 +907,23 @@ if ( ! function_exists( 'zc_schema_graph' ) ) :
 				}
 			}
 
+			/**
+			 * گره‌های وابسته به زمینه‌ی صفحه (محصول، فهرست محصولات و…).
+			 *
+			 * @param array $ctx graph، page، url، pid.
+			 */
+			$ctx   = (array) apply_filters(
+				'zc_schema_context',
+				array(
+					'graph' => $graph,
+					'page'  => $page,
+					'url'   => $url,
+					'pid'   => $pid,
+				)
+			);
+			$graph = (array) $ctx['graph'];
+			$page  = (array) $ctx['page'];
+
 			$graph[ $url . '#webpage' ] = array_filter( $page );
 		}
 
@@ -884,14 +932,7 @@ if ( ! function_exists( 'zc_schema_graph' ) ) :
 			$graph[ $key ] = isset( $graph[ $key ] ) ? zc_schema_merge( $graph[ $key ], $node ) : $node;
 		}
 
-		$graph = array_values( array_filter( $graph ) );
-
-		/**
-		 * فیلتر گراف اسکیما (آرایه‌ای از گره‌ها).
-		 *
-		 * @param array $graph گره‌ها.
-		 */
-		return (array) apply_filters( 'zc_schema_graph_nodes', $graph );
+		return $graph;
 	}
 endif;
 
@@ -902,7 +943,7 @@ if ( ! function_exists( 'zc_output_schema' ) ) :
 	 * @return void
 	 */
 	function zc_output_schema() {
-		if ( ! zc_schema_can_collect() ) {
+		if ( ! zc_seo_active() || ! zc_schema_can_collect() ) {
 			return;
 		}
 		$schema = array(
