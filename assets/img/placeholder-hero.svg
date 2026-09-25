@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="تصویر قهرمان">
+  <rect width="800" height="1000" fill="#F5F5F0"/>
+  <circle cx="560" cy="240" r="200" fill="#D4AF37" opacity=".22"/>
+  <circle cx="220" cy="720" r="240" fill="#95AEC2" opacity=".22"/>
+  <path d="M400 300c-120 0-210 86-210 192 0 106 90 192 210 192s210-86 210-192c0-106-90-192-210-192z" fill="#3B4436" opacity=".10"/>
+</svg>

@@ -1,0 +1,990 @@
+/*!
+ * زرین‌کوچ — پوسته‌ی پنل مدیریت (تنظیمات قالب، نصب دمو، اطلاعات سیستم)
+ * راست‌چین کامل، فونت آراد، رنگ‌های سرمه‌ای/طلایی. فقط در صفحه‌های قالب بارگذاری می‌شود.
+ */
+
+/* ------------------------------------------------------------------ */
+/* فونت                                                                 */
+/* ------------------------------------------------------------------ */
+@font-face {
+	font-family: "ZC Arad";
+	src: url("../fonts/AradFD-VF.woff2") format("woff2-variations"), url("../fonts/AradFD-VF.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "ZC Arad Latin";
+	src: url("../fonts/Arad-VF.woff2") format("woff2-variations"), url("../fonts/Arad-VF.woff2") format("woff2");
+	font-weight: 100 900;
+	font-style: normal;
+	font-display: swap;
+}
+
+body.zc-admin {
+	--zc-navy: #0b1b3a;
+	--zc-primary: #1d3a72;
+	--zc-gold: #c9a45c;
+	--zc-gold-soft: #f6efe0;
+	--zc-bg: #f3f5f9;
+	--zc-card: #fff;
+	--zc-line: #e3e8f0;
+	--zc-line-soft: #eef1f6;
+	--zc-ink: #0e1a33;
+	--zc-muted: #5b6679;
+	--zc-faint: #8e98ab;
+	--zc-ok: #0f7a52;
+	--zc-warn: #a15c07;
+	--zc-danger: #b42318;
+	--zc-radius: 16px;
+	--zc-font: "ZC Arad", Tahoma, sans-serif;
+	--zc-font-latin: "ZC Arad Latin", Tahoma, sans-serif;
+	background: var(--zc-bg);
+}
+
+body.zc-admin #wpbody-content,
+body.zc-admin #wpbody-content button,
+body.zc-admin #wpbody-content input,
+body.zc-admin #wpbody-content select,
+body.zc-admin #wpbody-content textarea,
+body.zc-admin #wpbody-content .button,
+body.zc-admin .select2-container,
+body.zc-admin .select2-dropdown,
+body.zc-admin #wpfooter,
+body.zc-admin .qtip {
+	font-family: var(--zc-font);
+}
+body.zc-admin #wpbody-content input[type="text"],
+body.zc-admin #wpbody-content input[type="search"],
+body.zc-admin #wpbody-content input[type="url"],
+body.zc-admin #wpbody-content input[type="email"],
+body.zc-admin #wpbody-content textarea {
+	font-family: var(--zc-font-latin);
+}
+body.zc-admin #wpbody-content .fa-solid,
+body.zc-admin #wpbody-content .fa-regular,
+body.zc-admin #wpbody-content .fa-brands { font-family: "Font Awesome 6 Free"; }
+body.zc-admin #wpbody-content .fa-brands { font-family: "Font Awesome 6 Brands"; }
+
+body.zc-admin .wrap {
+	margin: 16px 0 0 20px;
+	max-width: none;
+}
+body.zc-admin #wpbody-content > .notice,
+body.zc-admin #wpbody-content > .updated,
+body.zc-admin #wpbody-content > .error { margin: 12px 0 0 20px; }
+
+/* ------------------------------------------------------------------ */
+/* نوار برند (مشترک همه‌ی صفحه‌ها)                                        */
+/* ------------------------------------------------------------------ */
+body.zc-admin .zc-hero {
+	position: relative;
+	display: grid;
+	grid-template-columns: 1fr auto;
+	align-items: center;
+	gap: 16px 20px;
+	padding: 20px 24px 0;
+	border-radius: var(--zc-radius);
+	color: #fff;
+	background:
+		radial-gradient(60% 120% at 100% 0%, rgba(201, 164, 92, .22), transparent 60%),
+		radial-gradient(50% 120% at 0% 100%, rgba(141, 169, 212, .18), transparent 60%),
+		var(--zc-navy);
+	box-shadow: 0 18px 40px -28px rgba(11, 27, 58, .8);
+	overflow: hidden;
+}
+body.zc-admin .zc-hero-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+body.zc-admin .zc-hero-logo {
+	display: grid; place-items: center; flex: none;
+	width: 46px; height: 46px; border-radius: 14px;
+	color: var(--zc-gold);
+	background: rgba(201, 164, 92, .12);
+	border: 1px solid rgba(201, 164, 92, .35);
+}
+body.zc-admin .zc-hero-title {
+	margin: 0; padding: 0;
+	color: #fff; font-size: 20px; line-height: 1.5; font-weight: 800;
+}
+body.zc-admin .zc-hero-ver {
+	display: inline-block; vertical-align: middle;
+	margin-inline-start: 6px; padding: 1px 10px;
+	border-radius: 99px; font-size: 11.5px; font-weight: 600;
+	color: #e7cf9c; background: rgba(201, 164, 92, .14); border: 1px solid rgba(201, 164, 92, .3);
+}
+body.zc-admin .zc-hero-sub { margin: 2px 0 0; color: rgba(255, 255, 255, .66); font-size: 12.5px; }
+body.zc-admin .zc-hero-site {
+	display: inline-flex; align-items: center; gap: 8px;
+	padding: 8px 16px; border-radius: 99px;
+	color: #fff; text-decoration: none; font-size: 12.5px; font-weight: 600;
+	background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .16);
+	transition: background .2s;
+}
+body.zc-admin .zc-hero-site:hover,
+body.zc-admin .zc-hero-site:focus { color: #fff; background: rgba(255, 255, 255, .16); box-shadow: none; }
+body.zc-admin .zc-hero-tabs {
+	grid-column: 1 / -1;
+	display: flex; gap: 4px; flex-wrap: wrap;
+	margin: 4px -8px 0;
+}
+body.zc-admin .zc-hero-tab {
+	display: inline-flex; align-items: center; gap: 8px;
+	padding: 11px 16px 13px;
+	border-radius: 12px 12px 0 0;
+	color: rgba(255, 255, 255, .72); text-decoration: none;
+	font-size: 13px; font-weight: 600;
+	transition: color .2s, background .2s;
+}
+body.zc-admin .zc-hero-tab i { font-size: 13px; opacity: .8; }
+body.zc-admin .zc-hero-tab:hover,
+body.zc-admin .zc-hero-tab:focus { color: #fff; background: rgba(255, 255, 255, .06); box-shadow: none; }
+body.zc-admin .zc-hero-tab.is-active { color: var(--zc-navy); background: var(--zc-bg); font-weight: 800; }
+body.zc-admin .zc-hero-tab.is-active i { color: var(--zc-gold); opacity: 1; }
+
+/* ------------------------------------------------------------------ */
+/* ساختار پنل Redux                                                     */
+/* ------------------------------------------------------------------ */
+body.zc-admin .redux-container {
+	margin: 0; padding: 0;
+	background: transparent;
+	border: 0; box-shadow: none;
+	overflow: visible;
+	direction: rtl;
+}
+body.zc-admin .redux-container #redux-form-wrapper {
+	display: grid;
+	grid-template-columns: 264px minmax(0, 1fr);
+	gap: 20px;
+	align-items: start;
+}
+body.zc-admin .redux-container #redux-header {
+	grid-column: 1 / -1;
+	margin: 0; padding: 0;
+	background: none; border: 0; box-shadow: none;
+}
+body.zc-admin .redux-container .clear,
+body.zc-admin .redux-container #redux-intro-text,
+body.zc-admin #redux-sub-footer,
+body.zc-admin .redux-container #redux-sticky-padder { display: none !important; }
+
+/* ستون منو */
+body.zc-admin .redux-container .redux-sidebar {
+	position: sticky;
+	top: 48px;
+	float: none;
+	width: auto;
+	max-height: calc(100vh - 64px);
+	overflow-y: auto;
+	overscroll-behavior: contain;
+	margin: 0; padding: 12px 10px 14px;
+	background: var(--zc-card);
+	border: 1px solid var(--zc-line);
+	border-radius: var(--zc-radius);
+	scrollbar-width: thin;
+	scrollbar-color: #cfd6e2 transparent;
+}
+body.zc-admin .zc-search { position: relative; margin: 0 2px 8px; }
+body.zc-admin .zc-search i {
+	position: absolute; top: 50%; inset-inline-start: 12px; transform: translateY(-50%);
+	color: var(--zc-faint); font-size: 13px; pointer-events: none;
+}
+body.zc-admin #wpbody-content .zc-search input {
+	width: 100%; height: 38px; margin: 0;
+	padding: 0 36px 0 12px;
+	border: 1px solid var(--zc-line); border-radius: 11px;
+	background: #f7f9fc; color: var(--zc-ink);
+	font-family: var(--zc-font); font-size: 13px;
+	box-shadow: none;
+}
+body.zc-admin .zc-search input:focus { border-color: var(--zc-primary); background: #fff; box-shadow: 0 0 0 3px rgba(29, 58, 114, .12); outline: 0; }
+
+body.zc-admin .redux-container .redux-group-menu { margin: 0 !important; padding: 0; list-style: none; background: none !important; }
+body.zc-admin .redux-container .redux-group-menu li { margin: 0; padding: 0; border: 0; background: none; }
+body.zc-admin .redux-container .redux-group-menu .zc-menu-label {
+	padding: 14px 12px 6px;
+	color: var(--zc-faint);
+	font-size: 11px; font-weight: 700; letter-spacing: 0;
+	cursor: default;
+}
+body.zc-admin .redux-container .redux-group-menu .zc-menu-label:first-child { padding-top: 4px; }
+body.zc-admin .redux-container .redux-group-menu li a {
+	display: flex !important; align-items: center; gap: 10px;
+	width: auto; margin: 1px 0; padding: 9px 12px !important;
+	border: 0 !important; border-radius: 10px;
+	background: none !important;
+	color: #334155 !important;
+	font-size: 13.5px; font-weight: 500; line-height: 1.6;
+	text-decoration: none; text-shadow: none;
+	box-shadow: none !important;
+	opacity: 1 !important;
+	transition: background .15s, color .15s;
+}
+body.zc-admin .redux-container .redux-group-menu li a > i:not(.el-chevron-down) {
+	flex: none; width: 18px; margin: 0 !important;
+	font-size: 14px; text-align: center; color: #8994a8;
+	transition: color .15s;
+}
+body.zc-admin .redux-container .redux-group-menu li a .group_title { flex: 1; min-width: 0; padding: 0 !important; margin: 0 !important; }
+body.zc-admin .redux-container .redux-group-menu li a:hover { background: #f2f5fa !important; color: var(--zc-navy) !important; }
+body.zc-admin .redux-container .redux-group-menu li a:hover > i { color: var(--zc-primary); }
+body.zc-admin .redux-container .redux-group-menu li a:focus { outline: 0; box-shadow: 0 0 0 2px rgba(29, 58, 114, .25) !important; }
+
+body.zc-admin .redux-container .redux-group-menu li.active > a,
+body.zc-admin .redux-container .redux-group-menu li.active > a:hover {
+	background: var(--zc-navy) !important;
+	color: #fff !important;
+	font-weight: 700;
+}
+body.zc-admin .redux-container .redux-group-menu li.active > a > i { color: var(--zc-gold) !important; }
+body.zc-admin .redux-container .redux-group-menu li.activeChild > a {
+	background: #eef2f9 !important;
+	color: var(--zc-navy) !important;
+	font-weight: 700;
+}
+body.zc-admin .redux-container .redux-group-menu li.activeChild > a > i { color: var(--zc-primary) !important; }
+
+/* خنثی‌سازی چیدمان پیش‌فرض Redux (آیکن مطلق، عرض ثابت، زیرمنوی شناور، فلش‌ها) */
+body.zc-admin .redux-container .redux-group-menu li a,
+body.zc-admin .redux-container .redux-group-menu li.active a,
+body.zc-admin .redux-container .redux-group-menu li.activeChild a { width: auto !important; position: relative; }
+body.zc-admin .redux-container .redux-group-menu .redux-group-tab-link-a > i:not(.el-chevron-down) { position: static !important; padding: 0 !important; vertical-align: middle; }
+body.zc-admin .redux-container .redux-group-menu .redux-group-tab-link-a span.group_title {
+	display: block !important; position: static !important; width: auto !important;
+	padding: 0 !important; background: none !important; box-shadow: none !important; border: 0 !important;
+}
+body.zc-admin .redux-container .redux-group-menu li a::after,
+body.zc-admin .redux-container .redux-group-menu li a::before { display: none !important; content: none !important; }
+body.zc-admin .redux-container .redux-group-menu li.redux-section-hover:not(.active):not(.activeChild) > ul.subsection { display: none !important; }
+body.zc-admin .redux-container .redux-group-menu li.hasSubSections.redux-section-hover > ul.subsection {
+	position: static !important; width: auto !important; box-shadow: none !important; background: none !important; z-index: auto;
+}
+body.zc-admin .redux-container .redux-group-menu li.hasSubSections.redux-section-hover > a { background: #f2f5fa !important; }
+body.zc-admin .redux-container .redux-group-menu li.active.hasSubSections > a,
+body.zc-admin .redux-container .redux-group-menu li.activeChild.hasSubSections > a { border-bottom: 0 !important; }
+
+/* فلش زیربخش‌ها */
+body.zc-admin .redux-container .redux-group-menu .extraIconSubsections {
+	order: 3; float: none; margin: 0 !important; padding: 0;
+	display: inline-flex; align-items: center;
+	color: currentColor; opacity: .55; font-size: 10px;
+	position: static;
+}
+body.zc-admin .redux-container .redux-group-menu .extraIconSubsections i { width: auto; margin: 0; font-size: 10px; line-height: 1; }
+body.zc-admin .redux-container .redux-group-menu li.active .extraIconSubsections,
+body.zc-admin .redux-container .redux-group-menu li.activeChild .extraIconSubsections { opacity: .85; }
+
+/* زیربخش‌ها */
+body.zc-admin .redux-container .redux-group-menu ul.subsection {
+	margin: 2px 0 6px; padding: 0 0 0 0;
+	border: 0; background: none;
+	position: relative;
+}
+body.zc-admin .redux-container .redux-group-menu ul.subsection::before {
+	content: ""; position: absolute; top: 4px; bottom: 4px; inset-inline-start: 20px;
+	width: 1px; background: var(--zc-line);
+}
+body.zc-admin .redux-container .redux-group-menu ul.subsection li a {
+	padding: 7px 36px 7px 12px !important;
+	font-size: 13px; color: #475569 !important;
+}
+body.zc-admin .redux-container .redux-group-menu ul.subsection li a > i:not(.el-chevron-down) { font-size: 12px; width: 16px; }
+body.zc-admin .redux-container .redux-group-menu ul.subsection li.active > a,
+body.zc-admin .redux-container .redux-group-menu ul.subsection li.active > a:hover {
+	background: var(--zc-gold-soft) !important;
+	color: var(--zc-navy) !important;
+}
+body.zc-admin .redux-container .redux-group-menu ul.subsection li.active > a > i { color: #9a7429 !important; }
+
+/* نشان خطا/هشدار روی منو */
+body.zc-admin .redux-container .redux-menu-error,
+body.zc-admin .redux-container .redux-menu-warning {
+	position: static; order: 4; margin: 0; min-width: 20px; height: 20px; line-height: 20px;
+	border-radius: 99px; font-size: 11px; text-align: center; padding: 0 6px;
+}
+
+/* ستون محتوا */
+body.zc-admin .redux-container .redux-main {
+	position: relative;
+	float: none;
+	margin: 0 !important;
+	padding: 0;
+	min-height: 70vh;
+	background: var(--zc-card);
+	border: 1px solid var(--zc-line) !important;
+	border-radius: var(--zc-radius);
+	box-shadow: none;
+}
+body.zc-admin .redux-container #redux_ajax_overlay {
+	top: 0; right: 0; left: 0; bottom: 0;
+	border-radius: var(--zc-radius);
+	background: rgba(255, 255, 255, .6);
+}
+
+/* نوار چسبان ذخیره */
+body.zc-admin .redux-container #redux-sticky {
+	position: sticky;
+	top: 32px;
+	z-index: 30;
+	margin: 0;
+	min-height: 0;
+	background: rgba(255, 255, 255, .94);
+	-webkit-backdrop-filter: saturate(1.4) blur(8px);
+	backdrop-filter: saturate(1.4) blur(8px);
+	border-bottom: 1px solid var(--zc-line);
+	border-radius: var(--zc-radius) var(--zc-radius) 0 0;
+}
+body.zc-admin .redux-container #info_bar {
+	display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+	height: auto !important; min-height: 0 !important;
+	margin: 0; padding: 12px 20px;
+	background: none; border: 0; box-shadow: none;
+}
+body.zc-admin .zc-bar-title { display: flex; align-items: center; gap: 8px; min-width: 0; font-size: 13px; }
+body.zc-admin .zc-bar-crumb { color: var(--zc-faint); }
+body.zc-admin .zc-bar-crumb::after { content: "\2039"; margin-inline-start: 8px; color: #c2c9d6; }
+body.zc-admin .zc-bar-current { color: var(--zc-navy); font-weight: 800; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+body.zc-admin .redux-container .redux-action_bar {
+	float: none !important;
+	display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+	margin: 0 auto 0 0;
+	padding: 0;
+}
+body.zc-admin .redux-container .redux-action_bar .spinner { float: none; margin: 0 4px; order: -1; }
+
+/* دکمه‌ها */
+body.zc-admin #wpbody-content .redux-action_bar .button,
+body.zc-admin #wpbody-content .zc-btn {
+	display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+	height: 38px; min-height: 0; margin: 0 !important;
+	padding: 0 16px !important;
+	border-radius: 11px !important;
+	font-size: 13px !important; font-weight: 600; line-height: 1 !important;
+	text-shadow: none !important;
+	box-shadow: none !important;
+	transition: background .15s, border-color .15s, color .15s, transform .15s;
+	vertical-align: middle;
+	text-decoration: none;
+}
+body.zc-admin #wpbody-content .redux-action_bar .button-secondary,
+body.zc-admin #wpbody-content .zc-btn--ghost {
+	background: #fff !important; color: #475569 !important;
+	border: 1px solid var(--zc-line) !important;
+}
+body.zc-admin #wpbody-content .redux-action_bar .button-secondary:hover,
+body.zc-admin #wpbody-content .zc-btn--ghost:hover { border-color: #c9d2e0 !important; color: var(--zc-navy) !important; background: #f7f9fc !important; }
+body.zc-admin #wpbody-content .redux-action_bar .zc-btn-reset-all:hover { color: var(--zc-danger) !important; border-color: #f2c4bf !important; background: #fff7f6 !important; }
+body.zc-admin #wpbody-content .redux-action_bar .button-primary,
+body.zc-admin #wpbody-content .zc-btn--primary {
+	min-width: 132px;
+	background: var(--zc-primary) !important; color: #fff !important;
+	border: 1px solid var(--zc-primary) !important;
+	font-weight: 700;
+}
+body.zc-admin #wpbody-content .redux-action_bar .button-primary:hover,
+body.zc-admin #wpbody-content .zc-btn--primary:hover { background: var(--zc-navy) !important; border-color: var(--zc-navy) !important; }
+body.zc-admin #wpbody-content .redux-action_bar .button:focus,
+body.zc-admin #wpbody-content .zc-btn:focus { outline: 0; box-shadow: 0 0 0 3px rgba(201, 164, 92, .45) !important; }
+body.zc-admin #wpbody-content .redux-action_bar .button:active { transform: translateY(1px); }
+
+/* نوار اعلان‌ها (ذخیره شد / تغییرات ذخیره‌نشده / خطا) */
+body.zc-admin .redux-container #redux_notification_bar { padding: 0 20px; }
+body.zc-admin .redux-container #redux_notification_bar:empty { display: none; }
+body.zc-admin .redux-container #redux_notification_bar > div:not([style*="none"]) { margin: 0 0 12px; }
+body.zc-admin .redux-container .redux-save-warn,
+body.zc-admin .redux-container .saved_notice,
+body.zc-admin .redux-container .redux-field-errors,
+body.zc-admin .redux-container .redux-field-warnings,
+body.zc-admin .redux-container .admin-notice {
+	position: static !important;
+	left: auto !important; right: auto !important; top: auto !important;
+	width: auto !important; max-width: none !important;
+	margin: 0 0 12px !important;
+	padding: 10px 14px !important;
+	border-radius: 11px;
+	border: 1px solid transparent;
+	box-shadow: none !important;
+	font-size: 13px; line-height: 1.8; text-align: start;
+	float: none !important;
+}
+body.zc-admin .redux-container .redux-save-warn,
+body.zc-admin .redux-container .notice-yellow { background: #fffaeb !important; color: #8a4b06 !important; border-color: #fce7b2 !important; }
+body.zc-admin .redux-container .notice-green { background: #ecfdf3 !important; color: #05603a !important; border-color: #abefc6 !important; }
+body.zc-admin .redux-container .notice-blue { background: #eff4ff !important; color: #1d3a72 !important; border-color: #c7d7fe !important; }
+body.zc-admin .redux-container .redux-field-errors,
+body.zc-admin .redux-container .notice-red { background: #fef3f2 !important; color: #912018 !important; border-color: #fecdca !important; }
+body.zc-admin .redux-container .redux-field-warnings { background: #fffaeb !important; color: #8a4b06 !important; border-color: #fce7b2 !important; }
+body.zc-admin .redux-container .redux-save-warn span,
+body.zc-admin .redux-container .saved_notice strong { font-weight: 700; }
+body.zc-admin .redux-container .sticky-save-warn .redux-save-warn { position: static !important; }
+
+/* بدنه‌ی هر بخش */
+/* redux-fields.css در عرض ≤۷۸۲ همه‌ی بخش‌ها را باز می‌کند؛ پنل ما در همه‌ی عرض‌ها فقط بخش فعال را نشان می‌دهد. */
+body.zc-admin .redux-container .redux-group-tab { display: none; }
+body.zc-admin .redux-container .redux-group-tab.zc-tab-active { display: block; }
+body.zc-admin .redux-container .redux-group-tab {
+	padding: 22px 28px 12px;
+	margin: 0;
+	background: none;
+}
+body.zc-admin .redux-container .redux-group-tab > h2 {
+	margin: 0 0 4px; padding: 0;
+	color: var(--zc-navy);
+	font-size: 21px; line-height: 1.6; font-weight: 800;
+}
+body.zc-admin .redux-container .redux-group-tab > .redux-section-desc {
+	margin: 0 0 6px; padding: 0 0 16px;
+	border-bottom: 1px solid var(--zc-line-soft);
+	color: var(--zc-muted);
+	font-size: 13px; line-height: 2;
+}
+
+/* سرفصل گروه‌ها */
+body.zc-admin .redux-container .indent-section-container { margin: 0; padding: 0; }
+body.zc-admin .redux-container .redux-section-field {
+	margin: 18px 0 0 !important; padding: 0 !important;
+	border: 0 !important; background: none !important;
+}
+body.zc-admin .redux-container .redux-section-field h3 {
+	position: relative;
+	display: flex; align-items: center; gap: 10px;
+	margin: 0 !important; padding: 8px 0 !important;
+	border: 0 !important; background: none !important;
+	color: var(--zc-navy);
+	font-size: 14.5px; font-weight: 800; line-height: 1.6;
+}
+body.zc-admin .redux-container .redux-section-field h3::before {
+	content: ""; flex: none;
+	width: 4px; height: 18px; border-radius: 4px;
+	background: linear-gradient(180deg, var(--zc-gold), #e2c98f);
+}
+body.zc-admin .redux-container .redux-section-field h3::after {
+	content: ""; flex: 1; height: 1px; background: var(--zc-line-soft);
+}
+body.zc-admin .redux-container .redux-section-field .redux-section-desc {
+	margin: -2px 14px 4px 0; color: var(--zc-muted); font-size: 12.5px; line-height: 1.9;
+}
+body.zc-admin .redux-container .redux-section-field.hide,
+body.zc-admin .redux-container .indent-section-container .hide { display: none; }
+
+/* ردیف فیلدها (چیدمان جدولیِ بومی؛ fadeIn ردیف‌ها را table-row می‌کند) */
+body.zc-admin .redux-container table.form-table {
+	width: 100%; margin: 0 !important;
+	border: 0; border-collapse: collapse; table-layout: fixed;
+}
+body.zc-admin .redux-container table.form-table-section-indented { margin: 0 !important; width: 100%; }
+body.zc-admin .redux-container table.form-table > tbody > tr {
+	border-bottom: 1px solid var(--zc-line-soft) !important;
+	background: none;
+}
+body.zc-admin .redux-container table.form-table > tbody > tr:last-child { border-bottom: 0 !important; }
+body.zc-admin .redux-container table.form-table > tbody > tr.hide,
+body.zc-admin .redux-container table.form-table > tbody > tr.hidden,
+body.zc-admin .redux-container table.form-table > tbody > tr.zc-empty-row { display: none !important; }
+body.zc-admin .redux-container table.form-table > tbody > tr:not(:has(> td > fieldset)),
+body.zc-admin .redux-container table.form-table > tbody > tr:has(> td > fieldset.redux-container-info:empty) { display: none !important; }
+body.zc-admin .redux-container table.form-table th {
+	width: 36%;
+	padding: 18px 0 18px 24px !important;
+	vertical-align: top;
+	text-align: right;
+	color: var(--zc-ink);
+	font-size: 13.5px; font-weight: 700; line-height: 1.8;
+}
+body.zc-admin .redux-container table.form-table td {
+	padding: 16px 0 !important;
+	vertical-align: top;
+	text-align: right;
+	color: var(--zc-ink);
+	font-size: 13px;
+}
+body.zc-admin .redux-container .redux_field_th { padding: 0 !important; font-weight: 700; color: var(--zc-ink); }
+body.zc-admin .redux-container .redux_field_th .description {
+	display: block; margin: 4px 0 0 !important;
+	color: #6b778c; font-weight: 400; font-style: normal;
+	font-size: 12px; line-height: 1.9;
+}
+body.zc-admin .redux-container .field-desc,
+body.zc-admin .redux-container td .description {
+	margin: 8px 0 0 !important;
+	color: #6b778c; font-style: normal; font-size: 12px; line-height: 1.9;
+}
+body.zc-admin .redux-container fieldset.redux-field { padding: 0 !important; margin: 0; min-width: 0; width: 100%; box-sizing: border-box; }
+body.zc-admin .redux-container td > fieldset.redux_remove_th,
+body.zc-admin .redux-container td[colspan] { padding-inline: 0 !important; }
+body.zc-admin .redux-container tr > th:empty { display: none; }
+body.zc-admin .redux-container tr > th:empty + td { width: 100%; }
+
+/* ورودی‌ها */
+body.zc-admin .redux-container input[type="text"],
+body.zc-admin .redux-container input[type="url"],
+body.zc-admin .redux-container input[type="email"],
+body.zc-admin .redux-container input[type="number"],
+body.zc-admin .redux-container textarea {
+	width: 100%; max-width: 560px;
+	min-height: 40px; margin: 0;
+	padding: 8px 12px;
+	border: 1px solid #d6dde8; border-radius: 11px;
+	background: #fff; color: var(--zc-ink);
+	font-size: 13.5px; line-height: 1.8;
+	box-shadow: 0 1px 0 rgba(15, 23, 42, .02);
+	direction: rtl; text-align: right;
+	transition: border-color .15s, box-shadow .15s;
+}
+body.zc-admin .redux-container textarea { max-width: 680px; min-height: 84px; resize: vertical; }
+body.zc-admin .redux-container input[type="text"]:focus,
+body.zc-admin .redux-container textarea:focus {
+	border-color: var(--zc-primary);
+	box-shadow: 0 0 0 3px rgba(29, 58, 114, .12);
+	outline: 0;
+}
+body.zc-admin .redux-container .zc-ltr input[type="text"],
+body.zc-admin .redux-container .zc-ltr textarea,
+body.zc-admin .redux-container input.zc-ltr,
+body.zc-admin .redux-container textarea.zc-ltr,
+body.zc-admin .redux-container input[dir="ltr"] { direction: ltr; text-align: left; }
+body.zc-admin .redux-container .zc-ltr input::placeholder { text-align: left; }
+
+/* کلید روشن/خاموش */
+body.zc-admin .redux-container .switch-options {
+	display: inline-flex; gap: 2px;
+	padding: 3px; border-radius: 99px;
+	background: #eef1f6; border: 1px solid #e3e8f0;
+	float: none;
+}
+body.zc-admin .redux-container .switch-options .cb-enable,
+body.zc-admin .redux-container .switch-options .cb-disable {
+	float: none; display: inline-flex; align-items: center;
+	margin: 0; padding: 0;
+	background: none !important; border: 0 !important; box-shadow: none !important;
+	border-radius: 99px !important; cursor: pointer;
+}
+body.zc-admin .redux-container .switch-options .cb-enable span,
+body.zc-admin .redux-container .switch-options .cb-disable span {
+	display: block; padding: 5px 16px;
+	background: none !important; border: 0 !important; box-shadow: none !important;
+	color: #5b6679; text-shadow: none !important;
+	font-size: 12.5px; font-weight: 600; line-height: 1.6;
+	border-radius: 99px;
+	transition: background .15s, color .15s;
+}
+body.zc-admin .redux-container .switch-options .cb-enable.selected span { background: var(--zc-primary) !important; color: #fff; }
+body.zc-admin .redux-container .switch-options .cb-disable.selected span { background: #fff !important; color: var(--zc-ink); box-shadow: 0 1px 3px rgba(11, 27, 58, .14) !important; }
+
+/* دکمه‌های انتخابی */
+body.zc-admin .redux-container .buttonset {
+	display: inline-flex; flex-wrap: wrap; gap: 2px;
+	padding: 3px; border-radius: 13px;
+	background: #eef1f6; border: 1px solid #e3e8f0;
+}
+body.zc-admin .redux-container .buttonset .ui-button {
+	float: none; margin: 0 !important;
+	padding: 6px 14px !important;
+	border: 0 !important; border-radius: 10px !important;
+	background: none !important; box-shadow: none !important;
+	color: #475569 !important;
+	font-family: var(--zc-font); font-size: 12.5px; font-weight: 600; line-height: 1.7;
+	text-shadow: none;
+}
+body.zc-admin .redux-container .buttonset .ui-button:hover { color: var(--zc-navy) !important; background: rgba(255, 255, 255, .6) !important; }
+body.zc-admin .redux-container .buttonset .ui-button.ui-state-active {
+	background: #fff !important; color: var(--zc-navy) !important;
+	box-shadow: 0 1px 3px rgba(11, 27, 58, .16) !important; font-weight: 800;
+}
+body.zc-admin .redux-container .buttonset .ui-checkboxradio-icon,
+body.zc-admin .redux-container .buttonset .ui-checkboxradio-icon-space { display: none; }
+
+/* فهرست کشویی (select2) */
+body.zc-admin .redux-container .select2-container { width: 100% !important; max-width: 420px; }
+body.zc-admin .redux-container .select2-container--default .select2-selection--single {
+	height: 40px; border: 1px solid #d6dde8; border-radius: 11px; background: #fff;
+}
+body.zc-admin .redux-container .select2-container--default .select2-selection--single .select2-selection__rendered {
+	line-height: 38px; padding-inline: 12px 32px; color: var(--zc-ink); font-size: 13.5px;
+}
+body.zc-admin .redux-container .select2-container--default .select2-selection--single .select2-selection__arrow { height: 38px; left: 8px; right: auto; }
+body.zc-admin .redux-container .select2-container--default .select2-selection__clear { margin: 0 8px; }
+body.zc-admin .redux-container .select2-container--focus .select2-selection--single,
+body.zc-admin .redux-container .select2-container--open .select2-selection--single { border-color: var(--zc-primary); box-shadow: 0 0 0 3px rgba(29, 58, 114, .12); }
+body.zc-admin .select2-dropdown { border-color: #d6dde8; border-radius: 11px; overflow: hidden; box-shadow: 0 14px 30px -18px rgba(11, 27, 58, .45); }
+body.zc-admin .select2-results__option { padding: 8px 12px; font-size: 13px; text-align: right; }
+body.zc-admin .select2-container--default .select2-results__option--highlighted[aria-selected],
+body.zc-admin .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable { background: var(--zc-primary); }
+
+/* چک‌باکس‌ها */
+body.zc-admin .redux-container ul.data-full { margin: 0; padding: 0; list-style: none; }
+body.zc-admin .redux-container .zc-grid-checks ul.data-full,
+body.zc-admin .redux-container fieldset.redux-container-checkbox ul.data-full {
+	display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 160px), 1fr)); gap: 8px;
+}
+body.zc-admin .redux-container ul.data-full { width: 100%; max-width: 680px; box-sizing: border-box; }
+body.zc-admin .redux-container ul.data-full li { margin: 0 !important; width: auto !important; float: none !important; min-width: 0; }
+body.zc-admin .redux-container ul.data-full li label { box-sizing: border-box; width: 100%; }
+body.zc-admin .redux-container ul.data-full li label {
+	display: flex; align-items: center; gap: 8px;
+	padding: 8px 12px; border: 1px solid var(--zc-line); border-radius: 11px;
+	background: #fff; font-size: 13px; line-height: 1.7; cursor: pointer;
+	transition: border-color .15s, background .15s;
+}
+body.zc-admin .redux-container ul.data-full li label:hover { border-color: #c9d2e0; background: #fafbfd; }
+body.zc-admin .redux-container ul.data-full li label:has(input:checked) { border-color: rgba(29, 58, 114, .45); background: #f3f6fc; }
+body.zc-admin .redux-container input[type="checkbox"] {
+	width: 18px; height: 18px; margin: 0 !important;
+	border: 1.5px solid #b9c3d3; border-radius: 5px; box-shadow: none;
+}
+body.zc-admin .redux-container input[type="checkbox"]:checked { background: var(--zc-primary); border-color: var(--zc-primary); }
+body.zc-admin .redux-container input[type="checkbox"]:checked::before {
+	content: ""; width: 18px; height: 18px; margin: -1.5px;
+	background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 11px no-repeat;
+}
+
+/* لغزنده */
+body.zc-admin .redux-container .redux-container-slider { display: flex; align-items: center; gap: 16px; max-width: 560px; }
+body.zc-admin .redux-container .redux-container-slider input.redux-slider-input {
+	order: 2; flex: none; width: 76px !important; min-height: 36px; padding: 4px 8px;
+	text-align: center; direction: ltr; font-weight: 700;
+}
+body.zc-admin .redux-container .redux-slider-container {
+	order: 1; flex: 1; width: auto !important; margin: 0 8px !important;
+	height: 6px; border: 0; border-radius: 99px; background: #e6eaf1; box-shadow: none;
+}
+body.zc-admin .redux-container .noUi-connect,
+body.zc-admin .redux-container .noUi-background.noUi-connect { background: linear-gradient(90deg, var(--zc-gold), var(--zc-primary)); box-shadow: none; border-radius: 99px; }
+body.zc-admin .redux-container .noUi-handle {
+	width: 20px !important; height: 20px !important; top: -8px !important; left: -10px !important;
+	border: 3px solid #fff !important; border-radius: 50% !important;
+	background: var(--zc-primary) !important;
+	box-shadow: 0 1px 4px rgba(11, 27, 58, .35) !important; cursor: grab;
+}
+body.zc-admin .redux-container .noUi-handle::before,
+body.zc-admin .redux-container .noUi-handle::after { display: none; }
+
+/* رنگ */
+body.zc-admin .redux-container .color-transparency-check { display: none !important; }
+body.zc-admin .redux-container .wp-picker-container .wp-color-result.button {
+	min-height: 36px; border-radius: 10px; border-color: #d6dde8; overflow: hidden;
+}
+body.zc-admin .redux-container .wp-picker-container .wp-color-result-text { line-height: 34px; border-radius: 0; font-size: 12px; }
+body.zc-admin .redux-container .wp-picker-container input.wp-color-picker { width: 96px; min-height: 36px; direction: ltr; text-align: center; }
+
+/* رسانه */
+body.zc-admin .redux-container .redux-container-media .screenshot {
+	display: inline-block; margin: 0 0 10px; padding: 8px;
+	border: 1px dashed #cfd6e2; border-radius: 12px; background: repeating-conic-gradient(#f3f5f9 0% 25%, #fff 0% 50%) 50% / 16px 16px;
+}
+body.zc-admin .redux-container .redux-container-media .screenshot img { display: block; max-width: 260px; max-height: 120px; width: auto; height: auto; border: 0; }
+body.zc-admin .redux-container .redux-container-media .upload_button_div { display: flex; gap: 8px; }
+body.zc-admin .redux-container .redux-container-media .button {
+	height: 36px; padding: 0 14px; border-radius: 10px; border-color: #d6dde8; font-size: 12.5px; line-height: 34px;
+}
+body.zc-admin .redux-container .redux-container-media .media_upload_button { background: #f3f6fc; color: var(--zc-primary); border-color: rgba(29, 58, 114, .3); }
+body.zc-admin .redux-container .redux-container-media .remove-image { color: var(--zc-danger); }
+
+/* متن چندتایی */
+body.zc-admin .redux-container ul.redux-multi-text { margin: 0 0 8px; padding: 0; }
+body.zc-admin .redux-container ul.redux-multi-text li { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; }
+body.zc-admin .redux-container ul.redux-multi-text li[style*="none"] { display: none !important; }
+body.zc-admin .redux-container ul.redux-multi-text .redux-multi-text-remove { color: var(--zc-danger); text-decoration: none; font-size: 12px; white-space: nowrap; }
+body.zc-admin .redux-container .redux-multi-text-add.button {
+	height: 34px; padding: 0 14px; border-radius: 10px; font-size: 12.5px; line-height: 32px;
+	background: #f3f6fc !important; color: var(--zc-primary) !important; border: 1px dashed rgba(29, 58, 114, .4) !important; box-shadow: none;
+}
+body.zc-admin .redux-container .redux-container-multi_text br { display: none; }
+
+/* ویرایشگر کد */
+body.zc-admin .redux-container .ace-wrapper { direction: ltr; max-width: 820px; }
+body.zc-admin .redux-container .ace_editor { border: 1px solid #d6dde8; border-radius: 12px; font-size: 13px; }
+body.zc-admin .redux-container .ace_editor,
+body.zc-admin .redux-container .ace_editor * { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace !important; direction: ltr; text-align: left; }
+
+/* کادر راهنما (info) */
+body.zc-admin .redux-container .redux-notice-field,
+body.zc-admin .redux-container .redux-info-field {
+	display: flex; gap: 10px;
+	margin: 12px 0 !important; padding: 12px 16px !important;
+	border: 1px solid #d9e3f5 !important; border-radius: 12px;
+	background: #f4f7fd !important; color: #28406e;
+	box-shadow: none !important;
+}
+body.zc-admin .redux-container .redux-info-field b,
+body.zc-admin .redux-container .redux-notice-field b { color: var(--zc-navy); font-weight: 800; font-size: 13px; }
+body.zc-admin .redux-container .redux-info-field.redux-warning,
+body.zc-admin .redux-container .redux-notice-field.redux-warning,
+body.zc-admin .redux-container .zc-note--warning.redux-info-field,
+body.zc-admin .redux-container .zc-note--warning.redux-notice-field { background: #fffaeb !important; border-color: #fce7b2 !important; color: #8a4b06; }
+body.zc-admin .redux-container .zc-note--critical.redux-info-field,
+body.zc-admin .redux-container .zc-note--critical.redux-notice-field { background: #fef3f2 !important; border-color: #fecdca !important; color: #912018; }
+body.zc-admin .redux-container .zc-note--success.redux-info-field,
+body.zc-admin .redux-container .zc-note--success.redux-notice-field { background: #ecfdf3 !important; border-color: #abefc6 !important; color: #05603a; }
+body.zc-admin .redux-container table.form-table + .redux-info-field,
+body.zc-admin .redux-container table.form-table + .redux-notice-field,
+body.zc-admin .redux-container .redux-info-field + table.form-table,
+body.zc-admin .redux-container .redux-notice-field + table.form-table { margin-top: 0 !important; }
+body.zc-admin .redux-container .redux-info-field h3,
+body.zc-admin .redux-container .redux-notice-field h3 { margin: 0 0 2px; color: var(--zc-navy); font-size: 13.5px; font-weight: 800; }
+body.zc-admin .redux-container .redux-info-field p,
+body.zc-admin .redux-container .redux-notice-field p,
+body.zc-admin .redux-container .redux-info-desc { margin: 0; font-size: 12.5px; line-height: 2; color: #33466e; }
+body.zc-admin .redux-container .redux-info-field a,
+body.zc-admin .redux-container .redux-notice-field a { color: var(--zc-primary); font-weight: 700; }
+body.zc-admin .redux-container .redux-info-field .el,
+body.zc-admin .redux-container .redux-notice-field .el,
+body.zc-admin .redux-container .redux-info-field .dashicons,
+body.zc-admin .redux-container .redux-notice-field .dashicons { display: none; }
+body.zc-admin .redux-container .redux-warning,
+body.zc-admin .redux-container .redux-info-field.redux-warning,
+body.zc-admin .redux-container .redux-notice-field.redux-warning { background: #fffaeb; border-color: #fce7b2; color: #8a4b06; }
+
+/* کادر فراخوان (سربرگ/پاورقی المنتوری) */
+body.zc-admin .zc-callout {
+	display: flex; gap: 14px; align-items: flex-start;
+	padding: 16px 18px; border-radius: 14px;
+	background: linear-gradient(135deg, #f4f7fd, #fbf8f1);
+	border: 1px solid #dfe6f3;
+}
+body.zc-admin .zc-callout > i { margin-top: 3px; color: var(--zc-gold); font-size: 18px; }
+body.zc-admin .zc-callout strong { display: block; color: var(--zc-navy); font-size: 14px; font-weight: 800; }
+body.zc-admin .zc-callout p { margin: 4px 0 12px; color: var(--zc-muted); font-size: 12.5px; line-height: 2; }
+
+/* کارت‌های پالت */
+body.zc-admin .zc-pal-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 12px; }
+body.zc-admin #wpbody-content .zc-pal-card {
+	display: flex; flex-direction: column; gap: 8px;
+	padding: 12px; margin: 0;
+	border: 2px solid var(--zc-line); border-radius: 14px;
+	background: #fff; color: var(--zc-ink);
+	text-align: right; cursor: pointer;
+	transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+body.zc-admin .zc-pal-card:hover { border-color: #c5cfdf; transform: translateY(-1px); }
+body.zc-admin .zc-pal-card.is-active { border-color: var(--zc-primary); box-shadow: 0 0 0 4px rgba(29, 58, 114, .12); }
+body.zc-admin .zc-pal-card:focus-visible { outline: 2px solid var(--zc-gold); outline-offset: 2px; }
+body.zc-admin .zc-pal-sw { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+body.zc-admin .zc-pal-sw i { display: block; height: 26px; border-radius: 7px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06); }
+body.zc-admin .zc-pal-card strong { font-size: 13px; font-weight: 800; line-height: 1.7; }
+body.zc-admin .zc-pal-card small { color: var(--zc-muted); font-size: 11.5px; line-height: 1.9; }
+
+/* پیشخوان */
+body.zc-admin .zc-dash-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 12px; margin-top: 6px; }
+body.zc-admin .zc-dash-card {
+	position: relative; display: flex; flex-direction: column; gap: 4px;
+	padding: 14px 16px 14px 16px; padding-inline-start: 52px;
+	border: 1px solid var(--zc-line); border-radius: 14px; background: #fff;
+}
+body.zc-admin .zc-dash-card > i {
+	position: absolute; top: 14px; inset-inline-start: 14px;
+	display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px;
+	font-size: 13px; background: #eef2f9; color: var(--zc-primary);
+}
+body.zc-admin .zc-dash-card.is-ok > i { background: #ecfdf3; color: var(--zc-ok); }
+body.zc-admin .zc-dash-card.is-warn > i { background: #fffaeb; color: var(--zc-warn); }
+body.zc-admin .zc-dash-card.is-danger { border-color: #fecdca; background: #fffbfa; }
+body.zc-admin .zc-dash-card.is-danger > i { background: #fef3f2; color: var(--zc-danger); }
+body.zc-admin .zc-dash-card-label { color: var(--zc-muted); font-size: 12px; }
+body.zc-admin .zc-dash-card-value { color: var(--zc-navy); font-size: 14px; font-weight: 800; line-height: 1.7; }
+body.zc-admin .zc-dash-title { margin: 24px 0 10px; color: var(--zc-navy); font-size: 14.5px; font-weight: 800; }
+body.zc-admin .zc-dash-actions { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; }
+body.zc-admin .zc-dash-action {
+	display: flex; align-items: center; gap: 10px;
+	padding: 12px 14px; border: 1px solid var(--zc-line); border-radius: 12px;
+	background: #fff; color: var(--zc-ink); text-decoration: none;
+	font-size: 13px; font-weight: 600;
+	transition: border-color .15s, background .15s, color .15s;
+}
+body.zc-admin .zc-dash-action i { width: 18px; text-align: center; color: var(--zc-gold); }
+body.zc-admin .zc-dash-action:hover,
+body.zc-admin .zc-dash-action:focus { border-color: rgba(29, 58, 114, .35); background: #f5f8fd; color: var(--zc-navy); box-shadow: none; }
+body.zc-admin .zc-dash-jump { display: flex; flex-wrap: wrap; gap: 8px; }
+body.zc-admin #wpbody-content .zc-chip {
+	padding: 7px 14px; margin: 0;
+	border: 1px solid var(--zc-line); border-radius: 99px;
+	background: #fff; color: #334155;
+	font-size: 12.5px; font-weight: 600; cursor: pointer;
+	transition: all .15s;
+}
+body.zc-admin .zc-chip:hover { border-color: var(--zc-primary); color: var(--zc-primary); background: #f5f8fd; }
+body.zc-admin .zc-dash-steps { margin: 0; padding: 0 20px 0 0; }
+body.zc-admin .zc-dash-steps li { margin: 0 0 6px; color: #334155; font-size: 13px; line-height: 2; }
+body.zc-admin .zc-dash-steps li::marker { color: var(--zc-gold); font-weight: 800; }
+body.zc-admin .zc-dash-foot { margin: 22px 0 4px; padding-top: 14px; border-top: 1px solid var(--zc-line-soft); color: var(--zc-faint); font-size: 12px; }
+body.zc-admin .zc-dash-foot a { color: var(--zc-primary); font-weight: 700; text-decoration: none; }
+
+/* جستجو */
+body.zc-admin .zc-searching .redux-group-tab { display: none !important; }
+body.zc-admin .zc-searching .redux-group-tab.zc-hit { display: block !important; border-bottom: 1px solid var(--zc-line-soft); }
+body.zc-admin .zc-searching .redux-group-tab.zc-hit > h2 { cursor: pointer; font-size: 16px; }
+body.zc-admin .zc-searching .redux-group-tab.zc-hit > h2::after { content: "\2190"; margin-inline-start: 8px; color: var(--zc-gold); }
+body.zc-admin .zc-searching .redux-group-tab > .redux-section-desc,
+body.zc-admin .zc-searching .zc-miss,
+body.zc-admin .zc-searching .redux-group-tab > .redux-info-field,
+body.zc-admin .zc-searching .redux-group-tab > .redux-notice-field,
+body.zc-admin .zc-searching .redux-group-tab > .redux-notice-field,
+body.zc-admin .zc-searching tr.zc-miss { display: none !important; }
+body.zc-admin .zc-searching .redux-group-menu li.active > a { background: none !important; color: #334155 !important; }
+body.zc-admin .zc-searching .redux-group-menu li.zc-menu-hit > a { background: var(--zc-gold-soft) !important; color: var(--zc-navy) !important; }
+body.zc-admin .zc-search-empty { display: none; padding: 48px 20px; text-align: center; color: var(--zc-muted); font-size: 13.5px; }
+body.zc-admin .zc-searching.zc-no-hits .zc-search-empty { display: block; }
+body.zc-admin mark.zc-mark { background: #fbe9bf; color: inherit; border-radius: 3px; padding: 0 1px; }
+
+/* شمارنده‌ی نویسه */
+body.zc-admin .zc-count { display: block; margin-top: 6px; color: var(--zc-faint); font-size: 11.5px; }
+body.zc-admin .zc-count.is-over { color: var(--zc-danger); font-weight: 700; }
+
+/* پاورقی پنل */
+body.zc-admin .redux-container #redux-footer-sticky { margin: 0; padding: 0; }
+body.zc-admin .redux-container #redux-footer {
+	position: static !important;
+	width: auto !important; right: auto !important; bottom: auto !important;
+	display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+	margin: 0; padding: 14px 20px;
+	background: #f8fafc !important;
+	border: 0; border-top: 1px solid var(--zc-line);
+	border-radius: 0 0 var(--zc-radius) var(--zc-radius);
+	box-shadow: none;
+}
+body.zc-admin .zc-footer-note { display: flex; align-items: center; gap: 8px; margin: 0; color: var(--zc-muted); font-size: 12.5px; }
+body.zc-admin .zc-footer-note i { color: var(--zc-gold); }
+body.zc-admin .redux-container #redux-share { display: none; }
+
+/* درون‌ریزی / برون‌بری */
+body.zc-admin .redux-container #redux-import-code-button,
+body.zc-admin .redux-container #redux-import-link-button,
+body.zc-admin .redux-container #redux-export-code-copy,
+body.zc-admin .redux-container #redux-export-code-dl,
+body.zc-admin .redux-container #redux-import-upload,
+body.zc-admin .redux-container .redux-container-import_export .button {
+	height: 36px; padding: 0 14px; border-radius: 10px; line-height: 34px; font-size: 12.5px; margin: 0 0 0 8px;
+}
+body.zc-admin .redux-container .redux-container-import_export h4 { margin: 0 0 6px; color: var(--zc-navy); font-size: 14px; font-weight: 800; }
+body.zc-admin .redux-container .redux-container-import_export p,
+body.zc-admin .redux-container .redux-container-import_export .description { color: var(--zc-muted); font-size: 12.5px; line-height: 2; }
+body.zc-admin .redux-container .redux-container-import_export textarea { direction: ltr; text-align: left; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 12px; }
+body.zc-admin .redux-container .redux-container-import_export .hr { margin: 18px 0; border-top: 1px solid var(--zc-line-soft); }
+
+/* راهنمای شناور (qtip) */
+body.zc-admin .qtip { border-radius: 10px; font-size: 12px; line-height: 1.9; direction: rtl; text-align: right; }
+
+/* ------------------------------------------------------------------ */
+/* صفحه‌های نصب دمو و اطلاعات سیستم                                      */
+/* ------------------------------------------------------------------ */
+body.zc-admin .zc-admin-wrap { direction: rtl; text-align: right; }
+body.zc-admin .zc-admin-wrap .zc-card { background: #fff; border: 1px solid var(--zc-line); border-radius: var(--zc-radius); padding: 20px 22px; margin-top: 16px; }
+body.zc-admin .zc-admin-wrap h2 { color: var(--zc-navy); font-weight: 800; }
+body.zc-admin .zc-admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 14px; }
+body.zc-admin .zc-admin-box { border: 1px solid var(--zc-line); border-radius: 12px; padding: 16px; background: #fff; }
+body.zc-admin .zc-admin-box h3 { margin: 0 0 6px; font-size: 14px; font-weight: 800; }
+body.zc-admin .zc-admin-box p { margin: 0; color: var(--zc-muted); font-size: 12.5px; line-height: 1.9; }
+body.zc-admin .zc-badge-ok { background: #ecfdf3; color: #05603a; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+body.zc-admin .zc-badge-warn { background: #fffaeb; color: #8a4b06; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
+body.zc-admin .zc-admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+body.zc-admin .zc-admin-table th,
+body.zc-admin .zc-admin-table td { border-bottom: 1px solid var(--zc-line-soft); padding: 10px 8px; font-size: 13px; text-align: right; }
+body.zc-admin .zc-admin-table th { width: 240px; color: #374151; font-weight: 700; }
+body.zc-admin .zc-demo-wrap,
+body.zc-admin .zc-system-wrap { max-width: 1280px; }
+body.zc-admin .zc-demo-hero { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; margin-top: 16px; padding: 26px 28px; border-radius: var(--zc-radius); color: #fff; background: radial-gradient(60% 90% at 90% 0%, rgba(201, 164, 92, .28), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(141, 169, 212, .25), transparent 60%), var(--zc-primary); }
+body.zc-admin .zc-demo-hero h2 { color: #fff; font-size: 22px; line-height: 1.6; margin: 10px 0 6px; font-weight: 800; }
+body.zc-admin .zc-demo-hero p { color: rgba(255, 255, 255, .78); margin: 0; font-size: 13.5px; line-height: 2; max-width: 720px; }
+body.zc-admin .zc-demo-chip { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 4px 12px; border-radius: 99px; background: rgba(201, 164, 92, .18); color: #f0d9a6; border: 1px solid rgba(201, 164, 92, .35); }
+body.zc-admin .zc-demo-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; }
+body.zc-admin .zc-browser { border: 1px solid #dbe2ee; border-radius: 14px; overflow: hidden; background: #f4f6fb; }
+body.zc-admin .zc-browser-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #e9edf5; direction: ltr; }
+body.zc-admin .zc-browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: #c7cfdd; display: block; }
+body.zc-admin .zc-browser-bar span { margin-left: 10px; font-size: 11px; color: #56627a; background: #fff; padding: 2px 12px; border-radius: 99px; }
+body.zc-admin .zc-browser-body { max-height: 430px; overflow: hidden; }
+body.zc-admin .zc-browser-body img { width: 100%; display: block; }
+body.zc-admin .zc-demo-includes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+body.zc-admin .zc-demo-includes li { margin: 0; text-align: center; padding: 10px 6px; border-radius: 12px; background: #f5f7fb; border: 1px solid #e3e8f2; font-size: 12px; color: #56627a; line-height: 1.8; }
+body.zc-admin .zc-demo-includes strong { display: block; font-size: 20px; color: var(--zc-navy); font-weight: 800; }
+body.zc-admin .zc-h { font-size: 14px !important; font-weight: 800 !important; color: var(--zc-navy); margin: 4px 0 10px !important; }
+body.zc-admin .zc-h:not(:first-of-type) { margin-top: 22px !important; }
+body.zc-admin .zc-palettes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+body.zc-admin .zc-palette { position: relative; cursor: pointer; }
+body.zc-admin .zc-palette input { position: absolute; opacity: 0; }
+body.zc-admin .zc-palette-box { display: block; border: 2px solid #e3e8f2; border-radius: 14px; padding: 12px; transition: .2s; background: #fff; height: 100%; box-sizing: border-box; }
+body.zc-admin .zc-palette input:checked + .zc-palette-box { border-color: var(--zc-primary); box-shadow: 0 0 0 4px rgba(29, 58, 114, .12); }
+body.zc-admin .zc-palette input:focus-visible + .zc-palette-box { outline: 2px solid var(--zc-gold); }
+body.zc-admin .zc-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+body.zc-admin .zc-swatches i { display: block; height: 24px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06); }
+body.zc-admin .zc-palette-name { display: block; margin-top: 8px; font-size: 12px; line-height: 1.8; color: var(--zc-ink); font-weight: 600; }
+body.zc-admin .zc-palette em { position: absolute; top: -9px; left: 12px; font-style: normal; font-size: 10.5px; font-weight: 700; background: var(--zc-gold); color: var(--zc-navy); padding: 1px 9px; border-radius: 99px; }
+body.zc-admin .zc-check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.9; }
+body.zc-admin .zc-check input { margin-top: 5px !important; }
+body.zc-admin .zc-muted { color: var(--zc-muted); font-size: 12.5px; line-height: 2; }
+body.zc-admin .zc-demo-btn.button-hero { background: var(--zc-primary) !important; border-color: var(--zc-primary) !important; border-radius: 12px !important; padding: 6px 30px !important; font-weight: 700; margin-top: 6px !important; }
+body.zc-admin .zc-demo-btn.button-hero:hover { background: var(--zc-navy) !important; }
+body.zc-admin #zc-demo-form.is-running .zc-palettes,
+body.zc-admin #zc-demo-form.is-running .zc-check { opacity: .5; pointer-events: none; }
+body.zc-admin .zc-demo-progress { margin-top: 20px; }
+body.zc-admin .zc-bar { height: 8px; border-radius: 99px; background: #e9edf5; overflow: hidden; }
+body.zc-admin .zc-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--zc-primary), var(--zc-gold)); transition: width .4s ease; }
+body.zc-admin .zc-steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
+body.zc-admin .zc-steps li { display: grid; grid-template-columns: 22px 1fr; column-gap: 8px; align-items: center; margin: 0; padding: 8px 10px; border-radius: 10px; font-size: 12.5px; color: #8a94a8; }
+body.zc-admin .zc-steps li small { grid-column: 2; color: #56627a; font-size: 11.5px; }
+body.zc-admin .zc-steps li small:empty { display: none; }
+body.zc-admin .zc-steps li i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd3e1; box-sizing: border-box; display: block; }
+body.zc-admin .zc-steps li.is-running { background: #f1f4fa; color: var(--zc-navy); font-weight: 700; }
+body.zc-admin .zc-steps li.is-running i { border-color: var(--zc-primary); border-top-color: transparent; animation: zcspin .8s linear infinite; }
+body.zc-admin .zc-steps li.is-done { color: var(--zc-navy); }
+body.zc-admin .zc-steps li.is-done i { border-color: #1d8a5b; background: #1d8a5b url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 10px no-repeat; }
+body.zc-admin .zc-steps li.is-error { background: #fef2f2; color: #b91c1c; }
+body.zc-admin .zc-steps li.is-error i { border-color: #b91c1c; }
+@keyframes zcspin { to { transform: rotate(360deg); } }
+body.zc-admin .zc-demo-done { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: #ecfdf5; border: 1px solid #a7f3d0; }
+body.zc-admin .zc-demo-done strong { color: #065f46; font-size: 14px; }
+body.zc-admin .zc-danger { border-color: #fecaca !important; }
+body.zc-admin .zc-danger h2 { color: #b91c1c; }
+
+/* ------------------------------------------------------------------ */
+/* واکنش‌گرا                                                             */
+/* ------------------------------------------------------------------ */
+@media (max-width: 1180px) {
+	body.zc-admin .redux-container #redux-form-wrapper { grid-template-columns: 220px minmax(0, 1fr); gap: 14px; }
+	body.zc-admin .redux-container .redux-group-tab { padding: 20px 20px 10px; }
+	body.zc-admin .redux-container table.form-table th { width: 38%; }
+	body.zc-admin .zc-demo-grid { grid-template-columns: 1fr; }
+	body.zc-admin .zc-demo-hero { flex-direction: column; align-items: flex-start; }
+}
+@media (max-width: 960px) {
+	body.zc-admin .redux-container #redux-form-wrapper { grid-template-columns: minmax(0, 1fr); }
+	body.zc-admin .redux-container .redux-sidebar { position: static; max-height: none; }
+	body.zc-admin .redux-container .redux-group-menu {
+		display: flex; flex-wrap: wrap; gap: 4px;
+	}
+	body.zc-admin .redux-container .redux-group-menu .zc-menu-label,
+	body.zc-admin .redux-container .redux-group-menu ul.subsection { display: none !important; }
+	body.zc-admin .redux-container .redux-group-menu li a { padding: 7px 12px !important; font-size: 12.5px; }
+	body.zc-admin .redux-container .redux-group-menu .extraIconSubsections { display: none; }
+}
+@media (max-width: 782px) {
+	body.zc-admin .wrap { margin: 10px 0 0 10px; }
+	body.zc-admin .zc-hero { padding: 16px 16px 0; }
+	body.zc-admin .zc-hero-site { grid-column: 1 / -1; justify-self: start; }
+	body.zc-admin .zc-hero-tab { padding: 9px 12px 11px; font-size: 12px; }
+	body.zc-admin .redux-container #redux-sticky { top: 46px; }
+	body.zc-admin .redux-container #info_bar { padding: 10px 14px; }
+	body.zc-admin .redux-container .redux-action_bar { margin: 0; width: 100%; }
+	body.zc-admin #wpbody-content .redux-action_bar .button-primary { flex: 1; }
+	body.zc-admin .redux-container .redux-action_bar { flex-wrap: nowrap; gap: 6px; }
+}
+@media (max-width: 520px) {
+	body.zc-admin .redux-container .redux-action_bar { flex-wrap: wrap; }
+	body.zc-admin #wpbody-content .redux-action_bar .button { flex: 1 1 0; min-width: 0; }
+	body.zc-admin #wpbody-content .redux-action_bar .button-primary { flex: 1 1 100%; order: -1; }
+	/* موبایل: نوار بالا ثابت نیست و نوار پایین فقط دکمه‌ی ذخیره را نگه می‌دارد تا فضای صفحه اشغال نشود. */
+	body.zc-admin .redux-container #redux-sticky { position: static; }
+	body.zc-admin .redux-container .redux-action_bar .spinner:not(.is-active) { display: none; }
+	body.zc-admin .redux-container .redux-action_bar .spinner.is-active { flex: 0 0 100%; margin: 0 auto; background-position: center; }
+	body.zc-admin .redux-container #redux-footer .zc-footer-note,
+	body.zc-admin #wpbody-content #redux-footer .redux-action_bar .button:not(.button-primary) { display: none !important; }
+	body.zc-admin .redux-container #redux-footer { padding: 10px 14px !important; border-radius: 0 !important; box-shadow: 0 -6px 18px rgba(11, 27, 58, .08) !important; }
+	body.zc-admin .redux-container #redux-footer-sticky { position: sticky; bottom: 0; z-index: 30; }
+	body.zc-admin #wpbody-content .redux-action_bar .button {
+		min-height: 36px !important; padding: 0 10px !important; font-size: 12px !important; white-space: nowrap;
+	}
+	body.zc-admin .redux-container .redux-group-tab { padding: 16px 14px 8px; }
+	body.zc-admin .redux-container table.form-table th,
+	body.zc-admin .redux-container table.form-table td { display: block; width: auto; padding: 0 !important; }
+	body.zc-admin .redux-container table.form-table th { padding-top: 14px !important; }
+	body.zc-admin .redux-container table.form-table td { padding: 8px 0 14px !important; }
+	body.zc-admin .zc-palettes { grid-template-columns: 1fr; }
+	body.zc-admin .zc-demo-includes { grid-template-columns: repeat(2, 1fr); }
+}

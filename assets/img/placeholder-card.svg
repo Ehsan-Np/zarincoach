@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" width="900" height="640" role="img" aria-label="تصویر پیش‌فرض">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F3EFE6"/><stop offset="1" stop-color="#E4DCCB"/></linearGradient>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D4AF37"/><stop offset="1" stop-color="#C08A7C"/></linearGradient>
+  </defs>
+  <rect width="900" height="640" fill="url(#bg)"/>
+  <circle cx="640" cy="230" r="150" fill="url(#g)" opacity=".55"/>
+  <circle cx="250" cy="430" r="200" fill="#95AEC2" opacity=".45"/>
+  <path d="M0 520c160-70 300-20 450-60s290-80 450-20v200H0z" fill="#3B4436" opacity=".22"/>
+  <path d="M0 580c170-40 320 0 470-30s280-50 430-10v100H0z" fill="#3B4436" opacity=".3"/>
+  <g fill="none" stroke="#3B4436" stroke-opacity=".25" stroke-width="2"><circle cx="640" cy="230" r="185"/><circle cx="640" cy="230" r="215"/></g>
+</svg>

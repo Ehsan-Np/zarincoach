@@ -1,0 +1,74 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "version": 2,
+  "settings": {
+    "appearanceTools": true,
+    "layout": {
+      "contentSize": "760px",
+      "wideSize": "1200px"
+    },
+    "color": {
+      "custom": true,
+      "link": true,
+      "palette": [
+        { "slug": "primary", "color": "#D4AF37", "name": "طلایی / اصلی" },
+        { "slug": "secondary", "color": "#3B4436", "name": "زیتونی تیره" },
+        { "slug": "accent", "color": "#C08A7C", "name": "تراکوتا" },
+        { "slug": "info", "color": "#95AEC2", "name": "آبی غبارآلود" },
+        { "slug": "base", "color": "#FAF9F6", "name": "استخوانی" },
+        { "slug": "ink", "color": "#0F172A", "name": "سرمه‌ای" },
+        { "slug": "muted", "color": "#6E6A62", "name": "خاکستری گرم" },
+        { "slug": "white", "color": "#FFFFFF", "name": "سفید" }
+      ]
+    },
+    "typography": {
+      "fluid": false,
+      "customFontSize": true,
+      "lineHeight": true,
+      "fontFamilies": [
+        {
+          "slug": "arad",
+          "name": "آراد (پیش‌فرض)",
+          "fontFamily": "\"Arad VF\", Tahoma, sans-serif"
+        },
+        {
+          "slug": "arad-fd",
+          "name": "آراد (ارقام فارسی)",
+          "fontFamily": "\"Arad FD VF\", Tahoma, sans-serif"
+        },
+        {
+          "slug": "tahoma",
+          "name": "تاهوما",
+          "fontFamily": "Tahoma, Arial, sans-serif"
+        }
+      ],
+      "fontSizes": [
+        { "slug": "small", "size": "0.875rem", "name": "کوچک" },
+        { "slug": "medium", "size": "1rem", "name": "متوسط" },
+        { "slug": "large", "size": "1.25rem", "name": "بزرگ" },
+        { "slug": "x-large", "size": "1.75rem", "name": "خیلی بزرگ" },
+        { "slug": "xx-large", "size": "2.5rem", "name": "تیتر" }
+      ]
+    },
+    "spacing": {
+      "units": ["px", "rem", "em", "%"],
+      "customSpacingSize": true
+    },
+    "blocks": {
+      "core/paragraph": {
+        "typography": { "lineHeight": "1.9" }
+      }
+    }
+  },
+  "styles": {
+    "typography": {
+      "fontFamily": "var(--zc-font, \"Arad VF\"), Tahoma, sans-serif",
+      "fontSize": "var(--zc-fs-base, 16px)",
+      "lineHeight": "var(--zc-lh-base, 1.9)"
+    },
+    "color": {
+      "background": "rgb(var(--zc-base-rgb))",
+      "text": "rgb(var(--zc-ink-rgb))"
+    }
+  }
+}

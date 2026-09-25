@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000" role="img" aria-label="تصویر پیش‌فرض">
+  <defs>
+    <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F5F5F0"/><stop offset="100%" stop-color="#E7E2D9"/>
+    </linearGradient>
+    <linearGradient id="pa" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D4AF37" stop-opacity=".85"/><stop offset="100%" stop-color="#C08A7C" stop-opacity=".85"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#pg)"/>
+  <circle cx="400" cy="330" r="170" fill="#3B4436" opacity=".12"/>
+  <circle cx="400" cy="330" r="118" fill="url(#pa)" opacity=".28"/>
+  <path d="M400 470c-140 0-250 92-262 214-4 44 30 76 74 76h376c44 0 78-32 74-76-12-122-122-214-262-214z" fill="#3B4436" opacity=".14"/>
+  <path d="M400 470c-140 0-250 92-262 214-4 44 30 76 74 76h376c44 0 78-32 74-76-12-122-122-214-262-214z" fill="url(#pa)" opacity=".16"/>
+  <g fill="none" stroke="#3B4436" stroke-opacity=".18" stroke-width="2">
+    <circle cx="400" cy="500" r="300"/><circle cx="400" cy="500" r="340"/>
+  </g>
+</svg>
