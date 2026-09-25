@@ -863,85 +863,12 @@ body.zc-admin .redux-container .redux-container-import_export .hr { margin: 18px
 body.zc-admin .qtip { border-radius: 10px; font-size: 12px; line-height: 1.9; direction: rtl; text-align: right; }
 
 /* ------------------------------------------------------------------ */
-/* صفحه‌های نصب دمو و اطلاعات سیستم                                      */
-/* ------------------------------------------------------------------ */
-body.zc-admin .zc-admin-wrap { direction: rtl; text-align: right; }
-body.zc-admin .zc-admin-wrap .zc-card { background: #fff; border: 1px solid var(--zc-line); border-radius: var(--zc-radius); padding: 20px 22px; margin-top: 16px; }
-body.zc-admin .zc-admin-wrap h2 { color: var(--zc-navy); font-weight: 800; }
-body.zc-admin .zc-admin-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 14px; margin-top: 14px; }
-body.zc-admin .zc-admin-box { border: 1px solid var(--zc-line); border-radius: 12px; padding: 16px; background: #fff; }
-body.zc-admin .zc-admin-box h3 { margin: 0 0 6px; font-size: 14px; font-weight: 800; }
-body.zc-admin .zc-admin-box p { margin: 0; color: var(--zc-muted); font-size: 12.5px; line-height: 1.9; }
-body.zc-admin .zc-badge-ok { background: #ecfdf3; color: #05603a; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
-body.zc-admin .zc-badge-warn { background: #fffaeb; color: #8a4b06; padding: 3px 10px; border-radius: 999px; font-size: 11.5px; font-weight: 700; }
-body.zc-admin .zc-admin-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
-body.zc-admin .zc-admin-table th,
-body.zc-admin .zc-admin-table td { border-bottom: 1px solid var(--zc-line-soft); padding: 10px 8px; font-size: 13px; text-align: right; }
-body.zc-admin .zc-admin-table th { width: 240px; color: #374151; font-weight: 700; }
-body.zc-admin .zc-demo-wrap,
-body.zc-admin .zc-system-wrap { max-width: 1280px; }
-body.zc-admin .zc-demo-hero { display: flex; justify-content: space-between; gap: 20px; align-items: flex-end; margin-top: 16px; padding: 26px 28px; border-radius: var(--zc-radius); color: #fff; background: radial-gradient(60% 90% at 90% 0%, rgba(201, 164, 92, .28), transparent 60%), radial-gradient(50% 80% at 0% 100%, rgba(141, 169, 212, .25), transparent 60%), var(--zc-primary); }
-body.zc-admin .zc-demo-hero h2 { color: #fff; font-size: 22px; line-height: 1.6; margin: 10px 0 6px; font-weight: 800; }
-body.zc-admin .zc-demo-hero p { color: rgba(255, 255, 255, .78); margin: 0; font-size: 13.5px; line-height: 2; max-width: 720px; }
-body.zc-admin .zc-demo-chip { display: inline-block; font-size: 11.5px; font-weight: 700; padding: 4px 12px; border-radius: 99px; background: rgba(201, 164, 92, .18); color: #f0d9a6; border: 1px solid rgba(201, 164, 92, .35); }
-body.zc-admin .zc-demo-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 18px; }
-body.zc-admin .zc-browser { border: 1px solid #dbe2ee; border-radius: 14px; overflow: hidden; background: #f4f6fb; }
-body.zc-admin .zc-browser-bar { display: flex; align-items: center; gap: 6px; padding: 9px 12px; background: #e9edf5; direction: ltr; }
-body.zc-admin .zc-browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: #c7cfdd; display: block; }
-body.zc-admin .zc-browser-bar span { margin-left: 10px; font-size: 11px; color: #56627a; background: #fff; padding: 2px 12px; border-radius: 99px; }
-body.zc-admin .zc-browser-body { max-height: 430px; overflow: hidden; }
-body.zc-admin .zc-browser-body img { width: 100%; display: block; }
-body.zc-admin .zc-demo-includes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
-body.zc-admin .zc-demo-includes li { margin: 0; text-align: center; padding: 10px 6px; border-radius: 12px; background: #f5f7fb; border: 1px solid #e3e8f2; font-size: 12px; color: #56627a; line-height: 1.8; }
-body.zc-admin .zc-demo-includes strong { display: block; font-size: 20px; color: var(--zc-navy); font-weight: 800; }
-body.zc-admin .zc-h { font-size: 14px !important; font-weight: 800 !important; color: var(--zc-navy); margin: 4px 0 10px !important; }
-body.zc-admin .zc-h:not(:first-of-type) { margin-top: 22px !important; }
-body.zc-admin .zc-palettes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-body.zc-admin .zc-palette { position: relative; cursor: pointer; }
-body.zc-admin .zc-palette input { position: absolute; opacity: 0; }
-body.zc-admin .zc-palette-box { display: block; border: 2px solid #e3e8f2; border-radius: 14px; padding: 12px; transition: .2s; background: #fff; height: 100%; box-sizing: border-box; }
-body.zc-admin .zc-palette input:checked + .zc-palette-box { border-color: var(--zc-primary); box-shadow: 0 0 0 4px rgba(29, 58, 114, .12); }
-body.zc-admin .zc-palette input:focus-visible + .zc-palette-box { outline: 2px solid var(--zc-gold); }
-body.zc-admin .zc-swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-body.zc-admin .zc-swatches i { display: block; height: 24px; border-radius: 6px; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .06); }
-body.zc-admin .zc-palette-name { display: block; margin-top: 8px; font-size: 12px; line-height: 1.8; color: var(--zc-ink); font-weight: 600; }
-body.zc-admin .zc-palette em { position: absolute; top: -9px; left: 12px; font-style: normal; font-size: 10.5px; font-weight: 700; background: var(--zc-gold); color: var(--zc-navy); padding: 1px 9px; border-radius: 99px; }
-body.zc-admin .zc-check { display: flex; gap: 8px; align-items: flex-start; font-size: 13px; line-height: 1.9; }
-body.zc-admin .zc-check input { margin-top: 5px !important; }
-body.zc-admin .zc-muted { color: var(--zc-muted); font-size: 12.5px; line-height: 2; }
-body.zc-admin .zc-demo-btn.button-hero { background: var(--zc-primary) !important; border-color: var(--zc-primary) !important; border-radius: 12px !important; padding: 6px 30px !important; font-weight: 700; margin-top: 6px !important; }
-body.zc-admin .zc-demo-btn.button-hero:hover { background: var(--zc-navy) !important; }
-body.zc-admin #zc-demo-form.is-running .zc-palettes,
-body.zc-admin #zc-demo-form.is-running .zc-check { opacity: .5; pointer-events: none; }
-body.zc-admin .zc-demo-progress { margin-top: 20px; }
-body.zc-admin .zc-bar { height: 8px; border-radius: 99px; background: #e9edf5; overflow: hidden; }
-body.zc-admin .zc-bar span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--zc-primary), var(--zc-gold)); transition: width .4s ease; }
-body.zc-admin .zc-steps { list-style: none; margin: 14px 0 0; padding: 0; display: grid; gap: 6px; }
-body.zc-admin .zc-steps li { display: grid; grid-template-columns: 22px 1fr; column-gap: 8px; align-items: center; margin: 0; padding: 8px 10px; border-radius: 10px; font-size: 12.5px; color: #8a94a8; }
-body.zc-admin .zc-steps li small { grid-column: 2; color: #56627a; font-size: 11.5px; }
-body.zc-admin .zc-steps li small:empty { display: none; }
-body.zc-admin .zc-steps li i { width: 18px; height: 18px; border-radius: 50%; border: 2px solid #cbd3e1; box-sizing: border-box; display: block; }
-body.zc-admin .zc-steps li.is-running { background: #f1f4fa; color: var(--zc-navy); font-weight: 700; }
-body.zc-admin .zc-steps li.is-running i { border-color: var(--zc-primary); border-top-color: transparent; animation: zcspin .8s linear infinite; }
-body.zc-admin .zc-steps li.is-done { color: var(--zc-navy); }
-body.zc-admin .zc-steps li.is-done i { border-color: #1d8a5b; background: #1d8a5b url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 10px no-repeat; }
-body.zc-admin .zc-steps li.is-error { background: #fef2f2; color: #b91c1c; }
-body.zc-admin .zc-steps li.is-error i { border-color: #b91c1c; }
-@keyframes zcspin { to { transform: rotate(360deg); } }
-body.zc-admin .zc-demo-done { margin-top: 14px; padding: 14px 16px; border-radius: 12px; background: #ecfdf5; border: 1px solid #a7f3d0; }
-body.zc-admin .zc-demo-done strong { color: #065f46; font-size: 14px; }
-body.zc-admin .zc-danger { border-color: #fecaca !important; }
-body.zc-admin .zc-danger h2 { color: #b91c1c; }
-
-/* ------------------------------------------------------------------ */
 /* واکنش‌گرا                                                             */
 /* ------------------------------------------------------------------ */
 @media (max-width: 1180px) {
 	body.zc-admin .redux-container #redux-form-wrapper { grid-template-columns: 220px minmax(0, 1fr); gap: 14px; }
 	body.zc-admin .redux-container .redux-group-tab { padding: 20px 20px 10px; }
 	body.zc-admin .redux-container table.form-table th { width: 38%; }
-	body.zc-admin .zc-demo-grid { grid-template-columns: 1fr; }
-	body.zc-admin .zc-demo-hero { flex-direction: column; align-items: flex-start; }
 }
 @media (max-width: 960px) {
 	body.zc-admin .redux-container #redux-form-wrapper { grid-template-columns: minmax(0, 1fr); }
@@ -985,6 +912,4 @@ body.zc-admin .zc-danger h2 { color: #b91c1c; }
 	body.zc-admin .redux-container table.form-table td { display: block; width: auto; padding: 0 !important; }
 	body.zc-admin .redux-container table.form-table th { padding-top: 14px !important; }
 	body.zc-admin .redux-container table.form-table td { padding: 8px 0 14px !important; }
-	body.zc-admin .zc-palettes { grid-template-columns: 1fr; }
-	body.zc-admin .zc-demo-includes { grid-template-columns: repeat(2, 1fr); }
 }

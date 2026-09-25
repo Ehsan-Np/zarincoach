@@ -233,6 +233,21 @@ if ( ! function_exists( 'zc_panel_dashboard_html' ) ) :
 		$pal_label = preg_replace( '/\s*\(.*\)$/u', '', (string) $pal_label );
 		$header_ok = ! empty( $opts['header_template'] ) && 'elementor_library' === get_post_type( (int) $opts['header_template'] );
 		$footer_ok = ! empty( $opts['footer_template'] ) && 'elementor_library' === get_post_type( (int) $opts['footer_template'] );
+		// وضعیت دقیق سربرگ/پاورقی (المنتور پرو ← قالب انتخابی ← داخلی).
+		$layout_value = ( $header_ok && $footer_ok ) ? __( 'المنتوری · متصل', 'zarincoach' ) : __( 'قالب داخلی', 'zarincoach' );
+		$layout_state = ( $header_ok && $footer_ok ) ? 'ok' : 'info';
+		if ( function_exists( 'zc_layout_source' ) ) {
+			$zc_short = array(
+				'pro'      => __( 'المنتور پرو', 'zarincoach' ),
+				'theme'    => __( 'المنتوری', 'zarincoach' ),
+				'missing'  => __( 'نیاز به بررسی', 'zarincoach' ),
+				'internal' => __( 'داخلی', 'zarincoach' ),
+			);
+			$zc_h         = zc_layout_source( 'header' )['type'];
+			$zc_f         = zc_layout_source( 'footer' )['type'];
+			$layout_value = $zc_h === $zc_f ? $zc_short[ $zc_h ] : sprintf( /* translators: 1: سربرگ 2: پاورقی */ __( 'سربرگ %1$s · پاورقی %2$s', 'zarincoach' ), $zc_short[ $zc_h ], $zc_short[ $zc_f ] );
+			$layout_state = ( 'missing' === $zc_h || 'missing' === $zc_f ) ? 'warn' : ( ( 'internal' === $zc_h || 'internal' === $zc_f ) ? 'info' : 'ok' );
+		}
 		$maint     = ! empty( $opts['maint_enable'] ) && '1' === (string) $opts['maint_enable'];
 		$front_id  = (int) get_option( 'page_on_front' );
 
@@ -257,8 +272,8 @@ if ( ! function_exists( 'zc_panel_dashboard_html' ) ) :
 			),
 			array(
 				'label' => __( 'سربرگ و پاورقی', 'zarincoach' ),
-				'value' => ( $header_ok && $footer_ok ) ? __( 'المنتوری · متصل', 'zarincoach' ) : __( 'قالب داخلی', 'zarincoach' ),
-				'state' => ( $header_ok && $footer_ok ) ? 'ok' : 'info',
+				'value' => $layout_value,
+				'state' => $layout_state,
 				'icon'  => 'fa-solid fa-window-maximize',
 			),
 			array(
@@ -291,6 +306,7 @@ if ( ! function_exists( 'zc_panel_dashboard_html' ) ) :
 		$actions = array(
 			array( home_url( '/' ), __( 'مشاهده‌ی سایت', 'zarincoach' ), 'fa-solid fa-arrow-up-right-from-square', true ),
 			array( admin_url( 'admin.php?page=zc-demo-content' ), __( 'نصب / بازنصب دمو', 'zarincoach' ), 'fa-solid fa-wand-magic-sparkles', false ),
+			array( admin_url( 'admin.php?page=zc-layout' ), __( 'سربرگ و پاورقی', 'zarincoach' ), 'fa-solid fa-window-maximize', false ),
 			array( zc_panel_template_edit_url( 'header' ), __( 'ویرایش سربرگ', 'zarincoach' ), 'fa-solid fa-pen-ruler', false ),
 			array( zc_panel_template_edit_url( 'footer' ), __( 'ویرایش پاورقی', 'zarincoach' ), 'fa-solid fa-pen-ruler', false ),
 		);

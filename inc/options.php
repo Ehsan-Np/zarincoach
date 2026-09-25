@@ -135,6 +135,7 @@ if ( ! function_exists( 'zc_admin_pages' ) ) :
 		return array(
 			'zc-options'      => __( 'تنظیمات قالب', 'zarincoach' ),
 			'zc-demo-content' => __( 'نصب دمو', 'zarincoach' ),
+			'zc-layout'       => __( 'سربرگ و پاورقی', 'zarincoach' ),
 			'zc-system-info'  => __( 'اطلاعات سیستم', 'zarincoach' ),
 		);
 	}
@@ -158,15 +159,7 @@ if ( ! function_exists( 'zc_register_options_page' ) ) :
 
 		add_submenu_page( $parent, __( 'نصب دمو', 'zarincoach' ), __( 'نصب دمو', 'zarincoach' ), 'manage_options', 'zc-demo-content', 'zc_render_demo_page' );
 
-		if ( post_type_exists( 'elementor_library' ) ) {
-			add_submenu_page(
-				$parent,
-				__( 'سربرگ و پاورقی (المنتور)', 'zarincoach' ),
-				__( 'سربرگ و پاورقی', 'zarincoach' ),
-				'edit_posts',
-				'edit.php?post_type=elementor_library&tabs_group=library&elementor_library_type=section'
-			);
-		}
+		add_submenu_page( $parent, __( 'سربرگ و پاورقی', 'zarincoach' ), __( 'سربرگ و پاورقی', 'zarincoach' ), 'edit_theme_options', 'zc-layout', 'zc_render_layout_page' );
 
 		add_submenu_page( $parent, __( 'اطلاعات سیستم', 'zarincoach' ), __( 'اطلاعات سیستم', 'zarincoach' ), 'manage_options', 'zc-system-info', 'zc_render_system_page' );
 
@@ -182,7 +175,7 @@ if ( ! function_exists( 'zc_register_options_page' ) ) :
 			if ( 'zc-demo-content' === $slug ) {
 				return 1;
 			}
-			if ( 0 === strpos( $slug, 'edit.php?post_type=elementor_library' ) ) {
+			if ( 'zc-layout' === $slug ) {
 				return 2;
 			}
 			if ( 'zc-system-info' === $slug ) {
@@ -336,13 +329,13 @@ add_filter( 'redux/options/' . ZC_OPT . '/options', 'zc_redux_fill_check_default
 
 if ( ! function_exists( 'zc_panel_hide_foreign_notices' ) ) :
 	/**
-	 * اعلان‌های دیگر افزونه‌ها بالای پنل جمع می‌شوند تا چیدمان به‌هم نریزد.
+	 * اعلان‌های دیگر افزونه‌ها در صفحه‌های قالب (پنل، دمو، سربرگ و پاورقی، اطلاعات سیستم) پنهان می‌شوند تا چیدمان به‌هم نریزد.
 	 * (اعلان‌های خودِ قالب همچنان نمایش داده می‌شوند.)
 	 *
 	 * @return void
 	 */
 	function zc_panel_hide_foreign_notices() {
-		if ( 'zc-options' !== zc_is_panel_screen() ) {
+		if ( '' === zc_is_panel_screen() ) {
 			return;
 		}
 		remove_all_actions( 'admin_notices' );
@@ -385,11 +378,9 @@ if ( ! function_exists( 'zc_panel_header_bar' ) ) :
 		$tabs = array(
 			'zc-options'      => array( __( 'تنظیمات قالب', 'zarincoach' ), 'fa-solid fa-sliders', admin_url( 'admin.php?page=zc-options' ) ),
 			'zc-demo-content' => array( __( 'نصب دمو', 'zarincoach' ), 'fa-solid fa-wand-magic-sparkles', admin_url( 'admin.php?page=zc-demo-content' ) ),
+			'zc-layout'       => array( __( 'سربرگ و پاورقی', 'zarincoach' ), 'fa-solid fa-pen-ruler', admin_url( 'admin.php?page=zc-layout' ) ),
 			'zc-system-info'  => array( __( 'اطلاعات سیستم', 'zarincoach' ), 'fa-solid fa-server', admin_url( 'admin.php?page=zc-system-info' ) ),
 		);
-		if ( post_type_exists( 'elementor_library' ) ) {
-			$tabs['templates'] = array( __( 'سربرگ و پاورقی', 'zarincoach' ), 'fa-solid fa-pen-ruler', admin_url( 'edit.php?post_type=elementor_library&tabs_group=library&elementor_library_type=section' ) );
-		}
 
 		$html  = '<div class="zc-hero">';
 		$html .= '<div class="zc-hero-brand"><span class="zc-hero-logo" aria-hidden="true"><svg viewBox="0 0 20 20" width="26" height="26"><path fill="currentColor" d="M9 1.5c.55 4.1 2.6 6.15 6.7 6.7-4.1.55-6.15 2.6-6.7 6.7-.55-4.1-2.6-6.15-6.7-6.7C6.4 7.65 8.45 5.6 9 1.5zm6.6 10.2c.28 1.95 1.2 2.87 3.15 3.15-1.95.28-2.87 1.2-3.15 3.15-.28-1.95-1.2-2.87-3.15-3.15 1.95-.28 2.87-1.2 3.15-3.15z"/></svg></span>';

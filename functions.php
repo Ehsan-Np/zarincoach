@@ -6,7 +6,7 @@
  * توسعه: احسان نادری‌پناه | زرین‌کد — Zarincode.com
  *
  * @package ZarinCoach
- * @version 2.0.0
+ * @version 2.1.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /* ------------------------------------------------------------------ *
  * ثابت‌های قالب
  * ------------------------------------------------------------------ */
-define( 'ZC_VERSION', '2.0.0' );
+define( 'ZC_VERSION', '2.1.0' );
 define( 'ZC_DIR', get_template_directory() );
 define( 'ZC_URI', get_template_directory_uri() );
 define( 'ZC_OPT', 'zc_options' );       // کلید تنظیمات در جدول wp_options
@@ -54,11 +54,13 @@ require_once ZC_DIR . '/inc/demo-content.php';
 require_once ZC_DIR . '/inc/demo-shop.php';
 require_once ZC_DIR . '/inc/demo-schemas.php';
 require_once ZC_DIR . '/inc/elementor/class-zc-elementor.php';
+require_once ZC_DIR . '/inc/admin-shell.php';  // پوسته‌ی مشترک صفحه‌های ابزار
 require_once ZC_DIR . '/inc/admin.php';
+require_once ZC_DIR . '/inc/admin-layout.php'; // سربرگ و پاورقی
 
 // ماژول فروشگاه: فقط وقتی ووکامرس فعال است.
 if ( class_exists( 'WooCommerce' ) ) {
-	foreach ( array( 'setup', 'loop', 'single', 'cart', 'admin', 'seo' ) as $zc_wc_file ) {
+	foreach ( array( 'setup', 'loop', 'single', 'cart', 'account', 'admin', 'seo' ) as $zc_wc_file ) {
 		require_once ZC_DIR . '/inc/woocommerce/' . $zc_wc_file . '.php';
 	}
 	unset( $zc_wc_file );

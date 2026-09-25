@@ -424,41 +424,6 @@ add_action(
 );
 
 /* =========================================================================
- * حساب کاربری
- * ========================================================================= */
-
-add_filter(
-	'woocommerce_account_menu_items',
-	static function ( $items ) {
-		$labels = array(
-			'dashboard'       => __( 'پیشخوان', 'zarincoach' ),
-			'orders'          => __( 'سفارش‌ها', 'zarincoach' ),
-			'downloads'       => __( 'دانلودهای من', 'zarincoach' ),
-			'edit-address'    => __( 'نشانی‌ها', 'zarincoach' ),
-			'edit-account'    => __( 'جزئیات حساب', 'zarincoach' ),
-			'customer-logout' => __( 'خروج', 'zarincoach' ),
-		);
-		foreach ( $labels as $key => $label ) {
-			if ( isset( $items[ $key ] ) ) {
-				$items[ $key ] = $label;
-			}
-		}
-		return $items;
-	}
-);
-
-add_action(
-	'woocommerce_before_account_navigation',
-	static function () {
-		$user = wp_get_current_user();
-		if ( ! $user->exists() ) {
-			return;
-		}
-		echo '<div class="zc-account-user">' . get_avatar( $user->ID, 56, '', '', array( 'class' => 'zc-account-user__avatar' ) ) . '<div><strong>' . esc_html( $user->display_name ) . '</strong><span dir="ltr">' . esc_html( $user->user_email ) . '</span></div></div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	}
-);
-
-/* =========================================================================
  * صفحات سبد/تسویه/حساب: بدون سربرگ صفحه‌ی بزرگ، با عنوان جمع‌وجور
  * ========================================================================= */
 
