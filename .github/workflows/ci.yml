@@ -1,0 +1,108 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  version:
+    name: Version consistency
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: .github/scripts/check-version.sh
+
+  php-lint:
+    name: PHP ${{ matrix.php }} syntax
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0', '8.1', '8.2', '8.3', '8.4']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: none
+      - name: php -l (theme + bundled Redux)
+        run: |
+          find . -name '*.php' -not -path './node_modules/*' -print0 \
+            | xargs -0 -n1 -P4 php -l -d display_errors=1 > /tmp/lint.log 2>&1 || { grep -v '^No syntax errors' /tmp/lint.log; exit 1; }
+          echo "$(grep -c '^No syntax errors' /tmp/lint.log) files OK"
+
+  php-compat:
+    name: PHP compatibility (7.4+)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          coverage: none
+          tools: composer
+      - name: Install PHPCompatibility
+        run: |
+          mkdir -p /tmp/phpcs && cd /tmp/phpcs
+          echo '{"minimum-stability":"dev","prefer-stable":true,"config":{"allow-plugins":{"dealerdirect/phpcodesniffer-composer-installer":true}}}' > composer.json
+          composer require --no-interaction --no-progress "phpcompatibility/php-compatibility:dev-develop"
+      - name: Run PHPCompatibility (theme code; vendored Redux excluded)
+        run: |
+          /tmp/phpcs/vendor/bin/phpcs -q -s --standard=PHPCompatibility \
+            --runtime-set testVersion 7.4- \
+            --runtime-set ignore_warnings_on_exit 1 \
+            --extensions=php --ignore='*/node_modules/*,*/inc/redux/*' \
+            --exclude=PHPCompatibility.ParameterValues.NewTrimCharactersDefault,PHPCompatibility.ParameterValues.NewHTMLEntitiesFlagsDefault \
+            .
+
+  assets:
+    name: Build assets (Tailwind + terser)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - run: npm run build
+      - name: Committed assets are up to date
+        run: |
+          if ! git diff --quiet -- assets; then
+            git diff --stat -- assets
+            echo "::error::Built CSS/JS differ from the committed files — run 'npm run build' and commit."
+            exit 1
+          fi
+          echo "Assets are up to date."
+
+  package:
+    name: Installable zip
+    runs-on: ubuntu-latest
+    needs: [version, php-lint, assets]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build theme zip (git archive, export-ignore aware)
+        run: |
+          VERSION=$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)
+          git archive --format=zip --prefix=zarincoach/ -o "zarincoach-${VERSION}.zip" HEAD
+          unzip -l "zarincoach-${VERSION}.zip" | tail -n1
+          unzip -l "zarincoach-${VERSION}.zip" | grep -q 'zarincoach/style.css'
+          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zarincoach-${{ env.VERSION }}
+          path: zarincoach-${{ env.VERSION }}.zip
+          retention-days: 14

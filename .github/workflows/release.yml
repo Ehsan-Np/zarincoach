@@ -1,0 +1,73 @@
+name: Release
+
+# با پوش هر تگ vX.Y.Z یک «Release» در گیت‌هاب با فایل زیپ قابل نصب ساخته می‌شود.
+# برای تگ‌های قدیمی‌تر: Actions ← Release ← Run workflow و وارد کردن نام تگ (مثلاً v2.1.0).
+on:
+  push:
+    tags: ['v*.*.*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to publish (e.g. v2.1.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.inputs.tag || github.ref }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Check version matches tag
+        run: |
+          VERSION=$(sed -n 's/^Version:[[:space:]]*//p' style.css | head -n1)
+          [ "v${VERSION}" = "${TAG}" ] || { echo "::error::Tag ${TAG} does not match style.css version ${VERSION}"; exit 1; }
+          echo "VERSION=${VERSION}" >> "$GITHUB_ENV"
+
+      - name: PHP syntax check
+        run: find . -name '*.php' -not -path './node_modules/*' -print0 | xargs -0 -n1 -P4 php -l > /dev/null
+
+      - name: Build installable zip
+        run: |
+          git archive --format=zip --prefix=zarincoach/ -o "zarincoach-${VERSION}.zip" "${TAG}"
+          cp "zarincoach-${VERSION}.zip" zarincoach.zip
+          sha256sum "zarincoach-${VERSION}.zip" zarincoach.zip > SHA256SUMS.txt
+          unzip -l "zarincoach-${VERSION}.zip" | tail -n1
+
+      - name: Release notes from CHANGELOG.md
+        run: |
+          # CHANGELOG از شاخه‌ی main خوانده می‌شود تا تگ‌های قدیمی هم یادداشت داشته باشند.
+          git show origin/main:CHANGELOG.md > /tmp/CHANGELOG.md 2>/dev/null || cp CHANGELOG.md /tmp/CHANGELOG.md 2>/dev/null || true
+          awk -v v="${VERSION}" '
+            $0 ~ "^## \\[" v "\\]" { f=1; next }
+            f && /^## \[/ { exit }
+            f { print }
+          ' /tmp/CHANGELOG.md > NOTES.md || true
+          if [ ! -s NOTES.md ]; then echo "ZarinCoach ${VERSION}" > NOTES.md; fi
+          {
+            echo
+            echo '---'
+            echo "**نصب:** فایل \`zarincoach-${VERSION}.zip\` را از «نمایش ← پوسته‌ها ← افزودن ← بارگذاری پوسته» نصب کنید."
+          } >> NOTES.md
+          cat NOTES.md
+
+      - uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ env.TAG }}
+          name: ZarinCoach ${{ env.VERSION }}
+          body_path: NOTES.md
+          make_latest: ${{ github.event_name == 'push' }}
+          files: |
+            zarincoach-${{ env.VERSION }}.zip
+            zarincoach.zip
+            SHA256SUMS.txt

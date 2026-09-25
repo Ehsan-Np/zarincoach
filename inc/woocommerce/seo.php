@@ -636,7 +636,7 @@ add_filter(
 			$tags[] = array( 'property', 'product:retailer_item_id', $product->get_sku() );
 		}
 		$tags[] = array( 'name', 'twitter:label1', __( 'قیمت', 'zarincoach' ) );
-		$tags[] = array( 'name', 'twitter:data1', wp_strip_all_tags( html_entity_decode( wc_price( wc_get_price_to_display( $product ) ) ) ) );
+		$tags[] = array( 'name', 'twitter:data1', wp_strip_all_tags( html_entity_decode( wc_price( wc_get_price_to_display( $product ) ), ENT_QUOTES, 'UTF-8' ) ) );
 		return $tags;
 	}
 );
