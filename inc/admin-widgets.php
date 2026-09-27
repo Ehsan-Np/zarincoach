@@ -47,6 +47,13 @@ if ( ! function_exists( 'zc_widget_catalog' ) ) :
 			'book'              => array( 'resume', 'fa-solid fa-book', __( 'معرفی کتاب با جلد سه‌بعدی.', 'zarincoach' ) ),
 			'site-header'       => array( 'layout', 'fa-solid fa-window-maximize', __( 'سربرگ سایت: لوگو، منو، جستجو، حالت تیره و دکمه.', 'zarincoach' ) ),
 			'site-footer'       => array( 'layout', 'fa-solid fa-grip-lines', __( 'پاورقی سایت: معرفی، ستون‌ها، تماس و نمادهای اعتماد.', 'zarincoach' ) ),
+			'footer-about'      => array( 'footer', 'fa-solid fa-user-tie', __( 'پانوشت — درباره من: نام/لوگو، متن معرفی و شبکه‌های اجتماعی.', 'zarincoach' ) ),
+			'footer-location'   => array( 'footer', 'fa-solid fa-location-dot', __( 'پانوشت — لوکیشن: تلفن‌ها، ایمیل، نشانی، ساعات کاری و نقشه.', 'zarincoach' ) ),
+			'footer-menu'       => array( 'footer', 'fa-solid fa-list-ul', __( 'پانوشت — منوها: فهرست وردپرس، خدمات سایت یا نوشته‌ها با عنوان دلخواه.', 'zarincoach' ) ),
+			'footer-domain'     => array( 'footer', 'fa-solid fa-globe', __( 'پانوشت — دامنه رسمی: اعلان دامنه، هشدار اورژانس و شماره مجوزها.', 'zarincoach' ) ),
+			'footer-trust'      => array( 'footer', 'fa-solid fa-shield-halved', __( 'پانوشت — نمادهای اعتماد: اینماد، ساماندهی و درگاه‌های پرداخت.', 'zarincoach' ) ),
+			'footer-nav'        => array( 'footer', 'fa-solid fa-link', __( 'پانوشت — منوی قوانین: ردیف پیوندهای قوانین و مقررات.', 'zarincoach' ) ),
+			'footer-copyright'  => array( 'footer', 'fa-solid fa-copyright', __( 'پانوشت — کپی‌رایت: خط جداکننده، سال، نام سایت و اعتبار طراح.', 'zarincoach' ) ),
 			'page-title'        => array( 'layout', 'fa-solid fa-heading', __( 'عنوان و مسیر راهنمای برگه‌های داخلی.', 'zarincoach' ) ),
 			'trust-badges'      => array( 'layout', 'fa-solid fa-shield-halved', __( 'نمادهای اعتماد (اینماد، ساماندهی، درگاه پرداخت…).', 'zarincoach' ) ),
 			'products'          => array( 'shop', 'fa-solid fa-bag-shopping', __( 'شبکه یا اسلایدر محصولات.', 'zarincoach' ) ),
@@ -83,6 +90,7 @@ if ( ! function_exists( 'zc_widget_groups' ) ) :
 			'content' => __( 'محتوا و مجله', 'zarincoach' ),
 			'resume'  => __( 'رزومه و معرفی حرفه‌ای', 'zarincoach' ),
 			'layout'  => __( 'سربرگ، پاورقی و ساختار', 'zarincoach' ),
+			'footer'  => __( 'اجزای پانوشت (ویجت‌های جدا)', 'zarincoach' ),
 			'shop'    => __( 'فروشگاه (ووکامرس)', 'zarincoach' ),
 		);
 	}

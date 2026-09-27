@@ -1973,26 +1973,107 @@ if ( ! function_exists( 'zc_elementor_layout_templates' ) ) :
 					'hide_cta'    => '',
 				),
 			),
-			'footer' => array(
-				'title'  => __( 'پاورقی سایت (زرین‌کوچ)', 'zarincoach' ),
-				'widget' => 'site-footer',
-				'args'   => array(
-					'show_socials'   => 'yes',
-					'glow'           => 'yes',
-					'services_title' => 'مسیرهای همراهی',
-					'services_count' => 6,
-					'posts_title'    => 'تازه‌ترین نوشته‌ها',
-					'posts_count'    => 3,
-					'contact_title'  => 'نوبت‌دهی و ارتباط',
-					'menu'           => '0',
-					'credit'         => 'yes',
-					'show_trust'     => 'yes',
-					'show_emergency' => 'yes',
-					'legal_menu'     => '0',
+		'footer' => array(
+			'title'   => __( 'پاورقی سایت (زرین‌کوچ)', 'zarincoach' ),
+			'widget'  => 'site-footer',
+			'compose' => 'zc_footer_template_data',
+			'args'    => array(
+				'show_socials'   => 'yes',
+				'glow'           => 'yes',
+				'services_title' => 'مسیرهای همراهی',
+				'services_count' => 6,
+				'posts_title'    => 'تازه‌ترین نوشته‌ها',
+				'posts_count'    => 3,
+				'contact_title'  => 'نوبت‌دهی و ارتباط',
+				'menu'           => '0',
+				'credit'         => 'yes',
+				'show_trust'     => 'yes',
+				'show_emergency' => 'yes',
+				'legal_menu'     => '0',
+			),
+		),
+	);
+}
+
+if ( ! function_exists( 'zc_footer_template_data' ) ) :
+	/**
+	 * داده‌ی قالب پاورقی از ویجت‌های جداکارِ پانوشت (نسخه‌ی ۲.۳).
+	 *
+	 * هر جزء پاورقی یک ویجت مستقل المنتور است: درباره من، منوها، لوکیشن،
+	 * دامنه رسمی، نمادهای اعتماد، منوی قوانین و کپی‌رایت — کاملاً قابل ویرایش.
+	 *
+	 * @return array<int, array<string,mixed>>
+	 */
+	function zc_footer_template_data() {
+		$no_pad = array(
+			'padding'        => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+			'padding_tablet' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+			'padding_mobile' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+		);
+
+		$rows = array(
+			// ردیف ۱: درباره من | منوها (خدمات) | منوها (نوشته‌ها) | لوکیشن.
+			zc_elementor_row(
+				array(
+					array( 'size' => 33, 'widgets' => array( zc_elementor_widget( 'footer-about' ) ) ),
+					array( 'size' => 22, 'widgets' => array( zc_elementor_widget( 'footer-menu', array( 'ftitle' => 'مسیرهای همراهی', 'source' => 'services', 'count' => 6 ) ) ) ),
+					array( 'size' => 22, 'widgets' => array( zc_elementor_widget( 'footer-menu', array( 'ftitle' => 'تازه‌ترین نوشته‌ها', 'source' => 'posts', 'count' => 3 ) ) ) ),
+					array( 'size' => 23, 'widgets' => array( zc_elementor_widget( 'footer-location', array( 'ftitle' => 'نوبت‌دهی و ارتباط' ) ) ) ),
+				),
+				array_merge( array( 'gap' => 'extended' ), $no_pad )
+			),
+			// ردیف ۲: دامنه رسمی | نمادهای اعتماد.
+			zc_elementor_row(
+				array(
+					array( 'size' => 50, 'widgets' => array( zc_elementor_widget( 'footer-domain' ) ) ),
+					array( 'size' => 50, 'widgets' => array( zc_elementor_widget( 'footer-trust' ) ) ),
+				),
+				array_merge( array( 'gap' => 'extended' ), $no_pad )
+			),
+			// ردیف ۳: منوی قوانین.
+			zc_elementor_row(
+				array(
+					array( 'size' => 100, 'widgets' => array( zc_elementor_widget( 'footer-nav' ) ) ),
+				),
+				$no_pad
+			),
+			// ردیف ۴: کپی‌رایت.
+			zc_elementor_row(
+				array(
+					array( 'size' => 100, 'widgets' => array( zc_elementor_widget( 'footer-copyright' ) ) ),
+				),
+				$no_pad
+			),
+		);
+
+		// قاب کلی پاورقی: زمینه‌ی سرمه‌ای عمیق + پدینگ — همه‌چیز در المنتور قابل ویرایش است.
+		return array(
+			array(
+				'id'       => zc_elementor_id(),
+				'elType'   => 'section',
+				'settings' => array(
+					'layout'               => 'boxed',
+					'content_width'        => array( 'unit' => 'px', 'size' => 1150, 'sizes' => array() ),
+					'gap'                  => 'extended',
+					'background_background' => 'classic',
+					'background_color'     => 'var(--zc-secondary, #0B1B3A)',
+					'padding'              => array( 'unit' => 'px', 'top' => '40', 'right' => '25', 'bottom' => '40', 'left' => '25', 'isLinked' => false ),
+					'padding_tablet'       => array( 'unit' => 'px', 'top' => '36', 'right' => '13', 'bottom' => '36', 'left' => '13', 'isLinked' => false ),
+					'padding_mobile'       => array( 'unit' => 'px', 'top' => '32', 'right' => '5', 'bottom' => '32', 'left' => '5', 'isLinked' => false ),
+					'css_classes'          => 'zc-footer-frame',
+				),
+				'elements' => array(
+					array(
+						'id'       => zc_elementor_id(),
+						'elType'   => 'column',
+						'settings' => array( '_column_size' => 100, '_inline_size' => 100 ),
+						'elements' => $rows,
+					),
 				),
 			),
 		);
 	}
+endif;
 endif;
 
 
@@ -2045,8 +2126,13 @@ if ( ! function_exists( 'zc_build_elementor_layout_template' ) ) :
 			wp_set_object_terms( $id, 'section', 'elementor_library_type' );
 		}
 
-		$data = array( zc_elementor_section( zc_elementor_widget( $def['widget'], $def['args'] ) ) );
-		if ( ! zc_elementor_save( $id, $data, 'section' ) ) {
+		$data = array();
+		if ( ! empty( $def['compose'] ) && is_callable( $def['compose'] ) ) {
+			$data = call_user_func( $def['compose'] );
+		} elseif ( ! empty( $def['widget'] ) ) {
+			$data = array( zc_elementor_section( zc_elementor_widget( $def['widget'], $def['args'] ) ) );
+		}
+		if ( empty( $data ) || ! zc_elementor_save( $id, $data, 'section' ) ) {
 			return 0;
 		}
 

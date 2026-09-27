@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ZarinCoach 2.2.0\n"
+"Project-Id-Version: ZarinCoach 2.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/zarincoach\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-27T21:35:09+00:00\n"
+"POT-Creation-Date: 2026-09-27T23:00:20+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -67,6 +67,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:83
 #: inc/elementor/widgets/class-zc-widget-contact.php:136
 #: inc/elementor/widgets/class-zc-widget-contact.php:278
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:162
 #: inc/icons.php:199
 #: inc/options-panel.php:989
 #: inc/options-panel.php:1175
@@ -103,7 +104,7 @@ msgstr ""
 #: inc/admin-layout.php:24
 #: inc/admin-layout.php:502
 #: inc/admin.php:817
-#: inc/elementor/class-zc-elementor.php:326
+#: inc/elementor/class-zc-elementor.php:333
 #: inc/elementor/trait-zc-style-kit.php:1123
 #: inc/elementor/widgets/class-zc-widget-schemas.php:69
 #: inc/elementor/widgets/class-zc-widget-services.php:53
@@ -124,7 +125,7 @@ msgstr ""
 #: inc/admin-layout.php:31
 #: inc/admin-layout.php:503
 #: inc/admin.php:818
-#: inc/elementor/class-zc-elementor.php:335
+#: inc/elementor/class-zc-elementor.php:342
 #: inc/options-panel.php:790
 msgid "پاورقی"
 msgstr ""
@@ -278,7 +279,7 @@ msgstr ""
 
 #: inc/admin-layout.php:373
 #: inc/admin-layout.php:539
-#: inc/admin-widgets.php:300
+#: inc/admin-widgets.php:308
 msgid "المنتور فعال نیست."
 msgstr ""
 
@@ -423,7 +424,7 @@ msgid "داخلی"
 msgstr ""
 
 #: inc/admin-layout.php:488
-#: inc/admin-widgets.php:263
+#: inc/admin-widgets.php:271
 #: inc/options-panel.php:320
 msgid "میان‌برها"
 msgstr ""
@@ -438,7 +439,7 @@ msgstr ""
 
 #: inc/admin-layout.php:493
 #: inc/admin-panel/templates/header-stickybar.tpl.php:14
-#: inc/admin-widgets.php:264
+#: inc/admin-widgets.php:272
 #: inc/admin.php:79
 #: inc/admin.php:230
 #: inc/admin.php:1280
@@ -450,7 +451,7 @@ msgid "تنظیمات قالب"
 msgstr ""
 
 #: inc/admin-layout.php:498
-#: inc/admin-widgets.php:269
+#: inc/admin-widgets.php:277
 #: inc/admin.php:80
 #: inc/options-panel.php:274
 #: inc/options-panel.php:309
@@ -479,7 +480,7 @@ msgid "قالب جدید"
 msgstr ""
 
 #: inc/admin-layout.php:513
-#: inc/admin-widgets.php:294
+#: inc/admin-widgets.php:302
 msgid "تغییرات ذخیره شد."
 msgstr ""
 
@@ -656,8 +657,8 @@ msgstr ""
 
 #: inc/admin-panel/templates/footer.tpl.php:23
 #: inc/admin-panel/templates/header-stickybar.tpl.php:26
-#: inc/admin-widgets.php:281
-#: inc/admin-widgets.php:387
+#: inc/admin-widgets.php:289
+#: inc/admin-widgets.php:395
 msgid "ذخیره‌ی تغییرات"
 msgstr ""
 
@@ -801,131 +802,163 @@ msgid "پاورقی سایت: معرفی، ستون‌ها، تماس و نما�
 msgstr ""
 
 #: inc/admin-widgets.php:50
-msgid "عنوان و مسیر راهنمای برگه‌های داخلی."
+msgid "پانوشت — درباره من: نام/لوگو، متن معرفی و شبکه‌های اجتماعی."
 msgstr ""
 
 #: inc/admin-widgets.php:51
-msgid "نمادهای اعتماد (اینماد، ساماندهی، درگاه پرداخت…)."
+msgid "پانوشت — لوکیشن: تلفن‌ها، ایمیل، نشانی، ساعات کاری و نقشه."
 msgstr ""
 
 #: inc/admin-widgets.php:52
-msgid "شبکه یا اسلایدر محصولات."
+msgid "پانوشت — منوها: فهرست وردپرس، خدمات سایت یا نوشته‌ها با عنوان دلخواه."
 msgstr ""
 
 #: inc/admin-widgets.php:53
-msgid "دسته‌بندی‌های محصول."
+msgid "پانوشت — دامنه رسمی: اعلان دامنه، هشدار اورژانس و شماره مجوزها."
 msgstr ""
 
 #: inc/admin-widgets.php:54
-msgid "معرفی ویژه‌ی یک محصول با شمارش معکوس."
+msgid "پانوشت — نمادهای اعتماد: اینماد، ساماندهی و درگاه‌های پرداخت."
 msgstr ""
 
 #: inc/admin-widgets.php:55
-msgid "بنر تخفیف با کد قابل کپی."
+msgid "پانوشت — منوی قوانین: ردیف پیوندهای قوانین و مقررات."
 msgstr ""
 
 #: inc/admin-widgets.php:56
+msgid "پانوشت — کپی‌رایت: خط جداکننده، سال، نام سایت و اعتبار طراح."
+msgstr ""
+
+#: inc/admin-widgets.php:57
+msgid "عنوان و مسیر راهنمای برگه‌های داخلی."
+msgstr ""
+
+#: inc/admin-widgets.php:58
+msgid "نمادهای اعتماد (اینماد، ساماندهی، درگاه پرداخت…)."
+msgstr ""
+
+#: inc/admin-widgets.php:59
+msgid "شبکه یا اسلایدر محصولات."
+msgstr ""
+
+#: inc/admin-widgets.php:60
+msgid "دسته‌بندی‌های محصول."
+msgstr ""
+
+#: inc/admin-widgets.php:61
+msgid "معرفی ویژه‌ی یک محصول با شمارش معکوس."
+msgstr ""
+
+#: inc/admin-widgets.php:62
+msgid "بنر تخفیف با کد قابل کپی."
+msgstr ""
+
+#: inc/admin-widgets.php:63
 msgid "مزایای خرید (ارسال، پشتیبانی، ضمانت…)."
 msgstr ""
 
-#: inc/admin-widgets.php:82
+#: inc/admin-widgets.php:89
 msgid "بخش‌های اصلی صفحه"
 msgstr ""
 
-#: inc/admin-widgets.php:83
+#: inc/admin-widgets.php:90
 msgid "محتوا و مجله"
 msgstr ""
 
-#: inc/admin-widgets.php:84
+#: inc/admin-widgets.php:91
 msgid "رزومه و معرفی حرفه‌ای"
 msgstr ""
 
-#: inc/admin-widgets.php:85
+#: inc/admin-widgets.php:92
 msgid "سربرگ، پاورقی و ساختار"
 msgstr ""
 
-#: inc/admin-widgets.php:86
+#: inc/admin-widgets.php:93
+msgid "اجزای پانوشت (ویجت‌های جدا)"
+msgstr ""
+
+#: inc/admin-widgets.php:94
 msgid "فروشگاه (ووکامرس)"
 msgstr ""
 
-#: inc/admin-widgets.php:204
+#: inc/admin-widgets.php:212
 msgid "دسترسی کافی ندارید."
 msgstr ""
 
-#: inc/admin-widgets.php:267
+#: inc/admin-widgets.php:275
 #: inc/admin.php:82
 #: inc/admin.php:228
 msgid "ویرایش خانه با المنتور"
 msgstr ""
 
-#: inc/admin-widgets.php:274
+#: inc/admin-widgets.php:282
 #: inc/options-panel.php:1673
 #: inc/options.php:139
 #: inc/options.php:165
 msgid "مدیریت ویجت‌ها"
 msgstr ""
 
-#: inc/admin-widgets.php:275
+#: inc/admin-widgets.php:283
 msgid "روشن/خاموش کردن و راهنمای ویرایش"
 msgstr ""
 
-#: inc/admin-widgets.php:278
+#: inc/admin-widgets.php:286
 #: inc/options.php:388
 msgid "ویجت‌ها"
 msgstr ""
 
-#: inc/admin-widgets.php:279
+#: inc/admin-widgets.php:287
 msgid "راهنمای ویرایش در المنتور"
 msgstr ""
 
-#: inc/admin-widgets.php:287
+#: inc/admin-widgets.php:295
 msgid "ویجت‌های اختصاصی"
 msgstr ""
 
-#: inc/admin-widgets.php:287
+#: inc/admin-widgets.php:295
 msgid "هر ویجتی را که لازم ندارید خاموش کنید تا پنل المنتور خلوت‌تر و سایت سبک‌تر شود."
 msgstr ""
 
 #. translators: %s: تعداد
-#: inc/admin-widgets.php:295
+#: inc/admin-widgets.php:303
 #, php-format
 msgid "%s ویجت خاموش است. اگر ویرایشگر المنتور باز است، یک‌بار آن را تازه کنید."
 msgstr ""
 
 #. translators: %s: تعداد
-#: inc/admin-widgets.php:295
+#: inc/admin-widgets.php:303
 msgid "همه‌ی ویجت‌ها روشن هستند."
 msgstr ""
 
-#: inc/admin-widgets.php:300
+#: inc/admin-widgets.php:308
 msgid "ویجت‌های اختصاصی زرین‌کوچ با المنتور کار می‌کنند؛ پس از فعال کردن المنتور از همین صفحه مدیریتشان کنید."
 msgstr ""
 
-#: inc/admin-widgets.php:305
+#: inc/admin-widgets.php:313
 msgid "ویجت روشن"
 msgstr ""
 
-#: inc/admin-widgets.php:306
+#: inc/admin-widgets.php:314
 msgid "ویجت خاموش"
 msgstr ""
 
-#: inc/admin-widgets.php:307
+#: inc/admin-widgets.php:315
 msgid "ویجت در صفحه‌ها استفاده شده"
 msgstr ""
 
-#: inc/admin-widgets.php:317
+#: inc/admin-widgets.php:325
 msgid "جستجوی ویجت"
 msgstr ""
 
-#: inc/admin-widgets.php:318
+#: inc/admin-widgets.php:326
 msgid "جستجوی ویجت… (مثلاً «کارت» یا «فروشگاه»)"
 msgstr ""
 
-#: inc/admin-widgets.php:320
+#: inc/admin-widgets.php:328
 msgid "فیلتر"
 msgstr ""
 
-#: inc/admin-widgets.php:321
+#: inc/admin-widgets.php:329
 #: inc/elementor/widgets/class-zc-widget-posts.php:275
 #: inc/elementor/widgets/class-zc-widget-schemas.php:108
 #: inc/elementor/widgets/class-zc-widget-schemas.php:206
@@ -935,7 +968,7 @@ msgstr ""
 msgid "همه"
 msgstr ""
 
-#: inc/admin-widgets.php:322
+#: inc/admin-widgets.php:330
 #: inc/elementor/trait-zc-style-kit.php:1386
 #: inc/elementor/widgets/class-zc-widget-page-title.php:171
 #: inc/options-panel.php:493
@@ -943,121 +976,121 @@ msgstr ""
 msgid "روشن"
 msgstr ""
 
-#: inc/admin-widgets.php:323
+#: inc/admin-widgets.php:331
 #: inc/elementor/trait-zc-style-kit.php:1387
 #: inc/elementor/widgets/class-zc-widget-marquee.php:174
 #: inc/options-panel.php:287
 msgid "خاموش"
 msgstr ""
 
-#: inc/admin-widgets.php:324
+#: inc/admin-widgets.php:332
 msgid "استفاده‌نشده"
 msgstr ""
 
-#: inc/admin-widgets.php:327
+#: inc/admin-widgets.php:335
 msgid "روشن کردن همه"
 msgstr ""
 
-#: inc/admin-widgets.php:328
+#: inc/admin-widgets.php:336
 msgid "خاموش کردن استفاده‌نشده‌ها"
 msgstr ""
 
-#: inc/admin-widgets.php:364
+#: inc/admin-widgets.php:372
 msgid "نیازمند ووکامرس"
 msgstr ""
 
 #. translators: %s: تعداد صفحه
-#: inc/admin-widgets.php:368
+#: inc/admin-widgets.php:376
 #, php-format
 msgid "در %s صفحه"
 msgstr ""
 
-#: inc/admin-widgets.php:371
+#: inc/admin-widgets.php:379
 msgid "استفاده نشده"
 msgstr ""
 
-#: inc/admin-widgets.php:375
+#: inc/admin-widgets.php:383
 msgid "اگر خاموش شود فقط از پنل المنتور پنهان می‌شود و صفحه‌های فعلی دست نمی‌خورند."
 msgstr ""
 
-#: inc/admin-widgets.php:384
+#: inc/admin-widgets.php:392
 msgid "ویجتی با این مشخصات پیدا نشد."
 msgstr ""
 
-#: inc/admin-widgets.php:388
+#: inc/admin-widgets.php:396
 msgid "ویجت خاموشی که در هیچ صفحه‌ای به کار نرفته، دیگر بارگذاری نمی‌شود. همین تنظیم در «تنظیمات قالب ← المنتور» هم هست و همیشه با این صفحه یکی است."
 msgstr ""
 
-#: inc/admin-widgets.php:396
+#: inc/admin-widgets.php:404
 msgid "راهنمای ویرایش ویجت‌ها در المنتور"
 msgstr ""
 
-#: inc/admin-widgets.php:396
+#: inc/admin-widgets.php:404
 msgid "همه‌ی اجزای هر ویجت از ویرایشگر بصری المنتور قابل تغییر است؛ این‌طوری:"
 msgstr ""
 
-#: inc/admin-widgets.php:398
+#: inc/admin-widgets.php:406
 msgid "زبانه‌ی «محتوا»"
 msgstr ""
 
-#: inc/admin-widgets.php:398
+#: inc/admin-widgets.php:406
 msgid "همه‌ی متن‌ها، تصاویر، پیوندها، آیکن‌ها و آیتم‌های تکرارشونده (کارت‌ها، مراحل، پرسش‌ها…). هر متنی که روی صفحه می‌بینید، اینجا قابل تغییر است؛ خالی گذاشتن یک فیلد یعنی استفاده از مقدار پنل تنظیمات قالب."
 msgstr ""
 
-#: inc/admin-widgets.php:399
+#: inc/admin-widgets.php:407
 msgid "بخش «نمایش اجزا»"
 msgstr ""
 
-#: inc/admin-widgets.php:399
+#: inc/admin-widgets.php:407
 msgid "در زبانه‌ی محتوا، هر جزء ویجت (برچسب، تصویر، نشان، آیکن، دکمه، توضیح…) یک کلید نمایش/پنهان دارد؛ تغییرش همان لحظه در ویرایشگر دیده می‌شود."
 msgstr ""
 
-#: inc/admin-widgets.php:400
+#: inc/admin-widgets.php:408
 msgid "زبانه‌ی «استایل»"
 msgstr ""
 
-#: inc/admin-widgets.php:400
+#: inc/admin-widgets.php:408
 msgid "برای هر جزء یک بخش جدا: تایپوگرافی (فونت، اندازه، وزن، ارتفاع خط)، رنگ و رنگ هاور، زمینه‌ی ساده یا گرادیان، حاشیه، گردی گوشه‌ها، سایه، فاصله‌ها، اندازه‌ی آیکن و قاب، نسبت ابعاد و فیلتر تصویر، تعداد ستون و فاصله‌ی شبکه در هر اندازه‌ی صفحه."
 msgstr ""
 
-#: inc/admin-widgets.php:401
+#: inc/admin-widgets.php:409
 msgid "رنگ‌های این ویجت"
 msgstr ""
 
-#: inc/admin-widgets.php:401
+#: inc/admin-widgets.php:409
 msgid "آخرین بخش زبانه‌ی استایل: با تغییر «رنگ اصلی»، «رنگ تأکیدی»، «زمینه‌ی کارت‌ها» و… همه‌ی اجزای همان ویجت یک‌جا هم‌رنگ می‌شوند؛ بدون اینکه بقیه‌ی سایت تغییر کند."
 msgstr ""
 
-#: inc/admin-widgets.php:402
+#: inc/admin-widgets.php:410
 #: inc/elementor/trait-zc-style-kit.php:1310
 msgid "چیدمان و فاصله‌های بخش"
 msgstr ""
 
-#: inc/admin-widgets.php:402
+#: inc/admin-widgets.php:410
 msgid "فاصله‌ی بالا و پایین، عرض محتوا، حداقل ارتفاع، زمینه و حاشیه‌ی کل بخش، پنهان کردن اشکال تزئینی و خاموش کردن انیمیشن ظاهر شدن."
 msgstr ""
 
-#: inc/admin-widgets.php:403
+#: inc/admin-widgets.php:411
 msgid "واکنش‌گرا"
 msgstr ""
 
-#: inc/admin-widgets.php:403
+#: inc/admin-widgets.php:411
 msgid "کنار بیشتر تنظیم‌ها آیکن دسکتاپ/تبلت/موبایل هست؛ برای هر اندازه‌ی صفحه مقدار جدا بدهید."
 msgstr ""
 
-#: inc/admin-widgets.php:404
+#: inc/admin-widgets.php:412
 msgid "حالت تیره"
 msgstr ""
 
-#: inc/admin-widgets.php:404
+#: inc/admin-widgets.php:412
 msgid "رنگ‌هایی که در بخش‌های استایل می‌دهید در هر دو حالت اعمال می‌شوند؛ پالت اختصاصی ویجت به‌طور پیش‌فرض فقط در حالت روشن اعمال می‌شود تا خوانایی حالت تیره حفظ شود."
 msgstr ""
 
-#: inc/admin-widgets.php:405
+#: inc/admin-widgets.php:413
 msgid "برگشت به پیش‌فرض"
 msgstr ""
 
-#: inc/admin-widgets.php:405
+#: inc/admin-widgets.php:413
 msgid "هر تنظیمی را پاک کنید، ظاهر پیش‌فرض قالب برمی‌گردد. همه‌ی تنظیم‌ها پیش‌فرض خالی دارند؛ پس تا چیزی را عوض نکنید، هیچ کد اضافه‌ای به صفحه اضافه نمی‌شود."
 msgstr ""
 
@@ -2309,6 +2342,7 @@ msgid "خدمت"
 msgstr ""
 
 #: inc/cpt.php:26
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:105
 msgid "خدمات سایت"
 msgstr ""
 
@@ -2778,7 +2812,7 @@ msgstr ""
 msgid "پاورقی سایت (زرین‌کوچ)"
 msgstr ""
 
-#: inc/elementor/class-zc-elementor.php:216
+#: inc/elementor/class-zc-elementor.php:223
 msgid "زرین‌کوچ — مریم جمالی"
 msgstr ""
 
@@ -2820,6 +2854,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-cta.php:70
 #: inc/elementor/widgets/class-zc-widget-cta.php:196
 #: inc/elementor/widgets/class-zc-widget-cta.php:222
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:110
 #: inc/elementor/widgets/class-zc-widget-hero.php:236
 #: inc/elementor/widgets/class-zc-widget-hero.php:348
 #: inc/elementor/widgets/class-zc-widget-hero.php:385
@@ -2891,6 +2926,8 @@ msgstr ""
 #: inc/elementor/trait-zc-style-kit.php:994
 #: inc/elementor/widgets/class-zc-widget-about.php:87
 #: inc/elementor/widgets/class-zc-widget-book.php:186
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:86
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:132
 #: inc/elementor/widgets/class-zc-widget-page-title.php:125
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:104
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:147
@@ -2904,6 +2941,8 @@ msgstr ""
 #: inc/elementor/trait-zc-style-kit.php:576
 #: inc/elementor/trait-zc-style-kit.php:768
 #: inc/elementor/trait-zc-style-kit.php:998
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:87
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:133
 #: inc/elementor/widgets/class-zc-widget-page-title.php:129
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:193
 msgid "وسط"
@@ -2914,6 +2953,8 @@ msgstr ""
 #: inc/elementor/trait-zc-style-kit.php:1002
 #: inc/elementor/widgets/class-zc-widget-about.php:91
 #: inc/elementor/widgets/class-zc-widget-book.php:187
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:88
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:134
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:108
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:197
 #: inc/options-panel.php:1308
@@ -2984,11 +3025,13 @@ msgid "فرعی"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:375
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:103
 #: inc/options-panel.php:1014
 msgid "خطی"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:376
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:104
 msgid "ساده"
 msgstr ""
 
@@ -3084,6 +3127,7 @@ msgid "زمینه‌ی ملایم"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:651
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:102
 #: inc/options-panel.php:933
 #: inc/setup.php:92
 msgid "سرمه‌ای"
@@ -3167,6 +3211,8 @@ msgid "پیوند (اختیاری)"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:771
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:162
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:184
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:250
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:278
 msgid "عنوان زیر نماد"
@@ -3365,6 +3411,8 @@ msgid "بزرگ‌نمایی"
 msgstr ""
 
 #: inc/elementor/trait-zc-style-kit.php:687
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:180
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:130
 #: inc/elementor/widgets/class-zc-widget-shop-benefits.php:192
 #: inc/elementor/widgets/class-zc-widget-timeline.php:245
 msgid "فاصله‌ی آیتم‌ها"
@@ -3396,6 +3444,7 @@ msgid "فاصله‌ی ستون‌ها"
 msgstr ""
 
 #: inc/elementor/trait-zc-style-kit.php:758
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:245
 msgid "فاصله‌ی ردیف‌ها"
 msgstr ""
 
@@ -3695,6 +3744,7 @@ msgid "زمینه‌ی حالت سرمه‌ای (تُن تیره)"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-about.php:32
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:65
 #: inc/options-panel.php:519
 #: inc/options-panel.php:1621
 #: inc/options-sections-home.php:34
@@ -3799,6 +3849,9 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-about.php:156
 #: inc/elementor/widgets/class-zc-widget-about.php:190
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:83
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:114
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:123
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:82
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:315
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:339
@@ -3850,6 +3903,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-courses.php:301
 #: inc/elementor/widgets/class-zc-widget-cta.php:61
 #: inc/elementor/widgets/class-zc-widget-cta.php:195
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:133
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:99
 #: inc/elementor/widgets/class-zc-widget-hero.php:76
 #: inc/elementor/widgets/class-zc-widget-hero.php:188
 #: inc/elementor/widgets/class-zc-widget-hero.php:368
@@ -4089,6 +4144,7 @@ msgid "تلفن دوم (اختیاری)"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:92
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:163
 #: inc/options-panel.php:1176
 #: inc/template-tags.php:809
 msgid "نشانی"
@@ -4115,6 +4171,7 @@ msgid "برچسب تلفن"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:126
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:263
 #: inc/helpers.php:610
 #: inc/options-panel.php:1169
 msgid "تلفن رزرو نوبت"
@@ -4192,6 +4249,9 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:195
 #: inc/elementor/widgets/class-zc-widget-contact.php:224
 #: inc/elementor/widgets/class-zc-widget-faq.php:131
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:192
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:139
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:128
 #: inc/elementor/widgets/class-zc-widget-hero.php:329
 #: inc/elementor/widgets/class-zc-widget-products.php:149
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:459
@@ -4215,6 +4275,7 @@ msgid "تک ستونه"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:216
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:242
 #: inc/elementor/widgets/class-zc-widget-shop-benefits.php:184
 msgid "آیکن‌ها"
 msgstr ""
@@ -4228,6 +4289,9 @@ msgid "برچسب‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:218
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:93
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:115
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:130
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:316
 #: inc/options-panel.php:1206
 #: inc/options-panel.php:1216
@@ -4251,6 +4315,7 @@ msgid "کارت‌های تماس"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:234
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:238
 #: inc/elementor/widgets/class-zc-widget-hero.php:383
 #: inc/elementor/widgets/class-zc-widget-list.php:134
 #: inc/elementor/widgets/class-zc-widget-posts.php:445
@@ -4708,6 +4773,7 @@ msgid "رنگ آیکن یادداشت"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:232
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:133
 #: inc/elementor/widgets/class-zc-widget-hero.php:357
 #: inc/elementor/widgets/class-zc-widget-product-cats.php:203
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:484
@@ -4827,6 +4893,622 @@ msgstr ""
 msgid "پرسشی ثبت نشده است."
 msgstr ""
 
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:35
+msgid "پانوشت: درباره من"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:72
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:113
+msgid "نام / لوگوی سایت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:76
+msgid "لوگو از «سفارشی‌سازی ← هویت سایت» خوانده می‌شود."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:86
+msgid "خالی = متن ثبت‌شده در «پنل قالب ← ساختار سایت ← پاورقی»"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:97
+msgid "نشانی‌ها از «پنل قالب ← اطلاعات و ارتباط ← شبکه‌های اجتماعی» خوانده می‌شود."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:121
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:182
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:231
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:168
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:182
+#: inc/elementor/widgets/class-zc-widget-product-cats.php:191
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:337
+msgid "متن‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-about.php:124
+msgid "نام / لوگو"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:35
+msgid "پانوشت: کپی‌رایت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:66
+msgid "کپی‌رایت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:73
+msgid "خط جداکننده‌ی بالا"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:83
+msgid "نمایش سال"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:93
+msgid "نمایش نام سایت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:103
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:175
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:185
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:209
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:321
+#: inc/options-panel.php:805
+msgid "متن کپی‌رایت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:106
+msgid "خالی = متن پنل قالب (پاورقی)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:116
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:176
+msgid "اعتبار طراح"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:123
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:219
+msgid "نمایش اعتبار طراح"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:135
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:240
+#: template-parts/site-footer.php:227
+msgid "طراحی و توسعه:"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:143
+msgid "نام طراح"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:145
+#: inc/options-panel.php:364
+#: template-parts/site-footer.php:229
+msgid "زرین‌کد"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:153
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:186
+msgid "پیوند طراح"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:157
+msgid "خالی = نام طراح بدون پیوند."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:174
+#: inc/elementor/widgets/class-zc-widget-pricing.php:174
+#: inc/elementor/widgets/class-zc-widget-services.php:307
+#: inc/elementor/widgets/class-zc-widget-stats.php:143
+msgid "خط جداکننده"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:184
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:344
+msgid "نوار پایین"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:194
+#: inc/elementor/widgets/class-zc-widget-hero.php:369
+#: inc/elementor/widgets/class-zc-widget-pricing.php:204
+#: inc/elementor/widgets/class-zc-widget-services.php:348
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:332
+#: inc/elementor/widgets/class-zc-widget-stats.php:154
+msgid "رنگ خط جداکننده"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:195
+msgid "فاصله‌ی دو طرف نوار"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-copyright.php:207
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:377
+msgid "کلیه حقوق این وب‌سایت محفوظ است."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:35
+msgid "پانوشت: دامنه رسمی و مجوزها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:82
+msgid "دامنه رسمی"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:89
+msgid "نمایش ردیف دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:101
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:284
+#: template-parts/site-footer.php:157
+msgid "دامنه رسمی:"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:109
+msgid "دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:111
+msgid "خالی = دامنه‌ی پنل (اطلاعات حقوقی)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:120
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:240
+msgid "پیوند دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:123
+msgid "خالی = پیوند پنل تنظیمات."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:131
+msgid "یادداشت پس از دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:133
+msgid "خالی = یادداشت پنل (اطلاعات حقوقی)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:142
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:227
+msgid "آیکن دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:145
+msgid "خالی = آیکن کره‌ی زمین قالب."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:156
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:228
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:241
+msgid "هشدار اورژانس"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:163
+msgid "نمایش هشدار"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:167
+msgid "متن پیش‌فرض: راه‌های کمک در شرایط بحرانی (پنل ← اطلاعات حقوقی)."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:174
+msgid "متن هشدار"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:177
+#: inc/elementor/widgets/class-zc-widget-site-header.php:239
+msgid "خالی = متن پنل تنظیمات"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:185
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:229
+msgid "آیکن هشدار"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:188
+msgid "خالی = آیکن هشدار قالب."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:199
+msgid "مجوزها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:206
+msgid "نمایش مجوزها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:210
+msgid "شماره‌ی پروانه‌ی نظام روان‌شناسی و کد پروانه از «پنل قالب ← اطلاعات حقوقی» خوانده می‌شود."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:225
+msgid "کارت کلی"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:226
+msgid "ردیف دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:230
+msgid "نشان‌های مجوز"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:236
+msgid "کارت و متن‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:239
+msgid "متن دامنه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:247
+msgid "مجوزها و آیکن‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:249
+msgid "نشان مجوز"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-domain.php:250
+#: inc/elementor/widgets/class-zc-widget-resume-hero.php:500
+msgid "متن نشان"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:35
+msgid "پانوشت: لوکیشن و راه‌های ارتباط"
+msgstr ""
+
+#. translators: %s: نام ردیف
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:77
+#, php-format
+msgid "مقدار %s"
+msgstr ""
+
+#. translators: %s: نام ردیف
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:91
+#, php-format
+msgid "برچسب %s"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:93
+msgid "خالی = برچسب پنل تنظیمات"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:117
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:218
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:233
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:72
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:161
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:170
+msgid "عنوان ستون"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:119
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:192
+#: inc/template-tags.php:1080
+msgid "راه‌های ارتباط"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:120
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:76
+msgid "برای حذف عنوان، خالی بگذارید."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:127
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:83
+#: inc/elementor/widgets/class-zc-widget-heading.php:63
+#: inc/elementor/widgets/class-zc-widget-hero.php:97
+msgid "تگ عنوان"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:147
+msgid "ردیف‌های ارتباط"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:155
+msgid "مقادیر خالی از «پنل قالب ← اطلاعات و ارتباط ← اطلاعات تماس» خوانده می‌شوند."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:160
+msgid "تلفن اول"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:160
+msgid "خالی = تلفن رزرو پنل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:161
+msgid "تلفن دوم"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:161
+msgid "خالی = تلفن مطب پنل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:162
+msgid "خالی = ایمیل پنل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:163
+msgid "خالی = نشانی پنل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:164
+msgid "ساعات کاری"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:164
+msgid "خالی = ساعات پنل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:172
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:224
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:236
+msgid "پیوند نقشه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:179
+msgid "پیوند «مشاهده روی نقشه»"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:189
+msgid "برچسب پیوند"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:191
+msgid "مشاهده روی نقشه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:199
+msgid "نشانی نقشه"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:202
+msgid "خالی = جستجوی خودکار نشانی در گوگل‌مپ."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:219
+msgid "ردیف تلفن اول"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:220
+msgid "ردیف تلفن دوم"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:221
+msgid "ردیف ایمیل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:222
+msgid "ردیف نشانی"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:223
+msgid "ردیف ساعات کاری"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:225
+msgid "آیکن‌های ردیف‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:234
+msgid "متن ردیف‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:235
+#: inc/elementor/widgets/class-zc-widget-page-title.php:242
+#: inc/elementor/widgets/class-zc-widget-resume-hero.php:388
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:340
+msgid "پیوندها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-location.php:269
+#: inc/helpers.php:611
+msgid "تلفن مطب"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:35
+msgid "پانوشت: منوها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:65
+msgid "منوی پانوشت"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:75
+msgid "مثلاً: دسترسی سریع"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:101
+msgid "منبع آیتم‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:104
+msgid "فهرست وردپرس"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:106
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:147
+#: inc/template-tags.php:1078
+msgid "تازه‌ترین نوشته‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:115
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:72
+msgid "فهرست"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:119
+msgid "«جایگاه پیش‌فرض» = منوی جایگاه «منوی پانوشت» در «نمایش ← فهرست‌ها»."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:127
+msgid "تعداد آیتم"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:142
+msgid "عمودی (ستونی)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:143
+msgid "افقی (کنار هم)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:162
+msgid "فهرست منو"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:171
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:352
+#: inc/elementor/widgets/class-zc-widget-site-header.php:307
+msgid "آیتم‌های منو"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:172
+msgid "کل فهرست"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-menu.php:178
+msgid "چیدمان فهرست"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:35
+msgid "پانوشت: منوی قوانین"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:65
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:113
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:319
+msgid "منوی قوانین"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:76
+msgid "«جایگاه پیش‌فرض» = منوی جایگاه «منوی قوانین (پاورقی)» در «نمایش ← فهرست‌ها»."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:83
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:129
+msgid "چینش"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:119
+#: inc/elementor/widgets/class-zc-widget-hero.php:197
+#: inc/elementor/widgets/class-zc-widget-list.php:88
+#: inc/elementor/widgets/class-zc-widget-list.php:123
+#: inc/elementor/widgets/class-zc-widget-services.php:179
+#: inc/elementor/widgets/class-zc-widget-shop-benefits.php:190
+#: inc/elementor/widgets/class-zc-widget-stats.php:101
+msgid "آیتم‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:121
+msgid "متن آیتم‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:122
+msgid "کل ردیف"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-nav.php:147
+msgid "(فقط برای مدیر) فهرستی به جایگاه «منوی قوانین (پاورقی)» متصل کنید یا از همین ویجت یک فهرست انتخاب کنید."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:35
+msgid "پانوشت: نمادهای اعتماد"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:65
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:68
+msgid "نمادها (۱ تا ۶)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:74
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:161
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:169
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:75
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:264
+msgid "نمادها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:86
+#: inc/elementor/widgets/class-zc-widget-site-footer.php:263
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:96
+msgid "طرح پیش‌فرض برای کدهای خالی"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:90
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:100
+msgid "تا زمان درج کد رسمی، کاشی خنثی نمایش داده شود. خاموش = نمادهای بدون کد پنهان می‌شوند."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:97
+msgid "طرح نمایش"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:100
+msgid "پانوشت (مینیمال روشن)"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:101
+#: inc/elementor/widgets/class-zc-widget-schema.php:212
+#: inc/elementor/widgets/class-zc-widget-schemas.php:153
+#: inc/elementor/widgets/class-zc-widget-schemas.php:303
+#: inc/elementor/widgets/class-zc-widget-timeline.php:254
+msgid "کارت‌ها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:113
+msgid "تعداد ستون نمادها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:143
+msgid "عنوان زیر نمادها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:163
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:185
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:251
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:279
+msgid "توضیح زیر نماد"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:171
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:266
+msgid "کارت نماد"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:172
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:267
+msgid "قاب نماد"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:173
+msgid "ارتفاع قاب"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:174
+msgid "حداکثر ارتفاع تصویر"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:175
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:270
+msgid "نشان طرح پیش‌فرض"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:176
+#: inc/elementor/widgets/class-zc-widget-trust-badges.php:259
+msgid "فاصله‌ی نمادها"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:186
+msgid "نام طرح پیش‌فرض"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-footer-trust.php:214
+msgid "(فقط برای مدیر) کد نمادها را در همین ویجت یا «تنظیمات قالب ← اطلاعات حقوقی» وارد کنید."
+msgstr ""
+
 #: inc/elementor/widgets/class-zc-widget-form.php:32
 #: inc/options-panel.php:1633
 msgid "فرم رزرو/تماس"
@@ -4872,11 +5554,6 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-heading.php:32
 #: inc/options-panel.php:1619
 msgid "سربرگ بخش"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-heading.php:63
-#: inc/elementor/widgets/class-zc-widget-hero.php:97
-msgid "تگ عنوان"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-heading.php:79
@@ -4956,15 +5633,6 @@ msgstr ""
 msgid "نمایش آمار"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-hero.php:197
-#: inc/elementor/widgets/class-zc-widget-list.php:88
-#: inc/elementor/widgets/class-zc-widget-list.php:123
-#: inc/elementor/widgets/class-zc-widget-services.php:179
-#: inc/elementor/widgets/class-zc-widget-shop-benefits.php:190
-#: inc/elementor/widgets/class-zc-widget-stats.php:101
-msgid "آیتم‌ها"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-hero.php:212
 msgid "کارت شناور روی تصویر"
 msgstr ""
@@ -5040,14 +5708,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-hero.php:349
 msgid "رنگ بخش رنگی عنوان (به‌جای گرادیان)"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-hero.php:369
-#: inc/elementor/widgets/class-zc-widget-pricing.php:204
-#: inc/elementor/widgets/class-zc-widget-services.php:348
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:332
-#: inc/elementor/widgets/class-zc-widget-stats.php:154
-msgid "رنگ خط جداکننده"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-hero.php:391
@@ -5264,12 +5924,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-page-title.php:232
 msgid "شفافیت بافت (۰ تا ۱)"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-page-title.php:242
-#: inc/elementor/widgets/class-zc-widget-resume-hero.php:388
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:340
-msgid "پیوندها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-page-title.php:243
@@ -5605,12 +6259,6 @@ msgstr ""
 msgid "دوره/واحد قیمت"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-pricing.php:174
-#: inc/elementor/widgets/class-zc-widget-services.php:307
-#: inc/elementor/widgets/class-zc-widget-stats.php:143
-msgid "خط جداکننده"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-pricing.php:175
 #: inc/elementor/widgets/class-zc-widget-pricing.php:211
 msgid "فهرست امکانات"
@@ -5793,11 +6441,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-product-cats.php:186
 msgid "قاب آیکن"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-product-cats.php:191
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:337
-msgid "متن‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-product-cats.php:200
@@ -6371,10 +7014,6 @@ msgstr ""
 msgid "عنوان نشان"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-resume-hero.php:500
-msgid "متن نشان"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:508
 msgid "کارت مدرک"
 msgstr ""
@@ -6489,13 +7128,6 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-services.php:316
 #: inc/elementor/widgets/class-zc-widget-testimonials.php:422
 msgid "شبکه‌ی کارت‌ها"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-schema.php:212
-#: inc/elementor/widgets/class-zc-widget-schemas.php:153
-#: inc/elementor/widgets/class-zc-widget-schemas.php:303
-#: inc/elementor/widgets/class-zc-widget-timeline.php:254
-msgid "کارت‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-schema.php:215
@@ -7008,11 +7640,6 @@ msgstr ""
 msgid "عنوان ستون نوشته‌ها"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:147
-#: inc/template-tags.php:1078
-msgid "تازه‌ترین نوشته‌ها"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:156
 msgid "تعداد نوشته‌ها"
 msgstr ""
@@ -7034,26 +7661,11 @@ msgstr ""
 msgid "عنوان ستون تماس"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:192
-#: inc/template-tags.php:1080
-msgid "راه‌های ارتباط"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:199
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:318
 #: inc/setup.php:103
 #: template-parts/site-footer.php:113
 msgid "منوی پاورقی"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:209
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:321
-#: inc/options-panel.php:805
-msgid "متن کپی‌رایت"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:219
-msgid "نمایش اعتبار طراح"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:231
@@ -7070,11 +7682,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:250
 msgid "نمادهای اعتماد (۱ تا ۶)"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:263
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:96
-msgid "طرح پیش‌فرض برای کدهای خالی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:267
@@ -7095,10 +7702,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:300
 msgid "«پیش‌فرض» = منوی جایگاه «منوی قوانین (پاورقی)»."
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:319
-msgid "منوی قوانین"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:320
@@ -7132,10 +7735,6 @@ msgstr ""
 msgid "رنگ آیکن‌های تماس"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:344
-msgid "نوار پایین"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:349
 msgid "شبکه‌های اجتماعی، منوها و نمادها"
 msgstr ""
@@ -7144,17 +7743,8 @@ msgstr ""
 msgid "دکمه‌های اجتماعی"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:352
-#: inc/elementor/widgets/class-zc-widget-site-header.php:307
-msgid "آیتم‌های منو"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:353
 msgid "نمادها و مجوز"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-footer.php:377
-msgid "کلیه حقوق این وب‌سایت محفوظ است."
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-header.php:35
@@ -7251,10 +7841,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-header.php:222
 msgid "دکمه حساب کاربری"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-site-header.php:239
-msgid "خالی = متن پنل تنظیمات"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-header.php:246
@@ -8106,21 +8692,8 @@ msgstr ""
 msgid "تیترهای صفحه پس از بارگذاری اینجا فهرست می‌شوند."
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:68
-msgid "نمادها (۱ تا ۶)"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:75
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:264
-msgid "نمادها"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:88
 msgid "حداکثر ۶ نماد نمایش داده می‌شود. کدهای اینماد، ساماندهی، زرین‌پال و پی را می‌توانید یک‌بار در «تنظیمات قالب ← اطلاعات حقوقی» ثبت کنید تا همه‌جا (پاورقی و این ویجت) استفاده شود."
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:100
-msgid "تا زمان درج کد رسمی، کاشی خنثی نمایش داده شود. خاموش = نمادهای بدون کد پنهان می‌شوند."
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:112
@@ -8195,25 +8768,8 @@ msgstr ""
 msgid "بدون فاصله (داخل ستون/قالب دیگر)"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:251
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:279
-msgid "توضیح زیر نماد"
-msgstr ""
-
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:258
 msgid "ستون‌ها (سربرگ / نمادها)"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:259
-msgid "فاصله‌ی نمادها"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:266
-msgid "کارت نماد"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:267
-msgid "قاب نماد"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:268
@@ -8222,10 +8778,6 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:269
 msgid "حداکثر ارتفاع تصویر نماد"
-msgstr ""
-
-#: inc/elementor/widgets/class-zc-widget-trust-badges.php:270
-msgid "نشان طرح پیش‌فرض"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:271
@@ -8264,10 +8816,6 @@ msgstr ""
 
 #: inc/enqueue.php:92
 msgid "خطایی رخ داد، دوباره تلاش کنید."
-msgstr ""
-
-#: inc/helpers.php:611
-msgid "تلفن مطب"
 msgstr ""
 
 #: inc/helpers.php:647
@@ -8664,11 +9212,6 @@ msgstr ""
 #: inc/options-panel.php:363
 #, php-format
 msgid "طراحی و توسعه: %s · برای تغییر مستقیم فایل‌ها فقط از قالب فرزند استفاده کنید."
-msgstr ""
-
-#: inc/options-panel.php:364
-#: template-parts/site-footer.php:229
-msgid "زرین‌کد"
 msgstr ""
 
 #: inc/options-panel.php:385
@@ -12718,20 +13261,12 @@ msgstr ""
 msgid "در حال به‌روزرسانی"
 msgstr ""
 
-#: template-parts/site-footer.php:157
-msgid "دامنه رسمی:"
-msgstr ""
-
 #: template-parts/site-footer.php:191
 msgid "(فقط برای مدیر) کد نمادهای اعتماد را در «تنظیمات قالب ← اطلاعات حقوقی» یا تنظیمات ویجت پاورقی وارد کنید."
 msgstr ""
 
 #: template-parts/site-footer.php:197
 msgid "قوانین و مقررات"
-msgstr ""
-
-#: template-parts/site-footer.php:227
-msgid "طراحی و توسعه:"
 msgstr ""
 
 #: template-parts/site-header.php:92
