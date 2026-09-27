@@ -78,7 +78,12 @@
    * ---------------------------------------------------------------- */
   function initHeader() {
     var header = $('[data-zc-header]');
-    if (!header) { return; }
+    /* v2.4: قالب هدرِ ساخته‌شده با ویجت‌های المنتور — قاب (.zc-header-frame) نقش سربرگ را می‌گیرد. */
+    if (!header) {
+      header = $('.zc-header-frame');
+      if (!header) { return; }
+      header.setAttribute('data-zc-header', '');
+    }
 
     var progress = $('[data-zc-progress]');
     var topbar = $('[data-zc-topbar]');

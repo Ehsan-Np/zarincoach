@@ -737,7 +737,7 @@ if ( ! function_exists( 'zc_panel_header' ) ) :
 				__( 'قالب سربرگ سایت و رفتار آن هنگام اسکرول.', 'zarincoach' ),
 				array(
 					$el_note,
-					zc_panel_template_select( 'header_template', __( 'قالب المنتور سربرگ', 'zarincoach' ), __( 'قالبی از «المنتور ← قالب‌ها» که با ویجت «سربرگ سایت» ساخته شده. خالی = سربرگ داخلی.', 'zarincoach' ) ),
+					zc_panel_template_select( 'header_template', __( 'قالب المنتور سربرگ', 'zarincoach' ), __( 'قالبی که با ویجت‌های جداکارِ هدر (تاپ‌بار، برند، منو، ابزارها و کشوی موبایل) یا ویجت «سربرگ سایت» ساخته شده. خالی = سربرگ داخلی.', 'zarincoach' ) ),
 					zc_f_switch( 'general_sticky_header', __( 'سربرگ چسبان', 'zarincoach' ), true, __( 'سربرگ هنگام اسکرول بالای صفحه ثابت می‌ماند (بدون پرش محتوا).', 'zarincoach' ) ),
 					zc_f_slider( 'general_header_height', __( 'ارتفاع سربرگ (پیکسل)', 'zarincoach' ), 76, 56, 120, 2, __( 'مبنای فاصله‌ی چسبیدن فهرست مطالب، نوار اشتراک‌گذاری و پرش دقیق به سرفصل‌ها.', 'zarincoach' ) ),
 					zc_classic(

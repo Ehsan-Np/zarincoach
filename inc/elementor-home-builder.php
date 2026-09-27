@@ -485,14 +485,18 @@ if ( ! function_exists( 'zc_elementor_row' ) ) :
 	function zc_elementor_row( $columns, $settings = array() ) {
 		$elements = array();
 		foreach ( $columns as $column ) {
+			$col_settings = array(
+				'_column_size'     => (int) $column['size'],
+				'_inline_size'     => (float) $column['size'],
+				'content_position' => isset( $column['align'] ) ? $column['align'] : 'center',
+			);
+			if ( ! empty( $column['class'] ) ) {
+				$col_settings['css_classes'] = (string) $column['class'];
+			}
 			$elements[] = array(
 				'id'       => zc_elementor_id(),
 				'elType'   => 'column',
-				'settings' => array(
-					'_column_size'     => (int) $column['size'],
-					'_inline_size'     => (float) $column['size'],
-					'content_position' => isset( $column['align'] ) ? $column['align'] : 'center',
-				),
+				'settings' => $col_settings,
 				'elements' => $column['widgets'],
 			);
 		}
@@ -1955,9 +1959,10 @@ if ( ! function_exists( 'zc_elementor_layout_templates' ) ) :
 	function zc_elementor_layout_templates() {
 		return array(
 			'header' => array(
-				'title'  => __( 'سربرگ سایت (زرین‌کوچ)', 'zarincoach' ),
-				'widget' => 'site-header',
-				'args'   => array(
+				'title'   => __( 'سربرگ سایت (زرین‌کوچ)', 'zarincoach' ),
+				'widget'  => 'site-header',
+				'compose' => 'zc_header_template_data',
+				'args'    => array(
 					'layout'      => 'classic',
 					'menu'        => '0',
 					'mobile_menu' => '0',
@@ -1994,6 +1999,110 @@ if ( ! function_exists( 'zc_elementor_layout_templates' ) ) :
 		),
 	);
 }
+
+if ( ! function_exists( 'zc_header_template_data' ) ) :
+	/**
+	 * داده‌ی قالب سربرگ از ویجت‌های جداکارِ هدر (نسخه‌ی ۲.۴).
+	 *
+	 * سه بخش: نوار اطلاع‌رسانی (تاپ‌بار)، قاب چسبان هدر (برند | منو | ابزارها +
+	 * نوار پیشرفت) و منوی کشویی موبایل — هر جزء یک ویجت مستقل المنتور و
+	 * کاملاً قابل ویرایش است.
+	 *
+	 * @return array<int, array<string,mixed>>
+	 */
+	function zc_header_template_data() {
+		$booking = zc_eb_url( 'booking' );
+		$zero    = array(
+			'padding'        => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+			'padding_tablet' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+			'padding_mobile' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => false ),
+		);
+
+		/* ---------- ۱. نوار اطلاع‌رسانی ---------- */
+		$topbar = zc_elementor_section(
+			zc_elementor_widget(
+				'header-topbar',
+				array(
+					'text'          => 'نوبت‌دهی: شنبه تا چهارشنبه ۱۶ تا ۲۰:۳۰ — حضوری در بوشهر و آنلاین سراسری',
+					'link'          => $booking,
+					'show_phone'    => 'yes',
+					'phone'         => '',
+					'show_socials'  => 'yes',
+					'socials_count' => 4,
+					'mobile'        => '',
+				)
+			)
+		);
+
+		/* ---------- ۲. قاب چسبان هدر ---------- */
+		$main_row = zc_elementor_row(
+			array(
+				array( 'size' => 25, 'class' => 'zc-hdr-col-brand', 'widgets' => array( zc_elementor_widget( 'header-brand', array( 'source' => 'site', 'link_home' => 'yes' ) ) ) ),
+				array( 'size' => 45, 'class' => 'zc-hdr-col-menu', 'widgets' => array( zc_elementor_widget( 'header-menu', array( 'menu' => '0', 'depth' => '2', 'align' => 'center', 'hide_mobile' => 'yes' ) ) ) ),
+				array(
+					'size'    => 30,
+					'class'   => 'zc-hdr-col-tools zc-hdr-tools',
+					'widgets' => array(
+						zc_elementor_widget( 'header-cta', array( 'button_text' => 'رزرو نوبت', 'button_url' => $booking, 'btn_size' => 'zc-btn-sm', 'hide_mobile' => 'yes', 'show_phone' => '' ) ),
+						zc_elementor_widget( 'header-search', array( 'hide_mobile' => 'yes' ) ),
+						zc_elementor_widget( 'header-dark', array( 'hide_mobile' => 'yes' ) ),
+						zc_elementor_widget( 'header-cart', array( 'show_account' => 'yes', 'show_cart' => 'yes', 'hide_mobile' => '' ) ),
+						zc_elementor_widget( 'header-burger', array( 'show' => 'yes', 'desktop' => '' ) ),
+					),
+				),
+			),
+			array_merge(
+				array(
+					'layout'        => 'full_width',
+					'gap'           => 'narrow',
+					'padding'       => array( 'unit' => 'px', 'top' => '12', 'right' => '25', 'bottom' => '12', 'left' => '25', 'isLinked' => false ),
+					'content_width' => array( 'unit' => 'px', 'size' => 1600, 'sizes' => array() ),
+				),
+				$zero
+			)
+		);
+
+		$frame = array(
+			'id'       => zc_elementor_id(),
+			'elType'   => 'section',
+			'settings' => array_merge(
+				array(
+					'layout'      => 'full_width',
+					'gap'         => 'no',
+					'css_classes' => 'zc-header-frame',
+				),
+				$zero
+			),
+			'elements' => array(
+				array(
+					'id'       => zc_elementor_id(),
+					'elType'   => 'column',
+					'settings' => array( '_column_size' => 100, '_inline_size' => 100 ),
+					'elements' => array( $main_row, zc_elementor_widget( 'header-progress' ) ),
+				),
+			),
+		);
+
+		/* ---------- ۳. منوی کشویی موبایل ---------- */
+		$drawer = zc_elementor_section(
+			zc_elementor_widget(
+				'header-drawer',
+				array(
+					'menu'          => '0',
+					'cta_toggle'    => 'yes',
+					'cta_text'      => 'رزرو جلسه آشنایی',
+					'cta_url'       => $booking,
+					'show_brand'    => 'yes',
+					'show_phones'   => 'yes',
+					'show_email'    => 'yes',
+					'show_socials'  => 'yes',
+				)
+			)
+		);
+
+		return array( $topbar, $frame, $drawer );
+	}
+endif;
 
 if ( ! function_exists( 'zc_footer_template_data' ) ) :
 	/**
@@ -2149,7 +2258,7 @@ if ( ! function_exists( 'zc_build_elementor_layout_template' ) ) :
 			zc_opt_flush();
 		}
 
-		return $id;
+			return $id;
 	}
 endif;
 

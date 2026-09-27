@@ -1119,6 +1119,94 @@
 .zc-el-footer .elementor-widget:not(:last-child) {
   margin-bottom: 0;
 }
+
+/* ==========================================================================
+   v2.4 — هدر ویجت‌به‌ویجت (قالب سربرگ ساخته‌شده با ویجت‌های جداکار)
+   قاب هدر نقش سربرگ را می‌گیرد (JS آن را با data-zc-header ارتقا می‌دهد).
+   قواعد بیرون از @layer تا بر استایل پیش‌فرض المنتور (بدون لایه) برتری یابند.
+   ========================================================================== */
+.zc-header-frame {
+  position: relative;
+  width: 100%;
+  border-bottom: 1px solid transparent;
+  background-color: rgb(var(--zc-base-rgb, 245 247 251) / 0.85);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  /* فقط رنگ و سایه تغییر می‌کند؛ هیچ ویژگی چیدمانی انیمیت نمی‌شود (بدون پرش). */
+  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+
+.zc-header-frame.is-stuck {
+  border-bottom-color: rgb(var(--zc-line-rgb, 226 232 240));
+  background-color: rgb(var(--zc-base-rgb, 245 247 251) / 0.95);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .04), 0 8px 30px -12px rgba(15, 23, 42, .14);
+}
+
+/* ابزارهای هدر: ویجت‌های ابزار به‌صورت ردیف افقی در ستون ابزار */
+.zc-hdr-tools > .elementor-widget-wrap,
+.zc-hdr-tools > .elementor-column-wrap > .elementor-widget-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.zc-hdr-tools > .elementor-widget-wrap > .elementor-widget,
+.zc-hdr-tools > .elementor-column-wrap > .elementor-widget-wrap > .elementor-widget {
+  width: auto;
+  flex: 0 0 auto;
+}
+
+/* ستون‌های ردیف اصلی هدر: برند و ابزارها به‌اندازه‌ی محتوا، منو انعطاف‌پذیر (مثل هدر لگسی) */
+.zc-header-frame .zc-hdr-col-brand,
+.zc-header-frame .zc-hdr-col-menu,
+.zc-header-frame .zc-hdr-col-tools {
+  width: auto !important;
+}
+
+.zc-header-frame .zc-hdr-col-brand,
+.zc-header-frame .zc-hdr-col-tools {
+  flex: 0 0 auto;
+}
+
+.zc-header-frame .zc-hdr-col-menu {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* منوی اصلی در بن‌بست عرض: شکستن ملایم به ردیف دوم به‌جای همپوشانی */
+.zc-header-frame .zc-hdr-col-menu .zc-hdr-menu > ul {
+  flex-wrap: wrap;
+  row-gap: 0.15rem;
+}
+
+/* پنل جستجوی ویجت هدر: با backdrop-filter قاب، position:fixed به قاب لنگر می‌شود */
+.zc-hdr-search-panel {
+  position: fixed;
+  inset-inline: 0;
+  top: 100%;
+  z-index: 40;
+  display: none;
+  max-height: calc(100vh - 100% - 40px);
+  overflow: auto;
+  border-bottom: 1px solid rgb(var(--zc-line-rgb, 226 232 240) / 0.8);
+  background-color: rgb(var(--zc-base-rgb, 245 247 251) / 0.97);
+  padding: 1rem 0;
+  box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.25);
+}
+
+.zc-hdr-search-panel.is-open {
+  display: block;
+  animation: zc-fade .25s ease both;
+}
+
+/* ویرایشگر المنتور: پنل جستجو بسته بماند تا تداخل نکند */
+.elementor-editor-active .zc-hdr-search-panel {
+  display: none;
+}
+
 /* پیش‌نمایش سربرگ در ویرایشگر المنتور (قالب بخش) */
 .elementor-widget-zc-site-header .zc-header {
   position: relative;
