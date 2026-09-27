@@ -114,6 +114,35 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 			);
 
 			$this->add_control(
+				'updated_label',
+				array(
+					'label'       => __( 'متن «آخرین به‌روزرسانی»', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'آخرین به‌روزرسانی: %s', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+					'description' => __( '%s جای تاریخ است.', 'zarincoach' ),
+					'condition'   => array( 'updated' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'updated_icon',
+				array(
+					'label'       => __( 'آیکن تاریخ', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = تقویم.', 'zarincoach' ),
+					'condition'   => array( 'updated' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
 				'notice',
 				array(
 					'label'       => __( 'کادر اطلاعیه (بالای متن)', 'zarincoach' ),
@@ -136,6 +165,21 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 					),
 					'default'   => 'info',
 					'condition' => array( 'notice!' => '' ),
+				)
+			);
+
+			$this->add_control(
+				'notice_icon',
+				array(
+					'label'       => __( 'آیکن اطلاعیه', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = آیکن پیش‌فرض بر اساس نوع اطلاعیه.', 'zarincoach' ),
 				)
 			);
 
@@ -251,6 +295,21 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 			);
 
 			$this->add_control(
+				'aside_icon',
+				array(
+					'label'       => __( 'آیکن عنوان پیوندها', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = سپر.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
 				'aside_links',
 				array(
 					'label'       => __( 'اسناد مرتبط', 'zarincoach' ),
@@ -307,6 +366,77 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 			);
 
 			$this->end_controls_section();
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'updated_icon' => array( __( 'آیکن تاریخ به‌روزرسانی', 'zarincoach' ), '.zc-text-updated-icon' ),
+					'notice_icon'  => array( __( 'آیکن اطلاعیه', 'zarincoach' ), '.zc-notice-icon' ),
+					'aside_links'  => array( __( 'باکس پیوندهای کناری', 'zarincoach' ), '.zc-legal-links' ),
+				)
+			);
+			$this->zc_style(
+				'txt_body',
+				__( 'قاب و متن اصلی', 'zarincoach' ),
+				array(
+					'main'  => array( 'box', '.zc-text-main', __( 'قاب محتوا', 'zarincoach' ), array( 'width' => true ) ),
+					'prose' => array( 'text', '.zc-prose, .zc-prose p, .zc-prose li', __( 'متن پاراگراف‌ها', 'zarincoach' ), array( 'align' => true, 'margin' => false ) ),
+					'pgap'  => array( 'size', '.zc-prose p', __( 'فاصله‌ی بین پاراگراف‌ها', 'zarincoach' ), array( 'prop' => 'margin-block-end', 'max' => 60 ) ),
+					'link'  => array( 'text', '.zc-prose a', __( 'پیوندهای داخل متن', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+					'bold'  => array( 'color', '.zc-prose strong, .zc-prose b', __( 'رنگ متن پررنگ', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'txt_heads',
+				__( 'تیترهای داخل متن', 'zarincoach' ),
+				array(
+					'h2'  => array( 'text', '.zc-prose h2', __( 'تیتر ۲', 'zarincoach' ) ),
+					'h3'  => array( 'text', '.zc-prose h3', __( 'تیتر ۳', 'zarincoach' ) ),
+					'h4'  => array( 'text', '.zc-prose h4', __( 'تیتر ۴', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'txt_blocks',
+				__( 'نقل‌قول، فهرست و جدول', 'zarincoach' ),
+				array(
+					'quote' => array( 'box', '.zc-prose blockquote', __( 'نقل‌قول', 'zarincoach' ), array( 'text' => true ) ),
+					'list'  => array( 'list', '.zc-prose li', __( 'فهرست‌ها', 'zarincoach' ), array( 'list' => '.zc-prose ul, .zc-prose ol', 'marker' => '.zc-prose li::marker' ) ),
+					'table' => array( 'box', '.zc-prose table', __( 'جدول', 'zarincoach' ), array( 'gradient' => false ) ),
+					'th'    => array( 'text', '.zc-prose th', __( 'سرستون جدول', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+					'td'    => array( 'text', '.zc-prose td', __( 'خانه‌های جدول', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+					'img'   => array( 'image', '.zc-prose img', __( 'تصاویر', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'txt_meta',
+				__( 'تاریخ و اطلاعیه', 'zarincoach' ),
+				array(
+					'upd'    => array( 'box', '.zc-text-updated', __( 'نشان تاریخ', 'zarincoach' ), array( 'gradient' => false, 'text' => true ) ),
+					'updi'   => array( 'color', '.zc-text-updated-icon', __( 'رنگ آیکن تاریخ', 'zarincoach' ) ),
+					'notice' => array( 'box', '.zc-notice', __( 'قاب اطلاعیه', 'zarincoach' ), array( 'text' => true ) ),
+					'ntext'  => array( 'text', '.zc-notice-text', __( 'متن اطلاعیه', 'zarincoach' ), array( 'align' => true, 'margin' => false ) ),
+					'nicon'  => array( 'color', '.zc-notice-icon', __( 'رنگ آیکن اطلاعیه', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'txt_aside',
+				__( 'ستون کناری (پیوندها)', 'zarincoach' ),
+				array(
+					'grid'  => array( 'split', '.zc-legal-layout', __( 'ستون‌ها (کناری / محتوا)', 'zarincoach' ), array( 'children' => '.zc-legal-aside, .zc-text-main' ) ),
+					'box'   => array( 'box', '.zc-legal-links', __( 'باکس پیوندها', 'zarincoach' ) ),
+					'title' => array( 'text', '.zc-legal-links-title', __( 'عنوان', 'zarincoach' ) ),
+					'link'  => array( 'text', '.zc-legal-link:not(.is-current)', __( 'پیوند', 'zarincoach' ), array( 'hover' => true, 'bg' => true, 'margin' => false ) ),
+					'cur'   => array( 'text', '.zc-legal-link.is-current', __( 'پیوند صفحه‌ی جاری', 'zarincoach' ), array( 'bg' => true, 'margin' => false ) ),
+				),
+				array( 'condition' => array( 'toc' => 'yes', 'toc_layout!' => 'inline' ) )
+			);
+			$this->zc_toc_styles( 'txt', array( 'condition' => array( 'toc' => 'yes' ) ) );
 		}
 
 		/**
@@ -390,11 +520,11 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 
 								<?php if ( ! empty( $links ) ) : ?>
 									<nav class="zc-legal-links zc-card mt-4 p-5" aria-label="<?php echo esc_attr( isset( $s['aside_title'] ) ? (string) $s['aside_title'] : '' ); ?>">
-										<p class="mb-3 inline-flex items-center gap-2 text-[0.95rem] font-bold text-secondary"><?php zc_icon( 'shield', 'h-[18px] w-[18px] text-primary' ); ?><?php echo esc_html( isset( $s['aside_title'] ) ? (string) $s['aside_title'] : '' ); ?></p>
+										<p class="zc-legal-links-title mb-3 inline-flex items-center gap-2 text-[0.95rem] font-bold text-secondary"><span class="zc-legal-links-icon inline-flex text-primary"><?php $this->zc_render_icon_or( isset( $s['aside_icon'] ) ? $s['aside_icon'] : array(), 'shield', 'h-[18px] w-[18px]' ); ?></span><?php echo esc_html( isset( $s['aside_title'] ) ? (string) $s['aside_title'] : '' ); ?></p>
 										<ul class="grid gap-1 text-[0.86rem]">
 											<?php foreach ( $links as $link ) : ?>
 												<li>
-													<a class="<?php echo $link['current'] ? 'bg-primary/10 font-bold text-primary' : 'text-muted hover:bg-primary/10 hover:text-primary'; ?> flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 transition" href="<?php echo esc_url( $link['url'] ); ?>"<?php echo $link['current'] ? ' aria-current="page"' : ''; ?>>
+													<a class="zc-legal-link<?php echo $link['current'] ? ' is-current bg-primary/10 font-bold text-primary' : ' text-muted hover:bg-primary/10 hover:text-primary'; ?> flex items-center justify-between gap-2 rounded-lg px-2 py-1.5 transition" href="<?php echo esc_url( $link['url'] ); ?>"<?php echo $link['current'] ? ' aria-current="page"' : ''; ?>>
 														<span><?php echo esc_html( $link['text'] ); ?></span>
 														<?php zc_icon( 'chevron-left', 'h-3.5 w-3.5 opacity-60' ); ?>
 													</a>
@@ -406,21 +536,22 @@ if ( ! class_exists( 'ZC_Widget_Text' ) ) :
 							</aside>
 						<?php endif; ?>
 
-						<div class="<?php echo $aside ? 'min-w-0 lg:col-span-8 xl:col-span-9' : 'mx-auto ' . esc_attr( $width ); ?> <?php echo $boxed ? 'zc-card px-4 py-6 sm:p-8 lg:p-10' : ''; ?>">
+						<div class="zc-text-main <?php echo $aside ? 'min-w-0 lg:col-span-8 xl:col-span-9' : 'mx-auto ' . esc_attr( $width ); ?> <?php echo $boxed ? 'zc-card px-4 py-6 sm:p-8 lg:p-10' : ''; ?>">
 							<?php if ( $this->is_on( $s, 'updated' ) && get_the_ID() ) : ?>
-								<p class="mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-[0.82rem] text-muted">
-									<?php zc_icon( 'calendar', 'h-4 w-4 text-primary' ); ?>
+								<p class="zc-text-updated mb-6 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-[0.82rem] text-muted">
+									<span class="zc-text-updated-icon inline-flex text-primary"><?php $this->zc_render_icon_or( isset( $s['updated_icon'] ) ? $s['updated_icon'] : array(), 'calendar', 'h-4 w-4' ); ?></span>
 									<?php
 									/* translators: %s: date */
-									printf( esc_html__( 'آخرین به‌روزرسانی: %s', 'zarincoach' ), esc_html( zc_date( get_the_ID(), 'modified' ) ) );
+									$zc_upd = $this->zc_label( $s, 'updated_label', __( 'آخرین به‌روزرسانی: %s', 'zarincoach' ) );
+									echo esc_html( false !== strpos( $zc_upd, '%s' ) ? str_replace( '%s', zc_date( get_the_ID(), 'modified' ), $zc_upd ) : $zc_upd . ' ' . zc_date( get_the_ID(), 'modified' ) );
 									?>
 								</p>
 							<?php endif; ?>
 
 							<?php if ( '' !== $notice ) : ?>
 								<div class="zc-notice zc-notice-<?php echo esc_attr( $tone ); ?> <?php echo $notice_only ? '' : 'mb-5 sm:mb-6'; ?> flex items-start gap-3 rounded-2xl border p-4 text-[0.92rem] leading-[2] sm:p-5">
-									<span class="mt-1 shrink-0"><?php zc_icon( 'alert' === $tone ? 'alert' : 'shield', 'h-5 w-5' ); ?></span>
-									<div><?php echo wp_kses_post( do_shortcode( $notice ) ); ?></div>
+									<span class="zc-notice-icon mt-1 shrink-0"><?php $this->zc_render_icon_or( isset( $s['notice_icon'] ) ? $s['notice_icon'] : array(), 'alert' === $tone ? 'alert' : 'shield', 'h-5 w-5' ); ?></span>
+									<div class="zc-notice-text"><?php echo wp_kses_post( do_shortcode( $notice ) ); ?></div>
 								</div>
 							<?php endif; ?>
 

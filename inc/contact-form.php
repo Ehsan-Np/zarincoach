@@ -39,14 +39,14 @@ if ( ! function_exists( 'zc_contact_form_shortcode' ) ) :
 		<form class="zc-contact-form grid gap-4 <?php echo esc_attr( $atts['class'] ); ?>" method="post" data-zc-form novalidate>
 			<?php if ( '' !== (string) $atts['title'] ) : ?>
 				<div>
-					<h3 class="text-[1.05rem] font-bold text-secondary"><?php echo esc_html( $atts['title'] ); ?></h3>
+					<h3 class="zc-form-title text-[1.05rem] font-bold text-secondary"><?php echo esc_html( $atts['title'] ); ?></h3>
 					<?php if ( '' !== (string) $atts['subtitle'] ) : ?>
-						<p class="zc-lead mt-1 !text-[0.88rem]"><?php echo esc_html( $atts['subtitle'] ); ?></p>
+						<p class="zc-form-desc zc-lead mt-1 text-[0.88rem]"><?php echo esc_html( $atts['subtitle'] ); ?></p>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 
-			<div class="grid gap-4 sm:grid-cols-2">
+			<div class="zc-form-row grid gap-4 sm:grid-cols-2">
 				<div>
 					<label class="zc-label" for="zc-name"><?php esc_html_e( 'نام و نام خانوادگی', 'zarincoach' ); ?> <span class="text-primary">*</span></label>
 					<input class="zc-input" type="text" id="zc-name" name="zc_name" required maxlength="80" autocomplete="name" placeholder="<?php esc_attr_e( 'مثال: مریم احمدی', 'zarincoach' ); ?>">
@@ -67,7 +67,7 @@ if ( ! function_exists( 'zc_contact_form_shortcode' ) ) :
 
 			<div>
 				<label class="zc-label" for="zc-message"><?php esc_html_e( 'توضیح کوتاه درباره درخواست', 'zarincoach' ); ?> <span class="text-primary">*</span></label>
-				<textarea class="zc-textarea" id="zc-message" name="zc_message" required minlength="10" maxlength="2000" placeholder="<?php esc_attr_e( 'درباره چه موضوعی می‌خواهی صحبت کنیم؟', 'zarincoach' ); ?>"></textarea>
+				<textarea class="zc-textarea" id="zc-message" name="zc_message" required minlength="10" maxlength="2000" placeholder="<?php esc_attr_e( 'دوست دارید درباره‌ی چه موضوعی با هم صحبت کنیم؟', 'zarincoach' ); ?>"></textarea>
 			</div>
 
 			<!-- فیلد مخفی برای جلوگیری از ربات‌ها -->

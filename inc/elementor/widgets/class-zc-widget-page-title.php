@@ -210,6 +210,43 @@ if ( ! class_exists( 'ZC_Widget_Page_Title' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'crumbs' => array( __( 'مسیر راهنما', 'zarincoach' ), '.zc-pt-crumbs' ),
+					'bg'     => array( __( 'بافت نقطه‌ای پس‌زمینه', 'zarincoach' ), '.zc-pt-bg' ),
+					'blobs'  => array( __( 'نورهای تزئینی', 'zarincoach' ), '.zc-pt-blob' ),
+				)
+			);
+			$this->zc_style(
+				'pt_box',
+				__( 'قاب سربرگ صفحه', 'zarincoach' ),
+				array(
+					'box'   => array( 'box', '.zc-page-title', __( 'قاب', 'zarincoach' ), array( 'gradient' => true, 'minh' => true, 'padding' => false ) ),
+					'pad'   => array( 'box', '.zc-pt-inner', __( 'فاصله‌ی داخلی محتوا', 'zarincoach' ), array( 'gradient' => false ) ),
+					'bg'    => array( 'color', '.zc-pt-bg', __( 'رنگ بافت', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'bgop'  => array( 'size', '.zc-pt-bg', __( 'شفافیت بافت (۰ تا ۱)', 'zarincoach' ), array( 'units' => array( 'px' ), 'max' => 1, 'css' => 'opacity: {{SIZE}};' ) ),
+					'blob1' => array( 'color', '.zc-pt-blob-1', __( 'رنگ نور اول', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'blob2' => array( 'color', '.zc-pt-blob-2', __( 'رنگ نور دوم', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+				)
+			);
+			$this->zc_style(
+				'pt_crumbs',
+				__( 'مسیر راهنما', 'zarincoach' ),
+				array(
+					'text' => array( 'text', '.zc-pt-crumbs .zc-breadcrumb', __( 'متن', 'zarincoach' ), array( 'margin' => false ) ),
+					'link' => array( 'text', '.zc-pt-crumbs .zc-breadcrumb a', __( 'پیوندها', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+					'gap'  => array( 'size', '.zc-pt-crumbs', __( 'فاصله تا عنوان', 'zarincoach' ), array( 'prop' => 'margin-bottom', 'max' => 80 ) ),
+				),
+				array( 'condition' => array( 'breadcrumbs' => 'yes' ) )
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -251,23 +288,23 @@ if ( ! class_exists( 'ZC_Widget_Page_Title' ) ) :
 			$eyebrow = isset( $s['eyebrow'] ) ? trim( (string) $s['eyebrow'] ) : '';
 			?>
 			<section class="<?php echo esc_attr( $class ); ?>">
-				<div class="zc-grain pointer-events-none absolute inset-0 -z-10 bg-zc-dots opacity-50"></div>
-				<div class="pointer-events-none absolute -top-24 end-1/4 -z-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl"></div>
-				<div class="pointer-events-none absolute -bottom-28 start-10 -z-10 h-64 w-64 rounded-full bg-accent/15 blur-3xl"></div>
+				<div class="zc-pt-bg zc-grain pointer-events-none absolute inset-0 -z-10 bg-zc-dots opacity-50" aria-hidden="true"></div>
+				<div class="zc-pt-blob zc-pt-blob-1 pointer-events-none absolute -top-24 end-1/4 -z-10 h-72 w-72 rounded-full bg-primary/15 blur-3xl" aria-hidden="true"></div>
+				<div class="zc-pt-blob zc-pt-blob-2 pointer-events-none absolute -bottom-28 start-10 -z-10 h-64 w-64 rounded-full bg-accent/15 blur-3xl" aria-hidden="true"></div>
 
-				<div class="zc-container relative <?php echo esc_attr( $padding[ $size ] ); ?> <?php echo $center ? 'flex flex-col items-center text-center' : ''; ?>">
+				<div class="zc-container zc-section-head zc-pt-inner relative <?php echo esc_attr( $padding[ $size ] ); ?> <?php echo $center ? 'flex flex-col items-center text-center' : ''; ?>">
 					<?php if ( $this->is_on( $s, 'breadcrumbs' ) && function_exists( 'zc_breadcrumbs' ) ) : ?>
-						<div class="mb-4"><?php zc_breadcrumbs(); ?></div>
+						<div class="zc-pt-crumbs mb-4"><?php zc_breadcrumbs(); ?></div>
 					<?php endif; ?>
 
 					<?php if ( '' !== $eyebrow ) : ?>
 						<span class="zc-eyebrow mb-3"><?php echo esc_html( $eyebrow ); ?></span>
 					<?php endif; ?>
 
-					<h1 class="zc-title-lg zc-text-balance max-w-3xl zc-reveal"><?php echo wp_kses_post( $safe_title ); ?></h1>
+					<h1 class="zc-pt-title zc-title-lg zc-text-balance max-w-3xl zc-reveal"><?php echo wp_kses_post( $safe_title ); ?></h1>
 
 					<?php if ( '' !== $subtitle ) : ?>
-						<p class="zc-lead mt-4 max-w-2xl zc-reveal" data-zc-delay="80"><?php echo esc_html( $subtitle ); ?></p>
+						<p class="zc-pt-sub zc-lead mt-4 max-w-2xl zc-reveal" data-zc-delay="80"><?php echo esc_html( $subtitle ); ?></p>
 					<?php endif; ?>
 				</div>
 			</section>

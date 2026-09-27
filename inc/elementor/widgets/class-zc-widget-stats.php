@@ -132,6 +132,43 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'title' => array( __( 'عنوان', 'zarincoach' ), '.zc-stats-title' ),
+					'rule'  => array( __( 'خط جداکننده', 'zarincoach' ), '.zc-stats-rule' ),
+					'label' => array( __( 'برچسب آمارها', 'zarincoach' ), '.zc-stats-label' ),
+					'blobs' => array( __( 'اشکال نورانی پس‌زمینه', 'zarincoach' ), '.zc-stats-blob' ),
+				)
+			);
+			$this->zc_style(
+				'stats_panel',
+				__( 'قاب و عنوان', 'zarincoach' ),
+				array(
+					'panel' => array( 'box', '.zc-stats-panel', __( 'قاب', 'zarincoach' ), array( 'align' => true ) ),
+					'title' => array( 'text', '.zc-stats-title', __( 'عنوان', 'zarincoach' ), array( 'width' => true ) ),
+					'rule'  => array( 'color', '.zc-stats-rule', __( 'رنگ خط جداکننده', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'blob1' => array( 'color', '.zc-stats-blob-1', __( 'رنگ نور اول', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'blob2' => array( 'color', '.zc-stats-blob-2', __( 'رنگ نور دوم', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+				)
+			);
+			$this->zc_style(
+				'stats_items',
+				__( 'آمارها', 'zarincoach' ),
+				array(
+					'grid'  => array( 'grid', '.zc-stats-grid', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'item'  => array( 'box', '.zc-stats-item', __( 'قاب هر آمار', 'zarincoach' ), array( 'hover' => true, 'align' => true ) ),
+					'num'   => array( 'text', '.zc-stats-num', __( 'عدد', 'zarincoach' ), array( 'margin' => false ) ),
+					'label' => array( 'text', '.zc-stats-label', __( 'برچسب', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -159,22 +196,22 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 			?>
 			<section class="zc-stats zc-section-tight relative overflow-hidden">
 				<div class="zc-container">
-					<div class="<?php echo esc_attr( $panel_class ); ?>">
+					<div class="zc-stats-panel <?php echo esc_attr( $panel_class ); ?>">
 						<?php if ( $dark ) : ?>
-							<div class="pointer-events-none absolute -top-24 start-1/4 h-72 w-72 rounded-full bg-primary/25 blur-3xl"></div>
-							<div class="pointer-events-none absolute -bottom-24 end-1/4 h-72 w-72 rounded-full bg-info/20 blur-3xl"></div>
+							<div class="zc-stats-blob zc-stats-blob-1 pointer-events-none absolute -top-24 start-1/4 h-72 w-72 rounded-full bg-primary/25 blur-3xl" aria-hidden="true"></div>
+							<div class="zc-stats-blob zc-stats-blob-2 pointer-events-none absolute -bottom-24 end-1/4 h-72 w-72 rounded-full bg-info/20 blur-3xl" aria-hidden="true"></div>
 						<?php endif; ?>
 
 						<div class="relative">
 							<?php if ( '' !== $title ) : ?>
-								<h2 class="max-w-3xl text-[1.5rem] font-bold leading-snug <?php echo esc_attr( $dark ? 'text-white' : 'text-secondary' ); ?> sm:text-[1.9rem]">
+								<h2 class="zc-stats-title max-w-3xl text-[1.5rem] font-bold leading-snug <?php echo esc_attr( $dark ? 'text-white' : 'text-secondary' ); ?> sm:text-[1.9rem]">
 									<?php echo esc_html( $title ); ?>
 								</h2>
-								<div class="<?php echo esc_attr( $dark ? 'my-9 h-px w-full bg-white/15' : 'zc-rule my-9' ); ?>"></div>
+								<div class="zc-stats-rule <?php echo esc_attr( $dark ? 'my-9 h-px w-full bg-white/15' : 'zc-rule my-9' ); ?>"></div>
 							<?php endif; ?>
 
 							<?php if ( ! empty( $items ) ) : ?>
-								<dl class="grid gap-8 sm:gap-10 <?php echo esc_attr( $grid ); ?>">
+								<dl class="zc-stats-grid grid gap-8 sm:gap-10 <?php echo esc_attr( $grid ); ?>">
 									<?php
 									$delay = 0;
 									foreach ( $items as $item ) :
@@ -183,15 +220,15 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 										$suffix = isset( $item['stat_suffix'] ) ? (string) $item['stat_suffix'] : '';
 										$label  = isset( $item['stat_label'] ) ? (string) $item['stat_label'] : '';
 										?>
-										<div class="zc-reveal" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
-											<dt class="text-[2.4rem] font-bold leading-none <?php echo esc_attr( $num_class ); ?> sm:text-[3rem]">
+										<div class="zc-stats-item zc-reveal" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
+											<dt class="zc-stats-num text-[2.4rem] font-bold leading-none <?php echo esc_attr( $num_class ); ?> sm:text-[3rem]">
 												<span
 													data-zc-count="<?php echo esc_attr( preg_replace( '/[^\d.]/', '', $value ) ); ?>"
 													data-zc-suffix="<?php echo esc_attr( $suffix ); ?>"
 													data-zc-persian="<?php echo esc_attr( $persian ? '1' : '0' ); ?>"
 												><?php echo esc_html( ( $persian ? zc_digits_to_persian( preg_replace( '/[^\d.]/', '', $value ) ) : preg_replace( '/[^\d.]/', '', $value ) ) . $suffix ); ?></span>
 											</dt>
-											<dd class="mt-3 text-[0.85rem] leading-relaxed <?php echo esc_attr( $dark ? 'text-white/70' : 'text-muted' ); ?>">
+											<dd class="zc-stats-label mt-3 text-[0.85rem] leading-relaxed <?php echo esc_attr( $dark ? 'text-white/70' : 'text-muted' ); ?>">
 												<?php echo esc_html( $label ); ?>
 											</dd>
 										</div>

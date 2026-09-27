@@ -153,6 +153,39 @@ if ( ! class_exists( 'ZC_Widget_Marquee' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'sep'  => array( __( 'جداکننده‌ی بین کلمات', 'zarincoach' ), '.zc-marquee-item::after' ),
+				)
+			);
+			$this->zc_style(
+				'mq_bar',
+				__( 'نوار', 'zarincoach' ),
+				array(
+					'bar'   => array( 'box', '.zc-marquee-wrap', __( 'قاب نوار', 'zarincoach' ), array( 'gradient' => true ) ),
+					'speed' => array( 'size', '.zc-marquee-track', __( 'مدت یک دور حرکت (ثانیه)', 'zarincoach' ), array( 'units' => array( 's' ), 'max' => 200, 'css' => 'animation-duration: {{SIZE}}s;' ) ),
+					'dir'   => array( 'select', '.zc-marquee-track', __( 'جهت حرکت', 'zarincoach' ), array( 'options' => array( 'normal' => __( 'عادی', 'zarincoach' ), 'reverse' => __( 'معکوس', 'zarincoach' ) ), 'css' => 'animation-direction: {{VALUE}};' ) ),
+					'hover' => array( 'select', '.zc-marquee:hover .zc-marquee-track', __( 'هنگام هاور', 'zarincoach' ), array( 'options' => array( 'paused' => __( 'توقف', 'zarincoach' ), 'running' => __( 'ادامه‌ی حرکت', 'zarincoach' ) ), 'css' => 'animation-play-state: {{VALUE}};' ) ),
+					'fade'  => array( 'select', '.zc-marquee', __( 'محو شدن لبه‌ها', 'zarincoach' ), array( 'options' => array( 'none' => __( 'خاموش', 'zarincoach' ) ), 'css' => '-webkit-mask-image: {{VALUE}}; mask-image: {{VALUE}};' ) ),
+					'gap'   => array( 'size', '.zc-marquee-track, .zc-marquee-item', __( 'فاصله‌ی کلمات', 'zarincoach' ), array( 'max' => 160, 'css' => 'gap: {{SIZE}}{{UNIT}};' ) ),
+				)
+			);
+			$this->zc_style(
+				'mq_words',
+				__( 'کلمات و جداکننده', 'zarincoach' ),
+				array(
+					'word' => array( 'text', '.zc-marquee-item', __( 'کلمات', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+					'sep'  => array( 'text', '.zc-marquee-item::after', __( 'جداکننده', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

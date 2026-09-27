@@ -206,6 +206,33 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 				)
 			);
 
+			$this->add_control(
+				'link_icon',
+				array(
+					'label'       => __( 'آیکن لینک کارت', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = فلش پیش‌فرض قالب.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'excerpt_words',
+				array(
+					'label'   => __( 'تعداد واژه‌های توضیح', 'zarincoach' ),
+					'type'    => \Elementor\Controls_Manager::NUMBER,
+					'default' => 22,
+					'min'     => 5,
+					'max'     => 120,
+					'description' => __( 'توضیح هر کارت تا این تعداد واژه کوتاه می‌شود.', 'zarincoach' ),
+				)
+			);
+
 			$this->end_controls_section();
 
 			$this->start_controls_section(
@@ -267,6 +294,67 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'ribbon'   => array( __( 'روبان (برچسب گوشه)', 'zarincoach' ), '.zc-service-ribbon' ),
+					'icon'     => array( __( 'آیکن', 'zarincoach' ), '.zc-service-icon' ),
+					'desc'     => array( __( 'توضیح', 'zarincoach' ), '.zc-service-desc' ),
+					'rule'     => array( __( 'خط جداکننده', 'zarincoach' ), '.zc-service-rule' ),
+					'duration' => array( __( 'مدت جلسه', 'zarincoach' ), '.zc-service-duration' ),
+					'price'    => array( __( 'قیمت', 'zarincoach' ), '.zc-service-price' ),
+					'link'     => array( __( 'لینک جزئیات', 'zarincoach' ), '.zc-service-link' ),
+				)
+			);
+
+			$this->zc_style(
+				'svc_grid',
+				__( 'شبکه‌ی کارت‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-services-grid', '', array( 'cols' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'svc_card',
+				__( 'کارت', 'zarincoach' ),
+				array(
+					'card'   => array( 'box', '.zc-service-card', '', array( 'hover' => true, 'align' => true, 'minh' => true ) ),
+					'ribbon' => array( 'box', '.zc-service-ribbon', __( 'روبان', 'zarincoach' ), array( 'text' => true, 'gradient' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'svc_icon',
+				__( 'آیکن', 'zarincoach' ),
+				array(
+					'icon' => array( 'icon', '.zc-service-icon', '', array( 'hover' => '.zc-service-card' ) ),
+				)
+			);
+			$this->zc_style(
+				'svc_text',
+				__( 'عنوان و توضیح', 'zarincoach' ),
+				array(
+					'title' => array( 'text', '.zc-service-title, .zc-service-title a', __( 'عنوان', 'zarincoach' ), array( 'hover' => true ) ),
+					'desc'  => array( 'text', '.zc-service-desc', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'svc_foot',
+				__( 'پایین کارت (مدت، قیمت، لینک)', 'zarincoach' ),
+				array(
+					'rule'  => array( 'color', '.zc-service-rule', __( 'رنگ خط جداکننده', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'meta'  => array( 'text', '.zc-service-duration', __( 'مدت', 'zarincoach' ), array( 'margin' => false ) ),
+					'micon' => array( 'color', '.zc-service-duration svg', __( 'رنگ آیکن مدت', 'zarincoach' ) ),
+					'price' => array( 'text', '.zc-service-price', __( 'قیمت', 'zarincoach' ), array( 'margin' => false ) ),
+					'link'  => array( 'text', '.zc-service-link', __( 'لینک', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -283,6 +371,8 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 			$bg        = isset( $settings['bg_style'] ) ? (string) $settings['bg_style'] : 'soft';
 			$btn_text  = isset( $settings['button_text'] ) ? (string) $settings['button_text'] : '';
 			$source    = isset( $settings['source'] ) ? (string) $settings['source'] : 'cpt';
+			$words     = isset( $settings['excerpt_words'] ) && '' !== $settings['excerpt_words'] ? (int) $settings['excerpt_words'] : 22;
+			$link_icon = isset( $settings['link_icon'] ) ? $settings['link_icon'] : array();
 
 			$section_class = 'soft' === $bg ? 'zc-section relative bg-surface2/50' : 'zc-section relative';
 			?>
@@ -290,7 +380,7 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 				<div class="zc-container">
 					<?php $this->render_heading( '', 'h2' ); ?>
 
-					<div class="zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
+					<div class="zc-services-grid zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 						<?php
 						$delay = 0;
 
@@ -314,6 +404,8 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 											'show_meta' => $show_meta,
 											'button'    => $btn_text,
 											'delay'     => $delay,
+											'words'     => $words,
+											'icon'      => $link_icon,
 										)
 									);
 									$delay += 80;
@@ -364,6 +456,8 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 											'show_meta' => $show_meta,
 											'button'    => $btn_text,
 											'delay'     => $delay,
+											'words'     => $words,
+											'icon'      => $link_icon,
 										)
 									);
 
@@ -389,16 +483,16 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 		protected function render_card( $item, $config ) {
 			$notch_class = ! empty( $config['notch'] ) ? 'zc-notch' : '';
 			?>
-			<article class="zc-card <?php echo esc_attr( $notch_class ); ?> zc-card-hover zc-reveal flex flex-col group" data-zc-delay="<?php echo esc_attr( (string) (int) $config['delay'] ); ?>">
+			<article class="zc-service-card zc-card <?php echo esc_attr( $notch_class ); ?> zc-card-hover zc-reveal flex flex-col group" data-zc-delay="<?php echo esc_attr( (string) (int) $config['delay'] ); ?>">
 				<?php if ( '' !== $item['badge'] ) : ?>
-					<span class="zc-ribbon !end-0 !top-0 rounded-ss-none rounded-ee-none"><?php echo esc_html( $item['badge'] ); ?></span>
+					<span class="zc-service-ribbon zc-ribbon !end-0 !top-0 rounded-ss-none rounded-ee-none"><?php echo esc_html( $item['badge'] ); ?></span>
 				<?php endif; ?>
 
-				<span class="mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
+				<span class="zc-service-icon mb-5 grid h-14 w-14 place-items-center rounded-2xl bg-primary/10 text-primary transition-transform duration-500 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
 					<?php zc_icon( '' !== $item['icon'] ? $item['icon'] : 'sparkles', 'h-7 w-7' ); ?>
 				</span>
 
-				<h3 class="text-[1.15rem] font-bold leading-snug text-secondary">
+				<h3 class="zc-service-title text-[1.15rem] font-bold leading-snug text-secondary">
 					<?php if ( '' !== $item['url'] ) : ?>
 						<a class="transition-colors hover:text-primary" href="<?php echo esc_url( $item['url'] ); ?>"><?php echo esc_html( $item['title'] ); ?></a>
 					<?php else : ?>
@@ -406,29 +500,29 @@ if ( ! class_exists( 'ZC_Widget_Services' ) ) :
 					<?php endif; ?>
 				</h3>
 
-				<p class="zc-lead mt-3 !text-[0.92rem]"><?php echo esc_html( zc_excerpt( $item['desc'], 22 ) ); ?></p>
+				<p class="zc-service-desc zc-lead mt-3 text-[0.92rem]"><?php echo esc_html( zc_excerpt( $item['desc'], max( 5, (int) $config['words'] ) ) ); ?></p>
 
-				<div class="mt-auto pt-6">
-					<div class="zc-rule mb-4"></div>
-					<div class="flex items-center justify-between gap-3">
+				<div class="zc-service-foot mt-auto pt-6">
+					<div class="zc-service-rule zc-rule mb-4"></div>
+					<div class="zc-service-foot-row flex items-center justify-between gap-3">
 						<?php if ( ! empty( $config['show_meta'] ) && ( '' !== $item['price'] || '' !== $item['duration'] ) ) : ?>
-							<div class="text-[0.82rem] text-muted">
+							<div class="zc-service-meta text-[0.82rem] text-muted">
 								<?php if ( '' !== $item['duration'] ) : ?>
-									<span class="inline-flex items-center gap-1.5">
+									<span class="zc-service-duration inline-flex items-center gap-1.5">
 										<?php zc_icon( 'clock', 'h-4 w-4 text-primary' ); ?>
 										<?php echo esc_html( $item['duration'] ); ?>
 									</span>
 								<?php endif; ?>
 								<?php if ( '' !== $item['price'] ) : ?>
-									<span class="ms-3 font-bold text-secondary"><?php echo esc_html( $item['price'] ); ?></span>
+									<span class="zc-service-price ms-3 font-bold text-secondary"><?php echo esc_html( $item['price'] ); ?></span>
 								<?php endif; ?>
 							</div>
 						<?php endif; ?>
 
 						<?php if ( '' !== $item['url'] && '' !== $config['button'] ) : ?>
-							<a class="inline-flex items-center gap-1.5 text-[0.85rem] font-bold text-primary transition-all hover:gap-2.5" href="<?php echo esc_url( $item['url'] ); ?>">
+							<a class="zc-service-link inline-flex items-center gap-1.5 text-[0.85rem] font-bold text-primary transition-all hover:gap-2.5" href="<?php echo esc_url( $item['url'] ); ?>">
 								<?php echo esc_html( $config['button'] ); ?>
-								<?php zc_icon( 'arrow-left', 'h-4 w-4' ); ?>
+								<?php $this->zc_render_icon_or( $config['icon'], 'arrow-left', 'h-4 w-4' ); ?>
 							</a>
 						<?php endif; ?>
 					</div>

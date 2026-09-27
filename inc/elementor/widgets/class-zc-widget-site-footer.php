@@ -305,6 +305,57 @@ if ( ! class_exists( 'ZC_Widget_Site_Footer' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'about'   => array( __( 'متن معرفی', 'zarincoach' ), '.zc-footer-brand p' ),
+					'socials' => array( __( 'شبکه‌های اجتماعی', 'zarincoach' ), '.zc-footer-socials' ),
+					'ctitle'  => array( __( 'عنوان ستون تماس', 'zarincoach' ), '.zc-footer-contact .zc-footer-title' ),
+					'menu'    => array( __( 'منوی پاورقی', 'zarincoach' ), '.zc-footer-menu' ),
+					'legal'   => array( __( 'منوی قوانین', 'zarincoach' ), '.zc-footer-legal' ),
+					'trust'   => array( __( 'نمادهای اعتماد', 'zarincoach' ), '.zc-footer-trust' ),
+					'copy'    => array( __( 'متن کپی‌رایت', 'zarincoach' ), '.zc-footer-copy' ),
+				)
+			);
+			$this->zc_style(
+				'ft_bar',
+				__( 'پاورقی: قاب کلی', 'zarincoach' ),
+				array(
+					'bar'   => array( 'box', '.zc-footer', __( 'زمینه‌ی پاورقی', 'zarincoach' ), array( 'gradient' => true, 'text' => true ) ),
+					'glow1' => array( 'color', '.zc-footer > .pointer-events-none:first-of-type', __( 'رنگ نور اول', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'glow2' => array( 'color', '.zc-footer > .pointer-events-none:last-of-type', __( 'رنگ نور دوم', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'grid'  => array( 'split', '.zc-footer-grid', __( 'ستون‌ها', 'zarincoach' ), array( 'children' => '.zc-footer-brand, .zc-footer-cols, .zc-footer-contact', 'valign' => true ) ),
+					'rule'  => array( 'color', '.zc-footer .zc-rule', __( 'رنگ خط جداکننده', 'zarincoach' ), array( 'prop' => 'background' ) ),
+				)
+			);
+			$this->zc_style(
+				'ft_text',
+				__( 'متن‌ها', 'zarincoach' ),
+				array(
+					'about' => array( 'text', '.zc-footer-brand p', __( 'متن معرفی', 'zarincoach' ), array( 'align' => true ) ),
+					'link'  => array( 'text', '.zc-footer-widgets a, .zc-footer-contact-list a', __( 'پیوندها', 'zarincoach' ), array( 'hover' => true ) ),
+					'li'    => array( 'text', '.zc-footer-contact-list, .zc-footer-widgets ul', __( 'متن ستون‌ها', 'zarincoach' ) ),
+					'title' => array( 'text', '.zc-footer-title', __( 'عنوان ستون‌ها', 'zarincoach' ), array( 'margin' => false ) ),
+					'licon' => array( 'color', '.zc-footer-contact-list svg, .zc-footer-contact-list i', __( 'رنگ آیکن‌های تماس', 'zarincoach' ), array( 'prop' => 'color' ) ),
+					'copy'  => array( 'text', '.zc-footer-bottom', __( 'نوار پایین', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'ft_extra',
+				__( 'شبکه‌های اجتماعی، منوها و نمادها', 'zarincoach' ),
+				array(
+					'soc'   => array( 'icon', '.zc-footer-socials .zc-social', __( 'دکمه‌های اجتماعی', 'zarincoach' ), array( 'hover' => '.zc-footer-socials .zc-social' ) ),
+					'menu'  => array( 'text', '.zc-footer-menu a, .zc-footer-nav a', __( 'آیتم‌های منو', 'zarincoach' ), array( 'hover' => true ) ),
+					'seal'  => array( 'box', '.zc-footer-trust .zc-trust-seal, .zc-footer-license', __( 'نمادها و مجوز', 'zarincoach' ), array( 'gradient' => false ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

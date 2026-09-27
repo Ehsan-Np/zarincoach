@@ -15,6 +15,13 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 	class ZC_Widget_Testimonials extends ZC_Widget_Base {
 
 		/**
+		 * آیکن نقل‌قول انتخابی (برای render_card).
+		 *
+		 * @var mixed
+		 */
+		protected $zc_quote_icon = array();
+
+		/**
 		 * نام ویجت.
 		 *
 		 * @return string
@@ -79,6 +86,18 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 					'max'       => 24,
 					'default'   => 6,
 					'condition' => array( 'source' => 'cpt' ),
+				)
+			);
+
+			$this->add_control(
+				'excerpt_words',
+				array(
+					'label'   => __( 'تعداد واژه‌های متن نظر', 'zarincoach' ),
+					'type'    => \Elementor\Controls_Manager::NUMBER,
+					'default' => 45,
+					'min'     => 10,
+					'max'     => 300,
+					'description' => __( 'متن نظرهای ثبت‌شده در بخش «نظرات مراجعان» تا این تعداد واژه کوتاه می‌شود.', 'zarincoach' ),
 				)
 			);
 
@@ -158,6 +177,21 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 					'type'         => \Elementor\Controls_Manager::SWITCHER,
 					'return_value' => 'yes',
 					'default'      => 'yes',
+				)
+			);
+
+			$this->add_control(
+				'quote_icon',
+				array(
+					'label'       => __( 'آیکن نقل‌قول', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = آیکن پیش‌فرض قالب.', 'zarincoach' ),
 				)
 			);
 
@@ -252,6 +286,38 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 			);
 
 			$this->add_control(
+				'prev_icon',
+				array(
+					'label'       => __( 'آیکن دکمه‌ی قبلی', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = فلش پیش‌فرض.', 'zarincoach' ),
+					'condition'   => array( 'arrows' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'next_icon',
+				array(
+					'label'       => __( 'آیکن دکمه‌ی بعدی', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = فلش پیش‌فرض.', 'zarincoach' ),
+					'condition'   => array( 'arrows' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
 				'dots',
 				array(
 					'label'        => __( 'صفحه‌بندی (نقطه‌ها)', 'zarincoach' ),
@@ -310,30 +376,95 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 		protected function render_card( $item, $show_rating, $reveal = true, $delay = 0 ) {
 			?>
 			<figure class="zc-card zc-card-hover zc-testimonial-card flex h-full flex-col p-6<?php echo $reveal ? ' zc-reveal' : ''; ?>"<?php echo $reveal ? ' data-zc-delay="' . esc_attr( (string) $delay ) . '"' : ''; ?>>
-				<div class="mb-4 flex items-center justify-between">
+				<div class="zc-t-top mb-4 flex items-center justify-between">
 					<?php if ( $show_rating ) : ?>
 						<?php zc_stars( $item['rating'] > 0 ? $item['rating'] : 5 ); ?>
 					<?php endif; ?>
-					<span class="text-primary/40"><?php zc_icon( 'quote', 'h-6 w-6' ); ?></span>
+					<span class="zc-t-quote-icon text-primary/40"><?php $this->zc_render_icon_or( isset( $this->zc_quote_icon ) ? $this->zc_quote_icon : array(), 'quote', 'h-6 w-6' ); ?></span>
 				</div>
 
-				<blockquote class="zc-quote flex-1">
-					<p class="m-0"><?php echo esc_html( $item['text'] ); ?></p>
+				<blockquote class="zc-t-quote zc-quote flex-1">
+					<p class="zc-t-text m-0"><?php echo esc_html( $item['text'] ); ?></p>
 				</blockquote>
 
-				<figcaption class="mt-6 flex items-center gap-3 border-t border-line pt-5">
-					<span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary">
+				<figcaption class="zc-t-caption mt-6 flex items-center gap-3 border-t border-line pt-5">
+					<span class="zc-t-avatar grid h-11 w-11 shrink-0 place-items-center rounded-full bg-primary/10 text-sm font-bold text-primary">
 						<?php echo esc_html( mb_substr( $item['name'], 0, 1 ) ); ?>
 					</span>
 					<span>
-						<span class="block text-[0.92rem] font-bold text-secondary"><?php echo esc_html( $item['name'] ); ?></span>
+						<span class="zc-t-name block text-[0.92rem] font-bold text-secondary"><?php echo esc_html( $item['name'] ); ?></span>
 						<?php if ( '' !== $item['role'] ) : ?>
-							<span class="block text-[0.78rem] text-muted"><?php echo esc_html( $item['role'] ); ?></span>
+							<span class="zc-t-role block text-[0.78rem] text-muted"><?php echo esc_html( $item['role'] ); ?></span>
 						<?php endif; ?>
 					</span>
 				</figcaption>
 			</figure>
 			<?php
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'stars'  => array( __( 'ستاره‌ها', 'zarincoach' ), '.zc-stars' ),
+					'quote'  => array( __( 'آیکن نقل‌قول', 'zarincoach' ), '.zc-t-quote-icon' ),
+					'avatar' => array( __( 'حرف اول نام (آواتار)', 'zarincoach' ), '.zc-t-avatar' ),
+					'role'   => array( __( 'عنوان/نقش مراجع', 'zarincoach' ), '.zc-t-role' ),
+					'source' => array( __( 'یادداشت منبع نظرات', 'zarincoach' ), '.zc-testimonials-source' ),
+				)
+			);
+			$this->zc_style(
+				'tst_grid',
+				__( 'شبکه‌ی کارت‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-testimonials-grid', '', array( 'cols' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'tst_card',
+				__( 'کارت نظر', 'zarincoach' ),
+				array(
+					'card'  => array( 'box', '.zc-testimonial-card', __( 'کارت', 'zarincoach' ), array( 'hover' => true, 'minh' => true ) ),
+					'stars' => array( 'color', '.zc-stars', __( 'رنگ ستاره‌های پر', 'zarincoach' ) ),
+					'empty' => array( 'color', '.zc-stars svg.text-line', __( 'رنگ ستاره‌های خالی', 'zarincoach' ) ),
+					'ssize' => array( 'size', '.zc-stars svg', __( 'اندازه‌ی ستاره', 'zarincoach' ), array( 'max' => 48, 'css' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};' ) ),
+					'quote' => array( 'icon', '.zc-t-quote-icon', __( 'آیکن نقل‌قول', 'zarincoach' ), array( 'box' => false ) ),
+					'text'  => array( 'text', '.zc-t-text', __( 'متن نظر', 'zarincoach' ), array( 'align' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'tst_person',
+				__( 'نام و آواتار', 'zarincoach' ),
+				array(
+					'caption' => array( 'box', '.zc-t-caption', __( 'نوار پایین کارت', 'zarincoach' ), array( 'gradient' => false ) ),
+					'avatar'  => array( 'icon', '.zc-t-avatar', __( 'آواتار', 'zarincoach' ) ),
+					'name'    => array( 'text', '.zc-t-name', __( 'نام', 'zarincoach' ), array( 'margin' => false ) ),
+					'role'    => array( 'text', '.zc-t-role', __( 'نقش', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'tst_slider',
+				__( 'دکمه‌ها و نقطه‌های اسلایدر', 'zarincoach' ),
+				array(
+					'arrow' => array( 'button', '.zc-slider-arrow', __( 'دکمه‌های قبلی/بعدی', 'zarincoach' ) ),
+					'dot'   => array( 'color', '.zc-slider-dot::before', __( 'رنگ نقطه', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'doton' => array( 'color', '.zc-slider-dot.is-active::before', __( 'رنگ نقطه‌ی فعال', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'nav'   => array( 'size', '.zc-slider-nav', __( 'فاصله از کارت‌ها', 'zarincoach' ), array( 'prop' => 'margin-top', 'max' => 100 ) ),
+				),
+				array( 'condition' => array( 'style' => 'slider' ) )
+			);
+			$this->zc_style(
+				'tst_source',
+				__( 'یادداشت منبع نظرات', 'zarincoach' ),
+				array(
+					'text' => array( 'text', '.zc-testimonials-source', '', array( 'align' => true ) ),
+					'link' => array( 'text', '.zc-testimonials-source a', __( 'لینک', 'zarincoach' ), array( 'hover' => true, 'margin' => false, 'heading' => true ) ),
+				)
+			);
 		}
 
 		/**
@@ -348,6 +479,7 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 			$style       = isset( $settings['style'] ) ? (string) $settings['style'] : 'grid';
 			$columns     = isset( $settings['columns'] ) ? (string) $settings['columns'] : '3';
 			$show_rating = ! isset( $settings['show_rating'] ) || 'yes' === (string) $settings['show_rating'];
+			$this->zc_quote_icon = isset( $settings['quote_icon'] ) ? $settings['quote_icon'] : array();
 
 			$items = array();
 
@@ -360,7 +492,7 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 					$items[] = array(
 						'name'   => get_the_title( $item_id ),
 						'role'   => (string) get_post_meta( $item_id, '_zc_testimonial_role', true ),
-						'text'   => zc_excerpt( get_the_content( null, false, $item_id ), 45 ),
+						'text'   => zc_excerpt( get_the_content( null, false, $item_id ), isset( $settings['excerpt_words'] ) && '' !== $settings['excerpt_words'] ? max( 10, (int) $settings['excerpt_words'] ) : 45 ),
 						'rating' => (int) get_post_meta( $item_id, '_zc_testimonial_rating', true ),
 					);
 				}
@@ -429,7 +561,7 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 								<div class="zc-slider-nav">
 									<?php if ( $arrows ) : ?>
 										<button type="button" class="zc-slider-arrow" data-zc-slider-prev aria-controls="<?php echo esc_attr( $uid ); ?>" aria-label="<?php esc_attr_e( 'نظر قبلی', 'zarincoach' ); ?>">
-											<?php zc_icon( is_rtl() ? 'chevron-right' : 'chevron-left', 'h-5 w-5' ); ?>
+											<?php $this->zc_render_icon_or( isset( $settings['prev_icon'] ) ? $settings['prev_icon'] : array(), is_rtl() ? 'chevron-right' : 'chevron-left' ); ?>
 										</button>
 									<?php endif; ?>
 
@@ -439,7 +571,7 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 
 									<?php if ( $arrows ) : ?>
 										<button type="button" class="zc-slider-arrow" data-zc-slider-next aria-controls="<?php echo esc_attr( $uid ); ?>" aria-label="<?php esc_attr_e( 'نظر بعدی', 'zarincoach' ); ?>">
-											<?php zc_icon( is_rtl() ? 'chevron-left' : 'chevron-right', 'h-5 w-5' ); ?>
+											<?php $this->zc_render_icon_or( isset( $settings['next_icon'] ) ? $settings['next_icon'] : array(), is_rtl() ? 'chevron-left' : 'chevron-right' ); ?>
 										</button>
 									<?php endif; ?>
 								</div>
@@ -449,7 +581,7 @@ if ( ! class_exists( 'ZC_Widget_Testimonials' ) ) :
 						</div>
 					<?php else : ?>
 
-						<div class="zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
+						<div class="zc-testimonials-grid zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 							<?php
 							foreach ( $items as $item ) {
 								$this->render_card( $item, $show_rating, true, $delay );

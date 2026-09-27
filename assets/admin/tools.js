@@ -140,3 +140,65 @@
 		}
 	});
 })();
+
+/* مدیریت ویجت‌ها: جستجو، فیلتر، عملیات گروهی (۲.۲) */
+(function () {
+	'use strict';
+	var form = document.getElementById('zc-widgets-form');
+	if (!form) { return; }
+
+	var items = Array.prototype.slice.call(form.querySelectorAll('[data-zc-wm-item]'));
+	var search = form.querySelector('[data-zc-wm-search]');
+	var empty = form.querySelector('[data-zc-wm-empty]');
+	var onEl = document.querySelector('[data-zc-wm-on]');
+	var offEl = document.querySelector('[data-zc-wm-off]');
+	var filter = 'all';
+	var fa = function (n) { return String(n).replace(/\d/g, function (d) { return '۰۱۲۳۴۵۶۷۸۹'[d]; }); };
+	var norm = function (s) { return (s || '').toLowerCase().replace(/[يى]/g, 'ی').replace(/ك/g, 'ک').replace(/\u200c/g, ' ').trim(); };
+
+	var tally = function () {
+		var on = items.filter(function (el) { return el.querySelector('input').checked; }).length;
+		if (onEl) { onEl.textContent = fa(on); }
+		if (offEl) { offEl.textContent = fa(items.length - on); }
+	};
+
+	var apply = function () {
+		var q = norm(search ? search.value : '');
+		var shown = 0;
+		items.forEach(function (el) {
+			var checked = el.querySelector('input').checked;
+			var used = parseInt(el.getAttribute('data-used') || '0', 10) > 0;
+			var ok = (!q || norm(el.getAttribute('data-search')).indexOf(q) !== -1) &&
+				(filter === 'all' || (filter === 'on' && checked) || (filter === 'off' && !checked) || (filter === 'unused' && !used));
+			el.hidden = !ok;
+			if (ok) { shown++; }
+		});
+		Array.prototype.forEach.call(form.querySelectorAll('[data-zc-wm-group]'), function (g) {
+			g.hidden = !g.querySelector('[data-zc-wm-item]:not([hidden])');
+		});
+		if (empty) { empty.hidden = shown > 0; }
+	};
+
+	if (search) { search.addEventListener('input', apply); }
+	form.addEventListener('change', function () { tally(); if (filter !== 'all') { apply(); } });
+	form.addEventListener('click', function (e) {
+		var chip = e.target.closest('[data-zc-wm-filter]');
+		if (chip) {
+			filter = chip.getAttribute('data-zc-wm-filter');
+			Array.prototype.forEach.call(form.querySelectorAll('[data-zc-wm-filter]'), function (c) { c.classList.toggle('is-active', c === chip); });
+			apply();
+			return;
+		}
+		var bulk = e.target.closest('[data-zc-wm-bulk]');
+		if (bulk) {
+			var mode = bulk.getAttribute('data-zc-wm-bulk');
+			items.forEach(function (el) {
+				var input = el.querySelector('input');
+				if (mode === 'on') { input.checked = true; }
+				if (mode === 'unused' && parseInt(el.getAttribute('data-used') || '0', 10) === 0) { input.checked = false; }
+			});
+			tally();
+			apply();
+		}
+	});
+})();

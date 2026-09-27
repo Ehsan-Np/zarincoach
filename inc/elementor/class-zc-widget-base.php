@@ -7,12 +7,16 @@
 
 defined( 'ABSPATH' ) || exit;
 
+require_once __DIR__ . '/trait-zc-style-kit.php';
+
 if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 
 	/**
 	 * کلاس پایه ویجت‌ها.
 	 */
 	abstract class ZC_Widget_Base extends \Elementor\Widget_Base {
+
+		use ZC_Style_Kit;
 
 		/**
 		 * ویجت غیرفعال‌شده در پنل «ویجت‌های فعال» فقط از فهرست ویرایشگر پنهان می‌شود؛
@@ -96,6 +100,9 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 			);
 
 			$this->end_controls_section();
+
+			// v2.2: بخش‌های مشترک استایل (سربرگ، دکمه، چیدمان بخش، پالت اختصاصی) برای همه‌ی ویجت‌ها.
+			$this->zc_auto_sections();
 		}
 
 		/**
@@ -250,6 +257,27 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 					'toggle'  => false,
 				)
 			);
+
+			$this->add_control(
+				$prefix . 'title_tag',
+				array(
+					'label'       => __( 'تگ HTML عنوان', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::SELECT,
+					'options'     => array(
+						''    => __( 'خودکار (پیشنهادی)', 'zarincoach' ),
+						'h1'  => 'H1',
+						'h2'  => 'H2',
+						'h3'  => 'H3',
+						'h4'  => 'H4',
+						'h5'  => 'H5',
+						'h6'  => 'H6',
+						'div' => 'div',
+						'p'   => 'p',
+					),
+					'default'     => '',
+					'description' => __( 'برای سئو: در هر صفحه فقط یک H1 داشته باشید.', 'zarincoach' ),
+				)
+			);
 		}
 
 		/**
@@ -278,7 +306,11 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 			);
 			$align_class = isset( $align_class[ $align ] ) ? $align_class[ $align ] : $align_class['center'];
 
-			$tag = in_array( $tag, array( 'h1', 'h2', 'h3', 'h4', 'div' ), true ) ? $tag : 'h2';
+			$custom_tag = isset( $settings[ $prefix . 'title_tag' ] ) ? (string) $settings[ $prefix . 'title_tag' ] : '';
+			if ( '' !== $custom_tag ) {
+				$tag = $custom_tag;
+			}
+			$tag = in_array( $tag, array( 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'div', 'p' ), true ) ? $tag : 'h2';
 			?>
 			<header class="zc-section-head zc-reveal flex max-w-3xl flex-col gap-3 <?php echo esc_attr( $align_class ); ?>">
 				<?php if ( '' !== $eyebrow ) : ?>
@@ -290,7 +322,7 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 				<?php endif; ?>
 
 				<?php if ( '' !== $subtitle ) : ?>
-					<p class="zc-lead mt-1 !text-[1rem]"><?php echo esc_html( $subtitle ); ?></p>
+					<p class="zc-lead mt-1 text-[1rem]"><?php echo esc_html( $subtitle ); ?></p>
 				<?php endif; ?>
 			</header>
 			<?php
@@ -346,6 +378,108 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 					'default' => 'primary',
 				)
 			);
+
+			$this->add_control(
+				$prefix . 'button_icon',
+				array(
+					'label'       => __( 'آیکن دکمه', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = فلش پیش‌فرض قالب.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				$prefix . 'button_icon_hide',
+				array(
+					'label'        => __( 'بدون آیکن', 'zarincoach' ),
+					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'return_value' => 'yes',
+					'default'      => '',
+				)
+			);
+		}
+
+		/**
+		 * خروجی آیکن دکمه (آیکن انتخابی المنتور، فلش پیش‌فرض یا هیچ).
+		 *
+		 * @param array<string, mixed> $settings تنظیمات.
+		 * @param string               $prefix   پیشوند.
+		 * @param string               $fallback نام آیکن داخلی پیش‌فرض.
+		 * @return void
+		 */
+		protected function render_button_icon( $settings, $prefix = '', $fallback = 'arrow-left' ) {
+			if ( isset( $settings[ $prefix . 'button_icon_hide' ] ) && 'yes' === $settings[ $prefix . 'button_icon_hide' ] ) {
+				return;
+			}
+			$icon = isset( $settings[ $prefix . 'button_icon' ] ) ? $settings[ $prefix . 'button_icon' ] : array();
+			if ( is_array( $icon ) && ! empty( $icon['value'] ) ) {
+				echo '<span class="zc-btn-icon" aria-hidden="true">';
+				\Elementor\Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) );
+				echo '</span>';
+				return;
+			}
+			if ( '' !== $fallback ) {
+				zc_icon( $fallback, 'h-4 w-4 zc-btn-arrow' );
+			}
+		}
+
+		/**
+		 * برچسب/متن قابل ویرایش با مقدار پیش‌فرض (خالی = پیش‌فرض).
+		 *
+		 * @param array<string, mixed> $settings تنظیمات.
+		 * @param string               $key      شناسه‌ی کنترل.
+		 * @param string               $fallback متن پیش‌فرض.
+		 * @return string
+		 */
+		protected function zc_label( $settings, $key, $fallback ) {
+			$value = isset( $settings[ $key ] ) ? trim( (string) $settings[ $key ] ) : '';
+			return '' !== $value ? $value : (string) $fallback;
+		}
+
+		/**
+		 * اعمال آیکن انتخابی/پنهان‌سازی آیکن روی آرگومان‌های zc_button().
+		 *
+		 * @param array<string, mixed> $args     آرگومان‌های zc_button.
+		 * @param array<string, mixed> $settings تنظیمات.
+		 * @param string               $prefix   پیشوند کنترل‌ها.
+		 * @return array<string, mixed>
+		 */
+		protected function zc_button_icon_args( array $args, $settings, $prefix = '' ) {
+			if ( isset( $settings[ $prefix . 'button_icon_hide' ] ) && 'yes' === $settings[ $prefix . 'button_icon_hide' ] ) {
+				$args['icon'] = '';
+				return $args;
+			}
+			$icon = isset( $settings[ $prefix . 'button_icon' ] ) ? $settings[ $prefix . 'button_icon' ] : array();
+			if ( is_array( $icon ) && ! empty( $icon['value'] ) ) {
+				ob_start();
+				\Elementor\Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) );
+				$args['icon_html'] = '<span class="zc-btn-icon" aria-hidden="true">' . ob_get_clean() . '</span>';
+			}
+			return $args;
+		}
+
+		/**
+		 * آیکن دلخواه (کنترل ICONS المنتور) یا آیکن داخلی قالب به‌عنوان پیش‌فرض.
+		 *
+		 * @param mixed  $icon     مقدار کنترل ICONS.
+		 * @param string $fallback نام آیکن داخلی.
+		 * @param string $class    کلاس آیکن داخلی.
+		 * @return void
+		 */
+		protected function zc_render_icon_or( $icon, $fallback, $class = 'h-5 w-5' ) {
+			if ( is_array( $icon ) && ! empty( $icon['value'] ) ) {
+				\Elementor\Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) );
+				return;
+			}
+			if ( '' !== $fallback ) {
+				zc_icon( $fallback, $class );
+			}
 		}
 
 		/**
@@ -375,7 +509,7 @@ if ( ! class_exists( 'ZC_Widget_Base' ) ) :
 			?>
 			<a href="<?php echo esc_url( $url ); ?>" class="<?php echo esc_attr( trim( 'zc-btn zc-btn-' . $style . ' ' . $class ) ); ?>"<?php echo $target . $nofollow; // phpcs:ignore ?>>
 				<span><?php echo esc_html( $text ); ?></span>
-				<?php zc_icon( 'arrow-left', 'h-4 w-4 zc-btn-arrow' ); ?>
+				<?php $this->render_button_icon( $settings, $prefix ); ?>
 			</a>
 			<?php
 		}

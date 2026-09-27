@@ -197,7 +197,120 @@ if ( ! class_exists( 'ZC_Widget_Schemas' ) ) :
 					'default' => 'h2',
 				)
 			);
+
+			$this->add_control(
+				'all_label',
+				array(
+					'label'       => __( 'متن دکمه‌ی «همه»', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'همه', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
+				'placeholder',
+				array(
+					'label'       => __( 'متن داخل جستجو', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'جستجو: مثلاً رهاشدگی، Shame یا کمال‌گرایی', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
+				'need_label',
+				array(
+					'label'       => __( 'برچسب نیاز', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'نیاز: %s', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+					'description' => __( '%s جای نیاز هیجانی است.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'more_label',
+				array(
+					'label'       => __( 'متن «شرح کامل» روی کارت', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'شرح کامل', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
+				'empty_text',
+				array(
+					'label'       => __( 'پیام نبود نتیجه', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXTAREA,
+					'default'     => __( 'چیزی با این عبارت پیدا نکردیم. می‌تونید واژه‌ی دیگه‌ای رو امتحان کنید یا فیلتر «همه» رو بزنید.', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
 			$this->end_controls_section();
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'chip_count' => array( __( 'عدد روی دکمه‌های فیلتر', 'zarincoach' ), '.zc-sc-chip-count' ),
+					'sec_icon'   => array( __( 'آیکن دسته‌ها', 'zarincoach' ), '.zc-sc-sec-icon' ),
+					'sec_count'  => array( __( 'تعداد مدخل هر دسته', 'zarincoach' ), '.zc-sc-sec-count' ),
+					'need'       => array( __( 'برچسب نیاز', 'zarincoach' ), '.zc-sc-need' ),
+					'card_group' => array( __( 'نام گروه روی کارت', 'zarincoach' ), '.zc-sc-card-group' ),
+					'card_icon'  => array( __( 'آیکن کارت', 'zarincoach' ), '.zc-sc-card-icon' ),
+					'card_more'  => array( __( '«شرح کامل» روی کارت', 'zarincoach' ), '.zc-sc-card-more' ),
+				)
+			);
+			$this->zc_style(
+				'sc_toolbar',
+				__( 'نوار فیلتر و جستجو', 'zarincoach' ),
+				array(
+					'bar'    => array( 'box', '.zc-sc-toolbar', __( 'نوار', 'zarincoach' ), array( 'gradient' => false ) ),
+					'chip'   => array( 'button', '.zc-sc-chip', __( 'دکمه‌های فیلتر', 'zarincoach' ) ),
+					'active' => array( 'color', '.zc-sc-chip.is-active', __( 'پس‌زمینه‌ی فیلتر فعال', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'actc'   => array( 'color', '.zc-sc-chip.is-active', __( 'رنگ متن فیلتر فعال', 'zarincoach' ) ),
+					'search' => array( 'input', '.zc-sc-search input', __( 'کادر جستجو', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'sc_sec',
+				__( 'سربرگ دسته‌ها و زیردسته‌ها', 'zarincoach' ),
+				array(
+					'sec'    => array( 'box', '.zc-sc-sec', __( 'قاب هر دسته', 'zarincoach' ), array( 'gradient' => false ) ),
+					'icon'   => array( 'icon', '.zc-sc-sec-icon', __( 'آیکن دسته', 'zarincoach' ) ),
+					'title'  => array( 'text', '.zc-sc-sec-title', __( 'عنوان دسته', 'zarincoach' ) ),
+					'count'  => array( 'text', '.zc-sc-sec-count', __( 'تعداد', 'zarincoach' ), array( 'bg' => true, 'margin' => false ) ),
+					'desc'   => array( 'text', '.zc-sc-sec-desc', __( 'توضیح دسته', 'zarincoach' ), array( 'align' => true ) ),
+					'sub'    => array( 'text', '.zc-sc-sub-title', __( 'عنوان زیردسته', 'zarincoach' ) ),
+					'subd'   => array( 'text', '.zc-sc-sub-desc', __( 'توضیح زیردسته', 'zarincoach' ), array( 'align' => true ) ),
+					'need'   => array( 'text', '.zc-sc-need', __( 'برچسب نیاز', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'sc_card',
+				__( 'کارت‌ها', 'zarincoach' ),
+				array(
+					'grid'  => array( 'grid', '.zc-sc-grid', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'card'  => array( 'box', '.zc-sc-card', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'group' => array( 'text', '.zc-sc-card-group', __( 'نام گروه', 'zarincoach' ), array( 'margin' => false ) ),
+					'title' => array( 'text', '.zc-sc-card-title', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-sc-card' ) ),
+					'en'    => array( 'text', '.zc-sc-card-en', __( 'نام انگلیسی', 'zarincoach' ), array( 'margin' => false ) ),
+					'text'  => array( 'text', '.zc-sc-card-text', __( 'خلاصه', 'zarincoach' ), array( 'align' => true ) ),
+					'more'  => array( 'text', '.zc-sc-card-more', __( 'شرح کامل', 'zarincoach' ), array( 'hover' => '.zc-sc-card', 'margin' => false ) ),
+				)
+			);
 		}
 
 		/**
@@ -233,6 +346,11 @@ if ( ! class_exists( 'ZC_Widget_Schemas' ) ) :
 								'show_summary' => $flag( 'show_summary' ),
 								'columns'      => isset( $s['columns'] ) ? (int) $s['columns'] : 3,
 								'heading_tag'  => isset( $s['heading_tag'] ) ? (string) $s['heading_tag'] : 'h2',
+								'all_label'    => isset( $s['all_label'] ) ? (string) $s['all_label'] : '',
+								'placeholder'  => isset( $s['placeholder'] ) ? (string) $s['placeholder'] : '',
+								'need_label'   => isset( $s['need_label'] ) ? (string) $s['need_label'] : '',
+								'more_label'   => isset( $s['more_label'] ) ? (string) $s['more_label'] : '',
+								'empty_text'   => isset( $s['empty_text'] ) ? (string) $s['empty_text'] : '',
 							)
 						);
 						?>

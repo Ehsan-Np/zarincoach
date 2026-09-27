@@ -128,6 +128,21 @@ if ( ! class_exists( 'ZC_Widget_Skills' ) ) :
 				)
 			);
 
+			$this->add_control(
+				'link_icon',
+				array(
+					'label'       => __( 'آیکن پیوند', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = فلش.', 'zarincoach' ),
+				)
+			);
+
 			$this->end_controls_section();
 
 			$this->start_controls_section( 'layout_section', array( 'label' => __( 'چیدمان', 'zarincoach' ) ) );
@@ -161,6 +176,44 @@ if ( ! class_exists( 'ZC_Widget_Skills' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'num'   => array( __( 'شماره', 'zarincoach' ), '.zc-skill-num' ),
+					'icon'  => array( __( 'آیکن', 'zarincoach' ), '.zc-skill-ico' ),
+					'desc'  => array( __( 'توضیح', 'zarincoach' ), '.zc-skill-desc' ),
+					'tags'  => array( __( 'برچسب‌ها', 'zarincoach' ), '.zc-skill-tags' ),
+					'link'  => array( __( 'پیوند', 'zarincoach' ), '.zc-skill-link' ),
+				)
+			);
+			$this->zc_style(
+				'sk_grid',
+				__( 'شبکه و کارت‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-skills-grid', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'card' => array( 'box', '.zc-skill', __( 'کارت', 'zarincoach' ), array( 'hover' => true, 'align' => true ) ),
+					'num'  => array( 'text', '.zc-skill-num', __( 'شماره', 'zarincoach' ), array( 'margin' => false ) ),
+					'icon' => array( 'icon', '.zc-skill-ico', __( 'آیکن', 'zarincoach' ), array( 'hover' => '.zc-skill' ) ),
+				)
+			);
+			$this->zc_style(
+				'sk_text',
+				__( 'عنوان، متن، برچسب‌ها و پیوند', 'zarincoach' ),
+				array(
+					'title' => array( 'text', '.zc-skill-title', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-skill' ) ),
+					'desc'  => array( 'text', '.zc-skill-desc', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+					'tags'  => array( 'size', '.zc-skill-tags', __( 'فاصله‌ی برچسب‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 30 ) ),
+					'tag'   => array( 'text', '.zc-skill-tags li', __( 'برچسب', 'zarincoach' ), array( 'hover' => true, 'bg' => true, 'padding' => true, 'margin' => false ) ),
+					'link'  => array( 'text', '.zc-skill-link', __( 'پیوند', 'zarincoach' ), array( 'hover' => true ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -180,7 +233,7 @@ if ( ! class_exists( 'ZC_Widget_Skills' ) ) :
 				<div class="zc-container">
 					<?php $this->render_heading(); ?>
 
-					<div class="zc-after-head grid gap-5 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
+					<div class="zc-skills-grid zc-after-head grid gap-5 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 						<?php
 						$n = 0;
 						foreach ( $groups as $group ) :
@@ -198,9 +251,9 @@ if ( ! class_exists( 'ZC_Widget_Skills' ) ) :
 									<span class="zc-skill-num" aria-hidden="true"><?php echo esc_html( zc_digits_to_persian( str_pad( (string) $n, 2, '0', STR_PAD_LEFT ) ) ); ?></span>
 								<?php endif; ?>
 								<span class="zc-skill-ico"><?php zc_icon( ! empty( $group['g_icon'] ) ? (string) $group['g_icon'] : 'brain', 'h-6 w-6' ); ?></span>
-								<h3 class="mt-5 text-[1.15rem] font-bold text-secondary"><?php echo esc_html( $title ); ?></h3>
+								<h3 class="zc-skill-title mt-5 text-[1.15rem] font-bold text-secondary"><?php echo esc_html( $title ); ?></h3>
 								<?php if ( '' !== $desc ) : ?>
-									<p class="mt-2 text-[0.92rem] leading-[1.95] text-muted"><?php echo esc_html( $desc ); ?></p>
+									<p class="zc-skill-desc mt-2 text-[0.92rem] leading-[1.95] text-muted"><?php echo esc_html( $desc ); ?></p>
 								<?php endif; ?>
 								<?php if ( ! empty( $tags ) ) : ?>
 									<ul class="zc-skill-tags mt-5">
@@ -210,7 +263,7 @@ if ( ! class_exists( 'ZC_Widget_Skills' ) ) :
 									</ul>
 								<?php endif; ?>
 								<?php if ( '' !== $url && '' !== $link ) : ?>
-									<a class="mt-5 inline-flex items-center gap-1.5 text-[0.88rem] font-bold text-primary hover:underline" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $link ); ?><?php zc_icon( 'arrow-left', 'h-4 w-4' ); ?></a>
+									<a class="zc-skill-link mt-5 inline-flex items-center gap-1.5 text-[0.88rem] font-bold text-primary hover:underline" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $link ); ?><span class="zc-skill-link-icon zc-btn-icon"><?php $this->zc_render_icon_or( isset( $s['link_icon'] ) ? $s['link_icon'] : array(), 'arrow-left', 'h-4 w-4' ); ?></span></a>
 								<?php endif; ?>
 							</article>
 						<?php endforeach; ?>

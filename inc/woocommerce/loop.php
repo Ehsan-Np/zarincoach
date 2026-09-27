@@ -206,7 +206,7 @@ if ( ! function_exists( 'zc_wc_product_card' ) ) :
 				if ( $args['excerpt'] ) {
 					$text = '' !== $subtitle ? $subtitle : wp_strip_all_tags( $product->get_short_description() );
 					if ( '' !== $text ) {
-						echo '<p class="zc-pcard__excerpt">' . esc_html( wp_trim_words( $text, 16, '…' ) ) . '</p>';
+						echo '<p class="zc-pcard__excerpt">' . esc_html( wp_trim_words( $text, max( 5, (int) ( $args['words'] ?? 16 ) ), '…' ) ) . '</p>';
 					}
 				} elseif ( '' !== $subtitle ) {
 					echo '<p class="zc-pcard__excerpt">' . esc_html( $subtitle ) . '</p>';

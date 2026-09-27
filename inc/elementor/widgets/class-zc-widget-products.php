@@ -331,6 +331,63 @@ if ( ! class_exists( 'ZC_Widget_Products' ) && class_exists( 'ZC_Shop_Widget_Bas
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'badges' => array( __( 'نشان‌های محصول (تخفیف…)', 'zarincoach' ), '.zc-pcard__badges' ),
+					'kind'   => array( __( 'نوع محصول', 'zarincoach' ), '.zc-pcard__kind' ),
+					'cat'    => array( __( 'دسته‌ی محصول', 'zarincoach' ), '.zc-pcard__cat' ),
+					'ex'     => array( __( 'توضیح کوتاه', 'zarincoach' ), '.zc-pcard__excerpt' ),
+					'rate'   => array( __( 'امتیاز', 'zarincoach' ), '.zc-pcard__rating' ),
+					'atc'    => array( __( 'دکمه‌ی افزودن به سبد', 'zarincoach' ), '.zc-pcard__atc' ),
+					'arrows' => array( __( 'دکمه‌های اسلایدر', 'zarincoach' ), '.zc-slider-arrow' ),
+					'dots'   => array( __( 'نقطه‌های اسلایدر', 'zarincoach' ), '.zc-slider-dot' ),
+					'more'   => array( __( 'دکمه‌ی «مشاهده همه»', 'zarincoach' ), '.zc-products-btn, .zc-products-btn2' ),
+				)
+			);
+			$this->zc_style(
+				'pr_head',
+				__( 'سربرگ و شبکه', 'zarincoach' ),
+				array(
+					'head' => array( 'size', '.zc-products-head', __( 'فاصله از شبکه', 'zarincoach' ), array( 'prop' => 'margin-bottom', 'max' => 80 ) ),
+					'grid' => array( 'size', '.zc-products-grid', __( 'فاصله‌ی کارت‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 80 ) ),
+					'btn'  => array( 'button', '.zc-products-btn, .zc-products-btn2', __( 'دکمه', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'pr_card',
+				__( 'کارت محصول', 'zarincoach' ),
+				array(
+					'card'  => array( 'box', '.zc-pcard', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'img'   => array( 'image', '.zc-pcard__img', __( 'تصویر', 'zarincoach' ), array( 'hover' => '.zc-pcard' ) ),
+					'badge' => array( 'box', '.zc-pcard__badges > span', __( 'نشان‌ها', 'zarincoach' ), array( 'text' => true, 'gradient' => false ) ),
+					'kind'  => array( 'text', '.zc-pcard__kind', __( 'نوع محصول', 'zarincoach' ), array( 'bg' => true, 'margin' => false ) ),
+					'cat'   => array( 'text', '.zc-pcard__cat', __( 'دسته', 'zarincoach' ), array( 'hover' => '.zc-pcard', 'margin' => false ) ),
+					'title' => array( 'text', '.zc-pcard__title, .zc-pcard__title a', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-pcard' ) ),
+					'ex'    => array( 'text', '.zc-pcard__excerpt', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+					'rate'  => array( 'text', '.zc-pcard__rating', __( 'امتیاز', 'zarincoach' ), array( 'margin' => false ) ),
+					'price' => array( 'text', '.zc-pcard__foot .price', __( 'قیمت', 'zarincoach' ), array( 'hover' => '.zc-pcard', 'margin' => false ) ),
+					'old'   => array( 'color', '.zc-pcard__foot .price del', __( 'رنگ قیمت قدیم', 'zarincoach' ) ),
+					'atc'   => array( 'button', '.zc-pcard__atc', __( 'دکمه‌ی خرید', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'pr_slider',
+				__( 'دکمه‌ها و نقطه‌های اسلایدر', 'zarincoach' ),
+				array(
+					'arrow' => array( 'button', '.zc-slider-arrow', __( 'دکمه‌ها', 'zarincoach' ) ),
+					'dot'   => array( 'color', '.zc-slider-dot::before', __( 'رنگ نقطه', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'doton' => array( 'color', '.zc-slider-dot.is-active::before', __( 'رنگ نقطه‌ی فعال', 'zarincoach' ), array( 'prop' => 'background' ) ),
+				),
+				array( 'condition' => array( 'layout' => 'carousel' ) )
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -348,6 +405,7 @@ if ( ! class_exists( 'ZC_Widget_Products' ) && class_exists( 'ZC_Shop_Widget_Bas
 			$card     = array(
 				'title_tag' => '' !== $title ? 'h3' : 'h2',
 				'excerpt'   => $this->is_on( $s, 'show_excerpt' ),
+				'words'     => isset( $s['excerpt_words'] ) && '' !== $s['excerpt_words'] ? max( 5, (int) $s['excerpt_words'] ) : 16,
 				'hover'     => $this->is_on( $s, 'show_hover' ),
 				'rating'    => $this->is_on( $s, 'show_rating' ),
 				'kind'      => $this->is_on( $s, 'show_kind' ),
@@ -367,7 +425,7 @@ if ( ! class_exists( 'ZC_Widget_Products' ) && class_exists( 'ZC_Shop_Widget_Bas
 						<div class="zc-products-head<?php echo 'center' === $align ? ' is-center' : ''; ?>">
 							<?php $this->render_heading( '', 'h2' ); ?>
 							<?php if ( $button && 'center' !== $align ) : ?>
-								<?php $this->render_button( '', 'zc-btn-sm' ); ?>
+								<?php $this->render_button( '', 'zc-btn-sm zc-products-btn' ); ?>
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
@@ -423,7 +481,7 @@ if ( ! class_exists( 'ZC_Widget_Products' ) && class_exists( 'ZC_Shop_Widget_Bas
 					<?php endif; ?>
 
 					<?php if ( $button && 'center' === $align ) : ?>
-						<div class="zc-products-more"><?php $this->render_button( '', 'zc-btn-outline' ); ?></div>
+						<div class="zc-products-more"><?php $this->render_button( '', 'zc-btn-outline zc-products-btn2' ); ?></div>
 					<?php endif; ?>
 				</div>
 			</section>

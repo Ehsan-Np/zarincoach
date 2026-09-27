@@ -160,6 +160,36 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 			);
 
 			$this->add_control(
+				'degree_icon',
+				array(
+					'label'       => __( 'آیکن مدرک', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = کلاه فارغ‌التحصیلی.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'badge_icon',
+				array(
+					'label'       => __( 'آیکن نشان تصویر', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = مهر تأیید.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
 				'badge_text',
 				array(
 					'label'   => __( 'متن نشان روی تصویر', 'zarincoach' ),
@@ -403,6 +433,100 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'crumbs'   => array( __( 'مسیر راهنما', 'zarincoach' ), '.zc-rh-crumbs' ),
+					'photo'    => array( __( 'تصویر', 'zarincoach' ), '.zc-rh-media' ),
+					'ring'     => array( __( 'حلقه‌ی دور تصویر', 'zarincoach' ), '.zc-resume-photo-ring' ),
+					'pbadge'   => array( __( 'نشان روی تصویر', 'zarincoach' ), '.zc-resume-photo-badge' ),
+					'tags'     => array( __( 'برچسب‌های تخصص', 'zarincoach' ), '.zc-resume-tags' ),
+					'creds'    => array( __( 'مدارک', 'zarincoach' ), '.zc-rh-creds' ),
+					'credico'  => array( __( 'آیکن مدارک', 'zarincoach' ), '.zc-resume-cred-ico' ),
+					'verify'   => array( __( 'پیوند تأیید مدارک', 'zarincoach' ), '.zc-resume-verify' ),
+					'stats'    => array( __( 'آمار', 'zarincoach' ), '.zc-rh-stats' ),
+					'print'    => array( __( 'دکمه‌ی چاپ', 'zarincoach' ), '.zc-rh-print' ),
+					'nav'      => array( __( 'نوار بخش‌های رزومه', 'zarincoach' ), '.zc-rh-nav' ),
+					'bg'       => array( __( 'بافت پس‌زمینه', 'zarincoach' ), '.zc-rh-bg' ),
+				)
+			);
+			$this->zc_style(
+				'rh_layout',
+				__( 'چیدمان', 'zarincoach' ),
+				array(
+					'grid'  => array( 'split', '.zc-rh-grid', __( 'ستون‌ها (متن / تصویر)', 'zarincoach' ), array( 'children' => '.zc-rh-body, .zc-rh-media', 'valign' => true ) ),
+					'inner' => array( 'box', '.zc-rh-inner', __( 'قاب محتوا', 'zarincoach' ), array( 'gradient' => false, 'align' => true ) ),
+					'bg'    => array( 'color', '.zc-rh-bg', __( 'رنگ بافت', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'blob1' => array( 'color', '.zc-rh-blob-1', __( 'رنگ نور اول', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'blob2' => array( 'color', '.zc-rh-blob-2', __( 'رنگ نور دوم', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+				)
+			);
+			$this->zc_style(
+				'rh_name',
+				__( 'نام، مدرک و معرفی', 'zarincoach' ),
+				array(
+					'name'   => array( 'text', '.zc-resume-name', __( 'نام', 'zarincoach' ) ),
+					'deg'    => array( 'text', '.zc-resume-degree', __( 'مدرک', 'zarincoach' ), array( 'bg' => true, 'padding' => true ) ),
+					'degi'   => array( 'color', '.zc-rh-degree-icon', __( 'رنگ آیکن مدرک', 'zarincoach' ) ),
+					'sum'    => array( 'text', '.zc-rh-body .zc-lead', __( 'معرفی', 'zarincoach' ), array( 'width' => true ) ),
+					'tags'   => array( 'size', '.zc-resume-tags', __( 'فاصله‌ی برچسب‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 30 ) ),
+					'tag'    => array( 'text', '.zc-resume-tags li', __( 'برچسب', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'rh_actions',
+				__( 'دکمه‌ها', 'zarincoach' ),
+				array(
+					'actions' => array( 'size', '.zc-resume-actions', __( 'فاصله‌ی دکمه‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 60 ) ),
+					'btn1'    => array( 'button', '.zc-rh-body > .zc-resume-actions .zc-btn:not(.zc-btn-ghost):not([data-zc-print])', __( 'دکمه اصلی', 'zarincoach' ) ),
+					'btn2'    => array( 'button', '.zc-rh-body > .zc-resume-actions .zc-btn.zc-btn-outline', __( 'دکمه دوم', 'zarincoach' ) ),
+					'print'   => array( 'button', '.zc-rh-print', __( 'دکمه چاپ', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'rh_photo',
+				__( 'تصویر و نشان', 'zarincoach' ),
+				array(
+					'photo'  => array( 'image', '.zc-resume-photo-frame', __( 'قاب تصویر', 'zarincoach' ), array( 'hover' => '.zc-rh-media' ) ),
+					'ring'   => array( 'color', '.zc-resume-photo-ring', __( 'رنگ حلقه', 'zarincoach' ), array( 'prop' => 'border-color' ) ),
+					'rw'     => array( 'size', '.zc-resume-photo-ring', __( 'ضخامت حلقه', 'zarincoach' ), array( 'prop' => 'border-width', 'units' => array( 'px' ), 'max' => 20 ) ),
+					'badge'  => array( 'box', '.zc-resume-photo-badge', __( 'نشان روی تصویر', 'zarincoach' ), array( 'width' => true ) ),
+					'bicon'  => array( 'icon', '.zc-rh-badge-icon', __( 'آیکن نشان', 'zarincoach' ) ),
+					'btitle' => array( 'text', '.zc-rh-badge-title', __( 'عنوان نشان', 'zarincoach' ), array( 'margin' => false ) ),
+					'btext'  => array( 'text', '.zc-rh-badge-text', __( 'متن نشان', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'rh_creds',
+				__( 'مدارک', 'zarincoach' ),
+				array(
+					'grid'  => array( 'grid', '.zc-rh-creds', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'cred'  => array( 'box', '.zc-resume-cred', __( 'کارت مدرک', 'zarincoach' ), array( 'hover' => true ) ),
+					'cico'  => array( 'icon', '.zc-resume-cred-ico', __( 'آیکن', 'zarincoach' ) ),
+					'clbl'  => array( 'text', '.zc-resume-cred > span > span:first-child', __( 'برچسب', 'zarincoach' ), array( 'margin' => false ) ),
+					'cval'  => array( 'text', '.zc-resume-cred strong', __( 'مقدار', 'zarincoach' ), array( 'margin' => false ) ),
+					'cver'  => array( 'color', '.zc-resume-cred strong .text-primary', __( 'رنگ تیک تأیید', 'zarincoach' ) ),
+					'clink' => array( 'text', '.zc-resume-verify', __( 'پیوند تأیید', 'zarincoach' ), array( 'hover' => true, 'bg' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'rh_stats',
+				__( 'آمار و نوار بخش‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-rh-stats', __( 'شبکه‌ی آمار', 'zarincoach' ), array( 'cols' => false ) ),
+					'num'  => array( 'text', '.zc-rh-stats dd', __( 'عدد', 'zarincoach' ), array( 'margin' => false ) ),
+					'lbl'  => array( 'text', '.zc-rh-stats dt', __( 'برچسب', 'zarincoach' ) ),
+					'nav'  => array( 'button', '.zc-rh-nav a', __( 'پیوندهای نوار', 'zarincoach' ) ),
+					'navc' => array( 'color', '.zc-rh-nav a.is-active', __( 'پیوند فعال نوار', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -430,17 +554,17 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 			$b_text  = isset( $s['badge_text'] ) ? trim( (string) $s['badge_text'] ) : '';
 			?>
 			<section class="zc-resume-hero relative overflow-hidden">
-				<div class="zc-grain pointer-events-none absolute inset-0 -z-10 bg-zc-dots opacity-40"></div>
-				<div class="pointer-events-none absolute -top-40 end-[8%] -z-10 h-[26rem] w-[26rem] rounded-full bg-primary/15 blur-3xl"></div>
-				<div class="pointer-events-none absolute -bottom-40 start-[4%] -z-10 h-80 w-80 rounded-full bg-accent/15 blur-3xl"></div>
+				<div class="zc-rh-bg zc-grain pointer-events-none absolute inset-0 -z-10 bg-zc-dots opacity-40" aria-hidden="true"></div>
+				<div class="zc-rh-blob zc-rh-blob-1 pointer-events-none absolute -top-40 end-[8%] -z-10 h-[26rem] w-[26rem] rounded-full bg-primary/15 blur-3xl" aria-hidden="true"></div>
+				<div class="zc-rh-blob zc-rh-blob-2 pointer-events-none absolute -bottom-40 start-[4%] -z-10 h-80 w-80 rounded-full bg-accent/15 blur-3xl" aria-hidden="true"></div>
 
-				<div class="zc-container relative pb-8 pt-8 lg:pb-12 lg:pt-12">
+				<div class="zc-rh-inner zc-container relative pb-8 pt-8 lg:pb-12 lg:pt-12">
 					<?php if ( $this->is_on( $s, 'breadcrumbs' ) && function_exists( 'zc_breadcrumbs' ) ) : ?>
-						<div class="mb-8"><?php zc_breadcrumbs(); ?></div>
+						<div class="zc-rh-crumbs mb-8"><?php zc_breadcrumbs(); ?></div>
 					<?php endif; ?>
 
-					<div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-						<div class="lg:col-span-7 <?php echo 'start' === $img_pos ? 'lg:order-2' : ''; ?>">
+					<div class="zc-rh-grid grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+						<div class="zc-rh-body lg:col-span-7 <?php echo 'start' === $img_pos ? 'lg:order-2' : ''; ?>">
 							<?php if ( '' !== $eyebrow ) : ?>
 								<span class="zc-eyebrow zc-reveal"><?php echo esc_html( $eyebrow ); ?></span>
 							<?php endif; ?>
@@ -449,7 +573,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 
 							<?php if ( '' !== $degree ) : ?>
 								<p class="zc-resume-degree zc-reveal mt-3" data-zc-delay="120">
-									<?php zc_icon( 'graduation', 'h-5 w-5 shrink-0' ); ?>
+									<span class="zc-rh-degree-icon inline-flex shrink-0"><?php $this->zc_render_icon_or( isset( $s['degree_icon'] ) ? $s['degree_icon'] : array(), 'graduation', 'h-5 w-5' ); ?></span>
 									<span><?php echo esc_html( $degree ); ?></span>
 								</p>
 							<?php endif; ?>
@@ -470,7 +594,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 								<?php $this->render_button( '', 'zc-btn-lg' ); ?>
 								<?php $this->render_button( 'second_', 'zc-btn-lg' ); ?>
 								<?php if ( $this->is_on( $s, 'print_button' ) ) : ?>
-									<button type="button" class="zc-btn zc-btn-ghost zc-btn-lg" data-zc-print>
+									<button type="button" class="zc-btn zc-btn-ghost zc-btn-lg zc-rh-print" data-zc-print>
 										<?php zc_icon( 'printer', 'h-5 w-5' ); ?>
 										<span><?php echo esc_html( isset( $s['print_label'] ) ? (string) $s['print_label'] : '' ); ?></span>
 									</button>
@@ -478,7 +602,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 							</div>
 						</div>
 
-						<div class="lg:col-span-5 <?php echo 'start' === $img_pos ? 'lg:order-1' : ''; ?>">
+						<div class="zc-rh-media lg:col-span-5 <?php echo 'start' === $img_pos ? 'lg:order-1' : ''; ?>">
 							<figure class="zc-resume-photo zc-reveal" data-zc-delay="120">
 								<span class="zc-resume-photo-ring" aria-hidden="true"></span>
 								<span class="zc-resume-photo-frame">
@@ -503,10 +627,10 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 								</span>
 								<?php if ( '' !== $b_title || '' !== $b_text ) : ?>
 									<figcaption class="zc-resume-photo-badge">
-										<span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary text-white"><?php zc_icon( 'badge-check', 'h-6 w-6' ); ?></span>
+										<span class="zc-rh-badge-icon grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary text-white"><?php $this->zc_render_icon_or( isset( $s['badge_icon'] ) ? $s['badge_icon'] : array(), 'badge-check', 'h-6 w-6' ); ?></span>
 										<span class="min-w-0">
-											<strong class="block text-[0.95rem] text-secondary"><?php echo esc_html( $b_title ); ?></strong>
-											<span class="block text-[0.8rem] text-muted"><?php echo esc_html( $b_text ); ?></span>
+											<strong class="zc-rh-badge-title block text-[0.95rem] text-secondary"><?php echo esc_html( $b_title ); ?></strong>
+											<span class="zc-rh-badge-text block text-[0.8rem] text-muted"><?php echo esc_html( $b_text ); ?></span>
 										</span>
 									</figcaption>
 								<?php endif; ?>
@@ -516,7 +640,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 
 					<?php if ( ! empty( $creds ) ) : ?>
 						<?php $cred_cols = array( 1 => 'lg:grid-cols-1', 2 => 'lg:grid-cols-2', 3 => 'lg:grid-cols-3' ); ?>
-						<ul class="zc-resume-creds mt-8 lg:mt-10 grid gap-3 sm:grid-cols-2 <?php echo esc_attr( isset( $cred_cols[ count( $creds ) ] ) ? $cred_cols[ count( $creds ) ] : 'lg:grid-cols-4' ); ?>">
+						<ul class="zc-resume-creds zc-rh-creds mt-8 lg:mt-10 grid gap-3 sm:grid-cols-2 <?php echo esc_attr( isset( $cred_cols[ count( $creds ) ] ) ? $cred_cols[ count( $creds ) ] : 'lg:grid-cols-4' ); ?>">
 							<?php
 							$delay = 0;
 							foreach ( $creds as $cred ) :
@@ -554,7 +678,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 					<?php endif; ?>
 
 					<?php if ( ! empty( $stats ) ) : ?>
-						<dl class="zc-resume-stats mt-6 grid grid-cols-2 <?php echo 3 === count( $stats ) ? 'lg:grid-cols-3' : ( count( $stats ) >= 4 ? 'lg:grid-cols-4' : '' ); ?>">
+						<dl class="zc-resume-stats zc-rh-stats mt-6 grid grid-cols-2 <?php echo 3 === count( $stats ) ? 'lg:grid-cols-3' : ( count( $stats ) >= 4 ? 'lg:grid-cols-4' : '' ); ?>">
 							<?php
 							foreach ( $stats as $stat ) :
 								$raw    = isset( $stat['stat_number'] ) ? (string) $stat['stat_number'] : '';
@@ -577,7 +701,7 @@ if ( ! class_exists( 'ZC_Widget_Resume_Hero' ) ) :
 				</div>
 
 				<?php if ( ! empty( $nav ) ) : ?>
-					<nav class="zc-resume-nav<?php echo $this->is_on( $s, 'nav_sticky' ) ? ' is-sticky' : ''; ?>" aria-label="<?php esc_attr_e( 'بخش‌های رزومه', 'zarincoach' ); ?>" data-zc-resume-nav>
+					<nav class="zc-rh-nav zc-resume-nav<?php echo $this->is_on( $s, 'nav_sticky' ) ? ' is-sticky' : ''; ?>" aria-label="<?php esc_attr_e( 'بخش‌های رزومه', 'zarincoach' ); ?>" data-zc-resume-nav>
 						<div class="zc-container">
 							<ul class="zc-no-scrollbar">
 								<?php

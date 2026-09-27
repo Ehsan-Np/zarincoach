@@ -54,7 +54,7 @@ if ( ! function_exists( 'zc_site_branding' ) ) :
 
 		?>
 		<a class="group inline-flex flex-col leading-tight" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
-			<span class="zc-display !text-[1.35rem] <?php echo $footer ? 'text-white' : 'text-secondary'; ?>">
+			<span class="zc-display text-[1.35rem] <?php echo $footer ? 'text-white' : 'text-secondary'; ?>">
 				<?php echo esc_html( get_bloginfo( 'name' ) ); ?>
 			</span>
 			<?php if ( ! $footer && '' !== get_bloginfo( 'description' ) ) : ?>
@@ -116,7 +116,7 @@ if ( ! function_exists( 'zc_button' ) ) :
 	/**
 	 * خروجی استاندارد دکمه‌ها.
 	 *
-	 * @param array $args آرگومان‌ها: text, url, style, size, icon, class, new_tab.
+	 * @param array $args آرگومان‌ها: text, url, style, size, icon, icon_html (آیکن آماده‌ی المنتور)، class, new_tab.
 	 * @return void
 	 */
 	function zc_button( $args = array() ) {
@@ -147,7 +147,9 @@ if ( ! function_exists( 'zc_button' ) ) :
 			<?php echo $args['new_tab'] ? 'target="_blank" rel="noopener"' : ''; ?>
 		>
 			<span><?php echo esc_html( (string) $args['text'] ); ?></span>
-			<?php if ( 'arrow-left' === $args['icon'] || true === $args['icon'] ) : ?>
+			<?php if ( ! empty( $args['icon_html'] ) ) : ?>
+				<?php echo $args['icon_html']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- خروجی Icons_Manager المنتور. ?>
+			<?php elseif ( 'arrow-left' === $args['icon'] || true === $args['icon'] ) : ?>
 				<?php zc_icon( 'arrow-left', 'h-4 w-4 zc-btn-arrow' ); ?>
 			<?php elseif ( '' !== (string) $args['icon'] ) : ?>
 				<?php zc_icon( (string) $args['icon'], 'h-4 w-4' ); ?>
@@ -268,7 +270,7 @@ if ( ! function_exists( 'zc_post_card' ) ) :
 						<a class="transition-colors hover:text-primary" href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $title ); ?></a>
 					</<?php echo esc_attr( $tag ); ?>>
 					<?php if ( '' !== $excerpt ) : ?>
-						<p class="zc-lead !text-[0.9rem]"><?php echo esc_html( $excerpt ); ?></p>
+						<p class="zc-lead text-[0.9rem]"><?php echo esc_html( $excerpt ); ?></p>
 					<?php endif; ?>
 					<div class="zc-card-foot mt-auto"><?php echo $author_html . $meta_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></div>
 				</div>
@@ -293,7 +295,7 @@ if ( ! function_exists( 'zc_post_card' ) ) :
 				</<?php echo esc_attr( $tag ); ?>>
 
 				<?php if ( '' !== $excerpt ) : ?>
-					<p class="zc-lead !text-[0.92rem]"><?php echo esc_html( $excerpt ); ?></p>
+					<p class="zc-lead text-[0.92rem]"><?php echo esc_html( $excerpt ); ?></p>
 				<?php endif; ?>
 
 				<?php if ( '' !== $author_html || '' !== $meta_html ) : ?>
@@ -901,7 +903,7 @@ if ( ! function_exists( 'zc_comment_markup' ) ) :
 					<?php endif; ?>
 
 					<?php if ( '0' === $comment->comment_approved ) : ?>
-						<p class="zc-form-note"><?php esc_html_e( 'دیدگاه شما پس از تأیید نمایش داده می‌شود.', 'zarincoach' ); ?></p>
+						<p class="zc-form-note"><?php esc_html_e( 'دیدگاه‌تان ثبت شد؛ به محض تأیید همین‌جا نمایش داده می‌شود. ممنون که وقت گذاشتید.', 'zarincoach' ); ?></p>
 					<?php endif; ?>
 
 					<div class="zc-comment-text"><?php comment_text(); ?></div>
@@ -970,7 +972,7 @@ if ( ! function_exists( 'zc_footer_default_columns' ) ) :
 			}
 			?>
 			<div>
-				<h4 class="mb-4 text-[0.95rem] font-bold text-white"><?php echo esc_html( $column['title'] ); ?></h4>
+				<h4 class="zc-footer-title zc-h-sm mb-4 text-[0.95rem] font-bold text-white"><?php echo esc_html( $column['title'] ); ?></h4>
 				<ul class="grid gap-2.5 text-[0.86rem] text-white/70">
 					<?php
 					while ( $query->have_posts() ) :

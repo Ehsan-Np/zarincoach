@@ -136,6 +136,7 @@ if ( ! function_exists( 'zc_admin_pages' ) ) :
 			'zc-options'      => __( 'تنظیمات قالب', 'zarincoach' ),
 			'zc-demo-content' => __( 'نصب دمو', 'zarincoach' ),
 			'zc-layout'       => __( 'سربرگ و پاورقی', 'zarincoach' ),
+			'zc-widgets'      => __( 'مدیریت ویجت‌ها', 'zarincoach' ),
 			'zc-system-info'  => __( 'اطلاعات سیستم', 'zarincoach' ),
 		);
 	}
@@ -161,6 +162,8 @@ if ( ! function_exists( 'zc_register_options_page' ) ) :
 
 		add_submenu_page( $parent, __( 'سربرگ و پاورقی', 'zarincoach' ), __( 'سربرگ و پاورقی', 'zarincoach' ), 'edit_theme_options', 'zc-layout', 'zc_render_layout_page' );
 
+		add_submenu_page( $parent, __( 'مدیریت ویجت‌ها', 'zarincoach' ), __( 'مدیریت ویجت‌ها', 'zarincoach' ), 'manage_options', 'zc-widgets', 'zc_render_widgets_page' );
+
 		add_submenu_page( $parent, __( 'اطلاعات سیستم', 'zarincoach' ), __( 'اطلاعات سیستم', 'zarincoach' ), 'manage_options', 'zc-system-info', 'zc_render_system_page' );
 
 		if ( empty( $submenu[ $parent ] ) ) {
@@ -177,6 +180,9 @@ if ( ! function_exists( 'zc_register_options_page' ) ) :
 			}
 			if ( 'zc-layout' === $slug ) {
 				return 2;
+			}
+			if ( 'zc-widgets' === $slug ) {
+				return 3;
 			}
 			if ( 'zc-system-info' === $slug ) {
 				return 9;
@@ -379,6 +385,7 @@ if ( ! function_exists( 'zc_panel_header_bar' ) ) :
 			'zc-options'      => array( __( 'تنظیمات قالب', 'zarincoach' ), 'fa-solid fa-sliders', admin_url( 'admin.php?page=zc-options' ) ),
 			'zc-demo-content' => array( __( 'نصب دمو', 'zarincoach' ), 'fa-solid fa-wand-magic-sparkles', admin_url( 'admin.php?page=zc-demo-content' ) ),
 			'zc-layout'       => array( __( 'سربرگ و پاورقی', 'zarincoach' ), 'fa-solid fa-pen-ruler', admin_url( 'admin.php?page=zc-layout' ) ),
+			'zc-widgets'      => array( __( 'ویجت‌ها', 'zarincoach' ), 'fa-solid fa-cubes', admin_url( 'admin.php?page=zc-widgets' ) ),
 			'zc-system-info'  => array( __( 'اطلاعات سیستم', 'zarincoach' ), 'fa-solid fa-server', admin_url( 'admin.php?page=zc-system-info' ) ),
 		);
 

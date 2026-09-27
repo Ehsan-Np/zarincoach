@@ -174,6 +174,31 @@ if ( ! class_exists( 'ZC_Widget_Shop_Benefits' ) && class_exists( 'ZC_Shop_Widge
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'icon' => array( __( 'آیکن‌ها', 'zarincoach' ), '.zc-benefit__icon' ),
+					'text' => array( __( 'متن توضیح', 'zarincoach' ), '.zc-benefit__text small' ),
+				)
+			);
+			$this->zc_style(
+				'bn_items',
+				__( 'آیتم‌ها', 'zarincoach' ),
+				array(
+					'gap'  => array( 'size', '.zc-benefits', __( 'فاصله‌ی آیتم‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 60 ) ),
+					'item' => array( 'box', '.zc-benefit', __( 'آیتم', 'zarincoach' ), array( 'hover' => true ) ),
+					'icon' => array( 'icon', '.zc-benefit__icon', __( 'آیکن', 'zarincoach' ), array( 'hover' => '.zc-benefit' ) ),
+					'title'=> array( 'text', '.zc-benefit__text strong', __( 'عنوان', 'zarincoach' ), array( 'margin' => false ) ),
+					'text' => array( 'text', '.zc-benefit__text small', __( 'توضیح', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

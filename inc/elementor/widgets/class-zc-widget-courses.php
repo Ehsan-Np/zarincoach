@@ -231,6 +231,36 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 				)
 			);
 
+			$this->add_control(
+				'org_icon',
+				array(
+					'label'       => __( 'آیکن برگزارکننده', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = ساختمان.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'date_icon',
+				array(
+					'label'       => __( 'آیکن تاریخ', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = تقویم.', 'zarincoach' ),
+				)
+			);
+
 			$this->end_controls_section();
 		}
 
@@ -242,6 +272,74 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 		 */
 		private function num( $value ) {
 			return (float) preg_replace( '/[^\d.]/', '', zc_digits_to_latin( (string) $value ) );
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'cat'   => array( __( 'دسته‌ی دوره', 'zarincoach' ), '.zc-course-cat' ),
+					'hours' => array( __( 'ساعت دوره', 'zarincoach' ), '.zc-course-hours' ),
+					'org'   => array( __( 'برگزارکننده', 'zarincoach' ), '.zc-course-org' ),
+					'date'  => array( __( 'تاریخ', 'zarincoach' ), '.zc-course-date' ),
+					'icons' => array( __( 'آیکن‌های جزئیات', 'zarincoach' ), '.zc-course-meta svg, .zc-course-meta i' ),
+					'extra' => array( __( 'کارت «دوره‌های دیگر»', 'zarincoach' ), '.zc-course.is-extra' ),
+				)
+			);
+			$this->zc_style(
+				'cr_summary',
+				__( 'آمار خلاصه', 'zarincoach' ),
+				array(
+					'box'  => array( 'box', '.zc-courses-summary', __( 'قاب آمار', 'zarincoach' ), array( 'gradient' => false ) ),
+					'cell' => array( 'box', '.zc-courses-summary > div', __( 'خانه‌ها', 'zarincoach' ), array( 'align' => true ) ),
+					'num'  => array( 'text', '.zc-courses-summary dd', __( 'عدد', 'zarincoach' ), array( 'margin' => false ) ),
+					'num1' => array( 'color', '.zc-courses-summary > div:first-child dd', __( 'رنگ عدد اول', 'zarincoach' ) ),
+					'lbl'  => array( 'text', '.zc-courses-summary dt', __( 'برچسب', 'zarincoach' ) ),
+				),
+				array( 'condition' => array( 'summary' => 'yes' ) )
+			);
+			$this->zc_style(
+				'cr_filter',
+				__( 'فیلتر دسته‌ها', 'zarincoach' ),
+				array(
+					'wrap'   => array( 'size', '.zc-courses-filter', __( 'فاصله از بالا', 'zarincoach' ), array( 'prop' => 'margin-top', 'max' => 80 ) ),
+					'chip'   => array( 'button', '.zc-courses-filter .zc-chip', __( 'دکمه‌ها', 'zarincoach' ) ),
+					'active' => array( 'color', '.zc-courses-filter .zc-chip.is-active', __( 'پس‌زمینه‌ی دکمه‌ی فعال', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'actc'   => array( 'color', '.zc-courses-filter .zc-chip.is-active', __( 'رنگ متن دکمه‌ی فعال', 'zarincoach' ) ),
+				),
+				array( 'condition' => array( 'filter' => 'yes' ) )
+			);
+			$this->zc_style(
+				'cr_card',
+				__( 'کارت دوره‌ها', 'zarincoach' ),
+				array(
+					'grid'  => array( 'grid', '.zc-courses-grid', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'card'  => array( 'box', '.zc-course:not(.is-featured):not(.is-extra)', __( 'کارت عادی', 'zarincoach' ), array( 'hover' => true ) ),
+					'feat'  => array( 'box', '.zc-course.is-featured', __( 'کارت ویژه', 'zarincoach' ), array( 'hover' => true, 'gradient' => true ) ),
+					'extra' => array( 'box', '.zc-course.is-extra', __( 'کارت «دوره‌های دیگر»', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'cr_text',
+				__( 'متن کارت‌ها', 'zarincoach' ),
+				array(
+					'cat'   => array( 'text', '.zc-course-cat', __( 'دسته', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+					'hours' => array( 'text', '.zc-course-hours strong', __( 'عدد ساعت', 'zarincoach' ), array( 'margin' => false ) ),
+					'unit'  => array( 'text', '.zc-course-hours', __( 'واحد ساعت', 'zarincoach' ), array( 'margin' => false ) ),
+					'title' => array( 'text', '.zc-course-title', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-course' ) ),
+					'meta'  => array( 'text', '.zc-course-meta', __( 'جزئیات', 'zarincoach' ), array( 'margin' => false ) ),
+					'micon' => array( 'color', '.zc-course-meta svg, .zc-course-meta i', __( 'رنگ آیکن جزئیات', 'zarincoach' ) ),
+					'bar'   => array( 'color', '.zc-course-bar', __( 'زمینه‌ی نوار ساعت', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'fill'  => array( 'color', '.zc-course-bar i', __( 'رنگ نوار ساعت', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'barh'  => array( 'size', '.zc-course-bar', __( 'ضخامت نوار', 'zarincoach' ), array( 'prop' => 'height', 'units' => array( 'px' ), 'max' => 20 ) ),
+					'xnum'  => array( 'text', '.zc-course-extra-num', __( 'عدد «دوره‌های دیگر»', 'zarincoach' ), array( 'margin' => false ) ),
+					'xlbl'  => array( 'text', '.zc-course-extra-label', __( 'متن «دوره‌های دیگر»', 'zarincoach' ) ),
+				)
+			);
 		}
 
 		/**
@@ -347,7 +445,7 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 					<?php endif; ?>
 
 					<?php if ( $this->is_on( $s, 'filter' ) && count( $cats ) > 1 ) : ?>
-						<div class="zc-post-filter zc-no-scrollbar mt-8 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="<?php esc_attr_e( 'فیلتر دوره‌ها', 'zarincoach' ); ?>">
+						<div class="zc-courses-filter zc-post-filter zc-no-scrollbar mt-8 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="<?php esc_attr_e( 'فیلتر دوره‌ها', 'zarincoach' ); ?>">
 							<button type="button" class="zc-chip is-active" data-zc-filter="*" aria-pressed="true"><?php echo esc_html( isset( $s['all_label'] ) ? (string) $s['all_label'] : '' ); ?></button>
 							<?php foreach ( $cats as $cat ) : ?>
 								<button type="button" class="zc-chip whitespace-nowrap" data-zc-filter="<?php echo esc_attr( md5( $cat ) ); ?>" aria-pressed="false"><?php echo esc_html( $cat ); ?></button>
@@ -359,7 +457,7 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 						<?php foreach ( $rows as $row ) : ?>
 							<?php $pct = $max > 0 ? max( 6, round( $row['hours'] / $max * 100 ) ) : 0; ?>
 							<li class="zc-course<?php echo $row['featured'] ? ' is-featured' : ''; ?>" data-zc-filter-item="<?php echo esc_attr( '' !== $row['cat'] ? md5( $row['cat'] ) : '' ); ?>">
-								<div class="flex items-start justify-between gap-3">
+								<div class="zc-course-top flex items-start justify-between gap-3">
 									<?php if ( '' !== $row['cat'] ) : ?>
 										<span class="zc-course-cat"><?php echo esc_html( $row['cat'] ); ?></span>
 									<?php endif; ?>
@@ -370,10 +468,10 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 								<h3 class="zc-course-title"><?php echo esc_html( $row['title'] ); ?></h3>
 								<div class="zc-course-meta">
 									<?php if ( '' !== $row['org'] ) : ?>
-										<span><?php zc_icon( 'building', 'h-4 w-4 shrink-0' ); ?><?php echo esc_html( $row['org'] ); ?></span>
+										<span class="zc-course-org"><?php $this->zc_render_icon_or( isset( $s['org_icon'] ) ? $s['org_icon'] : array(), 'building', 'h-4 w-4 shrink-0' ); ?><?php echo esc_html( $row['org'] ); ?></span>
 									<?php endif; ?>
 									<?php if ( '' !== $row['date'] ) : ?>
-										<span><?php zc_icon( 'calendar', 'h-4 w-4 shrink-0' ); ?><?php echo esc_html( $row['date'] ); ?></span>
+										<span class="zc-course-date"><?php $this->zc_render_icon_or( isset( $s['date_icon'] ) ? $s['date_icon'] : array(), 'calendar', 'h-4 w-4 shrink-0' ); ?><?php echo esc_html( $row['date'] ); ?></span>
 									<?php endif; ?>
 								</div>
 								<?php if ( $this->is_on( $s, 'bar' ) && $pct > 0 ) : ?>
@@ -384,8 +482,8 @@ if ( ! class_exists( 'ZC_Widget_Courses' ) ) :
 
 						<?php if ( $extra > 0 ) : ?>
 							<li class="zc-course is-extra" data-zc-filter-item="*">
-								<strong class="block text-[2.4rem] font-bold leading-none text-primary"><?php echo esc_html( '+' . zc_digits_to_persian( (string) $extra ) ); ?></strong>
-								<span class="mt-2 block text-[0.95rem] font-bold text-secondary"><?php echo esc_html( isset( $s['extra_label'] ) ? (string) $s['extra_label'] : '' ); ?></span>
+								<strong class="zc-course-extra-num block text-[2.4rem] font-bold leading-none text-primary"><?php echo esc_html( '+' . zc_digits_to_persian( (string) $extra ) ); ?></strong>
+								<span class="zc-course-extra-label mt-2 block text-[0.95rem] font-bold text-secondary"><?php echo esc_html( isset( $s['extra_label'] ) ? (string) $s['extra_label'] : '' ); ?></span>
 							</li>
 						<?php endif; ?>
 					</ul>

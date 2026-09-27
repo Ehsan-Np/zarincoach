@@ -744,6 +744,7 @@ if ( ! function_exists( 'zc_sc_card' ) ) :
 				'show_summary' => true,
 				'show_group'   => false,
 				'tag'          => 'h3',
+				'more_label'   => '',
 			)
 		);
 		$tag   = in_array( $args['tag'], array( 'h2', 'h3', 'h4' ), true ) ? $args['tag'] : 'h3';
@@ -771,7 +772,7 @@ if ( ! function_exists( 'zc_sc_card' ) ) :
 			<?php if ( $args['show_summary'] && '' !== (string) $item['summary'] ) : ?>
 				<p class="zc-sc-card-text"><?php echo esc_html( $item['summary'] ); ?></p>
 			<?php endif; ?>
-			<span class="zc-sc-card-more"><?php esc_html_e( 'شرح کامل', 'zarincoach' ); ?><?php zc_icon( 'arrow-left', 'h-4 w-4' ); ?></span>
+			<span class="zc-sc-card-more"><?php echo esc_html( '' !== trim( (string) $args['more_label'] ) ? (string) $args['more_label'] : __( 'شرح کامل', 'zarincoach' ) ); ?><?php zc_icon( 'arrow-left', 'h-4 w-4' ); ?></span>
 		</a>
 		<?php
 		return (string) ob_get_clean();
@@ -812,7 +813,18 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 				'show_summary' => true,
 				'heading_tag'  => 'h2',
 				'default'      => 'all',
+				'all_label'    => '',
+				'placeholder'  => '',
+				'empty_text'   => '',
+				'need_label'   => '',
+				'more_label'   => '',
 			)
+		);
+		$txt = array(
+			'all'   => '' !== trim( (string) $args['all_label'] ) ? (string) $args['all_label'] : __( 'همه', 'zarincoach' ),
+			'ph'    => '' !== trim( (string) $args['placeholder'] ) ? (string) $args['placeholder'] : __( 'جستجو: مثلاً رهاشدگی، Shame یا کمال‌گرایی', 'zarincoach' ),
+			'empty' => '' !== trim( (string) $args['empty_text'] ) ? (string) $args['empty_text'] : __( 'چیزی با این عبارت پیدا نکردیم. می‌تونید واژه‌ی دیگه‌ای رو امتحان کنید یا فیلتر «همه» رو بزنید.', 'zarincoach' ),
+			'need'  => '' !== trim( (string) $args['need_label'] ) ? (string) $args['need_label'] : __( 'نیاز: %s', 'zarincoach' ),
 		);
 
 		$tops = zc_sc_top_groups();
@@ -886,7 +898,7 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 					<?php if ( $args['filter'] && $multi ) : ?>
 						<div class="zc-sc-chips" role="group" aria-label="<?php esc_attr_e( 'فیلتر بر اساس دسته', 'zarincoach' ); ?>">
 							<button type="button" class="zc-sc-chip<?php echo 'all' === $default ? ' is-active' : ''; ?>" data-zc-sc-filter="all" aria-pressed="<?php echo 'all' === $default ? 'true' : 'false'; ?>">
-								<?php esc_html_e( 'همه', 'zarincoach' ); ?>
+								<?php echo esc_html( $txt['all'] ); ?>
 								<span class="zc-sc-chip-count"><?php echo esc_html( $fa( $total ) ); ?></span>
 							</button>
 							<?php foreach ( $sections as $slug => $sec ) : ?>
@@ -901,7 +913,7 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 						<label class="zc-sc-search" for="<?php echo esc_attr( $uid ); ?>-q">
 							<span class="screen-reader-text"><?php esc_html_e( 'جستجو در طرحواره‌ها و الگوها', 'zarincoach' ); ?></span>
 							<?php zc_icon( 'search', 'h-4 w-4' ); ?>
-							<input type="search" id="<?php echo esc_attr( $uid ); ?>-q" data-zc-sc-search placeholder="<?php esc_attr_e( 'جستجو: مثلاً رهاشدگی، Shame یا کمال‌گرایی', 'zarincoach' ); ?>" autocomplete="off" enterkeyhint="search">
+							<input type="search" id="<?php echo esc_attr( $uid ); ?>-q" data-zc-sc-search placeholder="<?php echo esc_attr( $txt['ph'] ); ?>" autocomplete="off" enterkeyhint="search">
 						</label>
 					<?php endif; ?>
 				</div>
@@ -933,7 +945,7 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 										<a href="<?php echo esc_url( (string) get_term_link( $sub_slug, 'zc_schema_group' ) ); ?>"><?php echo esc_html( $sub['def']['name'] ); ?></a>
 									</<?php echo esc_html( $sub_tag ); ?>>
 									<?php if ( ! empty( $sub['def']['need'] ) ) : ?>
-										<span class="zc-sc-need"><?php zc_icon( 'heart', 'h-3.5 w-3.5' ); ?><?php echo esc_html( sprintf( /* translators: %s: نیاز */ __( 'نیاز: %s', 'zarincoach' ), $sub['def']['need'] ) ); ?></span>
+										<span class="zc-sc-need"><?php zc_icon( 'heart', 'h-3.5 w-3.5' ); ?><?php echo esc_html( false !== strpos( $txt['need'], '%s' ) ? str_replace( '%s', $sub['def']['need'], $txt['need'] ) : $txt['need'] . ' ' . $sub['def']['need'] ); ?></span>
 									<?php endif; ?>
 									<?php if ( $args['group_desc'] && ! empty( $sub['def']['desc'] ) ) : ?>
 										<p class="zc-sc-sub-desc"><?php echo esc_html( $sub['def']['desc'] ); ?></p>
@@ -949,6 +961,7 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 											'show_en'      => $args['show_en'],
 											'show_summary' => $args['show_summary'],
 											'tag'          => $has_sub_head ? 'h4' : $sub_tag,
+											'more_label'   => isset( $args['more_label'] ) ? (string) $args['more_label'] : '',
 										)
 									);
 								}
@@ -961,7 +974,7 @@ if ( ! function_exists( 'zc_schemas_grid' ) ) :
 
 			<div class="zc-sc-empty" data-zc-sc-empty hidden>
 				<?php zc_icon( 'search', 'h-6 w-6' ); ?>
-				<p><?php esc_html_e( 'موردی با این عبارت پیدا نشد. واژه‌ی دیگری را امتحان کنید یا فیلتر «همه» را بزنید.', 'zarincoach' ); ?></p>
+				<p><?php echo esc_html( $txt['empty'] ); ?></p>
 			</div>
 		</div>
 		<?php

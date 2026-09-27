@@ -143,6 +143,58 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'image'    => array( __( 'تصویر', 'zarincoach' ), '.zc-about-media' ),
+					'badge'    => array( __( 'نشان تجربه (دایره)', 'zarincoach' ), '.zc-about-badge' ),
+					'decor'    => array( __( 'قاب تزئینی پشت تصویر', 'zarincoach' ), '.zc-about-decor' ),
+					'content'  => array( __( 'متن معرفی', 'zarincoach' ), '.zc-about-content' ),
+					'features' => array( __( 'فهرست ویژگی‌ها', 'zarincoach' ), '.zc-about-features' ),
+					'button'   => array( __( 'دکمه', 'zarincoach' ), '.zc-about-cta' ),
+				)
+			);
+
+			$this->zc_style(
+				'about_layout',
+				__( 'چیدمان ستون‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'split', '.zc-about-grid', '', array( 'children' => '.zc-about-media, .zc-about-body', 'valign' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'about_image',
+				__( 'تصویر', 'zarincoach' ),
+				array(
+					'figure' => array( 'image', '.zc-about-figure', __( 'قاب تصویر', 'zarincoach' ), array( 'hover' => '.zc-about-media' ) ),
+					'decor'  => array( 'color', '.zc-about-decor', __( 'رنگ قاب تزئینی', 'zarincoach' ), array( 'prop' => 'border-color' ) ),
+				)
+			);
+			$this->zc_style(
+				'about_badge',
+				__( 'نشان تجربه', 'zarincoach' ),
+				array(
+					'box'   => array( 'box', '.zc-about-badge', __( 'دایره', 'zarincoach' ), array( 'width' => true, 'minh' => true ) ),
+					'num'   => array( 'text', '.zc-about-badge-num', __( 'عدد', 'zarincoach' ), array( 'margin' => false ) ),
+					'label' => array( 'text', '.zc-about-badge-label', __( 'برچسب', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'about_text',
+				__( 'متن و فهرست', 'zarincoach' ),
+				array(
+					'content' => array( 'text', '.zc-about-content, .zc-about-content p', __( 'متن معرفی', 'zarincoach' ), array( 'align' => true ) ),
+					'gap'     => array( 'size', '.zc-about-content', __( 'فاصله‌ی پاراگراف‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 80 ) ),
+					'list'    => array( 'list', '.zc-about-features li', __( 'فهرست ویژگی‌ها', 'zarincoach' ), array( 'list' => '.zc-about-features', 'marker' => '.zc-about-features li::before' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -170,17 +222,17 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 			?>
 			<section class="zc-about zc-section relative overflow-hidden">
 				<div class="zc-container">
-					<div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+					<div class="zc-about-grid grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
 						<?php if ( 'right' === $position ) : ?>
-							<div class="<?php echo esc_attr( $image_col ); ?>">
+							<div class="zc-about-media <?php echo esc_attr( $image_col ); ?>">
 								<?php $this->render_image( $image, $settings ); ?>
 							</div>
 						<?php endif; ?>
 
-						<div class="<?php echo esc_attr( $text_col ); ?>">
+						<div class="zc-about-body <?php echo esc_attr( $text_col ); ?>">
 							<?php $this->render_heading( '', 'h2' ); ?>
 
-							<div class="zc-lead mt-6 grid gap-4 zc-reveal">
+							<div class="zc-about-content zc-lead mt-6 grid gap-4 zc-reveal">
 								<?php foreach ( $content as $paragraph ) : ?>
 									<?php if ( '' === trim( (string) $paragraph ) ) { continue; } ?>
 									<p class="m-0"><?php echo wp_kses( trim( (string) $paragraph ), array( 'strong' => array(), 'b' => array(), 'em' => array(), 'br' => array(), 'a' => array( 'href' => array(), 'target' => array(), 'rel' => array() ) ) ); ?></p>
@@ -188,20 +240,20 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 							</div>
 
 							<?php if ( ! empty( $features ) ) : ?>
-								<ul class="zc-checklist mt-7 zc-reveal">
+								<ul class="zc-about-features zc-checklist mt-7 zc-reveal">
 									<?php foreach ( $features as $feature ) : ?>
 										<li><?php echo esc_html( $feature ); ?></li>
 									<?php endforeach; ?>
 								</ul>
 							<?php endif; ?>
 
-							<div class="mt-8">
+							<div class="zc-about-cta mt-8">
 								<?php $this->render_button( '', 'zc-btn-lg' ); ?>
 							</div>
 						</div>
 
 						<?php if ( 'left' === $position ) : ?>
-							<div class="<?php echo esc_attr( $image_col ); ?>">
+							<div class="zc-about-media <?php echo esc_attr( $image_col ); ?>">
 								<?php $this->render_image( $image, $settings ); ?>
 							</div>
 						<?php endif; ?>
@@ -223,7 +275,7 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 			$badge_label  = isset( $settings['badge_label'] ) ? (string) $settings['badge_label'] : '';
 			?>
 			<div class="relative zc-reveal">
-				<div class="zc-figure zc-notch-alt aspect-[4/5] shadow-lift">
+				<div class="zc-about-figure zc-figure zc-notch-alt aspect-[4/5] shadow-lift">
 					<?php
 					echo zc_image( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						$image,
@@ -239,15 +291,15 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 				</div>
 
 				<?php if ( '' !== $badge_number ) : ?>
-					<div class="absolute -bottom-7 end-4 z-10 grid h-28 w-28 place-items-center rounded-full border border-line bg-base text-center shadow-lift">
+					<div class="zc-about-badge absolute -bottom-7 end-4 z-10 grid h-28 w-28 place-items-center rounded-full border border-line bg-base text-center shadow-lift">
 						<div>
-							<span class="block text-[1.9rem] font-bold leading-none text-primary"><?php echo esc_html( $badge_number ); ?></span>
-							<span class="mt-1 block text-[0.68rem] leading-tight text-muted"><?php echo esc_html( $badge_label ); ?></span>
+							<span class="zc-about-badge-num block text-[1.9rem] font-bold leading-none text-primary"><?php echo esc_html( $badge_number ); ?></span>
+							<span class="zc-about-badge-label mt-1 block text-[0.68rem] leading-tight text-muted"><?php echo esc_html( $badge_label ); ?></span>
 						</div>
 					</div>
 				<?php endif; ?>
 
-				<div class="pointer-events-none absolute -top-6 -start-6 -z-10 h-24 w-24 rounded-2xl border-2 border-primary/30"></div>
+				<div class="zc-about-decor pointer-events-none absolute -top-6 -start-6 -z-10 h-24 w-24 rounded-2xl border-2 border-primary/30" aria-hidden="true"></div>
 			</div>
 			<?php
 		}

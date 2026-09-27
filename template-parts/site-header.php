@@ -37,7 +37,7 @@ $socials = zc_socials();
 				<?php endif; ?>
 
 				<?php if ( $a['show_social'] ) : ?>
-					<div class="flex items-center gap-2">
+					<div class="zc-social flex items-center gap-2">
 						<?php foreach ( array_slice( $socials, 0, 4 ) as $item ) : ?>
 							<a class="text-white/80 transition hover:text-primary" href="<?php echo esc_url( $item['url'] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $item['label'] ); ?>">
 								<?php zc_icon( $item['icon'], 'h-4 w-4' ); ?>

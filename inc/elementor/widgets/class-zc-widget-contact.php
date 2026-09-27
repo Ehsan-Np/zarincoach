@@ -129,6 +129,39 @@ if ( ! class_exists( 'ZC_Widget_Contact' ) ) :
 			);
 
 			$this->add_control(
+				'email_label',
+				array(
+					'label'       => __( 'برچسب ایمیل', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'ایمیل', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
+				'address_label',
+				array(
+					'label'       => __( 'برچسب نشانی', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'نشانی مطب', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
+				'hours_label',
+				array(
+					'label'       => __( 'برچسب ساعات پاسخ‌گویی', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'ساعات پاسخ‌گویی', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
+
+			$this->add_control(
 				'channels',
 				array(
 					'label'       => __( 'پیام‌رسان‌ها و شبکه‌ها (کارت جداگانه)', 'zarincoach' ),
@@ -173,6 +206,48 @@ if ( ! class_exists( 'ZC_Widget_Contact' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'icons'   => array( __( 'آیکن‌ها', 'zarincoach' ), '.zc-contact-icon' ),
+					'labels'  => array( __( 'برچسب‌ها', 'zarincoach' ), '.zc-contact-label' ),
+					'socials' => array( __( 'شبکه‌های اجتماعی', 'zarincoach' ), '.zc-contact-socials' ),
+					'map'     => array( __( 'نقشه', 'zarincoach' ), '.zc-contact-map' ),
+				)
+			);
+			$this->zc_style(
+				'ct_layout',
+				__( 'چیدمان', 'zarincoach' ),
+				array(
+					'grid' => array( 'split', '.zc-contact-grid', __( 'ستون‌ها (اطلاعات / نقشه)', 'zarincoach' ), array( 'children' => '.zc-contact-info, .zc-contact-map', 'valign' => true ) ),
+					'list' => array( 'grid', '.zc-contact-list', __( 'شبکه‌ی کارت‌های تماس', 'zarincoach' ), array( 'max' => 3 ) ),
+				)
+			);
+			$this->zc_style(
+				'ct_item',
+				__( 'کارت‌های تماس', 'zarincoach' ),
+				array(
+					'item'  => array( 'box', '.zc-contact-item', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'icon'  => array( 'icon', '.zc-contact-icon', __( 'آیکن', 'zarincoach' ), array( 'hover' => '.zc-contact-item' ) ),
+					'label' => array( 'text', '.zc-contact-label', __( 'برچسب', 'zarincoach' ), array( 'margin' => false ) ),
+					'value' => array( 'text', '.zc-contact-value', __( 'مقدار', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'ct_social',
+				__( 'شبکه‌های اجتماعی و نقشه', 'zarincoach' ),
+				array(
+					'social' => array( 'icon', '.zc-contact-socials .zc-social', __( 'دکمه‌های شبکه‌ی اجتماعی', 'zarincoach' ), array( 'hover' => '.zc-contact-socials .zc-social' ) ),
+					'map'    => array( 'image', '.zc-contact-map', __( 'قاب نقشه', 'zarincoach' ), array( 'ratio' => true ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -200,9 +275,9 @@ if ( ! class_exists( 'ZC_Widget_Contact' ) ) :
 				$items[] = array( 'icon' => $ch['icon'], 'label' => $ch['label'], 'value' => '' !== $ch['sub'] ? $ch['sub'] : $ch['url'], 'url' => $ch['url'], 'ltr' => true, 'external' => true );
 			}
 
-			$items[] = array( 'icon' => 'mail', 'label' => __( 'ایمیل', 'zarincoach' ), 'value' => $email, 'url' => 'mailto:' . sanitize_email( $email ), 'ltr' => true );
-			$items[] = array( 'icon' => 'map-pin', 'label' => __( 'نشانی مطب', 'zarincoach' ), 'value' => (string) $this->value( 'address', 'contact_address' ), 'url' => '', 'wide' => true );
-			$items[] = array( 'icon' => 'clock', 'label' => __( 'ساعات پاسخ‌گویی', 'zarincoach' ), 'value' => (string) $this->value( 'hours', 'contact_hours' ), 'url' => '', 'wide' => true );
+			$items[] = array( 'icon' => 'mail', 'label' => $this->zc_label( $settings, 'email_label', __( 'ایمیل', 'zarincoach' ) ), 'value' => $email, 'url' => 'mailto:' . sanitize_email( $email ), 'ltr' => true );
+			$items[] = array( 'icon' => 'map-pin', 'label' => $this->zc_label( $settings, 'address_label', __( 'نشانی مطب', 'zarincoach' ) ), 'value' => (string) $this->value( 'address', 'contact_address' ), 'url' => '', 'wide' => true );
+			$items[] = array( 'icon' => 'clock', 'label' => $this->zc_label( $settings, 'hours_label', __( 'ساعات پاسخ‌گویی', 'zarincoach' ) ), 'value' => (string) $this->value( 'hours', 'contact_hours' ), 'url' => '', 'wide' => true );
 
 			$items = array_filter(
 				$items,
@@ -215,20 +290,20 @@ if ( ! class_exists( 'ZC_Widget_Contact' ) ) :
 				<div class="zc-container">
 					<?php $this->render_heading( '', 'h2' ); ?>
 
-					<div class="zc-after-head grid gap-6 lg:gap-8 <?php echo 'split' === $layout ? 'lg:grid-cols-2' : ''; ?>">
-						<div>
-							<ul class="grid gap-4 sm:grid-cols-2">
+					<div class="zc-contact-grid zc-after-head grid gap-6 lg:gap-8 <?php echo 'split' === $layout ? 'lg:grid-cols-2' : ''; ?>">
+						<div class="zc-contact-info">
+							<ul class="zc-contact-list grid gap-4 sm:grid-cols-2">
 								<?php foreach ( $items as $item ) : ?>
-									<li class="<?php echo ! empty( $item['wide'] ) ? 'sm:col-span-2 ' : ''; ?>flex items-start gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-primary/40">
-										<span class="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+									<li class="zc-contact-item <?php echo ! empty( $item['wide'] ) ? 'is-wide sm:col-span-2 ' : ''; ?>flex items-start gap-4 rounded-2xl border border-line bg-surface p-4 transition-colors hover:border-primary/40">
+										<span class="zc-contact-icon grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
 											<?php zc_icon( $item['icon'], 'h-5 w-5' ); ?>
 										</span>
 										<div class="min-w-0">
-											<span class="block text-[0.75rem] text-muted"><?php echo esc_html( $item['label'] ); ?></span>
+											<span class="zc-contact-label block text-[0.75rem] text-muted"><?php echo esc_html( $item['label'] ); ?></span>
 											<?php if ( '' !== $item['url'] ) : ?>
-												<a class="<?php echo ! empty( $item['ltr'] ) ? 'zc-contact-ltr ' : ''; ?>block break-words font-bold text-secondary transition-colors hover:text-primary" href="<?php echo esc_url( $item['url'] ); ?>"<?php echo ! empty( $item['ltr'] ) ? ' dir="ltr" style="text-align:right"' : ' dir="auto"'; ?><?php echo ! empty( $item['external'] ) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html( $item['value'] ); ?></a>
+												<a class="zc-contact-value <?php echo ! empty( $item['ltr'] ) ? 'zc-contact-ltr ' : ''; ?>block break-words font-bold text-secondary transition-colors hover:text-primary" href="<?php echo esc_url( $item['url'] ); ?>"<?php echo ! empty( $item['ltr'] ) ? ' dir="ltr" style="text-align:right"' : ' dir="auto"'; ?><?php echo ! empty( $item['external'] ) ? ' target="_blank" rel="noopener"' : ''; ?>><?php echo esc_html( $item['value'] ); ?></a>
 											<?php else : ?>
-												<span class="block break-words font-bold text-secondary"><?php echo esc_html( $item['value'] ); ?></span>
+												<span class="zc-contact-value block break-words font-bold text-secondary"><?php echo esc_html( $item['value'] ); ?></span>
 											<?php endif; ?>
 										</div>
 									</li>
@@ -236,14 +311,14 @@ if ( ! class_exists( 'ZC_Widget_Contact' ) ) :
 							</ul>
 
 							<?php if ( $show_socials ) : ?>
-								<div class="mt-6">
+								<div class="zc-contact-socials mt-6">
 									<?php zc_social_links(); ?>
 								</div>
 							<?php endif; ?>
 						</div>
 
 						<?php if ( '' !== $map ) : ?>
-							<div class="zc-figure zc-figure-plain zc-map relative min-h-[320px] overflow-hidden">
+							<div class="zc-contact-map zc-figure zc-figure-plain zc-map relative min-h-[320px] overflow-hidden">
 								<?php
 								// تبدیل src به data-src برای بارگذاری تنبل.
 								$lazy = preg_replace( '/(<iframe[^>]*)\ssrc=/i', '$1 data-src=', $map );

@@ -1099,6 +1099,7 @@ if ( ! function_exists( 'zc_demo_run_step' ) ) :
 
 				if ( class_exists( '\Elementor\Plugin' ) && isset( \Elementor\Plugin::$instance->files_manager ) ) {
 					\Elementor\Plugin::$instance->files_manager->clear_cache();
+					delete_option( 'zc_widget_usage' );
 				}
 
 				return array( 'done' => true, 'more' => false, 'message' => __( 'دمو با موفقیت و از صفر نصب شد.', 'zarincoach' ) );

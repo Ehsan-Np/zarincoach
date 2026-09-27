@@ -263,6 +263,66 @@ if ( ! class_exists( 'ZC_Widget_Site_Header' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'topbar'   => array( __( 'نوار بالای سایت', 'zarincoach' ), '[data-zc-topbar]' ),
+					'topphone' => array( __( 'تلفن در نوار بالا', 'zarincoach' ), '[data-zc-topbar] a[href^="tel"]' ),
+					'topsoc'   => array( __( 'شبکه‌های اجتماعی نوار بالا', 'zarincoach' ), '[data-zc-topbar] .zc-social' ),
+					'nav'      => array( __( 'منوی اصلی', 'zarincoach' ), 'nav[aria-label*="منو"]' ),
+					'search'   => array( __( 'دکمه‌ی جستجو', 'zarincoach' ), '[data-zc-search-toggle]' ),
+					'dark'     => array( __( 'دکمه‌ی حالت تیره', 'zarincoach' ), '[data-zc-theme-toggle]' ),
+					'cart'     => array( __( 'سبد خرید', 'zarincoach' ), '.zc-header [class*="cart"]' ),
+					'burger'   => array( __( 'دکمه‌ی منوی موبایل', 'zarincoach' ), '[data-zc-drawer-open]' ),
+					'progress' => array( __( 'نوار پیشرفت مطالعه', 'zarincoach' ), '.zc-progress' ),
+				)
+			);
+			$this->zc_style(
+				'hd_bar',
+				__( 'سربرگ: قاب و نوار بالا', 'zarincoach' ),
+				array(
+					'bar'   => array( 'box', '.zc-header', __( 'نوار سربرگ', 'zarincoach' ), array( 'minh' => true, 'gradient' => false ) ),
+					'stuck' => array( 'box', '.zc-header.is-stuck', __( 'نوار هنگام اسکرول', 'zarincoach' ), array( 'gradient' => false, 'heading' => true ) ),
+					'inner' => array( 'size', '.zc-header .zc-container > div', __( 'ارتفاع داخلی', 'zarincoach' ), array( 'prop' => 'min-height', 'units' => array( 'px', 'rem' ), 'max' => 200 ) ),
+					'top'   => array( 'box', '[data-zc-topbar]', __( 'نوار بالا', 'zarincoach' ), array( 'text' => true, 'gradient' => true ) ),
+					'tlink' => array( 'text', '[data-zc-topbar] a', __( 'پیوندهای نوار بالا', 'zarincoach' ), array( 'hover' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'hd_logo',
+				__( 'لوگو', 'zarincoach' ),
+				array(
+					'img' => array( 'size', '.zc-header a[rel="home"] img, .zc-header .zc-logo img, .zc-drawer a[rel="home"] img', __( 'ارتفاع تصویر لوگو', 'zarincoach' ), array( 'prop' => 'max-height', 'units' => array( 'px', 'rem' ), 'max' => 160 ) ),
+					'txt' => array( 'text', '.zc-header a[rel="home"]', __( 'متن لوگو', 'zarincoach' ), array( 'hover' => '.zc-header' ) ),
+				)
+			);
+			$this->zc_style(
+				'hd_menu',
+				__( 'منو', 'zarincoach' ),
+				array(
+					'link'   => array( 'text', '.zc-header .zc-nav-link', __( 'آیتم‌های منو', 'zarincoach' ), array( 'hover' => '.zc-header .zc-nav-link' ) ),
+					'active' => array( 'color', '.zc-header .zc-nav-link[aria-current="page"]', __( 'رنگ آیتم صفحه‌ی جاری', 'zarincoach' ) ),
+					'sub'    => array( 'box', '.zc-submenu', __( 'کادر زیرمنو', 'zarincoach' ), array( 'gradient' => false ) ),
+					'subli'  => array( 'text', '.zc-submenu a', __( 'آیتم‌های زیرمنو', 'zarincoach' ), array( 'hover' => '.zc-submenu a', 'padding' => true, 'margin' => false ) ),
+					'gap'    => array( 'size', '.zc-header nav ul', __( 'فاصله‌ی آیتم‌های منو', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 60 ) ),
+				)
+			);
+			$this->zc_style(
+				'hd_tools',
+				__( 'دکمه‌های ابزار و دکمه‌ی اصلی', 'zarincoach' ),
+				array(
+					'icon' => array( 'icon', '.zc-header .zc-btn-icon', __( 'دکمه‌های گرد', 'zarincoach' ), array( 'hover' => '.zc-header' ) ),
+					'cta'  => array( 'button', '.zc-header .zc-btn:not(.zc-btn-icon)', __( 'دکمه‌ی رزرو', 'zarincoach' ) ),
+					'soc'  => array( 'color', '[data-zc-topbar] .zc-social a, [data-zc-topbar] div.flex a[target="_blank"]', __( 'رنگ آیکن‌های اجتماعی', 'zarincoach' ), array( 'prop' => 'color' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

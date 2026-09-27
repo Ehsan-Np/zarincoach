@@ -158,6 +158,23 @@ if ( ! class_exists( 'ZC_Widget_Form' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_style(
+				'fw_box',
+				__( 'قاب فرم', 'zarincoach' ),
+				array(
+					'box' => array( 'box', '.zc-form-box', '', array( 'width' => true, 'margin' => true ) ),
+				),
+				array( 'condition' => array( 'boxed' => 'yes' ) )
+			);
+			$this->zc_form_styles( 'fw', '.zc-form-widget' );
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

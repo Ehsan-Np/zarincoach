@@ -117,6 +117,11 @@ if ( ! function_exists( 'zc_demo_legal_pages' ) ) :
 					$pages[ $key ][ $field ] = zc_demo_legal_fill( trim( $page[ $field ] ) );
 				}
 			}
+			// یک جمله‌ی صمیمی در آغاز هر صفحه‌ی قوانین؛ متن حقوقی دقیق، دست‌نخورده و معتبر می‌ماند.
+			if ( ! empty( $pages[ $key ]['excerpt'] ) ) {
+				$pages[ $key ]['excerpt'] = 'سلام! این صفحه را شفاف و دقیق نوشته‌ایم تا همراهی‌مان با خیال راحت شروع شود؛ اگر جایی سؤال داشتید، پیش از ثبت سفارش از ما بپرسید. ' . $pages[ $key ]['excerpt'];
+			}
+
 			if ( empty( $pages[ $key ]['slug'] ) ) {
 				$pages[ $key ]['slug'] = $key;
 			}

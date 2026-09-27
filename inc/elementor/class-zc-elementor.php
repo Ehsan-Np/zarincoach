@@ -92,6 +92,27 @@ if ( ! class_exists( 'ZC_Elementor' ) ) :
 			// v1.8: برچسب نوع زمینه روی بخش‌های سطح اول برای حذف فاصله‌ی دوبرابر بین بخش‌های هم‌زمینه.
 			add_action( 'elementor/frontend/section/before_render', array( $this, 'tag_section_bg' ) );
 			add_action( 'elementor/frontend/container/before_render', array( $this, 'tag_section_bg' ) );
+
+			// v2.2: پالت اختصاصی هر ویجت (متغیرهای --zc-*-rgb) — هم در سایت، هم در پیش‌نمایش ویرایشگر.
+			add_filter( 'elementor/widget/render_content', array( $this, 'widget_runtime_css' ), 10, 2 );
+		}
+
+		/**
+		 * افزودن CSS پالت اختصاصی پیش از خروجی ویجت‌های زرین‌کوچ.
+		 *
+		 * @param string                $content خروجی ویجت.
+		 * @param \Elementor\Widget_Base $widget  ویجت.
+		 * @return string
+		 */
+		public function widget_runtime_css( $content, $widget ) {
+			if ( ! ( $widget instanceof ZC_Widget_Base ) ) {
+				return $content;
+			}
+			$css = $widget->zc_runtime_css();
+			if ( '' === $css ) {
+				return $content;
+			}
+			return $content . '<style>' . wp_strip_all_tags( $css ) . '</style>';
 		}
 
 		/**
@@ -241,9 +262,13 @@ if ( ! class_exists( 'ZC_Elementor' ) ) :
 				require_once ZC_DIR . '/inc/elementor/class-zc-shop-widget-base.php';
 			}
 
-			// همه‌ی ویجت‌ها ثبت می‌شوند؛ ویجت غیرفعال فقط در پنل ویرایشگر پنهان است (ZC_Widget_Base::show_in_panel).
+			// ویجت خاموشِ بدون استفاده اصلاً ثبت نمی‌شود؛ ویجت خاموشی که در صفحه‌ای به کار رفته
+			// ثبت می‌شود تا آن صفحه خراب نشود و فقط از پنل ویرایشگر پنهان است (ZC_Widget_Base::show_in_panel).
 			foreach ( $this->widgets as $slug => $data ) {
 				if ( ! empty( $data['woo'] ) && ! $woo ) {
+					continue;
+				}
+				if ( function_exists( 'zc_widget_should_load' ) && ! zc_widget_should_load( $slug, $this->is_widget_enabled( $slug ) ) ) {
 					continue;
 				}
 				$file = ZC_DIR . '/inc/elementor/widgets/' . $data['file'];
@@ -316,6 +341,22 @@ if ( ! class_exists( 'ZC_Elementor' ) ) :
 
 		/**
 		 * فهرست ویجت‌های موجود (برای استفاده در بخش‌های دیگر).
+		 *
+		 * @return array<string, string>
+		 */
+		public function get_widgets_meta() {
+			$out = array();
+			foreach ( $this->widgets as $slug => $data ) {
+				$out[ $slug ] = array(
+					'title' => isset( $data['title'] ) ? $data['title'] : $slug,
+					'woo'   => ! empty( $data['woo'] ),
+				);
+			}
+			return $out;
+		}
+
+		/**
+		 * فهرست ویجت‌ها (نامک => نام المنتور).
 		 *
 		 * @return array<string, string>
 		 */

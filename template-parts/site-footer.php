@@ -20,10 +20,10 @@ $socials = zc_socials();
 	<?php endif; ?>
 
 	<div class="zc-container relative py-10 lg:py-14">
-		<div class="grid gap-8 lg:grid-cols-12 lg:gap-10">
+		<div class="zc-footer-grid grid gap-8 lg:grid-cols-12 lg:gap-10">
 
 			<!-- ستون معرفی -->
-			<div class="lg:col-span-4">
+			<div class="zc-footer-brand lg:col-span-4">
 				<div class="mb-5">
 					<?php zc_site_branding( true ); ?>
 				</div>
@@ -33,7 +33,7 @@ $socials = zc_socials();
 				</p>
 
 				<?php if ( $a['show_socials'] && ! empty( $socials ) ) : ?>
-					<div class="mt-6 flex flex-wrap items-center gap-2">
+					<div class="zc-footer-socials mt-6 flex flex-wrap items-center gap-2">
 						<?php foreach ( $socials as $item ) : ?>
 							<a class="zc-social border-white/15 bg-white/5 text-white hover:border-primary hover:bg-primary hover:text-secondary" href="<?php echo esc_url( $item['url'] ); ?>" target="_blank" rel="noopener" aria-label="<?php echo esc_attr( $item['label'] ); ?>">
 								<?php zc_icon( $item['icon'], 'h-[18px] w-[18px]' ); ?>
@@ -44,7 +44,7 @@ $socials = zc_socials();
 			</div>
 
 			<!-- ستون‌های میانی -->
-			<div class="grid gap-8 sm:grid-cols-2 lg:col-span-5">
+			<div class="zc-footer-cols grid gap-8 sm:grid-cols-2 lg:col-span-5">
 				<?php
 				$zc_has_footer_widgets = false;
 				if ( $a['use_widgets'] ) {
@@ -67,12 +67,12 @@ $socials = zc_socials();
 			</div>
 
 			<!-- ستون تماس -->
-			<div class="lg:col-span-3">
+			<div class="zc-footer-contact lg:col-span-3">
 				<?php if ( '' !== $a['contact_title'] ) : ?>
-					<h4 class="mb-4 text-[0.95rem] font-bold text-white"><?php echo esc_html( $a['contact_title'] ); ?></h4>
+					<h4 class="zc-footer-title zc-h-sm mb-4 text-[0.95rem] font-bold text-white"><?php echo esc_html( $a['contact_title'] ); ?></h4>
 				<?php endif; ?>
 
-				<ul class="grid gap-3 text-[0.88rem] text-white/70">
+				<ul class="zc-footer-contact-list grid gap-3 text-[0.88rem] text-white/70">
 					<?php if ( '' !== $contact['phone'] ) : ?>
 						<li class="flex items-start gap-3">
 							<span class="mt-0.5 text-accent"><?php zc_icon( 'phone', 'h-4 w-4' ); ?></span>
@@ -110,7 +110,7 @@ $socials = zc_socials();
 				</ul>
 
 				<?php if ( $a['menu'] > 0 || has_nav_menu( 'zc-footer' ) ) : ?>
-					<nav class="mt-6 border-t border-white/10 pt-5" aria-label="<?php esc_attr_e( 'منوی پاورقی', 'zarincoach' ); ?>">
+					<nav class="zc-footer-menu mt-6 border-t border-white/10 pt-5" aria-label="<?php esc_attr_e( 'منوی پاورقی', 'zarincoach' ); ?>">
 						<?php
 						wp_nav_menu(
 							zc_header_menu_args(
@@ -194,7 +194,7 @@ $socials = zc_socials();
 		<?php endif; ?>
 
 		<?php if ( $a['legal_menu'] > 0 || has_nav_menu( 'zc-legal' ) ) : ?>
-			<nav class="zc-footer-legal mt-8" aria-label="<?php esc_attr_e( 'قوانین و مقررات', 'zarincoach' ); ?>">
+			<nav class="zc-footer-legal zc-footer-nav mt-8" aria-label="<?php esc_attr_e( 'قوانین و مقررات', 'zarincoach' ); ?>">
 				<?php
 				wp_nav_menu(
 					zc_header_menu_args(
@@ -215,8 +215,8 @@ $socials = zc_socials();
 
 		<div class="zc-rule my-8 opacity-20"></div>
 
-		<div class="flex flex-col items-center justify-between gap-4 text-[0.8rem] text-white/60 sm:flex-row">
-			<p class="m-0">
+		<div class="zc-footer-bottom flex flex-col items-center justify-between gap-4 text-[0.8rem] text-white/60 sm:flex-row">
+			<p class="zc-footer-copy m-0">
 				&copy; <?php echo esc_html( gmdate( 'Y' ) ); ?>
 				<?php echo esc_html( get_bloginfo( 'name' ) ); ?> —
 				<?php echo esc_html( $a['copyright'] ); ?>

@@ -113,6 +113,33 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_style(
+				'list_items',
+				__( 'آیتم‌ها', 'zarincoach' ),
+				array(
+					'wrap' => array( 'size', '.zc-list-items', __( 'فاصله از سربرگ', 'zarincoach' ), array( 'prop' => 'margin-top', 'max' => 100 ) ),
+					'grid' => array( 'grid', '.zc-list-items', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+					'list' => array( 'list', '.zc-list-ul li', __( 'آیتم‌های فهرست (تیک/خط)', 'zarincoach' ), array( 'list' => '.zc-list-ul', 'marker' => '.zc-list-ul li::before' ) ),
+				)
+			);
+			$this->zc_style(
+				'list_cards',
+				__( 'کارت‌ها (طرح کارتی)', 'zarincoach' ),
+				array(
+					'card' => array( 'box', '.zc-list-card', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'icon' => array( 'icon', '.zc-list-icon', __( 'آیکن', 'zarincoach' ), array( 'hover' => '.zc-list-card' ) ),
+					'text' => array( 'text', '.zc-list-text', __( 'متن', 'zarincoach' ), array( 'hover' => false ) ),
+				),
+				array( 'condition' => array( 'style' => 'cards' ) )
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -134,7 +161,7 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 				<?php $this->render_heading( '', 'h3' ); ?>
 
 				<?php if ( 'cards' === $style ) : ?>
-					<div class="mt-6 grid gap-4 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
+					<div class="zc-list-cards zc-list-items mt-6 grid gap-4 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 						<?php foreach ( $items as $item ) : ?>
 							<?php
 							$text = isset( $item['item_text'] ) ? trim( (string) $item['item_text'] ) : '';
@@ -144,18 +171,18 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 								continue;
 							}
 							?>
-							<div class="zc-card flex items-start gap-3 p-5">
+							<div class="zc-list-card zc-card flex items-start gap-3 p-5">
 								<?php if ( '' !== $icon ) : ?>
-									<span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+									<span class="zc-list-icon grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
 										<?php zc_icon( $icon, 'h-5 w-5' ); ?>
 									</span>
 								<?php endif; ?>
-								<p class="m-0 text-[0.94rem] leading-[1.9] text-muted"><?php echo esc_html( $text ); ?></p>
+								<p class="zc-list-text m-0 text-[0.94rem] leading-[1.9] text-muted"><?php echo esc_html( $text ); ?></p>
 							</div>
 						<?php endforeach; ?>
 					</div>
 				<?php else : ?>
-					<ul class="mt-6 <?php echo 'check' === $style ? 'zc-checklist' : 'zc-dashlist'; ?> <?php echo esc_attr( $grid_class ); ?>">
+					<ul class="zc-list-ul zc-list-items mt-6 <?php echo 'check' === $style ? 'zc-checklist' : 'zc-dashlist'; ?> <?php echo esc_attr( $grid_class ); ?>">
 						<?php foreach ( $items as $item ) : ?>
 							<?php
 							$text = isset( $item['item_text'] ) ? trim( (string) $item['item_text'] ) : '';

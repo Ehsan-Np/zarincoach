@@ -150,6 +150,21 @@ if ( ! class_exists( 'ZC_Widget_Faq' ) ) :
 			);
 
 			$this->add_control(
+				'acc_icon',
+				array(
+					'label'       => __( 'آیکن باز/بسته', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = علامت + (هنگام باز شدن می‌چرخد).', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
 				'enable_schema',
 				array(
 					'label'        => __( 'نشانه‌گذاری FAQ برای گوگل', 'zarincoach' ),
@@ -160,6 +175,62 @@ if ( ! class_exists( 'ZC_Widget_Faq' ) ) :
 			);
 
 			$this->end_controls_section();
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'icon'    => array( __( 'آیکن باز/بسته', 'zarincoach' ), '.zc-acc-icon' ),
+				)
+			);
+			$this->zc_style(
+				'faq_layout',
+				__( 'چیدمان (طرح کناری)', 'zarincoach' ),
+				array(
+					'grid' => array( 'split', '.zc-faq-grid', '', array( 'children' => '.zc-faq-side, .zc-faq-main', 'valign' => true ) ),
+				),
+				array( 'condition' => array( 'layout' => 'side' ) )
+			);
+			$this->zc_style(
+				'faq_list',
+				__( 'قاب فهرست پرسش‌ها', 'zarincoach' ),
+				array(
+					'box'  => array( 'box', '.zc-faq-list', '', array( 'width' => true, 'margin' => true ) ),
+					'line' => array( 'color', '.zc-acc', __( 'رنگ خط بین پرسش‌ها', 'zarincoach' ), array( 'prop' => 'border-bottom-color' ) ),
+					'item' => array( 'box', '.zc-acc', __( 'هر پرسش', 'zarincoach' ), array( 'gradient' => false, 'heading' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'faq_q',
+				__( 'پرسش', 'zarincoach' ),
+				array(
+					'q'     => array( 'text', '.zc-acc-head', __( 'متن پرسش', 'zarincoach' ), array( 'hover' => true, 'padding' => true, 'margin' => false ) ),
+					'qopen' => array( 'color', '.zc-acc.is-open .zc-acc-head', __( 'رنگ پرسش باز', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'faq_icon',
+				__( 'آیکن باز/بسته', 'zarincoach' ),
+				array(
+					'icon'   => array( 'icon', '.zc-acc-icon', '', array( 'hover' => '.zc-acc-head' ) ),
+					'open'   => array( 'color', '.zc-acc.is-open .zc-acc-icon', __( 'رنگ آیکن در حالت باز', 'zarincoach' ) ),
+					'openbg' => array( 'color', '.zc-acc.is-open .zc-acc-icon', __( 'زمینه‌ی آیکن در حالت باز', 'zarincoach' ), array( 'prop' => 'background-color' ) ),
+					'rotate' => array( 'size', '.zc-acc.is-open .zc-acc-icon', __( 'چرخش آیکن در حالت باز (درجه)', 'zarincoach' ), array( 'units' => array( 'deg' ), 'max' => 360, 'css' => 'transform: rotate({{SIZE}}deg);' ) ),
+				)
+			);
+			$this->zc_style(
+				'faq_a',
+				__( 'پاسخ', 'zarincoach' ),
+				array(
+					'a'   => array( 'text', '.zc-acc-body, .zc-acc-body p', __( 'متن پاسخ', 'zarincoach' ), array( 'align' => true, 'margin' => false ) ),
+					'pad' => array( 'box', '.zc-acc-body', __( 'قاب پاسخ', 'zarincoach' ), array( 'gradient' => false, 'heading' => true ) ),
+				)
+			);
 		}
 
 		/**
@@ -225,12 +296,12 @@ if ( ! class_exists( 'ZC_Widget_Faq' ) ) :
 				?>
 				<section class="zc-faq zc-section relative bg-surface2/50">
 					<div class="zc-container">
-						<div class="grid gap-8 lg:grid-cols-12 lg:gap-12">
-							<div class="lg:col-span-4">
+						<div class="zc-faq-grid grid gap-8 lg:grid-cols-12 lg:gap-12">
+							<div class="zc-faq-side lg:col-span-4">
 								<?php $this->render_heading( '', 'h2' ); ?>
 							</div>
 
-							<div class="lg:col-span-8">
+							<div class="zc-faq-main lg:col-span-8">
 								<?php $this->render_items( $items, $group, $delay ); ?>
 							</div>
 						</div>
@@ -261,14 +332,14 @@ if ( ! class_exists( 'ZC_Widget_Faq' ) ) :
 		 */
 		protected function render_items( $items, $group, $delay ) {
 			?>
-			<div class="overflow-hidden rounded-[var(--zc-radius)] border border-line bg-surface px-5 sm:px-7">
+			<div class="zc-faq-list overflow-hidden rounded-[var(--zc-radius)] border border-line bg-surface px-5 sm:px-7">
 				<?php foreach ( $items as $item ) : ?>
 					<?php if ( '' === $item['question'] ) { continue; } ?>
 					<div class="zc-acc zc-reveal <?php echo $item['open'] ? 'is-open' : ''; ?>" data-zc-acc data-zc-acc-group="<?php echo esc_attr( $group ); ?>" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
 						<h3>
 							<button type="button" class="zc-acc-head" data-zc-acc-head aria-expanded="<?php echo $item['open'] ? 'true' : 'false'; ?>">
-								<span><?php echo esc_html( $item['question'] ); ?></span>
-								<span class="zc-acc-icon" aria-hidden="true"><?php zc_icon( 'plus', 'h-4 w-4' ); ?></span>
+								<span class="zc-acc-q"><?php echo esc_html( $item['question'] ); ?></span>
+								<span class="zc-acc-icon" aria-hidden="true"><?php $this->zc_render_icon_or( $this->get_settings_for_display( 'acc_icon' ), 'plus', 'h-4 w-4' ); ?></span>
 							</button>
 						</h3>
 						<div class="zc-acc-body">

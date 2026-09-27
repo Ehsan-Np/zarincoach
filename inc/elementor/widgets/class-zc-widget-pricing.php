@@ -161,6 +161,60 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'ribbon'   => array( __( 'روبان بسته', 'zarincoach' ), '.zc-plan-ribbon' ),
+					'desc'     => array( __( 'توضیح بسته', 'zarincoach' ), '.zc-plan-desc' ),
+					'period'   => array( __( 'دوره/واحد قیمت', 'zarincoach' ), '.zc-plan-period' ),
+					'rule'     => array( __( 'خط جداکننده', 'zarincoach' ), '.zc-plan-rule' ),
+					'features' => array( __( 'فهرست امکانات', 'zarincoach' ), '.zc-plan-features' ),
+					'button'   => array( __( 'دکمه', 'zarincoach' ), '.zc-plan-cta' ),
+				)
+			);
+			$this->zc_style(
+				'plan_grid',
+				__( 'شبکه‌ی بسته‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-pricing-grid', '', array( 'cols' => false, 'valign' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'plan_card',
+				__( 'کارت بسته', 'zarincoach' ),
+				array(
+					'card'     => array( 'box', '.zc-plan-card:not(.is-featured)', __( 'کارت عادی', 'zarincoach' ), array( 'hover' => true, 'align' => true ) ),
+					'featured' => array( 'box', '.zc-plan-card.is-featured', __( 'کارت ویژه', 'zarincoach' ), array( 'hover' => true, 'align' => true ) ),
+					'lift'     => array( 'size', '.zc-plan-card.is-featured', __( 'بالا آمدن کارت ویژه (دسکتاپ)', 'zarincoach' ), array( 'max' => 60, 'css' => 'transform: translateY(calc(-1 * {{SIZE}}{{UNIT}}));' ) ),
+					'ribbon'   => array( 'box', '.zc-plan-ribbon', __( 'روبان', 'zarincoach' ), array( 'text' => true, 'gradient' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'plan_text',
+				__( 'نام، توضیح و قیمت', 'zarincoach' ),
+				array(
+					'name'   => array( 'text', '.zc-plan-name', __( 'نام بسته', 'zarincoach' ) ),
+					'desc'   => array( 'text', '.zc-plan-desc', __( 'توضیح', 'zarincoach' ) ),
+					'price'  => array( 'text', '.zc-plan-price', __( 'قیمت', 'zarincoach' ), array( 'margin' => false ) ),
+					'period' => array( 'text', '.zc-plan-period', __( 'دوره', 'zarincoach' ), array( 'margin' => false ) ),
+					'rule'   => array( 'color', '.zc-plan-rule', __( 'رنگ خط جداکننده', 'zarincoach' ), array( 'prop' => 'background' ) ),
+				)
+			);
+			$this->zc_style(
+				'plan_list',
+				__( 'امکانات و دکمه', 'zarincoach' ),
+				array(
+					'list' => array( 'list', '.zc-plan-features li', __( 'فهرست امکانات', 'zarincoach' ), array( 'list' => '.zc-plan-features', 'marker' => '.zc-plan-features li::before' ) ),
+					'btn'  => array( 'button', '.zc-plan-btn', __( 'دکمه', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -181,7 +235,7 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 					<?php $this->render_heading( '', 'h2' ); ?>
 
 					<?php if ( ! empty( $plans ) ) : ?>
-						<div class="zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
+						<div class="zc-pricing-grid zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 							<?php foreach ( $plans as $plan ) : ?>
 								<?php
 								$name     = isset( $plan['plan_name'] ) ? (string) $plan['plan_name'] : '';
@@ -195,33 +249,33 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 								$btn_url  = isset( $plan['plan_button_url']['url'] ) ? (string) $plan['plan_button_url']['url'] : '';
 
 								$card_class = $featured
-									? 'zc-card zc-reveal flex flex-col border-primary/40 bg-surface shadow-lift ring-1 ring-primary/20 lg:-translate-y-3'
-									: 'zc-card zc-card-hover zc-reveal flex flex-col';
+									? 'zc-plan-card is-featured zc-card zc-reveal flex flex-col border-primary/40 bg-surface shadow-lift ring-1 ring-primary/20 lg:-translate-y-3'
+									: 'zc-plan-card zc-card zc-card-hover zc-reveal flex flex-col';
 								?>
 								<div class="<?php echo esc_attr( $card_class ); ?>" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
 									<?php if ( '' !== $badge ) : ?>
-										<span class="zc-ribbon !end-4 !top-4"><?php echo esc_html( $badge ); ?></span>
+										<span class="zc-plan-ribbon zc-ribbon !end-4 !top-4"><?php echo esc_html( $badge ); ?></span>
 									<?php endif; ?>
 
-									<h3 class="text-[1.1rem] font-bold text-secondary"><?php echo esc_html( $name ); ?></h3>
+									<h3 class="zc-plan-name text-[1.1rem] font-bold text-secondary"><?php echo esc_html( $name ); ?></h3>
 
 									<?php if ( '' !== $desc ) : ?>
-										<p class="zc-lead mt-2 !text-[0.88rem]"><?php echo esc_html( $desc ); ?></p>
+										<p class="zc-plan-desc zc-lead mt-2 text-[0.88rem]"><?php echo esc_html( $desc ); ?></p>
 									<?php endif; ?>
 
 									<?php if ( '' !== $price ) : ?>
-										<div class="mt-5 flex items-end gap-2">
-											<span class="zc-price-num"><?php echo esc_html( $price ); ?></span>
+										<div class="zc-plan-price-row mt-5 flex items-end gap-2">
+											<span class="zc-plan-price zc-price-num"><?php echo esc_html( $price ); ?></span>
 											<?php if ( '' !== $period ) : ?>
-												<span class="pb-1 text-[0.8rem] text-muted"><?php echo esc_html( $period ); ?></span>
+												<span class="zc-plan-period pb-1 text-[0.8rem] text-muted"><?php echo esc_html( $period ); ?></span>
 											<?php endif; ?>
 										</div>
 									<?php endif; ?>
 
-									<div class="zc-rule my-6"></div>
+									<div class="zc-plan-rule zc-rule my-6"></div>
 
 									<?php if ( ! empty( $features ) ) : ?>
-										<ul class="zc-checklist flex-1">
+										<ul class="zc-plan-features zc-checklist flex-1">
 											<?php foreach ( $features as $feature ) : ?>
 												<li><?php echo esc_html( $feature ); ?></li>
 											<?php endforeach; ?>
@@ -229,14 +283,14 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 									<?php endif; ?>
 
 									<?php if ( '' !== $btn_text && '' !== $btn_url ) : ?>
-										<div class="mt-7">
+										<div class="zc-plan-cta mt-7">
 											<?php
 											zc_button(
 												array(
 													'text'  => $btn_text,
 													'url'   => $btn_url,
 													'style' => $featured ? 'primary' : 'outline',
-													'class' => 'w-full',
+													'class' => 'w-full zc-plan-btn',
 												)
 											);
 											?>

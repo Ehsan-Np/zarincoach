@@ -122,6 +122,17 @@ if ( ! class_exists( 'ZC_Widget_Product_Cats' ) && class_exists( 'ZC_Shop_Widget
 				)
 			);
 
+			$this->add_control(
+				'desc_words',
+				array(
+					'label'   => __( 'تعداد واژه‌های توضیح', 'zarincoach' ),
+					'type'    => \Elementor\Controls_Manager::NUMBER,
+					'default' => 14,
+					'min'     => 5,
+					'max'     => 80,
+				)
+			);
+
 			$this->end_controls_section();
 		}
 
@@ -149,6 +160,51 @@ if ( ! class_exists( 'ZC_Widget_Product_Cats' ) && class_exists( 'ZC_Shop_Widget
 				}
 			}
 			return 'bag';
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'img'   => array( __( 'تصویر/آیکن دسته', 'zarincoach' ), '.zc-pcat__img, .zc-pcat__icon' ),
+					'desc'  => array( __( 'توضیح', 'zarincoach' ), '.zc-pcat__desc' ),
+					'count' => array( __( 'تعداد محصول', 'zarincoach' ), '.zc-pcat__count, .zc-pcats-pills em' ),
+					'arrow' => array( __( 'فلش', 'zarincoach' ), '.zc-pcat__count svg, .zc-pcat__count i' ),
+				)
+			);
+			$this->zc_style(
+				'pc_grid',
+				__( 'شبکه و کارت‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'size', '.zc-pcats', __( 'فاصله‌ی کارت‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 60 ) ),
+					'card' => array( 'box', '.zc-pcat', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'img'  => array( 'size', '.zc-pcat.has-img', __( 'ارتفاع تصویر', 'zarincoach' ), array( 'prop' => 'height', 'max' => 400 ) ),
+					'icon' => array( 'icon', '.zc-pcat__icon', __( 'قاب آیکن', 'zarincoach' ), array( 'hover' => '.zc-pcat' ) ),
+				)
+			);
+			$this->zc_style(
+				'pc_text',
+				__( 'متن‌ها', 'zarincoach' ),
+				array(
+					'title' => array( 'text', '.zc-pcat__title, .zc-pcat__title a', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-pcat' ) ),
+					'desc'  => array( 'text', '.zc-pcat__desc', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+					'count' => array( 'text', '.zc-pcat__count', __( 'تعداد', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'pc_pills',
+				__( 'دکمه‌ها (طرح قرصی)', 'zarincoach' ),
+				array(
+					'pill'   => array( 'button', '.zc-pcats-pills .zc-chip', __( 'دکمه‌ها', 'zarincoach' ) ),
+					'gap'    => array( 'size', '.zc-pcats-pills', __( 'فاصله‌ی دکمه‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 40 ) ),
+					'countc' => array( 'color', '.zc-pcats-pills em', __( 'رنگ عدد', 'zarincoach' ) ),
+				),
+				array( 'condition' => array( 'style' => 'pills' ) )
+			);
 		}
 
 		/**
@@ -182,6 +238,7 @@ if ( ! class_exists( 'ZC_Widget_Product_Cats' ) && class_exists( 'ZC_Shop_Widget
 			$cols  = max( 2, min( 6, (int) ( $s['cols'] ?? 4 ) ) );
 			$count = $this->is_on( $s, 'show_count' );
 			$desc  = $this->is_on( $s, 'show_desc' );
+			$desc_words = isset( $s['desc_words'] ) && '' !== $s['desc_words'] ? (int) $s['desc_words'] : 14;
 			?>
 			<section class="zc-section zc-pcats-wrap">
 				<div class="zc-container">
@@ -208,7 +265,7 @@ if ( ! class_exists( 'ZC_Widget_Product_Cats' ) && class_exists( 'ZC_Shop_Widget
 									<div class="zc-pcat__body">
 										<h3 class="zc-pcat__title"><a href="<?php echo esc_url( $link ); ?>"><?php echo esc_html( $term->name ); ?></a></h3>
 										<?php if ( $desc && '' !== trim( $term->description ) ) : ?>
-											<p class="zc-pcat__desc"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $term->description ), 14, '…' ) ); ?></p>
+											<p class="zc-pcat__desc"><?php echo esc_html( wp_trim_words( wp_strip_all_tags( $term->description ), max( 5, (int) $desc_words ), '…' ) ); ?></p>
 										<?php endif; ?>
 										<?php if ( $count ) : ?>
 											<span class="zc-pcat__count">

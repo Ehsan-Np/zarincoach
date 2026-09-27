@@ -160,6 +160,52 @@ if ( ! class_exists( 'ZC_Widget_Product_Spotlight' ) && class_exists( 'ZC_Shop_W
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'tag'    => array( __( 'برچسب ویژه', 'zarincoach' ), '.zc-spot__tag' ),
+					'kind'   => array( __( 'نوع محصول', 'zarincoach' ), '.zc-sp__kind' ),
+					'sub'    => array( __( 'زیرعنوان محصول', 'zarincoach' ), '.zc-spot__subtitle' ),
+					'text'   => array( __( 'توضیح', 'zarincoach' ), '.zc-spot__text' ),
+					'feats'  => array( __( 'ویژگی‌ها', 'zarincoach' ), '.zc-sp__features' ),
+					'thumbs' => array( __( 'تصاویر کوچک', 'zarincoach' ), '.zc-spot__thumbs' ),
+					'more'   => array( __( 'دکمه‌ی جزئیات', 'zarincoach' ), '.zc-spot__more' ),
+				)
+			);
+			$this->zc_style(
+				'sp_box',
+				__( 'پنل ویژه', 'zarincoach' ),
+				array(
+					'box'   => array( 'box', '.zc-spot', __( 'پنل', 'zarincoach' ), array( 'gradient' => true, 'minh' => true ) ),
+					'grid'  => array( 'size', '.zc-spot', __( 'فاصله‌ی ستون‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 120 ) ),
+					'img'   => array( 'image', '.zc-spot__img', __( 'تصویر اصلی', 'zarincoach' ) ),
+					'thumb' => array( 'size', '.zc-spot__thumbs img', __( 'اندازه‌ی تصاویر کوچک', 'zarincoach' ), array( 'max' => 160, 'css' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};' ) ),
+					'tgap'  => array( 'size', '.zc-spot__thumbs', __( 'فاصله‌ی تصاویر کوچک', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 30 ) ),
+				)
+			);
+			$this->zc_style(
+				'sp_text',
+				__( 'برچسب، عنوان و متن', 'zarincoach' ),
+				array(
+					'tag'   => array( 'box', '.zc-spot__tag', __( 'برچسب', 'zarincoach' ), array( 'gradient' => false, 'text' => true ) ),
+					'kind'  => array( 'text', '.zc-sp__kind', __( 'نوع محصول', 'zarincoach' ), array( 'bg' => true, 'margin' => false ) ),
+					'title' => array( 'text', '.zc-spot__title, .zc-spot__title a', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-spot' ) ),
+					'sub'   => array( 'text', '.zc-spot__subtitle', __( 'زیرعنوان', 'zarincoach' ) ),
+					'text'  => array( 'text', '.zc-spot__text', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+					'flic'  => array( 'color', '.zc-sp__features svg, .zc-sp__features i', __( 'رنگ تیک ویژگی‌ها', 'zarincoach' ) ),
+					'fli'   => array( 'text', '.zc-sp__features li', __( 'متن ویژگی‌ها', 'zarincoach' ) ),
+					'lgap'  => array( 'size', '.zc-sp__features', __( 'فاصله‌ی ویژگی‌ها', 'zarincoach' ), array( 'prop' => 'row-gap', 'max' => 40 ) ),
+					'price' => array( 'text', '.zc-spot .price', __( 'قیمت', 'zarincoach' ), array( 'margin' => false ) ),
+					'more'  => array( 'button', '.zc-spot__more', __( 'دکمه‌ی جزئیات', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -186,6 +232,7 @@ if ( ! class_exists( 'ZC_Widget_Product_Spotlight' ) && class_exists( 'ZC_Shop_W
 			$end      = $this->is_on( $s, 'show_countdown' ) && function_exists( 'zc_wc_sale_end' ) ? (int) zc_wc_sale_end( $product ) : 0;
 			$gallery  = array_slice( $product->get_gallery_image_ids(), 0, 3 );
 			$eyebrow  = trim( (string) ( $s['eyebrow'] ?? '' ) );
+			$text_words = isset( $s['text_words'] ) && '' !== $s['text_words'] ? (int) $s['text_words'] : 42;
 			?>
 			<section class="zc-section zc-spot-wrap">
 				<div class="zc-container">
@@ -223,7 +270,7 @@ if ( ! class_exists( 'ZC_Widget_Product_Spotlight' ) && class_exists( 'ZC_Shop_W
 								<div class="zc-pcard__rating"><?php echo wc_get_rating_html( $product->get_average_rating(), $product->get_rating_count() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><span>(<?php echo esc_html( zc_digits_to_persian( (string) $product->get_rating_count() ) ); ?>)</span></div>
 							<?php endif; ?>
 							<?php if ( '' !== $text ) : ?>
-								<p class="zc-spot__text"><?php echo esc_html( wp_trim_words( $text, 42, '…' ) ); ?></p>
+								<p class="zc-spot__text"><?php echo esc_html( wp_trim_words( $text, max( 10, (int) $text_words ), '…' ) ); ?></p>
 							<?php endif; ?>
 							<?php if ( $features ) : ?>
 								<ul class="zc-sp__features">

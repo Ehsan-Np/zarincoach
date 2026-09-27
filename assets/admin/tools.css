@@ -695,3 +695,66 @@ body.zc-admin .zc-priority p { margin: 2px 0 0; color: var(--zc-muted); font-siz
 	body.zc-admin .zc-kv-grid--3 .zc-kv strong { font-size: 17px; }
 	body.zc-admin .zc-checks { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ===================================================================
+ * مدیریت ویجت‌ها (۲.۲)
+ * ================================================================= */
+body.zc-admin .zc-wm-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin-bottom: 18px; }
+body.zc-admin .zc-wm-stat { display: flex; align-items: center; gap: 12px; padding: 14px 16px; border: 1px solid var(--zc-line); border-radius: 14px; background: #fff; }
+body.zc-admin .zc-wm-stat strong { display: block; color: var(--zc-navy); font-size: 22px; font-weight: 900; line-height: 1.3; }
+body.zc-admin .zc-wm-stat small { color: var(--zc-muted); font-size: 12px; }
+body.zc-admin .zc-wm-stat-icon { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border-radius: 12px; font-size: 17px; }
+body.zc-admin .zc-wm-stat-icon.is-ok { background: #e8f6ee; color: #15803d; }
+body.zc-admin .zc-wm-stat-icon.is-muted { background: #f1f4f9; color: #64748b; }
+body.zc-admin .zc-wm-stat-icon.is-info { background: #eaf1fd; color: var(--zc-primary); }
+
+body.zc-admin .zc-wm-toolbar {
+	position: sticky; top: 32px; z-index: 5;
+	display: flex; flex-wrap: wrap; align-items: center; gap: 10px;
+	margin: 0 0 18px; padding: 10px; border: 1px solid var(--zc-line); border-radius: 14px;
+	background: rgba(255, 255, 255, .94); backdrop-filter: blur(8px);
+}
+body.zc-admin .zc-wm-search { position: relative; flex: 1 1 240px; display: block; }
+body.zc-admin .zc-wm-search i { position: absolute; top: 50%; right: 12px; transform: translateY(-50%); color: #94a3b8; font-size: 13px; pointer-events: none; }
+body.zc-admin #wpbody-content .zc-wm-search input {
+	width: 100%; min-height: 38px; margin: 0; padding: 6px 36px 6px 12px;
+	border: 1px solid var(--zc-line); border-radius: 10px; background: #fbfcfe;
+	font-family: inherit; font-size: 13px; box-shadow: none;
+}
+body.zc-admin #wpbody-content .zc-wm-search input:focus { border-color: var(--zc-primary); box-shadow: 0 0 0 3px rgba(29, 58, 114, .12); outline: 0; }
+body.zc-admin .zc-wm-filters { display: flex; gap: 4px; padding: 3px; border-radius: 10px; background: #f1f4f9; }
+body.zc-admin #wpbody-content .zc-wm-chip {
+	margin: 0; padding: 6px 12px; border: 0; border-radius: 8px; background: transparent;
+	color: #475569; font-family: inherit; font-size: 12.5px; font-weight: 700; cursor: pointer; line-height: 1.6;
+}
+body.zc-admin #wpbody-content .zc-wm-chip:hover { color: var(--zc-navy); }
+body.zc-admin #wpbody-content .zc-wm-chip.is-active { background: #fff; color: var(--zc-navy); box-shadow: 0 1px 3px rgba(11, 27, 58, .12); }
+body.zc-admin .zc-wm-bulk { display: flex; gap: 6px; flex-wrap: wrap; }
+
+body.zc-admin .zc-wm-group { margin: 0 0 22px; }
+body.zc-admin .zc-wm-group[hidden], body.zc-admin .zc-wm-card[hidden] { display: none !important; }
+body.zc-admin .zc-wm-group-title { display: flex; align-items: center; gap: 8px; }
+body.zc-admin .zc-wm-group-title small { padding: 1px 8px; border-radius: 99px; background: #f1f4f9; color: #64748b; font-size: 11px; font-weight: 700; }
+body.zc-admin .zc-wm-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 10px; }
+body.zc-admin .zc-wm-card { align-items: flex-start; }
+body.zc-admin .zc-wm-icon {
+	display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 11px;
+	background: #eef2f9; color: var(--zc-primary); font-size: 15px; transition: background .2s, color .2s;
+}
+body.zc-admin .zc-wm-card:has(> input:checked) .zc-wm-icon { background: var(--zc-primary); color: #fff; }
+body.zc-admin .zc-wm-card:not(:has(> input:checked)) .zc-switch-text strong { color: #64748b; }
+body.zc-admin .zc-wm-card.is-unavailable { opacity: .65; }
+body.zc-admin .zc-wm-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 8px; }
+body.zc-admin .zc-wm-meta code { padding: 1px 7px; border-radius: 6px; background: #f1f4f9; color: #475569; font-size: 11px; direction: ltr; }
+body.zc-admin .zc-wm-note { display: none; margin-top: 8px; padding: 6px 10px; border-radius: 8px; background: #fff7e6; color: #8a5a00; font-size: 11.5px; line-height: 1.9; }
+body.zc-admin .zc-wm-card:not(:has(> input:checked)) .zc-wm-note { display: block; }
+body.zc-admin .zc-wm-empty { padding: 30px; border: 1px dashed var(--zc-line); border-radius: 14px; color: var(--zc-muted); text-align: center; }
+body.zc-admin .zc-wm-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 8px; padding-top: 18px; border-top: 1px solid var(--zc-line); }
+body.zc-admin .zc-wm-foot .zc-muted { flex: 1 1 260px; margin: 0; font-size: 12px; line-height: 2; }
+body.zc-admin .zc-wm-guide .zc-tool-card p { line-height: 2.1; }
+
+@media (max-width: 782px) {
+	body.zc-admin .zc-wm-stats { grid-template-columns: 1fr; }
+	body.zc-admin .zc-wm-toolbar { top: 46px; }
+	body.zc-admin .zc-wm-grid { grid-template-columns: 1fr; }
+}

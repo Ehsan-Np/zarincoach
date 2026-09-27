@@ -108,6 +108,17 @@ if ( ! class_exists( 'ZC_Widget_Shop_Promo' ) && class_exists( 'ZC_Shop_Widget_B
 					'default'      => 'yes',
 				)
 			);
+
+			$this->add_control(
+				'copy_label',
+				array(
+					'label'       => __( 'متن روی دکمه‌ی کد', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'کپی کد', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+				)
+			);
 			$this->add_control(
 				'image',
 				array(
@@ -149,6 +160,41 @@ if ( ! class_exists( 'ZC_Widget_Shop_Promo' ) && class_exists( 'ZC_Shop_Widget_B
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'tag'   => array( __( 'برچسب تخفیف', 'zarincoach' ), '.zc-promo__tag' ),
+					'code'  => array( __( 'کد تخفیف', 'zarincoach' ), '.zc-promo__code' ),
+					'timer' => array( __( 'شمارش معکوس', 'zarincoach' ), '.zc-promo__timer' ),
+					'media' => array( __( 'تصویر', 'zarincoach' ), '.zc-promo__media' ),
+				)
+			);
+			$this->zc_style(
+				'promo_box',
+				__( 'پنل پیشنهاد', 'zarincoach' ),
+				array(
+					'box'   => array( 'box', '.zc-promo', __( 'پنل', 'zarincoach' ), array( 'gradient' => true, 'minh' => true ) ),
+					'media' => array( 'image', '.zc-promo__media', __( 'تصویر', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'promo_text',
+				__( 'برچسب، عنوان و متن', 'zarincoach' ),
+				array(
+					'tag'   => array( 'box', '.zc-promo__tag', __( 'برچسب', 'zarincoach' ), array( 'gradient' => false, 'text' => true ) ),
+					'title' => array( 'text', '.zc-promo__title', __( 'عنوان', 'zarincoach' ), array( 'width' => true ) ),
+					'text'  => array( 'text', '.zc-promo__text', __( 'متن', 'zarincoach' ), array( 'align' => true ) ),
+					'code'  => array( 'box', '.zc-promo__code', __( 'کد تخفیف', 'zarincoach' ), array( 'text' => true, 'gradient' => false ) ),
+					'btn'   => array( 'button', '.zc-promo__btn', __( 'دکمه', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -162,6 +208,7 @@ if ( ! class_exists( 'ZC_Widget_Shop_Promo' ) && class_exists( 'ZC_Shop_Widget_B
 				return;
 			}
 			$code  = trim( (string) ( $s['coupon'] ?? '' ) );
+			$copy_label = $this->zc_label( $s, 'copy_label', __( 'کپی کد', 'zarincoach' ) );
 			$image = ! empty( $s['image']['id'] ) ? (int) $s['image']['id'] : 0;
 			?>
 			<section class="zc-section zc-promo-wrap">
@@ -181,7 +228,7 @@ if ( ! class_exists( 'ZC_Widget_Shop_Promo' ) && class_exists( 'ZC_Shop_Widget_B
 								<?php if ( '' !== $code ) : ?>
 									<button type="button" class="zc-promo__code" data-zc-copy="<?php echo esc_attr( $code ); ?>" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: کد تخفیف */ __( 'کپی کد تخفیف %s', 'zarincoach' ), $code ) ); ?>">
 										<code dir="ltr"><?php echo esc_html( $code ); ?></code>
-										<span data-zc-copy-label><?php esc_html_e( 'کپی کد', 'zarincoach' ); ?></span>
+										<span data-zc-copy-label><?php echo esc_html( $copy_label ); ?></span>
 									</button>
 								<?php endif; ?>
 								<?php $this->render_button( '', 'zc-promo__btn' ); ?>

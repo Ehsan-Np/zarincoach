@@ -146,6 +146,22 @@ if ( ! class_exists( 'ZC_Widget_Toc' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'icon'     => array( __( 'آیکن سربرگ', 'zarincoach' ), '.zc-toc-icon' ),
+					'progress' => array( __( 'نوار پیشرفت', 'zarincoach' ), '.zc-toc-progress' ),
+					'num'      => array( __( 'شماره‌ها/نقطه‌ها', 'zarincoach' ), '.zc-toc-num, .zc-toc-dot' ),
+				)
+			);
+			$this->zc_toc_styles( 'toc' );
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void

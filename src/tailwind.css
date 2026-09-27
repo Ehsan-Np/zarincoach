@@ -312,6 +312,41 @@
     @apply grid h-11 w-11 shrink-0 place-items-center rounded-full border border-line bg-surface text-secondary transition-all duration-300 hover:border-primary hover:text-primary;
   }
 
+  /* --- آیکن‌های انتخابی المنتور (Font Awesome / SVG) داخل اجزای قالب (۲.۲) --- */
+  .zc-btn .zc-btn-icon {
+    @apply inline-grid h-auto w-auto shrink-0 border-0 bg-transparent p-0 text-current;
+    display: inline-flex;
+  }
+  .zc-btn .zc-btn-icon svg,
+  .zc-btn .zc-btn-icon i,
+  .zc-btn .zc-btn-icon .e-font-icon-svg {
+    width: 1.05rem;
+    height: 1.05rem;
+    font-size: 1.05rem;
+  }
+  .zc-btn:hover .zc-btn-icon {
+    transform: translateX(-2px);
+  }
+  /* آیکن انتخابی داخل مؤلفه‌های قالب: اندازه از رنگ و قاب والد پیروی می‌کند */
+  .zc-acc-icon svg, .zc-acc-icon i, .zc-acc-icon .e-font-icon-svg,
+  .zc-sc-sec-icon svg, .zc-sc-sec-icon i,
+  .zc-trust-note-icon svg, .zc-trust-note-icon i,
+  .zc-t-quote-icon svg, .zc-t-quote-icon i,
+  .zc-hero-card-icon svg, .zc-hero-card-icon i,
+  .zc-rh-degree-icon svg, .zc-rh-degree-icon i,
+  .zc-rh-badge-icon svg, .zc-rh-badge-icon i,
+  .zc-book-author-icon svg, .zc-book-author-icon i,
+  .zc-text-updated-icon svg, .zc-text-updated-icon i,
+  .zc-notice-icon svg, .zc-notice-icon i,
+  .zc-legal-links-icon svg, .zc-legal-links-icon i,
+  .zc-contact-value svg, .zc-skill-link-icon svg, .zc-skill-link-icon i {
+    width: inherit;
+    height: inherit;
+    font-size: inherit;
+  }
+  .zc-trust-note-icon { flex-shrink: 0; margin-top: 0.3rem; color: rgb(var(--zc-primary-rgb)); }
+  .zc-trust-note-icon svg { margin-top: 0; }
+
   /* --- کارت‌ها (برش گوشه = امضای طراحی) --- */
   .zc-card {
     @apply relative rounded-[var(--zc-radius)] border border-line bg-surface p-6 shadow-soft transition-all duration-300 ease-soft;
@@ -504,7 +539,7 @@
   }
 
   .zc-marquee-item::after {
-    content: '✳';
+    content: var(--zc-marquee-sep, '✳');
     @apply text-primary/70;
   }
 

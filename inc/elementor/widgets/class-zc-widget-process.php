@@ -112,6 +112,48 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'line' => array( __( 'خط عمودی', 'zarincoach' ), '.zc-process-list::before' ),
+					'ring' => array( __( 'حلقه‌ی متحرک دور شماره', 'zarincoach' ), '.zc-process-dot::after' ),
+					'desc' => array( __( 'توضیح مراحل', 'zarincoach' ), '.zc-process-desc' ),
+				)
+			);
+			$this->zc_style(
+				'proc_list',
+				__( 'فهرست مراحل', 'zarincoach' ),
+				array(
+					'list' => array( 'size', '.zc-process-list', __( 'عرض فهرست', 'zarincoach' ), array( 'prop' => 'max-width', 'units' => array( 'px', '%' ), 'max' => 1400 ) ),
+					'gap'  => array( 'size', '.zc-process-list', __( 'فاصله‌ی مراحل', 'zarincoach' ), array( 'prop' => 'row-gap', 'max' => 120 ) ),
+					'step' => array( 'box', '.zc-process-body', __( 'قاب متن هر مرحله', 'zarincoach' ), array( 'hover' => true ) ),
+					'line' => array( 'color', '.zc-process-list::before', __( 'رنگ خط عمودی', 'zarincoach' ), array( 'prop' => 'background' ) ),
+				)
+			);
+			$this->zc_style(
+				'proc_dot',
+				__( 'دایره‌ی شماره', 'zarincoach' ),
+				array(
+					'dot'  => array( 'icon', '.zc-process-dot', '', array( 'hover' => '.zc-process-step' ) ),
+					'num'  => array( 'text', '.zc-process-dot', __( 'عدد', 'zarincoach' ), array( 'margin' => false, 'heading' => true ) ),
+					'ring' => array( 'color', '.zc-process-dot::after', __( 'رنگ حلقه', 'zarincoach' ), array( 'prop' => 'border-color' ) ),
+				)
+			);
+			$this->zc_style(
+				'proc_text',
+				__( 'عنوان و توضیح', 'zarincoach' ),
+				array(
+					'title' => array( 'text', '.zc-process-title, .zc-process-title a', __( 'عنوان', 'zarincoach' ), array( 'hover' => true ) ),
+					'desc'  => array( 'text', '.zc-process-desc', __( 'توضیح', 'zarincoach' ), array( 'align' => true ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -130,7 +172,7 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 					<?php $this->render_heading( '', 'h2' ); ?>
 
 					<?php if ( ! empty( $steps ) ) : ?>
-						<ol class="zc-timeline zc-after-head mx-auto grid max-w-3xl gap-6 lg:gap-8">
+						<ol class="zc-process-list zc-timeline zc-after-head mx-auto grid max-w-3xl gap-6 lg:gap-8">
 							<?php foreach ( $steps as $step ) : ?>
 								<?php
 								$title = isset( $step['step_title'] ) ? trim( (string) $step['step_title'] ) : '';
@@ -144,11 +186,11 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 								$index++;
 								$number = $persian ? zc_digits_to_persian( (string) $index ) : (string) $index;
 								?>
-								<li class="zc-reveal relative grid grid-cols-[auto_1fr] gap-5 md:gap-8" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
-									<span class="zc-tl-dot"><span class="zc-arabic-num"><?php echo esc_html( $number ); ?></span></span>
+								<li class="zc-process-step zc-reveal relative grid grid-cols-[auto_1fr] gap-5 md:gap-8" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
+									<span class="zc-process-dot zc-tl-dot"><span class="zc-arabic-num"><?php echo esc_html( $number ); ?></span></span>
 
-									<div class="pb-2">
-										<h3 class="text-[1.2rem] font-bold text-secondary">
+									<div class="zc-process-body pb-2">
+										<h3 class="zc-process-title text-[1.2rem] font-bold text-secondary">
 											<?php if ( '' !== $url ) : ?>
 												<a class="transition-colors hover:text-primary" href="<?php echo esc_url( $url ); ?>"><?php echo esc_html( $title ); ?></a>
 											<?php else : ?>
@@ -157,7 +199,7 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 										</h3>
 
 										<?php if ( '' !== $desc ) : ?>
-											<p class="zc-lead mt-2 !text-[0.95rem]"><?php echo esc_html( $desc ); ?></p>
+											<p class="zc-process-desc zc-lead mt-2 text-[0.95rem]"><?php echo esc_html( $desc ); ?></p>
 										<?php endif; ?>
 									</div>
 								</li>

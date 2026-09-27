@@ -115,6 +115,21 @@ if ( ! class_exists( 'ZC_Widget_Trust_Badges' ) ) :
 					'default' => '',
 				)
 			);
+
+			$this->add_control(
+				'note_icon',
+				array(
+					'label'       => __( 'آیکن یادداشت', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = قفل.', 'zarincoach' ),
+				)
+			);
 			$this->end_controls_section();
 
 			/* ---------- چیدمان ---------- */
@@ -223,6 +238,52 @@ if ( ! class_exists( 'ZC_Widget_Trust_Badges' ) ) :
 		}
 
 		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'note'  => array( __( 'یادداشت', 'zarincoach' ), '.zc-trust-note' ),
+					'nicon' => array( __( 'آیکن یادداشت', 'zarincoach' ), '.zc-trust-note-icon' ),
+					'label' => array( __( 'عنوان زیر نماد', 'zarincoach' ), '.zc-trust-label' ),
+					'sub'   => array( __( 'توضیح زیر نماد', 'zarincoach' ), '.zc-trust-sub' ),
+				)
+			);
+			$this->zc_style(
+				'tb_layout',
+				__( 'چیدمان', 'zarincoach' ),
+				array(
+					'split' => array( 'split', '.zc-trust-split', __( 'ستون‌ها (سربرگ / نمادها)', 'zarincoach' ), array( 'children' => '.zc-trust-split > *', 'valign' => true ) ),
+					'gap'   => array( 'size', '.zc-trust', __( 'فاصله‌ی نمادها', 'zarincoach' ), array( 'max' => 80, 'css' => '--g: {{SIZE}}{{UNIT}}; gap: {{SIZE}}{{UNIT}};' ) ),
+				)
+			);
+			$this->zc_style(
+				'tb_item',
+				__( 'نمادها', 'zarincoach' ),
+				array(
+					'item'  => array( 'box', '.zc-trust-item', __( 'کارت نماد', 'zarincoach' ), array( 'hover' => true ) ),
+					'seal'  => array( 'box', '.zc-trust-seal', __( 'قاب نماد', 'zarincoach' ), array( 'gradient' => false ) ),
+					'sealh' => array( 'size', '.zc-trust-seal', __( 'ارتفاع قاب نماد', 'zarincoach' ), array( 'prop' => 'height', 'max' => 260 ) ),
+					'img'   => array( 'size', '.zc-trust-seal img', __( 'حداکثر ارتفاع تصویر نماد', 'zarincoach' ), array( 'prop' => 'max-height', 'max' => 200 ) ),
+					'emb'   => array( 'icon', '.zc-trust-emblem', __( 'نشان طرح پیش‌فرض', 'zarincoach' ) ),
+					'mark'  => array( 'text', '.zc-trust-mark-name', __( 'نام روی طرح پیش‌فرض', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'tb_text',
+				__( 'عنوان‌ها و یادداشت', 'zarincoach' ),
+				array(
+					'label' => array( 'text', '.zc-trust-label', __( 'عنوان زیر نماد', 'zarincoach' ), array( 'hover' => '.zc-trust-item', 'margin' => false ) ),
+					'sub'   => array( 'text', '.zc-trust-sub', __( 'توضیح زیر نماد', 'zarincoach' ), array( 'margin' => false ) ),
+					'note'  => array( 'box', '.zc-trust-note', __( 'یادداشت', 'zarincoach' ), array( 'gradient' => false, 'text' => true ) ),
+					'nicon' => array( 'color', '.zc-trust-note-icon', __( 'رنگ آیکن یادداشت', 'zarincoach' ) ),
+				)
+			);
+		}
+
+		/**
 		 * خروجی.
 		 *
 		 * @return void
@@ -263,13 +324,18 @@ if ( ! class_exists( 'ZC_Widget_Trust_Badges' ) ) :
 				'tight'   => 'zc-section-tight',
 				'plain'   => '',
 			);
-			$note_html = '' !== $note ? '<p class="zc-trust-note">' . zc_icon( 'lock', 'h-4 w-4', false ) . '<span>' . esc_html( $note ) . '</span></p>' : '';
+			$note_html = '';
+			if ( '' !== $note ) {
+				ob_start();
+				$this->zc_render_icon_or( isset( $s['note_icon'] ) ? $s['note_icon'] : array(), 'lock', 'h-4 w-4' );
+				$note_html = '<p class="zc-trust-note"><span class="zc-trust-note-icon inline-flex">' . ob_get_clean() . '</span><span class="zc-trust-note-text">' . esc_html( $note ) . '</span></p>';
+			}
 			?>
 			<section class="zc-trust-section relative <?php echo esc_attr( $outer[ $wrap ] ?? 'zc-section' ); ?>">
 				<div class="<?php echo 'plain' === $wrap ? '' : 'zc-container'; ?>">
 					<?php if ( 'split' === $layout && ( $has_h || '' !== $note ) ) : ?>
 						<div class="zc-trust-split grid gap-8 lg:grid-cols-12 lg:items-center lg:gap-10">
-							<div class="lg:col-span-4">
+							<div class="zc-trust-side lg:col-span-4">
 								<?php $this->render_heading( '', 'h2' ); ?>
 								<?php echo $note_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 							</div>

@@ -199,6 +199,32 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 			);
 
 			$this->add_control(
+				'more_all_label',
+				array(
+					'label'       => __( 'متن دکمه‌ی «همه نوشته‌ها»', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'همه نوشته‌ها', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+					'description' => __( 'فقط در نوار دسته‌بندی.', 'zarincoach' ),
+					'condition'   => array( 'cat_filter' => 'yes' ),
+				)
+			);
+
+			$this->add_control(
+				'loadmore_label',
+				array(
+					'label'       => __( 'متن دکمه‌ی «مطالب بیشتر»', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::TEXT,
+					'default'     => __( 'مطالب بیشتر', 'zarincoach' ),
+					'label_block' => true,
+					'dynamic'     => array( 'active' => true ),
+					'description' => __( 'فقط وقتی صفحه‌بندی «بارگذاری بیشتر» است.', 'zarincoach' ),
+					'condition'   => array( 'pagination_type' => 'loadmore' ),
+				)
+			);
+
+			$this->add_control(
 				'cat_filter',
 				array(
 					'label'        => __( 'نوار دسته‌بندی‌ها', 'zarincoach' ),
@@ -286,7 +312,7 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 			$all_url = get_permalink();
 			?>
 			<nav class="zc-post-filter mt-8 flex flex-wrap gap-2" aria-label="<?php esc_attr_e( 'دسته‌بندی نوشته‌ها', 'zarincoach' ); ?>">
-				<a class="zc-chip <?php echo '' === $current ? 'is-active' : ''; ?>" href="<?php echo esc_url( $all_url ? $all_url : home_url( '/' ) ); ?>"><?php esc_html_e( 'همه نوشته‌ها', 'zarincoach' ); ?></a>
+				<a class="zc-chip <?php echo '' === $current ? 'is-active' : ''; ?>" href="<?php echo esc_url( $all_url ? $all_url : home_url( '/' ) ); ?>"><?php echo esc_html( $this->zc_label( $this->get_settings_for_display(), 'more_all_label', __( 'همه نوشته‌ها', 'zarincoach' ) ) ); ?></a>
 				<?php foreach ( $terms as $term ) : ?>
 					<a class="zc-chip <?php echo $current === $term->slug ? 'is-active' : ''; ?>" href="<?php echo esc_url( get_term_link( $term ) ); ?>">
 						<?php echo esc_html( $term->name ); ?>
@@ -362,13 +388,79 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 				return;
 			}
 			?>
-			<div class="mt-8 lg:mt-10 flex justify-center">
+			<div class="zc-posts-loadmore mt-8 lg:mt-10 flex justify-center">
 				<a class="zc-btn zc-btn-outline zc-loadmore" href="<?php echo esc_url( $this->page_url( $paged + 1 ) ); ?>" data-zc-loadmore="<?php echo esc_attr( $uid ); ?>" data-zc-loading="<?php esc_attr_e( 'در حال بارگذاری…', 'zarincoach' ); ?>" rel="next">
-					<span class="zc-loadmore-label"><?php esc_html_e( 'مطالب بیشتر', 'zarincoach' ); ?></span>
+					<span class="zc-loadmore-label"><?php echo esc_html( $this->zc_label( $this->get_settings_for_display(), 'loadmore_label', __( 'مطالب بیشتر', 'zarincoach' ) ) ); ?></span>
 					<?php zc_icon( 'arrow-down', 'h-4 w-4' ); ?>
 				</a>
 			</div>
 			<?php
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'meta'    => array( __( 'اطلاعات نوشته (تاریخ…)', 'zarincoach' ), '.zc-meta' ),
+					'cat'     => array( __( 'برچسب دسته', 'zarincoach' ), '.zc-cat-tag, .zc-post-compact-cat, .zc-post-overlay-cat, .zc-badge' ),
+					'author'  => array( __( 'نویسنده', 'zarincoach' ), '.zc-card-author' ),
+					'catsbar' => array( __( 'نوار دسته‌بندی', 'zarincoach' ), '.zc-post-filter' ),
+					'load'    => array( __( 'دکمه‌ی بارگذاری بیشتر', 'zarincoach' ), '.zc-posts-loadmore' ),
+				)
+			);
+			$this->zc_style(
+				'ps_head',
+				__( 'سربرگ و دکمه‌ی «مشاهده همه»', 'zarincoach' ),
+				array(
+					'head' => array( 'size', '.zc-posts-head', __( 'فاصله از شبکه', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 80 ) ),
+					'btn'  => array( 'button', '.zc-posts-btn', __( 'دکمه', 'zarincoach' ) ),
+				)
+			);
+			$this->zc_style(
+				'ps_filter',
+				__( 'نوار دسته‌بندی', 'zarincoach' ),
+				array(
+					'bar'    => array( 'box', '.zc-post-filter', __( 'نوار', 'zarincoach' ), array( 'gradient' => false ) ),
+					'chip'   => array( 'button', '.zc-post-filter .zc-chip', __( 'دکمه‌ها', 'zarincoach' ) ),
+					'active' => array( 'color', '.zc-post-filter .zc-chip.is-active', __( 'پس‌زمینه‌ی فعال', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'actc'   => array( 'color', '.zc-post-filter .zc-chip.is-active', __( 'رنگ متن فعال', 'zarincoach' ) ),
+				),
+				array( 'condition' => array( 'cat_filter' => 'yes' ) )
+			);
+			$this->zc_style(
+				'ps_grid',
+				__( 'شبکه‌ی نوشته‌ها', 'zarincoach' ),
+				array(
+					'grid' => array( 'grid', '.zc-posts-items, .zc-posts-magazine', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'ps_card',
+				__( 'کارت‌ها (همه‌ی طرح‌ها)', 'zarincoach' ),
+				array(
+					'card'   => array( 'box', '.zc-card', __( 'کارت', 'zarincoach' ), array( 'hover' => true ) ),
+					'thumb'  => array( 'image', '.zc-post-thumb', __( 'تصویر شاخص', 'zarincoach' ), array( 'size' => true, 'hover' => '.zc-card' ) ),
+					'title'  => array( 'text', '.zc-posts-title, .zc-post-compact-title, .zc-post-overlay-title, .zc-more-read-title', __( 'عنوان', 'zarincoach' ), array( 'hover' => '.zc-card' ) ),
+					'ex'     => array( 'text', '.zc-lead', __( 'خلاصه', 'zarincoach' ), array( 'align' => true ) ),
+					'meta'   => array( 'text', '.zc-meta', __( 'اطلاعات', 'zarincoach' ), array( 'margin' => false ) ),
+					'avatar' => array( 'icon', '.zc-card-author-avatar', __( 'آواتار نویسنده', 'zarincoach' ) ),
+					'auth'   => array( 'text', '.zc-card-author', __( 'نام نویسنده', 'zarincoach' ), array( 'margin' => false ) ),
+					'catt'   => array( 'text', '.zc-cat-tag, .zc-post-compact-cat, .zc-post-overlay-cat', __( 'برچسب دسته', 'zarincoach' ), array( 'bg' => true, 'padding' => true, 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'ps_more',
+				__( 'صفحه‌بندی و بارگذاری بیشتر', 'zarincoach' ),
+				array(
+					'load' => array( 'button', '.zc-loadmore', __( 'دکمه‌ی بارگذاری بیشتر', 'zarincoach' ) ),
+					'pag'  => array( 'button', '.zc-pagination .page-numbers', __( 'دکمه‌های صفحه‌بندی', 'zarincoach' ) ),
+					'cur'  => array( 'color', '.zc-pagination .page-numbers.current', __( 'زمینه‌ی صفحه‌ی جاری', 'zarincoach' ), array( 'prop' => 'background' ) ),
+				)
+			);
 		}
 
 		/**
@@ -419,12 +511,12 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 			?>
 			<section class="zc-posts zc-section relative">
 				<div class="zc-container">
-					<div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+					<div class="zc-posts-head flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
 						<?php $this->render_heading( '', 'h2' ); ?>
 
 						<?php if ( ! empty( $settings['more_button_text'] ) ) : ?>
-							<div class="shrink-0">
-								<?php $this->render_button( 'more_', '' ); ?>
+							<div class="zc-posts-more shrink-0">
+								<?php $this->render_button( 'more_', 'zc-posts-btn' ); ?>
 							</div>
 						<?php endif; ?>
 					</div>
@@ -455,11 +547,11 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 						$rest  = $all;
 						?>
 						<div class="zc-posts-magazine <?php echo esc_attr( $top ); ?> grid gap-6 lg:grid-cols-12">
-							<div class="lg:col-span-7">
+							<div class="zc-posts-lead lg:col-span-7">
 								<?php zc_post_card( $lead->ID, array_merge( $card, array( 'layout' => 'overlay', 'featured' => true, 'excerpt' => max( 18, $excerpt ), 'ratio' => '' ) ) ); ?>
 							</div>
 							<?php if ( $side ) : ?>
-								<div class="zc-posts-side flex flex-col gap-5 lg:col-span-5">
+								<div class="zc-posts-side zc-posts-items flex flex-col gap-5 lg:col-span-5">
 									<?php
 									$delay = 80;
 									foreach ( $side as $p ) {
@@ -471,7 +563,7 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 							<?php endif; ?>
 						</div>
 						<?php if ( $rest ) : ?>
-							<div class="mt-8 grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>" data-zc-posts-grid="<?php echo esc_attr( $uid ); ?>">
+							<div class="zc-posts-rest zc-posts-items mt-8 grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>" data-zc-posts-grid="<?php echo esc_attr( $uid ); ?>">
 								<?php
 								$delay = 0;
 								foreach ( $rest as $p ) {
@@ -484,7 +576,7 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 							<div class="mt-8 grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>" data-zc-posts-grid="<?php echo esc_attr( $uid ); ?>" hidden></div>
 						<?php endif; ?>
 					<?php else : ?>
-						<div class="<?php echo esc_attr( $top . ' ' . $grid ); ?>" data-zc-posts-grid="<?php echo esc_attr( $uid ); ?>">
+						<div class="zc-posts-items <?php echo esc_attr( $top . ' ' . $grid ); ?>" data-zc-posts-grid="<?php echo esc_attr( $uid ); ?>">
 							<?php
 							$delay = 0;
 							while ( $query->have_posts() ) :
@@ -494,10 +586,10 @@ if ( ! class_exists( 'ZC_Widget_Posts' ) ) :
 									$service_id = get_the_ID();
 									?>
 									<article class="zc-card zc-card-hover zc-reveal flex flex-col" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
-										<h3 class="text-[1.1rem] font-bold text-secondary">
+										<h3 class="zc-posts-title text-[1.1rem] font-bold text-secondary">
 											<a class="transition-colors hover:text-primary" href="<?php echo esc_url( get_permalink( $service_id ) ); ?>"><?php echo esc_html( get_the_title( $service_id ) ); ?></a>
 										</h3>
-										<p class="zc-lead mt-2 !text-[0.92rem]"><?php echo esc_html( zc_excerpt( get_the_excerpt( $service_id ) ?: get_post_field( 'post_content', $service_id ), $excerpt ) ); ?></p>
+										<p class="zc-posts-desc zc-lead mt-2 text-[0.92rem]"><?php echo esc_html( zc_excerpt( get_the_excerpt( $service_id ) ?: get_post_field( 'post_content', $service_id ), $excerpt ) ); ?></p>
 									</article>
 									<?php
 								} else {

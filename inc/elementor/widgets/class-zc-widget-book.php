@@ -98,6 +98,21 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 			);
 
 			$this->add_control(
+				'author_icon',
+				array(
+					'label'       => __( 'آیکن نویسنده', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'خالی = آدمک.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
 				'description',
 				array(
 					'label'   => __( 'توضیح', 'zarincoach' ),
@@ -175,7 +190,74 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 				)
 			);
 
+			$this->add_control(
+				'mark_icon',
+				array(
+					'label'       => __( 'آیکن جلد طراحی‌شده', 'zarincoach' ),
+					'type'        => \Elementor\Controls_Manager::ICONS,
+					'skin'        => 'inline',
+					'label_block' => false,
+					'default'     => array(
+						'value'   => '',
+						'library' => '',
+					),
+					'description' => __( 'وقتی تصویر جلد ندارید روی جلد نمایش داده می‌شود. خالی = مغز.', 'zarincoach' ),
+				)
+			);
+
 			$this->end_controls_section();
+		}
+
+		/**
+		 * کنترل‌های نمایش اجزا و استایل (نسخه‌ی ۲.۲).
+		 *
+		 * @return void
+		 */
+		protected function zc_widget_controls() {
+			$this->zc_toggles(
+				array(
+					'cover'    => array( __( 'جلد سه‌بعدی', 'zarincoach' ), '.zc-book-media' ),
+					'shadow'   => array( __( 'سایه‌ی زیر جلد', 'zarincoach' ), '.zc-book3d-shadow' ),
+					'author'   => array( __( 'نشان نویسنده', 'zarincoach' ), '.zc-book-author' ),
+					'desc'     => array( __( 'توضیحات', 'zarincoach' ), '.zc-book-desc' ),
+					'features' => array( __( 'ویژگی‌ها', 'zarincoach' ), '.zc-book-features' ),
+					'ficon'    => array( __( 'آیکن ویژگی‌ها', 'zarincoach' ), '.zc-book-feature-icon' ),
+					'button'   => array( __( 'دکمه', 'zarincoach' ), '.zc-book-actions' ),
+				)
+			);
+			$this->zc_style(
+				'bk_layout',
+				__( 'پنل و چیدمان', 'zarincoach' ),
+				array(
+					'panel' => array( 'box', '.zc-book-panel', __( 'پنل', 'zarincoach' ), array( 'gradient' => true ) ),
+					'grid'  => array( 'split', '.zc-book-grid', __( 'ستون‌ها (جلد / متن)', 'zarincoach' ), array( 'children' => '.zc-book-media, .zc-book-body', 'valign' => true ) ),
+				)
+			);
+			$this->zc_style(
+				'bk_cover',
+				__( 'جلد کتاب', 'zarincoach' ),
+				array(
+					'size'   => array( 'size', '.zc-book3d', __( 'عرض جلد', 'zarincoach' ), array( 'max' => 500 ) ),
+					'front'  => array( 'box', '.zc-book3d-front', __( 'روی جلد', 'zarincoach' ), array( 'gradient' => true, 'margin' => false ) ),
+					'kicker' => array( 'text', '.zc-book3d-kicker', __( 'متن بالای جلد', 'zarincoach' ), array( 'margin' => false ) ),
+					'mark'   => array( 'color', '.zc-book3d-mark', __( 'رنگ آیکن جلد', 'zarincoach' ) ),
+					'title'  => array( 'text', '.zc-book3d-title', __( 'عنوان روی جلد', 'zarincoach' ), array( 'margin' => false ) ),
+					'author' => array( 'text', '.zc-book3d-author', __( 'نام نویسنده روی جلد', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
+			$this->zc_style(
+				'bk_text',
+				__( 'نویسنده، توضیحات و ویژگی‌ها', 'zarincoach' ),
+				array(
+					'author' => array( 'box', '.zc-book-author', __( 'نشان نویسنده', 'zarincoach' ), array( 'gradient' => false, 'text' => true ) ),
+					'aname'  => array( 'color', '.zc-book-author-name', __( 'رنگ نام نویسنده', 'zarincoach' ) ),
+					'aicon'  => array( 'color', '.zc-book-author-icon', __( 'رنگ آیکن نویسنده', 'zarincoach' ) ),
+					'desc'   => array( 'text', '.zc-book-desc', __( 'توضیحات', 'zarincoach' ), array( 'align' => true ) ),
+					'list'   => array( 'grid', '.zc-book-features', __( 'شبکه‌ی ویژگی‌ها', 'zarincoach' ), array( 'max' => 3 ) ),
+					'ficon'  => array( 'icon', '.zc-book-feature-icon', __( 'آیکن ویژگی', 'zarincoach' ), array( 'hover' => '.zc-book-feature' ) ),
+					'ftext'  => array( 'text', '.zc-book-feature-text', __( 'متن ویژگی', 'zarincoach' ), array( 'margin' => false ) ),
+				)
+			);
 		}
 
 		/**
@@ -225,8 +307,8 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 			<section class="zc-section zc-book-widget relative overflow-hidden">
 				<div class="zc-container">
 					<div class="zc-book-panel">
-						<div class="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-							<div class="lg:col-span-5 <?php echo $end ? 'lg:order-2' : ''; ?>">
+						<div class="zc-book-grid grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
+							<div class="zc-book-media lg:col-span-5 <?php echo $end ? 'lg:order-2' : ''; ?>">
 								<div class="zc-book3d-stage zc-reveal">
 									<div class="zc-book3d" role="img" aria-label="<?php echo esc_attr( sprintf( /* translators: %s: نام کتاب */ __( 'جلد کتاب %s', 'zarincoach' ), $title ) ); ?>">
 										<div class="zc-book3d-front">
@@ -234,7 +316,7 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 												<?php echo zc_image( isset( $s['cover'] ) ? $s['cover'] : $cover, 'medium_large', array( 'sizes' => '(min-width: 1024px) 300px, 60vw' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 											<?php else : ?>
 												<span class="zc-book3d-kicker"><?php echo esc_html( $kicker ); ?></span>
-												<span class="zc-book3d-mark" aria-hidden="true"><?php zc_icon( 'brain', 'h-10 w-10' ); ?></span>
+												<span class="zc-book3d-mark" aria-hidden="true"><?php $this->zc_render_icon_or( isset( $s['mark_icon'] ) ? $s['mark_icon'] : array(), 'brain', 'h-10 w-10' ); ?></span>
 												<strong class="zc-book3d-title"><?php echo esc_html( $title ); ?></strong>
 												<span class="zc-book3d-author"><?php echo esc_html( $author ); ?></span>
 											<?php endif; ?>
@@ -244,24 +326,26 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 								</div>
 							</div>
 
-							<div class="lg:col-span-7 <?php echo $end ? 'lg:order-1' : ''; ?>">
+							<div class="zc-book-body lg:col-span-7 <?php echo $end ? 'lg:order-1' : ''; ?>">
+								<div class="zc-section-head zc-book-head">
 								<?php if ( '' !== $eyebrow ) : ?>
 									<span class="zc-eyebrow zc-reveal"><?php echo esc_html( $eyebrow ); ?></span>
 								<?php endif; ?>
 								<h2 class="zc-title-lg zc-text-balance zc-reveal mt-4" data-zc-delay="60">«<?php echo esc_html( $title ); ?>»</h2>
+								</div>
 								<?php if ( '' !== $author ) : ?>
-									<p class="zc-reveal mt-4 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-[0.88rem] text-muted" data-zc-delay="100">
-										<?php zc_icon( 'user', 'h-4 w-4 text-primary' ); ?>
-										<span><?php echo esc_html( '' !== $role ? $role . ': ' : '' ); ?><strong class="text-secondary"><?php echo esc_html( $author ); ?></strong></span>
+									<p class="zc-book-author zc-reveal mt-4 inline-flex items-center gap-2 rounded-full border border-line bg-surface px-4 py-1.5 text-[0.88rem] text-muted" data-zc-delay="100">
+										<span class="zc-book-author-icon inline-flex text-primary"><?php $this->zc_render_icon_or( isset( $s['author_icon'] ) ? $s['author_icon'] : array(), 'user', 'h-4 w-4' ); ?></span>
+										<span><?php echo esc_html( '' !== $role ? $role . ': ' : '' ); ?><strong class="zc-book-author-name text-secondary"><?php echo esc_html( $author ); ?></strong></span>
 									</p>
 								<?php endif; ?>
 								<?php if ( '' !== $desc ) : ?>
-									<div class="zc-reveal mt-6 space-y-4 text-[0.98rem] leading-[2.05] text-muted" data-zc-delay="140">
+									<div class="zc-book-desc zc-reveal mt-6 space-y-4 text-[0.98rem] leading-[2.05] text-muted" data-zc-delay="140">
 										<?php echo wp_kses_post( wpautop( $desc ) ); ?>
 									</div>
 								<?php endif; ?>
 								<?php if ( ! empty( $features ) ) : ?>
-									<ul class="zc-reveal mt-7 grid gap-3 sm:grid-cols-2" data-zc-delay="180">
+									<ul class="zc-book-features zc-reveal mt-7 grid gap-3 sm:grid-cols-2" data-zc-delay="180">
 										<?php
 										foreach ( $features as $feature ) :
 											$text = isset( $feature['feature'] ) ? trim( (string) $feature['feature'] ) : '';
@@ -269,14 +353,14 @@ if ( ! class_exists( 'ZC_Widget_Book' ) ) :
 												continue;
 											}
 											?>
-											<li class="flex items-start gap-3 text-[0.92rem] leading-[1.9] text-ink">
-												<span class="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"><?php zc_icon( ! empty( $feature['feature_icon'] ) ? (string) $feature['feature_icon'] : 'check', 'h-4 w-4' ); ?></span>
-												<span><?php echo esc_html( $text ); ?></span>
+											<li class="zc-book-feature flex items-start gap-3 text-[0.92rem] leading-[1.9] text-ink">
+												<span class="zc-book-feature-icon mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-primary/10 text-primary"><?php zc_icon( ! empty( $feature['feature_icon'] ) ? (string) $feature['feature_icon'] : 'check', 'h-4 w-4' ); ?></span>
+												<span class="zc-book-feature-text"><?php echo esc_html( $text ); ?></span>
 											</li>
 										<?php endforeach; ?>
 									</ul>
 								<?php endif; ?>
-								<div class="zc-reveal mt-8" data-zc-delay="220"><?php $this->render_button(); ?></div>
+								<div class="zc-book-actions zc-reveal mt-8" data-zc-delay="220"><?php $this->render_button(); ?></div>
 							</div>
 						</div>
 					</div>
