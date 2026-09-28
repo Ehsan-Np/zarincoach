@@ -53,7 +53,7 @@ module.exports = {
         h3: ['clamp(1.3rem, 2.2vw, 1.65rem)', { lineHeight: '1.35', letterSpacing: '0' }],
       },
       maxWidth: {
-        container: '1200px',
+        container: '1150px',
         narrow: '760px',
         prose: '68ch',
       },

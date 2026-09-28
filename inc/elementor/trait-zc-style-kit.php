@@ -24,6 +24,13 @@ if ( ! trait_exists( 'ZC_Style_Kit' ) ) :
 	trait ZC_Style_Kit {
 
 		/**
+		 * آیا بخش «چیدمان و فاصله‌ها» برای این نمونه ثبت شده است؟
+		 *
+		 * @var bool
+		 */
+		protected $zc_layout_kit_done = false;
+
+		/**
 		 * ساخت انتخابگر المنتور از انتخابگر(های) نسبی.
 		 *
 		 * @param string $selector انتخابگر نسبی (با کاما برای چند انتخابگر؛ «&» = خود پوسته).
@@ -68,6 +75,13 @@ if ( ! trait_exists( 'ZC_Style_Kit' ) ) :
 		 * @return void
 		 */
 		protected function zc_style( $id, $label, array $parts, array $args = array() ) {
+			// v2.6.0: بخش «چیدمان و فاصله‌ها» به‌طور خودکار و یک‌بار برای هر ویجت
+			// به‌عنوان نخستین بخش زبانه‌ی استایل ثبت می‌شود.
+			if ( ! $this->zc_layout_kit_done ) {
+				$this->zc_layout_kit_done = true;
+				$this->zc_layout_kit_section();
+			}
+
 			$section = array(
 				'label' => $label,
 				'tab'   => \Elementor\Controls_Manager::TAB_STYLE,
@@ -116,6 +130,128 @@ if ( ! trait_exists( 'ZC_Style_Kit' ) ) :
 		/* ------------------------------------------------------------------
 		 * اجزای پایه
 		 * ------------------------------------------------------------------ */
+
+		/**
+		 * بخش «چیدمان و فاصله‌ها» — v2.6.0.
+		 *
+		 * برای همه‌ی ویجت‌ها به‌صورت خودکار ثبت می‌شود تا عرض، پدینگ، مارجین و
+		 * حداقل ارتفاع هر نمونه بدون کد و با پیش‌نمایش زنده قابل تنظیم باشد.
+		 * همه‌ی مقادیر پیش‌فرض خالی‌اند؛ یعنی تا کاربر چیزی تغییر ندهد هیچ CSS
+		 * اضافه‌ای تولید نمی‌شود.
+		 *
+		 * @return void
+		 */
+		protected function zc_layout_kit_section() {
+			$this->start_controls_section(
+				'zs_layout',
+				array(
+					'label'     => __( 'چیدمان و فاصله‌ها', 'zarincoach' ),
+					'tab'       => \Elementor\Controls_Manager::TAB_STYLE,
+				)
+			);
+
+			// عرض ویجت: پیش‌فرض قالب یا جعبه‌ای با عرض دلخواه (خروج از حالت کشیده).
+			$this->add_control(
+				'zlm_mode',
+				array(
+					'label'                => __( 'عرض ویجت', 'zarincoach' ),
+					'type'                 => \Elementor\Controls_Manager::SELECT,
+					'default'              => 'inherit',
+					'options'              => array(
+						'inherit' => __( 'پیش‌فرض قالب', 'zarincoach' ),
+						'boxed'   => __( 'جعبه‌ای (عرض دلخواه)', 'zarincoach' ),
+					),
+					'description'          => __( '«جعبه‌ای» محتوا را در عرض مشخص وسط‌چین می‌کند — برای هم‌تراز کردن ویجت با بقیه‌ی صفحه.', 'zarincoach' ),
+					'selectors'            => array(
+						'{{WRAPPER}}' => 'max-width: {{VALUE}}; margin-right: auto; margin-left: auto;',
+					),
+					'selectors_dictionary' => array(
+						'inherit' => 'none',
+						'boxed'   => 'var(--zlm-width, 1150px)',
+					),
+				)
+			);
+
+			// عرض دلخواه جعبه (وقتی حالت «جعبه‌ای» فعال است).
+			$this->add_control(
+				'zlm_width_v',
+				array(
+					'label'      => __( 'حداکثر عرض جعبه', 'zarincoach' ),
+					'type'       => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => array( 'px', 'rem' ),
+					'range'      => array(
+						'px'  => array( 'min' => 240, 'max' => 1920, 'step' => 10 ),
+						'rem' => array( 'min' => 15, 'max' => 120, 'step' => 1 ),
+					),
+					'default'    => array( 'unit' => 'px', 'size' => 1150 ),
+					'condition'  => array( 'zlm_mode' => 'boxed' ),
+					'selectors'  => array(
+						'{{WRAPPER}}' => '--zlm-width: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+
+			// پدینگ داخلی — واکنش‌گرا (دسکتاپ/تبلت/موبایل).
+			$this->add_responsive_control(
+				'zlm_pad',
+				array(
+					'label'              => __( 'پدینگ داخلی', 'zarincoach' ),
+					'type'               => \Elementor\Controls_Manager::DIMENSIONS,
+					'size_units'         => array( 'px', 'em', 'rem', '%' ),
+					'allowed_dimensions' => 'all',
+					'placeholder'        => array(
+						'top'    => __( 'بالا', 'zarincoach' ),
+						'right'  => __( 'راست', 'zarincoach' ),
+						'bottom' => __( 'پایین', 'zarincoach' ),
+						'left'   => __( 'چپ', 'zarincoach' ),
+					),
+					'selectors'          => array(
+						'{{WRAPPER}}' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+				)
+			);
+
+			// مارجین بیرونی — واکنش‌گرا؛ برای فاصله‌ی دقیق بین بخش‌ها.
+			$this->add_responsive_control(
+				'zlm_mar',
+				array(
+					'label'              => __( 'فاصله از بیرون (مارجین)', 'zarincoach' ),
+					'type'               => \Elementor\Controls_Manager::DIMENSIONS,
+					'size_units'         => array( 'px', 'em', 'rem', '%' ),
+					'allowed_dimensions' => 'all',
+					'placeholder'        => array(
+						'top'    => __( 'بالا', 'zarincoach' ),
+						'right'  => __( 'راست', 'zarincoach' ),
+						'bottom' => __( 'پایین', 'zarincoach' ),
+						'left'   => __( 'چپ', 'zarincoach' ),
+					),
+					'selectors'          => array(
+						'{{WRAPPER}}' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					),
+				)
+			);
+
+			// حداقل ارتفاع — واکنش‌گرا؛ برای هم‌قد کردن بخش‌ها.
+			$this->add_responsive_control(
+				'zlm_minh',
+				array(
+					'label'      => __( 'حداقل ارتفاع', 'zarincoach' ),
+					'type'       => \Elementor\Controls_Manager::SLIDER,
+					'size_units' => array( 'px', 'vh', 'rem' ),
+					'range'      => array(
+						'px'  => array( 'min' => 0, 'max' => 800, 'step' => 2 ),
+						'vh'  => array( 'min' => 0, 'max' => 100, 'step' => 1 ),
+						'rem' => array( 'min' => 0, 'max' => 50, 'step' => 1 ),
+					),
+					'default'    => array( 'unit' => 'px', 'size' => 0 ),
+					'selectors'  => array(
+						'{{WRAPPER}}' => 'min-height: {{SIZE}}{{UNIT}};',
+					),
+				)
+			);
+
+			$this->end_controls_section();
+		}
 
 		/**
 		 * متن: تایپوگرافی، رنگ (+ هاور)، سایه، تراز، فاصله.

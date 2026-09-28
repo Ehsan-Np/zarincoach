@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ZarinCoach — قالب روان‌شناسی و کوچینگ مریم جمالی 2.5.0\n"
+"Project-Id-Version: ZarinCoach — قالب روان‌شناسی و کوچینگ مریم جمالی 2.6.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/zarincoach\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-28T00:15:23+00:00\n"
+"POT-Creation-Date: 2026-09-28T00:55:38+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -107,7 +107,7 @@ msgstr ""
 #: inc/admin-layout.php:502
 #: inc/admin.php:817
 #: inc/elementor/class-zc-elementor.php:347
-#: inc/elementor/trait-zc-style-kit.php:1123
+#: inc/elementor/trait-zc-style-kit.php:1259
 #: inc/elementor/widgets/class-zc-widget-schemas.php:69
 #: inc/elementor/widgets/class-zc-widget-services.php:53
 #: inc/options-panel.php:735
@@ -1023,7 +1023,7 @@ msgid "همه"
 msgstr ""
 
 #: inc/admin-widgets.php:343
-#: inc/elementor/trait-zc-style-kit.php:1386
+#: inc/elementor/trait-zc-style-kit.php:1522
 #: inc/elementor/widgets/class-zc-widget-page-title.php:171
 #: inc/options-panel.php:493
 #: inc/options-panel.php:504
@@ -1031,7 +1031,7 @@ msgid "روشن"
 msgstr ""
 
 #: inc/admin-widgets.php:344
-#: inc/elementor/trait-zc-style-kit.php:1387
+#: inc/elementor/trait-zc-style-kit.php:1523
 #: inc/elementor/widgets/class-zc-widget-marquee.php:174
 #: inc/options-panel.php:287
 msgid "خاموش"
@@ -1116,7 +1116,7 @@ msgid "آخرین بخش زبانه‌ی استایل: با تغییر «رنگ 
 msgstr ""
 
 #: inc/admin-widgets.php:423
-#: inc/elementor/trait-zc-style-kit.php:1310
+#: inc/elementor/trait-zc-style-kit.php:1446
 msgid "چیدمان و فاصله‌های بخش"
 msgstr ""
 
@@ -1961,7 +1961,7 @@ msgid "چندسایته"
 msgstr ""
 
 #: inc/admin.php:774
-#: inc/elementor/trait-zc-style-kit.php:1433
+#: inc/elementor/trait-zc-style-kit.php:1569
 #: inc/elementor/widgets/class-zc-widget-contact.php:172
 #: inc/elementor/widgets/class-zc-widget-cta.php:121
 #: inc/elementor/widgets/class-zc-widget-hero.php:167
@@ -1973,7 +1973,7 @@ msgid "بله"
 msgstr ""
 
 #: inc/admin.php:774
-#: inc/elementor/trait-zc-style-kit.php:1434
+#: inc/elementor/trait-zc-style-kit.php:1570
 #: inc/elementor/widgets/class-zc-widget-hero.php:168
 msgid "خیر"
 msgstr ""
@@ -2707,13 +2707,13 @@ msgstr ""
 
 #: inc/demo-content.php:947
 #: inc/demo-content.php:965
-#: inc/elementor-home-builder.php:296
+#: inc/elementor-home-builder.php:332
 msgid "تست‌ها و ارزیابی‌ها"
 msgstr ""
 
 #: inc/demo-content.php:948
 #: inc/demo-content.php:966
-#: inc/elementor-home-builder.php:297
+#: inc/elementor-home-builder.php:333
 msgid "دوره‌ها و کارگاه‌ها"
 msgstr ""
 
@@ -2796,74 +2796,74 @@ msgstr ""
 msgid "فروشگاه آماده شد: %1$d محصول نمونه در %2$d دسته، کد تخفیف WELCOME15، ارسال پستی و پرداخت آفلاین."
 msgstr ""
 
-#: inc/elementor-home-builder.php:239
+#: inc/elementor-home-builder.php:275
 #: template-parts/front-page/schema.php:86
 msgid "شروع ارزیابی"
 msgstr ""
 
-#: inc/elementor-home-builder.php:241
+#: inc/elementor-home-builder.php:277
 msgid "کتابخانه‌ی کامل: ۱۸ طرحواره، ۱۴ ذهنیت و ۱۲ خطای شناختی"
 msgstr ""
 
-#: inc/elementor-home-builder.php:290
+#: inc/elementor-home-builder.php:326
 msgid "راه‌های دیگر شروع"
 msgstr ""
 
-#: inc/elementor-home-builder.php:291
+#: inc/elementor-home-builder.php:327
 msgid "تست، دوره گروهی یا برنامه‌ی مدیران"
 msgstr ""
 
-#: inc/elementor-home-builder.php:292
+#: inc/elementor-home-builder.php:328
 msgid "اگر هنوز برای جلسه فردی آماده نیستی، از یکی از این مسیرها شروع کن."
 msgstr ""
 
-#: inc/elementor-home-builder.php:296
+#: inc/elementor-home-builder.php:332
 msgid "کمال‌گرایی، اهمالکاری، طرحواره‌ها و سبک تصمیم‌گیری؛ نقطه‌ی شروع، نه تشخیص."
 msgstr ""
 
-#: inc/elementor-home-builder.php:296
+#: inc/elementor-home-builder.php:332
 msgid "۵ تا ۲۰ دقیقه"
 msgstr ""
 
-#: inc/elementor-home-builder.php:296
+#: inc/elementor-home-builder.php:332
 msgid "به‌زودی آنلاین"
 msgstr ""
 
-#: inc/elementor-home-builder.php:297
+#: inc/elementor-home-builder.php:333
 msgid "دوره حضوری ده مهارت زندگی در بوشهر و کارگاه‌های «از کمال‌گرایی تا اقدام» و «ذهن مرتب»."
 msgstr ""
 
-#: inc/elementor-home-builder.php:297
+#: inc/elementor-home-builder.php:333
 msgid "۸ جلسه ۹۰ دقیقه‌ای"
 msgstr ""
 
-#: inc/elementor-home-builder.php:298
+#: inc/elementor-home-builder.php:334
 msgid "ویژه مدیران؛ ذهن مدیر"
 msgstr ""
 
-#: inc/elementor-home-builder.php:298
+#: inc/elementor-home-builder.php:334
 msgid "برای مدیران ۲۸ تا ۴۵ ساله: کنترل‌گری، تفویض، تصمیم‌های معوق و فرسودگی خاموش."
 msgstr ""
 
-#: inc/elementor-home-builder.php:298
+#: inc/elementor-home-builder.php:334
 msgid "حضوری یا آنلاین"
 msgstr ""
 
-#: inc/elementor-home-builder.php:298
+#: inc/elementor-home-builder.php:334
 msgid "جدید"
 msgstr ""
 
-#: inc/elementor-home-builder.php:415
-#: inc/elementor-home-builder.php:673
+#: inc/elementor-home-builder.php:451
+#: inc/elementor-home-builder.php:709
 #: template-parts/front-page/cta.php:31
 msgid "قدم اول"
 msgstr ""
 
-#: inc/elementor-home-builder.php:1962
+#: inc/elementor-home-builder.php:1998
 msgid "سربرگ سایت (زرین‌کوچ)"
 msgstr ""
 
-#: inc/elementor-home-builder.php:1982
+#: inc/elementor-home-builder.php:2018
 msgid "پاورقی سایت (زرین‌کوچ)"
 msgstr ""
 
@@ -2895,7 +2895,7 @@ msgid "پس‌زمینه‌ی بخش با رنگ ثانویه پالت (در پ�
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:211
-#: inc/elementor/trait-zc-style-kit.php:1275
+#: inc/elementor/trait-zc-style-kit.php:1411
 #: inc/elementor/widgets/class-zc-widget-book.php:67
 #: inc/elementor/widgets/class-zc-widget-page-title.php:73
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:80
@@ -2903,8 +2903,8 @@ msgid "برچسب کوتاه"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:220
-#: inc/elementor/trait-zc-style-kit.php:1125
-#: inc/elementor/trait-zc-style-kit.php:1282
+#: inc/elementor/trait-zc-style-kit.php:1261
+#: inc/elementor/trait-zc-style-kit.php:1418
 #: inc/elementor/widgets/class-zc-widget-courses.php:333
 #: inc/elementor/widgets/class-zc-widget-cta.php:70
 #: inc/elementor/widgets/class-zc-widget-cta.php:196
@@ -2957,7 +2957,7 @@ msgid "عنوان"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:230
-#: inc/elementor/trait-zc-style-kit.php:1284
+#: inc/elementor/trait-zc-style-kit.php:1420
 #: inc/elementor/widgets/class-zc-widget-form.php:96
 #: inc/elementor/widgets/class-zc-widget-hero.php:121
 #: inc/elementor/widgets/class-zc-widget-hero.php:317
@@ -2971,14 +2971,16 @@ msgid "زیرعنوان"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:240
-#: inc/elementor/trait-zc-style-kit.php:990
+#: inc/elementor/trait-zc-style-kit.php:1126
 #: inc/elementor/widgets/class-zc-widget-page-title.php:121
 msgid "تراز"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:244
-#: inc/elementor/trait-zc-style-kit.php:579
-#: inc/elementor/trait-zc-style-kit.php:994
+#: inc/elementor/trait-zc-style-kit.php:204
+#: inc/elementor/trait-zc-style-kit.php:224
+#: inc/elementor/trait-zc-style-kit.php:715
+#: inc/elementor/trait-zc-style-kit.php:1130
 #: inc/elementor/widgets/class-zc-widget-about.php:87
 #: inc/elementor/widgets/class-zc-widget-book.php:186
 #: inc/elementor/widgets/class-zc-widget-breadcrumb.php:158
@@ -2995,9 +2997,9 @@ msgid "راست"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:248
-#: inc/elementor/trait-zc-style-kit.php:576
-#: inc/elementor/trait-zc-style-kit.php:768
-#: inc/elementor/trait-zc-style-kit.php:998
+#: inc/elementor/trait-zc-style-kit.php:712
+#: inc/elementor/trait-zc-style-kit.php:904
+#: inc/elementor/trait-zc-style-kit.php:1134
 #: inc/elementor/widgets/class-zc-widget-breadcrumb.php:159
 #: inc/elementor/widgets/class-zc-widget-footer-nav.php:87
 #: inc/elementor/widgets/class-zc-widget-footer-trust.php:133
@@ -3008,8 +3010,10 @@ msgid "وسط"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:252
-#: inc/elementor/trait-zc-style-kit.php:580
-#: inc/elementor/trait-zc-style-kit.php:1002
+#: inc/elementor/trait-zc-style-kit.php:206
+#: inc/elementor/trait-zc-style-kit.php:226
+#: inc/elementor/trait-zc-style-kit.php:716
+#: inc/elementor/trait-zc-style-kit.php:1138
 #: inc/elementor/widgets/class-zc-widget-about.php:91
 #: inc/elementor/widgets/class-zc-widget-book.php:187
 #: inc/elementor/widgets/class-zc-widget-breadcrumb.php:160
@@ -3036,7 +3040,7 @@ msgid "برای سئو: در هر صفحه فقط یک H1 داشته باشید.
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:342
-#: inc/elementor/trait-zc-style-kit.php:1293
+#: inc/elementor/trait-zc-style-kit.php:1429
 #: inc/elementor/widgets/class-zc-widget-about.php:143
 #: inc/elementor/widgets/class-zc-widget-about.php:162
 #: inc/elementor/widgets/class-zc-widget-book.php:225
@@ -3118,7 +3122,7 @@ msgid "بدون آیکن"
 msgstr ""
 
 #: inc/elementor/class-zc-widget-base.php:529
-#: inc/elementor/trait-zc-style-kit.php:748
+#: inc/elementor/trait-zc-style-kit.php:884
 #: inc/elementor/widgets/class-zc-widget-courses.php:153
 #: inc/elementor/widgets/class-zc-widget-list.php:113
 #: inc/elementor/widgets/class-zc-widget-posts.php:111
@@ -3298,187 +3302,221 @@ msgstr ""
 msgid "مثلاً: زرین‌پال"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:141
-#: inc/elementor/trait-zc-style-kit.php:220
-#: inc/elementor/trait-zc-style-kit.php:257
-#: inc/elementor/trait-zc-style-kit.php:699
-#: inc/elementor/trait-zc-style-kit.php:797
+#: inc/elementor/trait-zc-style-kit.php:148
+msgid "چیدمان و فاصله‌ها"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:157
+msgid "عرض ویجت"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:161
+#: inc/elementor/trait-zc-style-kit.php:672
+#: inc/elementor/trait-zc-style-kit.php:1355
+msgid "پیش‌فرض قالب"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:162
+msgid "جعبه‌ای (عرض دلخواه)"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:164
+msgid "«جعبه‌ای» محتوا را در عرض مشخص وسط‌چین می‌کند — برای هم‌تراز کردن ویجت با بقیه‌ی صفحه."
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:179
+msgid "حداکثر عرض جعبه"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:198
+msgid "پدینگ داخلی"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:203
+#: inc/elementor/trait-zc-style-kit.php:223
+#: inc/elementor/trait-zc-style-kit.php:713
+#: inc/elementor/trait-zc-style-kit.php:903
+msgid "بالا"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:205
+#: inc/elementor/trait-zc-style-kit.php:225
+#: inc/elementor/trait-zc-style-kit.php:714
+#: inc/elementor/trait-zc-style-kit.php:905
+msgid "پایین"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:218
+msgid "فاصله از بیرون (مارجین)"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:238
+#: inc/elementor/trait-zc-style-kit.php:459
+msgid "حداقل ارتفاع"
+msgstr ""
+
+#: inc/elementor/trait-zc-style-kit.php:277
+#: inc/elementor/trait-zc-style-kit.php:356
+#: inc/elementor/trait-zc-style-kit.php:393
+#: inc/elementor/trait-zc-style-kit.php:835
+#: inc/elementor/trait-zc-style-kit.php:933
 #: inc/elementor/widgets/class-zc-widget-marquee.php:118
 #: inc/elementor/widgets/class-zc-widget-text.php:337
 msgid "رنگ متن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:150
+#: inc/elementor/trait-zc-style-kit.php:286
 msgid "رنگ متن (هاور)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:160
-#: inc/elementor/trait-zc-style-kit.php:813
+#: inc/elementor/trait-zc-style-kit.php:296
+#: inc/elementor/trait-zc-style-kit.php:949
 msgid "رنگ زمینه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:177
-#: inc/elementor/trait-zc-style-kit.php:320
-#: inc/elementor/trait-zc-style-kit.php:526
+#: inc/elementor/trait-zc-style-kit.php:313
+#: inc/elementor/trait-zc-style-kit.php:456
+#: inc/elementor/trait-zc-style-kit.php:662
 #: inc/elementor/widgets/class-zc-widget-heading.php:89
 msgid "حداکثر عرض"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:180
-#: inc/elementor/trait-zc-style-kit.php:314
-#: inc/elementor/trait-zc-style-kit.php:421
-#: inc/elementor/trait-zc-style-kit.php:836
+#: inc/elementor/trait-zc-style-kit.php:316
+#: inc/elementor/trait-zc-style-kit.php:450
+#: inc/elementor/trait-zc-style-kit.php:557
+#: inc/elementor/trait-zc-style-kit.php:972
 msgid "فاصله‌ی داخلی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:183
-#: inc/elementor/trait-zc-style-kit.php:317
+#: inc/elementor/trait-zc-style-kit.php:319
+#: inc/elementor/trait-zc-style-kit.php:453
 msgid "فاصله‌ی بیرونی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:204
-#: inc/elementor/trait-zc-style-kit.php:349
-#: inc/elementor/trait-zc-style-kit.php:615
+#: inc/elementor/trait-zc-style-kit.php:340
+#: inc/elementor/trait-zc-style-kit.php:485
+#: inc/elementor/trait-zc-style-kit.php:751
 #: inc/elementor/widgets/class-zc-widget-marquee.php:172
 msgid "عادی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:243
-#: inc/elementor/trait-zc-style-kit.php:350
-#: inc/elementor/trait-zc-style-kit.php:641
+#: inc/elementor/trait-zc-style-kit.php:379
+#: inc/elementor/trait-zc-style-kit.php:486
+#: inc/elementor/trait-zc-style-kit.php:777
 msgid "هاور"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:266
-#: inc/elementor/trait-zc-style-kit.php:376
+#: inc/elementor/trait-zc-style-kit.php:402
+#: inc/elementor/trait-zc-style-kit.php:512
 msgid "رنگ حاشیه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:281
-#: inc/elementor/trait-zc-style-kit.php:394
+#: inc/elementor/trait-zc-style-kit.php:417
+#: inc/elementor/trait-zc-style-kit.php:530
 msgid "جابه‌جایی عمودی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:296
+#: inc/elementor/trait-zc-style-kit.php:432
 msgid "مدت انیمیشن (ثانیه)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:312
-#: inc/elementor/trait-zc-style-kit.php:420
-#: inc/elementor/trait-zc-style-kit.php:597
-#: inc/elementor/trait-zc-style-kit.php:835
+#: inc/elementor/trait-zc-style-kit.php:448
+#: inc/elementor/trait-zc-style-kit.php:556
+#: inc/elementor/trait-zc-style-kit.php:733
+#: inc/elementor/trait-zc-style-kit.php:971
 msgid "گردی گوشه‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:323
-msgid "حداقل ارتفاع"
-msgstr ""
-
-#: inc/elementor/trait-zc-style-kit.php:357
+#: inc/elementor/trait-zc-style-kit.php:493
 msgid "رنگ متن و آیکن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:422
+#: inc/elementor/trait-zc-style-kit.php:558
 msgid "فاصله‌ی متن تا آیکن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:423
-#: inc/elementor/trait-zc-style-kit.php:450
+#: inc/elementor/trait-zc-style-kit.php:559
+#: inc/elementor/trait-zc-style-kit.php:586
 msgid "اندازه‌ی آیکن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:425
+#: inc/elementor/trait-zc-style-kit.php:561
 msgid "حداقل عرض"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:467
+#: inc/elementor/trait-zc-style-kit.php:603
 msgid "رنگ آیکن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:479
+#: inc/elementor/trait-zc-style-kit.php:615
 msgid "رنگ آیکن (هاور)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:497
+#: inc/elementor/trait-zc-style-kit.php:633
 msgid "اندازه‌ی قاب"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:505
+#: inc/elementor/trait-zc-style-kit.php:641
 msgid "گردی قاب"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:525
+#: inc/elementor/trait-zc-style-kit.php:661
 msgid "عرض"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:527
+#: inc/elementor/trait-zc-style-kit.php:663
 #: inc/elementor/widgets/class-zc-widget-page-title.php:141
 msgid "ارتفاع"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:533
+#: inc/elementor/trait-zc-style-kit.php:669
 msgid "نسبت ابعاد"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:536
-#: inc/elementor/trait-zc-style-kit.php:1219
-msgid "پیش‌فرض قالب"
-msgstr ""
-
-#: inc/elementor/trait-zc-style-kit.php:545
+#: inc/elementor/trait-zc-style-kit.php:681
 msgid "ابعاد اصلی تصویر"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:556
+#: inc/elementor/trait-zc-style-kit.php:692
 msgid "نحوه‌ی قرارگیری"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:559
-#: inc/elementor/trait-zc-style-kit.php:575
-#: inc/elementor/trait-zc-style-kit.php:766
-#: inc/elementor/trait-zc-style-kit.php:1100
+#: inc/elementor/trait-zc-style-kit.php:695
+#: inc/elementor/trait-zc-style-kit.php:711
+#: inc/elementor/trait-zc-style-kit.php:902
+#: inc/elementor/trait-zc-style-kit.php:1236
 #: inc/options-panel.php:1562
 #: inc/woocommerce/loop.php:497
 msgid "پیش‌فرض"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:560
+#: inc/elementor/trait-zc-style-kit.php:696
 msgid "پوشش کامل (برش)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:561
+#: inc/elementor/trait-zc-style-kit.php:697
 msgid "نمایش کامل (بدون برش)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:562
-#: inc/elementor/trait-zc-style-kit.php:770
+#: inc/elementor/trait-zc-style-kit.php:698
+#: inc/elementor/trait-zc-style-kit.php:906
 msgid "کشیده"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:572
+#: inc/elementor/trait-zc-style-kit.php:708
 #: inc/elementor/widgets/class-zc-widget-about.php:83
 msgid "موقعیت تصویر"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:577
-#: inc/elementor/trait-zc-style-kit.php:767
-msgid "بالا"
-msgstr ""
-
-#: inc/elementor/trait-zc-style-kit.php:578
-#: inc/elementor/trait-zc-style-kit.php:769
-msgid "پایین"
-msgstr ""
-
-#: inc/elementor/trait-zc-style-kit.php:626
+#: inc/elementor/trait-zc-style-kit.php:762
 msgid "شفافیت"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:658
+#: inc/elementor/trait-zc-style-kit.php:794
 msgid "بزرگ‌نمایی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:687
+#: inc/elementor/trait-zc-style-kit.php:823
 #: inc/elementor/widgets/class-zc-widget-breadcrumb.php:213
 #: inc/elementor/widgets/class-zc-widget-footer-menu.php:180
 #: inc/elementor/widgets/class-zc-widget-footer-nav.php:130
@@ -3488,87 +3526,87 @@ msgstr ""
 msgid "فاصله‌ی آیتم‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:708
+#: inc/elementor/trait-zc-style-kit.php:844
 msgid "رنگ نشانگر"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:718
+#: inc/elementor/trait-zc-style-kit.php:854
 msgid "رنگ تیک/علامت داخل نشانگر"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:720
+#: inc/elementor/trait-zc-style-kit.php:856
 msgid "برای نشانگرهای دایره‌ای که علامت داخلشان رنگ جدا دارد."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:727
+#: inc/elementor/trait-zc-style-kit.php:863
 msgid "فاصله‌ی داخلی آیتم"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:741
+#: inc/elementor/trait-zc-style-kit.php:877
 msgid "پیش‌فرض ویجت"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:757
+#: inc/elementor/trait-zc-style-kit.php:893
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:184
 msgid "فاصله‌ی ستون‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:758
+#: inc/elementor/trait-zc-style-kit.php:894
 #: inc/elementor/widgets/class-zc-widget-footer-location.php:245
 msgid "فاصله‌ی ردیف‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:763
+#: inc/elementor/trait-zc-style-kit.php:899
 msgid "تراز عمودی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:805
+#: inc/elementor/trait-zc-style-kit.php:941
 msgid "رنگ متن راهنما (placeholder)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:828
+#: inc/elementor/trait-zc-style-kit.php:964
 msgid "رنگ حاشیه در حالت فوکوس"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:837
+#: inc/elementor/trait-zc-style-kit.php:973
 msgid "ارتفاع فیلدهای یک‌خطی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:853
+#: inc/elementor/trait-zc-style-kit.php:989
 msgid "رنگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:871
+#: inc/elementor/trait-zc-style-kit.php:1007
 #: inc/elementor/widgets/class-zc-widget-header-cta.php:75
 msgid "اندازه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1006
+#: inc/elementor/trait-zc-style-kit.php:1142
 msgid "تراز دوطرفه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1035
+#: inc/elementor/trait-zc-style-kit.php:1171
 msgid "کل سربرگ بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1036
+#: inc/elementor/trait-zc-style-kit.php:1172
 msgid "برچسب کوتاه سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1037
+#: inc/elementor/trait-zc-style-kit.php:1173
 msgid "عنوان سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1038
+#: inc/elementor/trait-zc-style-kit.php:1174
 msgid "زیرعنوان سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1049
+#: inc/elementor/trait-zc-style-kit.php:1185
 msgid "نمایش اجزا"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1057
-#: inc/elementor/trait-zc-style-kit.php:1365
+#: inc/elementor/trait-zc-style-kit.php:1193
+#: inc/elementor/trait-zc-style-kit.php:1501
 #: inc/elementor/widgets/class-zc-widget-products.php:157
 #: inc/elementor/widgets/class-zc-widget-site-header.php:212
 #: inc/elementor/widgets/class-zc-widget-site-header.php:227
@@ -3577,240 +3615,240 @@ msgstr ""
 msgid "نمایش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1058
-#: inc/elementor/trait-zc-style-kit.php:1366
+#: inc/elementor/trait-zc-style-kit.php:1194
+#: inc/elementor/trait-zc-style-kit.php:1502
 #: inc/elementor/widgets/class-zc-widget-site-header.php:213
 #: inc/elementor/widgets/class-zc-widget-site-header.php:228
 msgid "پنهان"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1120
+#: inc/elementor/trait-zc-style-kit.php:1256
 msgid "فهرست مطالب: قاب و سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1122
+#: inc/elementor/trait-zc-style-kit.php:1258
 msgid "قاب فهرست"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1124
+#: inc/elementor/trait-zc-style-kit.php:1260
 #: inc/elementor/widgets/class-zc-widget-toc.php:156
 msgid "آیکن سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1126
+#: inc/elementor/trait-zc-style-kit.php:1262
 msgid "اطلاعات زمان مطالعه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1127
+#: inc/elementor/trait-zc-style-kit.php:1263
 msgid "دکمه باز/بستن"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1128
+#: inc/elementor/trait-zc-style-kit.php:1264
 msgid "رنگ زمینه‌ی نوار پیشرفت"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1129
+#: inc/elementor/trait-zc-style-kit.php:1265
 msgid "رنگ نوار پیشرفت"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1135
+#: inc/elementor/trait-zc-style-kit.php:1271
 msgid "فهرست مطالب: پیوندها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1137
+#: inc/elementor/trait-zc-style-kit.php:1273
 msgid "بدنه‌ی فهرست"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1138
+#: inc/elementor/trait-zc-style-kit.php:1274
 msgid "تیتر اصلی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1139
+#: inc/elementor/trait-zc-style-kit.php:1275
 msgid "زیرتیتر"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1140
+#: inc/elementor/trait-zc-style-kit.php:1276
 msgid "پیوند فعال"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1141
+#: inc/elementor/trait-zc-style-kit.php:1277
 msgid "شماره‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1142
+#: inc/elementor/trait-zc-style-kit.php:1278
 msgid "پس‌زمینه‌ی شماره‌ی فعال"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1143
+#: inc/elementor/trait-zc-style-kit.php:1279
 msgid "رنگ نقطه‌ی زیرتیترها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1161
+#: inc/elementor/trait-zc-style-kit.php:1297
 msgid "فرم: قاب و عنوان"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1163
+#: inc/elementor/trait-zc-style-kit.php:1299
 #: inc/elementor/widgets/class-zc-widget-form.php:168
 msgid "قاب فرم"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1164
+#: inc/elementor/trait-zc-style-kit.php:1300
 msgid "فاصله‌ی فیلدها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1165
+#: inc/elementor/trait-zc-style-kit.php:1301
 #: inc/elementor/widgets/class-zc-widget-form.php:86
 #: inc/options-panel.php:1036
 msgid "عنوان فرم"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1166
+#: inc/elementor/trait-zc-style-kit.php:1302
 msgid "توضیح فرم"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1172
+#: inc/elementor/trait-zc-style-kit.php:1308
 msgid "فرم: برچسب‌ها و فیلدها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1174
+#: inc/elementor/trait-zc-style-kit.php:1310
 msgid "برچسب فیلد"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1175
+#: inc/elementor/trait-zc-style-kit.php:1311
 msgid "فیلدها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1176
+#: inc/elementor/trait-zc-style-kit.php:1312
 msgid "متن زیر فرم"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1182
+#: inc/elementor/trait-zc-style-kit.php:1318
 msgid "فرم: دکمه‌ی ارسال"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1216
+#: inc/elementor/trait-zc-style-kit.php:1352
 msgid "نسبت ستون‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1220
+#: inc/elementor/trait-zc-style-kit.php:1356
 msgid "یک ستون (زیر هم)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1229
+#: inc/elementor/trait-zc-style-kit.php:1365
 msgid "ستون اول = سمت راست. برای موبایل «یک ستون» را انتخاب کنید."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1263
+#: inc/elementor/trait-zc-style-kit.php:1399
 msgid "سربرگ بخش (برچسب، عنوان، زیرعنوان)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1268
+#: inc/elementor/trait-zc-style-kit.php:1404
 msgid "قاب سربرگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1279
+#: inc/elementor/trait-zc-style-kit.php:1415
 msgid "خط/نقطه‌ی کنار برچسب"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1283
+#: inc/elementor/trait-zc-style-kit.php:1419
 msgid "رنگ واژه‌ی رنگی عنوان (به‌جای گرادیان)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1315
+#: inc/elementor/trait-zc-style-kit.php:1451
 msgid "فاصله‌ی داخلی بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1319
+#: inc/elementor/trait-zc-style-kit.php:1455
 msgid "عرض محتوای بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1336
+#: inc/elementor/trait-zc-style-kit.php:1472
 msgid "حداکثر عرض ظرف داخلی (پیش‌فرض: عرض سایت در پنل تنظیمات)."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1342
+#: inc/elementor/trait-zc-style-kit.php:1478
 msgid "فاصله‌ی افقی ظرف داخلی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1343
+#: inc/elementor/trait-zc-style-kit.php:1479
 msgid "حداقل ارتفاع بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1359
+#: inc/elementor/trait-zc-style-kit.php:1495
 msgid "گردی گوشه‌های بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1363
+#: inc/elementor/trait-zc-style-kit.php:1499
 msgid "اشکال تزئینی پس‌زمینه"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1370
+#: inc/elementor/trait-zc-style-kit.php:1506
 msgid "دایره‌ها، نورها و خطوط تزئینی پشت محتوا."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1384
+#: inc/elementor/trait-zc-style-kit.php:1520
 msgid "انیمیشن ظاهر شدن هنگام اسکرول"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1405
+#: inc/elementor/trait-zc-style-kit.php:1541
 msgid "رنگ‌های این ویجت (پالت اختصاصی)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1413
+#: inc/elementor/trait-zc-style-kit.php:1549
 msgid "با هر رنگی که اینجا انتخاب کنید، همه‌ی اجزای این ویجت که از آن رنگ پالت استفاده می‌کنند یک‌جا عوض می‌شوند. خالی = رنگ پالت سایت."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1431
+#: inc/elementor/trait-zc-style-kit.php:1567
 msgid "در حالت تیره هم اعمال شود"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1438
+#: inc/elementor/trait-zc-style-kit.php:1574
 msgid "خاموش: در حالت تیره، رنگ‌های پالت تیره‌ی قالب حفظ می‌شود تا خوانایی به هم نخورد."
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1451
+#: inc/elementor/trait-zc-style-kit.php:1587
 msgid "رنگ اصلی (دکمه‌ها، آیکن‌ها، تأکیدها)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1452
+#: inc/elementor/trait-zc-style-kit.php:1588
 msgid "متن روی رنگ اصلی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1453
+#: inc/elementor/trait-zc-style-kit.php:1589
 msgid "رنگ ثانویه (سرمه‌ای عمیق)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1454
+#: inc/elementor/trait-zc-style-kit.php:1590
 msgid "رنگ تأکیدی (طلایی)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1455
+#: inc/elementor/trait-zc-style-kit.php:1591
 #: inc/options-panel.php:484
 msgid "رنگ متن اصلی"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1456
+#: inc/elementor/trait-zc-style-kit.php:1592
 #: inc/options-panel.php:485
 msgid "رنگ متن کم‌رنگ"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1457
+#: inc/elementor/trait-zc-style-kit.php:1593
 msgid "زمینه‌ی بخش"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1458
+#: inc/elementor/trait-zc-style-kit.php:1594
 msgid "زمینه‌ی کارت‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1459
+#: inc/elementor/trait-zc-style-kit.php:1595
 msgid "زمینه‌ی ثانویه (جعبه‌های ملایم)"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1460
+#: inc/elementor/trait-zc-style-kit.php:1596
 msgid "رنگ خطوط و حاشیه‌ها"
 msgstr ""
 
-#: inc/elementor/trait-zc-style-kit.php:1461
+#: inc/elementor/trait-zc-style-kit.php:1597
 msgid "زمینه‌ی حالت سرمه‌ای (تُن تیره)"
 msgstr ""
 

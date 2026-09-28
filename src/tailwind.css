@@ -586,13 +586,13 @@
 
   /* --- منو و سربرگ --- */
   .zc-nav-link {
-    @apply relative inline-flex items-center gap-1 px-2 py-2 text-[0.9rem] font-bold text-secondary/85 transition-colors hover:text-primary;
+    @apply relative inline-flex items-center gap-1 px-[0.35rem] py-2 text-[0.85rem] font-bold text-secondary/85 transition-colors hover:text-primary;
     font-weight: 700;
   }
 
   .zc-nav-link::after {
     content: '';
-    @apply absolute bottom-0.5 start-2 h-[2px] w-0 rounded-full bg-primary transition-all duration-300 ease-soft;
+    @apply absolute bottom-0.5 start-[0.35rem] h-[2px] w-0 rounded-full bg-primary transition-all duration-300 ease-soft;
   }
 
   .zc-nav-link:hover::after,
@@ -1146,11 +1146,12 @@
   position: relative;
   top: auto;
 }
-.zc-el-header .elementor-section,
+/* v2.6.0: پدینگ خود سکشن‌ها (قاب هدر/پاورقی) دیگر کشته نمی‌شود تا پدینگ‌های
+   واکنش‌گرای تنظیم‌شده در المنتور (۴۰/۲۸/۲۰) واقعاً اعمال شوند؛ فقط پدینگ
+   پیش‌فرض ستون‌ها و نوارهای ویجت صفر می‌ماند. */
 .zc-el-header .elementor-column,
 .zc-el-header .elementor-widget-wrap,
 .zc-el-header .elementor-widget-container,
-.zc-el-footer .elementor-section,
 .zc-el-footer .elementor-widget-wrap,
 .zc-el-footer .elementor-widget-container {
   padding: 0 !important;

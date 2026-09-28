@@ -43,11 +43,54 @@ if ( ! function_exists( 'zc_elementor_section' ) ) :
 	/**
 	 * ساخت یک بخش تک‌ستونه شامل یک ویجت.
 	 *
+	 * v2.6.0 — منطق مرکزی عرض و فاصله‌ی امن:
+	 *  - نوارهای تمام‌عرض (ویجت‌های خودقاب با پس‌زمینه‌ی سراسری یا تُن تیره):
+	 *    layout=full_width + پدینگ صفر — خود ویجت عرض و تراز را مدیریت می‌کند.
+	 *  - بقیه‌ی بخش‌ها: layout=boxed با عرض محتوای ۱۱۵۰ + ریتم عمودی استاندارد و
+	 *    فاصله‌ی امن افقی هم‌تراز با .zc-container (۲۰/۲۸/۴۰ پیکسل) — همه‌ی
+	 *    لبه‌های محتوای سایت دقیقاً روی یک خط می‌نشینند.
+	 *
 	 * @param array $widget عنصر ویجت.
 	 * @param array $section_settings تنظیمات بخش.
 	 * @return array<string, mixed>
 	 */
 	function zc_elementor_section( $widget, $section_settings = array() ) {
+		$wtype     = isset( $widget['widgetType'] ) ? (string) $widget['widgetType'] : '';
+		$tone      = isset( $widget['settings']['zc_tone'] ) ? trim( (string) $widget['settings']['zc_tone'] ) : '';
+		$self_band = in_array(
+			$wtype,
+			array(
+				'zc-hero',
+				'zc-marquee',
+				'zc-resume-hero',
+				'zc-page-title',
+				'zc-header-topbar',
+				'zc-header-drawer',
+				'zc-shop-promo',
+				'zc-product-spotlight',
+			),
+			true
+		);
+
+		if ( $self_band || 'inverse' === $tone ) {
+			$defaults = array(
+				'layout'         => 'full_width',
+				'gap'            => 'no',
+				'padding'        => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true ),
+				'padding_tablet' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true ),
+				'padding_mobile' => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true ),
+			);
+		} else {
+			$defaults = array(
+				'layout'               => 'boxed',
+				'content_width'        => array( 'unit' => 'px', 'size' => 1150, 'sizes' => array() ),
+				'gap'                  => 'no',
+				'padding'              => array( 'unit' => 'px', 'top' => '48', 'right' => '40', 'bottom' => '48', 'left' => '40', 'isLinked' => false ),
+				'padding_tablet'       => array( 'unit' => 'px', 'top' => '40', 'right' => '28', 'bottom' => '40', 'left' => '28', 'isLinked' => false ),
+				'padding_mobile'       => array( 'unit' => 'px', 'top' => '32', 'right' => '20', 'bottom' => '32', 'left' => '20', 'isLinked' => false ),
+			);
+		}
+
 		$column = array(
 			'id'       => zc_elementor_id(),
 			'elType'   => 'column',
@@ -58,14 +101,7 @@ if ( ! function_exists( 'zc_elementor_section' ) ) :
 		return array(
 			'id'       => zc_elementor_id(),
 			'elType'   => 'section',
-			'settings' => array_merge(
-				array(
-					'layout'         => 'full_width',
-					'gap'            => 'no',
-					'padding'        => array( 'unit' => 'px', 'top' => '0', 'right' => '0', 'bottom' => '0', 'left' => '0', 'isLinked' => true ),
-				),
-				$section_settings
-			),
+			'settings' => array_merge( $defaults, $section_settings ),
 			'elements' => array( $column ),
 		);
 	}
@@ -507,12 +543,12 @@ if ( ! function_exists( 'zc_elementor_row' ) ) :
 			'settings' => array_merge(
 				array(
 					'layout'         => 'boxed',
-					// هم‌تراز با .zc-container (عرض محتوای ۱۱۲۰ + فاصله ستون‌ها ۲×۱۵).
+					// هم‌تراز با .zc-container: عرض ۱۱۵۰ + فاصله‌ی امن ۴۰/۲۸/۲۰.
 					'content_width'  => array( 'unit' => 'px', 'size' => 1150, 'sizes' => array() ),
 					'gap'            => 'extended',
-					'padding'        => array( 'unit' => 'px', 'top' => '56', 'right' => '25', 'bottom' => '56', 'left' => '25', 'isLinked' => false ),
-					'padding_tablet' => array( 'unit' => 'px', 'top' => '48', 'right' => '13', 'bottom' => '48', 'left' => '13', 'isLinked' => false ),
-					'padding_mobile' => array( 'unit' => 'px', 'top' => '40', 'right' => '5', 'bottom' => '40', 'left' => '5', 'isLinked' => false ),
+					'padding'        => array( 'unit' => 'px', 'top' => '48', 'right' => '40', 'bottom' => '48', 'left' => '40', 'isLinked' => false ),
+					'padding_tablet' => array( 'unit' => 'px', 'top' => '40', 'right' => '28', 'bottom' => '40', 'left' => '28', 'isLinked' => false ),
+					'padding_mobile' => array( 'unit' => 'px', 'top' => '32', 'right' => '20', 'bottom' => '32', 'left' => '20', 'isLinked' => false ),
 				),
 				$settings
 			),
@@ -1610,7 +1646,7 @@ if ( ! function_exists( 'zc_build_elementor_schemas' ) ) :
 					),
 				),
 			),
-			array( 'padding' => array( 'unit' => 'px', 'top' => '72', 'right' => '25', 'bottom' => '24', 'left' => '25', 'isLinked' => false ) )
+			array( 'padding' => array( 'unit' => 'px', 'top' => '48', 'right' => '40', 'bottom' => '24', 'left' => '40', 'isLinked' => false ) )
 		);
 		$data[] = zc_elementor_section(
 			zc_elementor_widget(
@@ -2037,10 +2073,10 @@ if ( ! function_exists( 'zc_header_template_data' ) ) :
 		/* ---------- ۲. قاب چسبان هدر ---------- */
 		$main_row = zc_elementor_row(
 			array(
-				array( 'size' => 25, 'class' => 'zc-hdr-col-brand', 'widgets' => array( zc_elementor_widget( 'header-brand', array( 'source' => 'site', 'link_home' => 'yes' ) ) ) ),
-				array( 'size' => 45, 'class' => 'zc-hdr-col-menu', 'widgets' => array( zc_elementor_widget( 'header-menu', array( 'menu' => '0', 'depth' => '2', 'align' => 'center', 'hide_mobile' => 'yes' ) ) ) ),
+				array( 'size' => 21, 'class' => 'zc-hdr-col-brand', 'widgets' => array( zc_elementor_widget( 'header-brand', array( 'source' => 'site', 'link_home' => 'yes' ) ) ) ),
+				array( 'size' => 53, 'class' => 'zc-hdr-col-menu', 'widgets' => array( zc_elementor_widget( 'header-menu', array( 'menu' => '0', 'depth' => '2', 'align' => 'center', 'hide_mobile' => 'yes' ) ) ) ),
 				array(
-					'size'    => 30,
+					'size'    => 26,
 					'class'   => 'zc-hdr-col-tools zc-hdr-tools',
 					'widgets' => array(
 						zc_elementor_widget( 'header-cta', array( 'button_text' => 'رزرو نوبت', 'button_url' => $booking, 'btn_size' => 'zc-btn-sm', 'hide_mobile' => 'yes', 'show_phone' => '' ) ),
@@ -2051,14 +2087,11 @@ if ( ! function_exists( 'zc_header_template_data' ) ) :
 					),
 				),
 			),
-			array_merge(
-				array(
-					'layout'        => 'full_width',
-					'gap'           => 'narrow',
-					'padding'       => array( 'unit' => 'px', 'top' => '12', 'right' => '25', 'bottom' => '12', 'left' => '25', 'isLinked' => false ),
-					'content_width' => array( 'unit' => 'px', 'size' => 1600, 'sizes' => array() ),
-				),
-				$zero
+			array(
+				'gap'            => 'narrow',
+				'padding'        => array( 'unit' => 'px', 'top' => '12', 'right' => '40', 'bottom' => '12', 'left' => '40', 'isLinked' => false ),
+				'padding_tablet' => array( 'unit' => 'px', 'top' => '10', 'right' => '28', 'bottom' => '10', 'left' => '28', 'isLinked' => false ),
+				'padding_mobile' => array( 'unit' => 'px', 'top' => '8', 'right' => '20', 'bottom' => '8', 'left' => '20', 'isLinked' => false ),
 			)
 		);
 
@@ -2166,9 +2199,9 @@ if ( ! function_exists( 'zc_footer_template_data' ) ) :
 					'gap'                  => 'extended',
 					'background_background' => 'classic',
 					'background_color'     => 'var(--zc-secondary, #0B1B3A)',
-					'padding'              => array( 'unit' => 'px', 'top' => '40', 'right' => '25', 'bottom' => '40', 'left' => '25', 'isLinked' => false ),
-					'padding_tablet'       => array( 'unit' => 'px', 'top' => '36', 'right' => '13', 'bottom' => '36', 'left' => '13', 'isLinked' => false ),
-					'padding_mobile'       => array( 'unit' => 'px', 'top' => '32', 'right' => '5', 'bottom' => '32', 'left' => '5', 'isLinked' => false ),
+					'padding'              => array( 'unit' => 'px', 'top' => '40', 'right' => '40', 'bottom' => '40', 'left' => '40', 'isLinked' => false ),
+					'padding_tablet'       => array( 'unit' => 'px', 'top' => '36', 'right' => '28', 'bottom' => '36', 'left' => '28', 'isLinked' => false ),
+					'padding_mobile'       => array( 'unit' => 'px', 'top' => '32', 'right' => '20', 'bottom' => '32', 'left' => '20', 'isLinked' => false ),
 					'css_classes'          => 'zc-footer-frame',
 				),
 				'elements' => array(
