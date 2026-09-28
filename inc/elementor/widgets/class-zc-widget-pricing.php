@@ -144,6 +144,8 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 				)
 			);
 
+			$repeater->add_control( 'on', array( 'label' => __( 'نمایش این پلن', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'plans',
 				array(
@@ -238,6 +240,7 @@ if ( ! class_exists( 'ZC_Widget_Pricing' ) ) :
 						<div class="zc-pricing-grid zc-after-head grid gap-6 <?php echo esc_attr( $this->grid_classes( $columns ) ); ?>">
 							<?php foreach ( $plans as $plan ) : ?>
 								<?php
+								if ( isset( $plan['on'] ) && 'yes' !== (string) $plan['on'] ) { continue; }
 								$name     = isset( $plan['plan_name'] ) ? (string) $plan['plan_name'] : '';
 								$desc     = isset( $plan['plan_desc'] ) ? (string) $plan['plan_desc'] : '';
 								$price    = isset( $plan['plan_price'] ) ? (string) $plan['plan_price'] : '';

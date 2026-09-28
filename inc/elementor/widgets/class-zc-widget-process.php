@@ -87,6 +87,9 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 				)
 			);
 
+			$repeater->add_control( 'step_icon', array( 'label' => __( 'آیکون مرحله (اختیاری)', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => '', 'library' => '' ), 'description' => __( 'خالی = شماره‌ی مرحله', 'zarincoach' ) ) );
+			$repeater->add_control( 'on', array( 'label' => __( 'نمایش این مرحله', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'steps',
 				array(
@@ -120,6 +123,7 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 			$this->zc_toggles(
 				array(
 					'line' => array( __( 'خط عمودی', 'zarincoach' ), '.zc-process-list::before' ),
+					'dotic' => array( __( 'آیکن داخل دایره', 'zarincoach' ), '.zc-process-dot-ic' ),
 					'ring' => array( __( 'حلقه‌ی متحرک دور شماره', 'zarincoach' ), '.zc-process-dot::after' ),
 					'desc' => array( __( 'توضیح مراحل', 'zarincoach' ), '.zc-process-desc' ),
 				)
@@ -132,6 +136,7 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 					'gap'  => array( 'size', '.zc-process-list', __( 'فاصله‌ی مراحل', 'zarincoach' ), array( 'prop' => 'row-gap', 'max' => 120 ) ),
 					'step' => array( 'box', '.zc-process-body', __( 'قاب متن هر مرحله', 'zarincoach' ), array( 'hover' => true ) ),
 					'line' => array( 'color', '.zc-process-list::before', __( 'رنگ خط عمودی', 'zarincoach' ), array( 'prop' => 'background' ) ),
+					'dotic' => array( 'icon', '.zc-process-dot-ic', '' ),
 				)
 			);
 			$this->zc_style(
@@ -179,15 +184,17 @@ if ( ! class_exists( 'ZC_Widget_Process' ) ) :
 								$desc  = isset( $step['step_desc'] ) ? trim( (string) $step['step_desc'] ) : '';
 								$url   = isset( $step['step_url']['url'] ) ? (string) $step['step_url']['url'] : '';
 
+								if ( isset( $step['on'] ) && 'yes' !== (string) $step['on'] ) { continue; }
 								if ( '' === $title && '' === $desc ) {
 									continue;
 								}
 
 								$index++;
+								$zicon = ( isset( $step['step_icon']['value'] ) && '' !== (string) $step['step_icon']['value'] ) ? $step['step_icon'] : array();
 								$number = $persian ? zc_digits_to_persian( (string) $index ) : (string) $index;
 								?>
 								<li class="zc-process-step zc-reveal relative grid grid-cols-[auto_1fr] gap-5 md:gap-8" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
-									<span class="zc-process-dot zc-tl-dot"><span class="zc-arabic-num"><?php echo esc_html( $number ); ?></span></span>
+									<span class="zc-process-dot zc-tl-dot<?php echo ! empty( $zicon ) ? ' zc-dot-has-ic' : ''; ?>"><?php if ( ! empty( $zicon ) ) : ?><span class="zc-process-dot-ic"><?php $this->render_icon( $zicon, 'h-4 w-4' ); ?></span><?php else : ?><span class="zc-arabic-num"><?php echo esc_html( $number ); ?></span><?php endif; ?></span>
 
 									<div class="zc-process-body pb-2">
 										<h3 class="zc-process-title text-[1.2rem] font-bold text-secondary">

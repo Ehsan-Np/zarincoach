@@ -124,6 +124,9 @@ if ( ! class_exists( 'ZC_Widget_Shop_Benefits' ) && class_exists( 'ZC_Shop_Widge
 				)
 			);
 
+			$rep->add_control( 'eicon', array( 'label' => __( 'آیکون از کتابخانه (اختیاری)', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => '', 'library' => '' ), 'description' => __( 'در صورت انتخاب، جای آیکون فهرستی را می‌گیرد', 'zarincoach' ) ) );
+			$rep->add_control( 'on', array( 'label' => __( 'نمایش این آیتم', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'items',
 				array(
@@ -223,13 +226,15 @@ if ( ! class_exists( 'ZC_Widget_Shop_Benefits' ) && class_exists( 'ZC_Shop_Widge
 					<ul class="zc-benefits zc-benefits--<?php echo esc_attr( $style ); ?>" style="<?php echo esc_attr( '--zc-count:' . min( 6, count( $items ) ) ); ?>">
 						<?php foreach ( $items as $item ) : ?>
 							<?php
+							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
+							$eicon = ( isset( $item['eicon']['value'] ) && '' !== (string) $item['eicon']['value'] ) ? $item['eicon'] : array();
 							$icon = isset( $icons[ $item['icon'] ?? '' ] ) ? $item['icon'] : 'check';
 							$url  = ! empty( $item['url']['url'] ) ? (string) $item['url']['url'] : '';
 							$tag  = '' !== $url ? 'a' : 'div';
 							?>
 							<li>
 								<<?php echo esc_html( $tag ); ?> class="zc-benefit"<?php echo '' !== $url ? ' href="' . esc_url( zc_url( $url ) ) . '"' . ( ! empty( $item['url']['is_external'] ) ? ' target="_blank" rel="noopener"' : '' ) : ''; ?>>
-									<span class="zc-benefit__icon"><?php zc_icon( $icon, 'h-6 w-6' ); ?></span>
+									<span class="zc-benefit__icon"><?php if ( ! empty( $eicon ) ) { $this->render_icon( $eicon, 'h-6 w-6' ); } else { zc_icon( $icon, 'h-6 w-6' ); } ?></span>
 									<span class="zc-benefit__text">
 										<strong><?php echo esc_html( $item['title'] ); ?></strong>
 										<?php if ( '' !== trim( (string) ( $item['text'] ?? '' ) ) ) : ?>

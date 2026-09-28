@@ -82,6 +82,9 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 				)
 			);
 
+			$repeater->add_control( 'item_eicon', array( 'label' => __( 'آیکون از کتابخانه (اختیاری)', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => '', 'library' => '' ), 'description' => __( 'در صورت انتخاب، جای آیکون فهرستی را می‌گیرد', 'zarincoach' ) ) );
+			$repeater->add_control( 'on', array( 'label' => __( 'نمایش این آیتم', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'items',
 				array(
@@ -167,6 +170,12 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 							$text = isset( $item['item_text'] ) ? trim( (string) $item['item_text'] ) : '';
 							$icon = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
 
+							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
+							$icon  = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
+							$eicon = ( isset( $item['item_eicon']['value'] ) && '' !== (string) $item['item_eicon']['value'] ) ? $item['item_eicon'] : array();
+							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
+							$icon  = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
+							$eicon = ( isset( $item['item_eicon']['value'] ) && '' !== (string) $item['item_eicon']['value'] ) ? $item['item_eicon'] : array();
 							if ( '' === $text ) {
 								continue;
 							}
@@ -174,7 +183,7 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 							<div class="zc-list-card zc-card flex items-start gap-3 p-5">
 								<?php if ( '' !== $icon ) : ?>
 									<span class="zc-list-icon grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
-										<?php zc_icon( $icon, 'h-5 w-5' ); ?>
+										<?php if ( ! empty( $eicon ) ) { $this->render_icon( $eicon, 'h-5 w-5' ); } else { zc_icon( $icon, 'h-5 w-5' ); } ?>
 									</span>
 								<?php endif; ?>
 								<p class="zc-list-text m-0 text-[0.94rem] leading-[1.9] text-muted"><?php echo esc_html( $text ); ?></p>
@@ -190,7 +199,7 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 								continue;
 							}
 							?>
-							<li><?php echo esc_html( $text ); ?></li>
+							<li<?php echo ( ! empty( $eicon ) || '' !== $icon ) ? ' class="zc-li-has-ic"' : ''; ?>><?php if ( ! empty( $eicon ) || '' !== $icon ) : ?><span class="zc-list-li-ic"><?php if ( ! empty( $eicon ) ) { $this->render_icon( $eicon, 'h-4 w-4' ); } else { zc_icon( $icon, 'h-4 w-4' ); } ?></span><?php endif; ?><?php echo esc_html( $text ); ?></li>
 						<?php endforeach; ?>
 					</ul>
 				<?php endif; ?>

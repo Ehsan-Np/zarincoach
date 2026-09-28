@@ -126,6 +126,9 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 				)
 			);
 
+			$repeater->add_control( 'feature_icon', array( 'label' => __( 'آیکون اختصاصی (اختیاری)', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => '', 'library' => '' ), 'description' => __( 'خالی = تیک پیش‌فرض قالب', 'zarincoach' ) ) );
+			$repeater->add_control( 'on', array( 'label' => __( 'نمایش این آیتم', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'features',
 				array(
@@ -155,6 +158,7 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 					'decor'    => array( __( 'قاب تزئینی پشت تصویر', 'zarincoach' ), '.zc-about-decor' ),
 					'content'  => array( __( 'متن معرفی', 'zarincoach' ), '.zc-about-content' ),
 					'features' => array( __( 'فهرست ویژگی‌ها', 'zarincoach' ), '.zc-about-features' ),
+					'fic' => array( __( 'آیکن ویژگی‌ها', 'zarincoach' ), '.zc-about-feat-ic' ),
 					'button'   => array( __( 'دکمه', 'zarincoach' ), '.zc-about-cta' ),
 				)
 			);
@@ -190,6 +194,7 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 					'content' => array( 'text', '.zc-about-content, .zc-about-content p', __( 'متن معرفی', 'zarincoach' ), array( 'align' => true ) ),
 					'gap'     => array( 'size', '.zc-about-content', __( 'فاصله‌ی پاراگراف‌ها', 'zarincoach' ), array( 'prop' => 'gap', 'max' => 80 ) ),
 					'list'    => array( 'list', '.zc-about-features li', __( 'فهرست ویژگی‌ها', 'zarincoach' ), array( 'list' => '.zc-about-features', 'marker' => '.zc-about-features li::before' ) ),
+					'fic' => array( 'icon', '.zc-about-feat-ic', '' ),
 				)
 			);
 		}
@@ -209,8 +214,14 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 			$features = array();
 			if ( ! empty( $settings['features'] ) ) {
 				foreach ( $settings['features'] as $item ) {
+					if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) {
+						continue;
+					}
 					if ( ! empty( $item['feature'] ) ) {
-						$features[] = (string) $item['feature'];
+						$features[] = array(
+							'text' => (string) $item['feature'],
+							'icon' => ( isset( $item['feature_icon']['value'] ) && '' !== (string) $item['feature_icon']['value'] ) ? $item['feature_icon'] : array(),
+						);
 					}
 				}
 			}
@@ -242,7 +253,7 @@ if ( ! class_exists( 'ZC_Widget_About' ) ) :
 							<?php if ( ! empty( $features ) ) : ?>
 								<ul class="zc-about-features zc-checklist mt-7 zc-reveal">
 									<?php foreach ( $features as $feature ) : ?>
-										<li><?php echo esc_html( $feature ); ?></li>
+										<?php if ( ! empty( $feature['icon'] ) ) : ?><li class="zc-has-feat-ic"><span class="zc-about-feat-ic"><?php $this->render_icon( $feature['icon'], 'h-4 w-4' ); ?></span><span><?php echo esc_html( $feature['text'] ); ?></span></li><?php else : ?><li><?php echo esc_html( $feature['text'] ); ?></li><?php endif; ?>
 									<?php endforeach; ?>
 								</ul>
 							<?php endif; ?>

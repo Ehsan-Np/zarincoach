@@ -95,6 +95,9 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 				)
 			);
 
+			$repeater->add_control( 'stat_icon', array( 'label' => __( 'آیکون (اختیاری)', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => '', 'library' => '' ), 'description' => __( 'بالای عدد نمایش داده می‌شود', 'zarincoach' ) ) );
+			$repeater->add_control( 'on', array( 'label' => __( 'نمایش این آمار', 'zarincoach' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'return_value' => 'yes', 'default' => 'yes' ) );
+
 			$this->add_control(
 				'items',
 				array(
@@ -142,6 +145,7 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 					'title' => array( __( 'عنوان', 'zarincoach' ), '.zc-stats-title' ),
 					'rule'  => array( __( 'خط جداکننده', 'zarincoach' ), '.zc-stats-rule' ),
 					'label' => array( __( 'برچسب آمارها', 'zarincoach' ), '.zc-stats-label' ),
+					'icon' => array( __( 'آیکن آمارها', 'zarincoach' ), '.zc-stats-icon' ),
 					'blobs' => array( __( 'اشکال نورانی پس‌زمینه', 'zarincoach' ), '.zc-stats-blob' ),
 				)
 			);
@@ -162,6 +166,7 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 				array(
 					'grid'  => array( 'grid', '.zc-stats-grid', __( 'شبکه', 'zarincoach' ), array( 'cols' => false ) ),
 					'item'  => array( 'box', '.zc-stats-item', __( 'قاب هر آمار', 'zarincoach' ), array( 'hover' => true, 'align' => true ) ),
+					'icon' => array( 'icon', '.zc-stats-icon', '' ),
 					'num'   => array( 'text', '.zc-stats-num', __( 'عدد', 'zarincoach' ), array( 'margin' => false ) ),
 					'label' => array( 'text', '.zc-stats-label', __( 'برچسب', 'zarincoach' ) ),
 				)
@@ -215,13 +220,16 @@ if ( ! class_exists( 'ZC_Widget_Stats' ) ) :
 									<?php
 									$delay = 0;
 									foreach ( $items as $item ) :
+										if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
+										$zicon = ( isset( $item['stat_icon']['value'] ) && '' !== (string) $item['stat_icon']['value'] ) ? $item['stat_icon'] : array();
 										$raw    = isset( $item['stat_number'] ) ? (string) $item['stat_number'] : '0';
 										$value  = zc_digits_to_latin( $raw );
 										$suffix = isset( $item['stat_suffix'] ) ? (string) $item['stat_suffix'] : '';
 										$label  = isset( $item['stat_label'] ) ? (string) $item['stat_label'] : '';
 										?>
 										<div class="zc-stats-item zc-reveal" data-zc-delay="<?php echo esc_attr( (string) $delay ); ?>">
-											<dt class="zc-stats-num text-[2.4rem] font-bold leading-none <?php echo esc_attr( $num_class ); ?> sm:text-[3rem]">
+											<?php if ( ! empty( $zicon ) ) : ?><span class="zc-stats-icon"><?php $this->render_icon( $zicon, 'h-5 w-5' ); ?></span><?php endif; ?>
+										<dt class="zc-stats-num text-[2.4rem] font-bold leading-none <?php echo esc_attr( $num_class ); ?> sm:text-[3rem]">
 												<span
 													data-zc-count="<?php echo esc_attr( preg_replace( '/[^\d.]/', '', $value ) ); ?>"
 													data-zc-suffix="<?php echo esc_attr( $suffix ); ?>"

@@ -327,6 +327,42 @@
   .zc-btn:hover .zc-btn-icon {
     transform: translateX(-2px);
   }
+  /* --- آیکن اختصاصی هر آیتم + کلید نمایش آیتم‌ها (۲.۵) --- */
+  .zc-about-feat-ic,
+  .zc-list-li-ic {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: rgb(var(--zc-primary-rgb));
+  }
+  .zc-checklist li.zc-has-feat-ic,
+  .zc-list-ul li.zc-li-has-ic {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+    padding-inline-start: 0;
+  }
+  .zc-checklist li.zc-has-feat-ic::before,
+  .zc-list-ul li.zc-li-has-ic::before {
+    content: none;
+  }
+  .zc-process-dot-ic {
+    display: inline-grid;
+    place-items: center;
+    color: inherit;
+  }
+  .zc-stats-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-bottom: 0.85rem;
+    border-radius: 0.9rem;
+    background: rgb(var(--zc-primary-rgb) / 0.12);
+    color: rgb(var(--zc-primary-rgb));
+    font-size: 1.15rem;
+  }
   /* آیکن انتخابی داخل مؤلفه‌های قالب: اندازه از رنگ و قاب والد پیروی می‌کند */
   .zc-acc-icon svg, .zc-acc-icon i, .zc-acc-icon .e-font-icon-svg,
   .zc-sc-sec-icon svg, .zc-sc-sec-icon i,
@@ -339,6 +375,10 @@
   .zc-text-updated-icon svg, .zc-text-updated-icon i,
   .zc-notice-icon svg, .zc-notice-icon i,
   .zc-legal-links-icon svg, .zc-legal-links-icon i,
+  .zc-about-feat-ic svg, .zc-about-feat-ic i, .zc-about-feat-ic .e-font-icon-svg,
+  .zc-list-li-ic svg, .zc-list-li-ic i, .zc-list-li-ic .e-font-icon-svg,
+  .zc-process-dot-ic svg, .zc-process-dot-ic i, .zc-process-dot-ic .e-font-icon-svg,
+  .zc-stats-icon svg, .zc-stats-icon i, .zc-stats-icon .e-font-icon-svg,
   .zc-fw-ic svg, .zc-fw-ic i, .zc-fw-ic .e-font-icon-svg,
   .zc-contact-value svg, .zc-skill-link-icon svg, .zc-skill-link-icon i {
     width: inherit;

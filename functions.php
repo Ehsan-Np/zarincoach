@@ -6,7 +6,7 @@
  * توسعه: احسان نادری‌پناه | زرین‌کد — Zarincode.com
  *
  * @package ZarinCoach
- * @version 2.4.0
+ * @version 2.5.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /* ------------------------------------------------------------------ *
  * ثابت‌های قالب
  * ------------------------------------------------------------------ */
-define( 'ZC_VERSION', '2.4.0' );
+define( 'ZC_VERSION', '2.5.0' );
 define( 'ZC_DIR', get_template_directory() );
 define( 'ZC_URI', get_template_directory_uri() );
 define( 'ZC_OPT', 'zc_options' );       // کلید تنظیمات در جدول wp_options
