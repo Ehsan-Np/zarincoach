@@ -168,12 +168,10 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 						<?php foreach ( $items as $item ) : ?>
 							<?php
 							$text = isset( $item['item_text'] ) ? trim( (string) $item['item_text'] ) : '';
-							$icon = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
 
-							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
-							$icon  = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
-							$eicon = ( isset( $item['item_eicon']['value'] ) && '' !== (string) $item['item_eicon']['value'] ) ? $item['item_eicon'] : array();
-							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) { continue; }
+							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) {
+								continue;
+							}
 							$icon  = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
 							$eicon = ( isset( $item['item_eicon']['value'] ) && '' !== (string) $item['item_eicon']['value'] ) ? $item['item_eicon'] : array();
 							if ( '' === $text ) {
@@ -195,6 +193,12 @@ if ( ! class_exists( 'ZC_Widget_List' ) ) :
 						<?php foreach ( $items as $item ) : ?>
 							<?php
 							$text = isset( $item['item_text'] ) ? trim( (string) $item['item_text'] ) : '';
+
+							if ( isset( $item['on'] ) && 'yes' !== (string) $item['on'] ) {
+								continue;
+							}
+							$icon  = isset( $item['item_icon'] ) ? (string) $item['item_icon'] : '';
+							$eicon = ( isset( $item['item_eicon']['value'] ) && '' !== (string) $item['item_eicon']['value'] ) ? $item['item_eicon'] : array();
 							if ( '' === $text ) {
 								continue;
 							}

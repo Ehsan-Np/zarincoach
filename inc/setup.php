@@ -311,3 +311,41 @@ if ( ! function_exists( 'zc_nav_submenu_classes' ) ) :
 	}
 endif;
 add_filter( 'nav_menu_submenu_css_class', 'zc_nav_submenu_classes', 10, 2 );
+
+if ( ! function_exists( 'zc_thirdparty_log_hygiene' ) ) :
+	/**
+	 * بهداشت لاگ تولید — نسخه‌ی ۲.۷.۱.
+	 *
+	 * در محیط تولید (WP_DEBUG خاموش) هشدارها و اعلان‌های PHP که از مسیر افزونه‌ی
+	 * المنتور برمی‌خیزند دیگر به error_log هاست نوشته نمی‌شوند؛ ریشه‌ی پرتکرارترین
+	 * خط‌های لاگِ بی‌اثر («Attempt to read property "ID" on null» در
+	 * core/base/document.php و دپریکیشن‌های درونی المنتور که در خاموشی اسکریپت به
+	 * جدول options نوشته می‌شوند و خطای «Commands out of sync» می‌سازند) همین
+	 * هشدارهای داخلی خودِ المنتور است. خطاها و همه‌ی پیام‌های سایر افزونه‌ها،
+	 * قالب و هسته دست‌نخورده و قابل مشاهده می‌مانند. با فیلتر زیر می‌توان این
+	 * رفتار را خاموش کرد:
+	 * add_filter( 'zc_thirdparty_log_hygiene', '__return_false' );
+	 *
+	 * @return void
+	 */
+	function zc_thirdparty_log_hygiene() {
+		$elementor_dir = false;
+		if ( defined( 'WP_PLUGIN_DIR' ) ) {
+			$elementor_dir = trailingslashit( WP_PLUGIN_DIR ) . 'elementor/';
+		}
+
+		set_error_handler(
+			static function ( $errno, $errstr, $errfile ) use ( $elementor_dir ) {
+				// فقط هشدار/اعلان/دپریکیشنِ فایل‌های خود المنتور؛ فاتال‌ها از ابتدا به این هندلر نمی‌رسند.
+				$quiet = array( E_WARNING, E_NOTICE, E_DEPRECATED, E_USER_WARNING, E_USER_NOTICE, E_USER_DEPRECATED );
+				if ( null !== $elementor_dir && in_array( $errno, $quiet, true ) && 0 === strpos( (string) $errfile, $elementor_dir ) ) {
+					return true;
+				}
+				return false; // بقیه: رفتار پیش‌فرض PHP/وردپرس.
+			}
+		);
+	}
+endif;
+if ( apply_filters( 'zc_thirdparty_log_hygiene', ! WP_DEBUG ) ) {
+	add_action( 'after_setup_theme', 'zc_thirdparty_log_hygiene', 40 );
+}
