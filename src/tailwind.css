@@ -156,8 +156,11 @@
    ========================================================================== */
 @layer components {
   /* --- چیدمان --- */
+  /* v2.7.2: جعبه‌ی واحد محتوا — بدون پدینگ داخلی؛ گاتر واکنش‌گرا یک‌بار و سراسری
+     در بلوک «یک‌دستی عرض محتوا» (انتهای فایل) اعمال می‌شود تا همه‌چیز روی یک خط بنشیند. */
   .zc-container {
-    @apply mx-auto w-full max-w-container px-5 sm:px-7 lg:px-10;
+    @apply mx-auto w-full;
+    max-width: var(--zc-box, 1150px);
   }
 
   /* v1.8: فاصله‌ی عمودی سیال و فشرده — مقدارها از متغیرهای --zc-sec-y* (قابل تغییر در پنل) */
@@ -866,7 +869,8 @@
   /* --- المنتور: هماهنگی با ویرایشگر --- */
   .elementor-widget-zc-hero .zc-container,
   .elementor-widget .zc-container {
-    @apply mx-auto w-full max-w-container px-5 sm:px-7 lg:px-10;
+    @apply mx-auto w-full;
+    max-width: var(--zc-box, 1150px);
   }
 
   .zc-stat-num {
@@ -2971,3 +2975,56 @@
   margin-top: calc(var(--zc-sec-y-tight) - var(--zc-sec-y));
 }
 .zc-notice > div > :last-child { margin-bottom: 0; }
+
+/* ==========================================================================
+   v2.7.2 — یک‌دستی عرض محتوا در تمام سایت
+   یک جعبه‌ی واحد ۱۱۵۰ پیکسلی: بخش‌های جعبه‌ای المنتور، سطرهای هدر/پاورقی
+   (حتی گپ‌دار) و همه‌ی .zc-container ها دقیقاً روی یک خط می‌نشینند.
+   گاتر واکنش‌گرا فقط یک‌بار، روی کانتینر بالاترین سطح اعمال می‌شود.
+   ========================================================================== */
+:root {
+  --zc-box: 1150px;
+}
+.elementor-section-boxed > .elementor-container {
+  max-width: var(--zc-box) !important;
+}
+.zc-header-frame .elementor-section > .elementor-container {
+  max-width: var(--zc-box) !important;
+}
+/* ستون‌های لبه‌ای: بدون پدینگ داخلی تا محتوا تا لبه‌ی جعبه پیش برود
+   (فاصله‌ی بین ستون‌ها دست‌نخورده می‌ماند). */
+.elementor-section > .elementor-container > .elementor-column:first-child > .elementor-element-populated {
+  padding-inline-start: 0 !important;
+}
+.elementor-section > .elementor-container > .elementor-column:last-child > .elementor-element-populated {
+  padding-inline-end: 0 !important;
+}
+@media (max-width: 1229px) {
+  /* پدینگ افقیِ ذخیره‌شده‌ی همه‌ی سکشن‌ها (حتی تودرتو) صفر می‌شود تا گاتر فقط
+     یک‌بار و از کانتینر سکشن ریشه اعمال شود؛ پدینگ عمودی دست‌نخورده می‌ماند. */
+  .elementor-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .elementor > .elementor-section > .elementor-container {
+    padding-inline: 28px;
+  }
+  .zc-container {
+    max-width: 100%;
+    padding-inline: 28px;
+  }
+  .elementor-section .zc-container {
+    padding-inline: 0;
+  }
+}
+@media (max-width: 767px) {
+  .elementor > .elementor-section > .elementor-container {
+    padding-inline: 20px;
+  }
+  .zc-container {
+    padding-inline: 20px;
+  }
+  .elementor-section .zc-container {
+    padding-inline: 0;
+  }
+}
