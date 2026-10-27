@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-28T00:55:38+00:00\n"
+"POT-Creation-Date: 2026-10-27T20:38:36+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -291,7 +291,7 @@ msgstr ""
 
 #: inc/admin-layout.php:375
 #: inc/admin.php:178
-#: inc/admin.php:1263
+#: inc/admin.php:1265
 msgid "نصب المنتور"
 msgstr ""
 
@@ -444,7 +444,7 @@ msgstr ""
 #: inc/admin-widgets.php:285
 #: inc/admin.php:79
 #: inc/admin.php:230
-#: inc/admin.php:1280
+#: inc/admin.php:1282
 #: inc/options.php:136
 #: inc/options.php:196
 #: inc/options.php:206
@@ -633,8 +633,9 @@ msgstr ""
 #: inc/admin-layout.php:691
 #: inc/admin-layout.php:729
 #: inc/admin.php:415
-#: inc/admin.php:1194
-#: inc/admin.php:1222
+#: inc/admin.php:1196
+#: inc/admin.php:1224
+#: inc/woo-downloads.php:557
 msgid "دسترسی غیرمجاز."
 msgstr ""
 
@@ -1218,7 +1219,7 @@ msgstr ""
 #: inc/admin.php:92
 #: inc/admin.php:102
 #: inc/admin.php:197
-#: inc/admin.php:1281
+#: inc/admin.php:1283
 #: inc/options.php:137
 #: inc/options.php:161
 #: inc/options.php:386
@@ -1558,6 +1559,8 @@ msgstr ""
 #: inc/admin.php:1115
 #: inc/admin.php:1138
 #: inc/options-fields.php:57
+#: inc/woo-downloads.php:324
+#: inc/woo-downloads.php:337
 msgid "فعال"
 msgstr ""
 
@@ -1571,6 +1574,8 @@ msgstr ""
 #: inc/options-fields.php:58
 #: inc/options-panel.php:667
 #: inc/options-panel.php:1564
+#: inc/woo-downloads.php:324
+#: inc/woo-downloads.php:337
 msgid "غیرفعال"
 msgstr ""
 
@@ -2255,7 +2260,7 @@ msgid "گزارش سیستم"
 msgstr ""
 
 #. translators: %s: تعداد ویجت
-#: inc/admin.php:1261
+#: inc/admin.php:1263
 #, php-format
 msgid "قالب زرین‌کوچ برای المنتور طراحی شده و %s ویجت اختصاصی دارد؛ همه‌ی بخش‌های سایت با آن‌ها به‌صورت بصری قابل ویرایش‌اند."
 msgstr ""
@@ -12289,6 +12294,42 @@ msgstr ""
 msgid "حداقل قانونی ۷ روز (ماده‌ی ۳۷ قانون تجارت الکترونیکی). محصولات دانلودی و جلسات پس از تحویل/آغاز خدمت «غیرقابل مرجوعی» اعلام می‌شوند (ماده‌ی ۳۸)."
 msgstr ""
 
+#: inc/options-sections-shop.php:162
+msgid "محصولات دانلودی — مرکز دانلود"
+msgstr ""
+
+#: inc/options-sections-shop.php:164
+msgid "سازگاری امن دانلود فایل‌های دیجیتال با ووکامرس: بدون خطای ۴۰۳ یا «لینک نامعتبر». وضعیت زنده و تست کامل دریافت فایل در «اطلاعات سیستم ← مرکز دانلود»."
+msgstr ""
+
+#: inc/options-sections-shop.php:167
+msgid "هم‌ترازسازی و نرمال‌سازی"
+msgstr ""
+
+#: inc/options-sections-shop.php:168
+msgid "هم‌ترازسازی خودکار دایرکتوری‌های مجاز دانلود"
+msgstr ""
+
+#: inc/options-sections-shop.php:168
+msgid "اگر محدودسازی «دایرکتوری‌های مجاز» در ووکامرس فعال باشد، پوشه‌ی بارگذاری و woocommerce_uploads به‌طور خودکار در فهرست مجازها می‌مانند و فهرست خالی (که همه‌ی دانلودها را مسدود می‌کند) به‌صورت ایمن خاموش می‌شود."
+msgstr ""
+
+#: inc/options-sections-shop.php:169
+msgid "اصلاح خودکار مسیر فایل‌ها پس از انتقال دامنه یا https"
+msgstr ""
+
+#: inc/options-sections-shop.php:169
+msgid "نشانی‌های ذخیره‌شده که با پیشوند فعلی سایت (http/https یا www) تفاوت دارند هنگام دانلود به مسیر واقعی روی هاست نگاشت می‌شوند؛ برای نصب‌های زیرپوشه‌ای هم دقیق است."
+msgstr ""
+
+#: inc/options-sections-shop.php:170
+msgid "پیشنهاد"
+msgstr ""
+
+#: inc/options-sections-shop.php:170
+msgid "برای محصولات دیجیتال، فایل‌ها را در کتابخانه‌ی رسانه (پوشه‌ی بارگذاری) نگه دارید و روش دانلود را «اجبار دانلود» بگذارید تا لینک مستقیم فایل لو نرود."
+msgstr ""
+
 #: inc/options.php:36
 #: inc/options.php:40
 #: inc/options.php:158
@@ -13246,6 +13287,254 @@ msgstr ""
 
 #: inc/trust-badges.php:226
 msgid "کد رسمی درج نشده"
+msgstr ""
+
+#: inc/woo-downloads.php:244
+msgid "اجبار دانلود (پیشنهادی)"
+msgstr ""
+
+#: inc/woo-downloads.php:245
+msgid "X-Sendfile"
+msgstr ""
+
+#: inc/woo-downloads.php:246
+msgid "ریدایرکت مستقیم"
+msgstr ""
+
+#: inc/woo-downloads.php:247
+msgid "بدون محافظت"
+msgstr ""
+
+#: inc/woo-downloads.php:251
+msgid "روش دانلود فایل"
+msgstr ""
+
+#: inc/woo-downloads.php:255
+msgid "مسیر امن؛ فایل مستقیماً در دسترس نیست."
+msgstr ""
+
+#: inc/woo-downloads.php:256
+msgid "این روش‌ها فایل را بی‌محافظت می‌کنند؛ «اجبار دانلود» را برگزینید."
+msgstr ""
+
+#: inc/woo-downloads.php:268
+#: inc/woo-downloads.php:277
+#: inc/woo-downloads.php:310
+msgid "محدودسازی دایرکتوری‌های مجاز"
+msgstr ""
+
+#: inc/woo-downloads.php:269
+msgid "غیرفعال (پیش‌فرض امن ووکامرس)"
+msgstr ""
+
+#: inc/woo-downloads.php:271
+msgid "همه‌ی لینک‌ها پذیرفته می‌شوند؛ نیازی به تغییر نیست."
+msgstr ""
+
+#: inc/woo-downloads.php:278
+msgid "فعال با فهرست خالی — همه‌ی دانلودها رد می‌شوند!"
+msgstr ""
+
+#: inc/woo-downloads.php:280
+msgid "این عامل خطای «فایل نامعتبر» است؛ هم‌ترازسازی را اجرا کنید."
+msgstr ""
+
+#. translators: %s: تعداد
+#: inc/woo-downloads.php:311
+#, php-format
+msgid "فعال با %s مسیر مجاز"
+msgstr ""
+
+#: inc/woo-downloads.php:313
+msgid "پوشه‌ی بارگذاری در فهرست مجاز است."
+msgstr ""
+
+#: inc/woo-downloads.php:313
+msgid "پوشه‌ی بارگذاری در فهرست نیست؛ هم‌ترازسازی را اجرا کنید."
+msgstr ""
+
+#: inc/woo-downloads.php:323
+msgid "اجبار ورود برای دانلود"
+msgstr ""
+
+#: inc/woo-downloads.php:327
+msgid "لینک‌های ایمیلی برای مهمان‌ها خطای ۴۰۳ می‌دهند؛ فقط اگر عمداً می‌خواهید روشن بماند."
+msgstr ""
+
+#: inc/woo-downloads.php:328
+msgid "لینک‌های ایمیلی بدون ورود کار می‌کنند."
+msgstr ""
+
+#: inc/woo-downloads.php:336
+msgid "اعطای دانلود پس از پرداخت"
+msgstr ""
+
+#: inc/woo-downloads.php:339
+msgid "مجوز دانلود بلافاصله پس از پرداخت صادر می‌شود."
+msgstr ""
+
+#: inc/woo-downloads.php:339
+msgid "مشتری تا تکمیل دستی سفارش دانلود ندارد."
+msgstr ""
+
+#: inc/woo-downloads.php:352
+#: inc/woo-downloads.php:361
+#: inc/woo-downloads.php:370
+msgid "محافظت از پوشه‌ی دانلودها"
+msgstr ""
+
+#: inc/woo-downloads.php:353
+msgid "پوشه‌ی woocommerce_uploads ساخته نشد"
+msgstr ""
+
+#: inc/woo-downloads.php:355
+msgid "مجوز نوشتن پوشه‌ی بارگذاری را بررسی کنید."
+msgstr ""
+
+#: inc/woo-downloads.php:362
+msgid "فعال (.htaccess)"
+msgstr ""
+
+#: inc/woo-downloads.php:362
+msgid "متناسب با میزبان"
+msgstr ""
+
+#: inc/woo-downloads.php:364
+msgid "دسترسی مستقیم به فایل‌ها بسته است."
+msgstr ""
+
+#: inc/woo-downloads.php:364
+msgid "روی این میزبان محافظت در سطح PHP انجام می‌شود."
+msgstr ""
+
+#: inc/woo-downloads.php:371
+msgid "فایل محافظت موجود نیست"
+msgstr ""
+
+#: inc/woo-downloads.php:373
+msgid "فایل .htaccess محافظ ساخته شود تا دانلود مستقیم بسته شود."
+msgstr ""
+
+#: inc/woo-downloads.php:409
+msgid "ساخت پوشه‌ی woocommerce_uploads ممکن نشد."
+msgstr ""
+
+#: inc/woo-downloads.php:415
+msgid "نوشتن فایل آزمایشی ممکن نشد (مجوز پوشه‌ی بارگذاری)."
+msgstr ""
+
+#: inc/woo-downloads.php:418
+msgid "ساخت فایل آزمایشی در پوشه‌ی امن دانلودها"
+msgstr ""
+
+#: inc/woo-downloads.php:423
+msgid "فایل آزمایشی مرکز دانلود"
+msgstr ""
+
+#: inc/woo-downloads.php:427
+#: inc/woo-downloads.php:429
+msgid "اعتبارسنجی لینک (همان بررسی صفحه‌ی ویرایش محصول)"
+msgstr ""
+
+#: inc/woo-downloads.php:436
+msgid "— تست دانلود زرین‌کوچ (حذف خودکار)"
+msgstr ""
+
+#: inc/woo-downloads.php:446
+msgid "ساخت محصول دانلودی آزمایشی"
+msgstr ""
+
+#: inc/woo-downloads.php:453
+msgid "ساخت سفارش آزمایشی ممکن نشد."
+msgstr ""
+
+#: inc/woo-downloads.php:461
+msgid "تست مرکز دانلود زرین‌کوچ"
+msgstr ""
+
+#: inc/woo-downloads.php:467
+msgid "صدور مجوز دانلود پس از تکمیل سفارش"
+msgstr ""
+
+#: inc/woo-downloads.php:484
+#: inc/woo-downloads.php:489
+msgid "دریافت فایل از طریق HTTP"
+msgstr ""
+
+#: inc/woo-downloads.php:484
+msgid "میزبان اجازه‌ی درخواست به خودش را نمی‌دهد (حلقه‌ی بازگشت مسدود است)؛ زنجیره تا پیش از این گام تأیید شد — برای تأیید نهایی، لینک دانلود را در مرورگر باز کنید."
+msgstr ""
+
+#. translators: %s: کد وضعیت
+#: inc/woo-downloads.php:489
+#, php-format
+msgid "کد پاسخ: %s"
+msgstr ""
+
+#: inc/woo-downloads.php:493
+#: inc/woo-downloads.php:495
+msgid "خطای غیرمنتظره در تست"
+msgstr ""
+
+#: inc/woo-downloads.php:576
+msgid "دایرکتوری‌های مجاز با پوشه‌ی بارگذاری هم‌تراز شد."
+msgstr ""
+
+#: inc/woo-downloads.php:582
+msgid "محدودسازی دایرکتوری‌ها غیرفعال شد (پیش‌فرض امن ووکامرس)."
+msgstr ""
+
+#: inc/woo-downloads.php:585
+msgid "اجبار ورود برای دانلود خاموش شد؛ لینک‌های ایمیلی بدون ۴۰۳ کار می‌کنند."
+msgstr ""
+
+#: inc/woo-downloads.php:588
+msgid "دانلودها بلافاصله پس از پرداخت فعال می‌شوند."
+msgstr ""
+
+#: inc/woo-downloads.php:591
+msgid "روش دانلود روی «اجبار دانلود» (امن) تنظیم شد."
+msgstr ""
+
+#: inc/woo-downloads.php:602
+msgid "محافظت پوشه‌ی دانلودها برقرار شد."
+msgstr ""
+
+#: inc/woo-downloads.php:605
+msgid "کنش نامعتبر است."
+msgstr ""
+
+#: inc/woo-downloads.php:625
+msgid "در حال اجرای تست…"
+msgstr ""
+
+#: inc/woo-downloads.php:626
+msgid "عملیات ناموفق بود؛ دوباره تلاش کنید."
+msgstr ""
+
+#: inc/woo-downloads.php:653
+msgid "مرکز دانلود (محصولات دیجیتال)"
+msgstr ""
+
+#: inc/woo-downloads.php:654
+msgid "سلامت کامل زنجیره‌ی دانلود ووکامرس: مجوزها، دایرکتوری‌های مجاز، محافظت پوشه و تست واقعی دریافت فایل."
+msgstr ""
+
+#: inc/woo-downloads.php:666
+#: inc/woo-downloads.php:692
+msgid "اصلاح خودکار"
+msgstr ""
+
+#: inc/woo-downloads.php:674
+msgid "اجرای تست کامل دانلود"
+msgstr ""
+
+#: inc/woo-downloads.php:734
+msgid "زنجیره سالم است (یک هشدار): "
+msgstr ""
+
+#: inc/woo-downloads.php:737
+msgid "تست کامل موفق بود — زنجیره‌ی دانلود سالم است."
 msgstr ""
 
 #: inc/woocommerce/account.php:37

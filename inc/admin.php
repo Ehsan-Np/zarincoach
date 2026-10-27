@@ -1162,6 +1162,8 @@ if ( ! function_exists( 'zc_render_system_page' ) ) :
 		<?php
 		zc_tool_pane_close();
 		zc_tool_shell_close();
+		// کارت مرکز دانلود: بیرون از پنه‌های تب‌بندی تا همیشه دیده شود.
+		do_action( 'zc_system_page_after' );
 	}
 endif;
 
