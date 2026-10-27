@@ -748,7 +748,7 @@ if ( ! function_exists( 'zc_dl_system_card' ) ) :
 				.zc-dl-card { margin: 20px 0; padding: 20px 24px; border: 1px solid #dcdfe6; border-radius: 12px; background: #fff; }
 				.zc-dl-card__head h2 { display: flex; align-items: center; gap: 8px; margin: 0 0 6px; font-size: 16px; }
 				.zc-dl-card__head p { margin: 0 0 14px; color: #5a6270; font-size: 13px; }
-				.zc-dl-card__table { width: 100%; border-collapse: collapse; }
+				.zc-dl-card__table { width: 100%; border-spacing: 0; }
 				.zc-dl-card__table td { padding: 9px 10px; border-bottom: 1px solid #f0f1f4; vertical-align: middle; font-size: 13px; }
 				.zc-dl-mark { width: 26px; font-weight: 700; text-align: center; }
 				.zc-dl-mark--ok { color: #1a9e6b; } .zc-dl-mark--warn { color: #d98a00; } .zc-dl-mark--danger { color: #d63638; }
