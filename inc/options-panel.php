@@ -1567,6 +1567,7 @@ if ( ! function_exists( 'zc_panel_performance' ) ) :
 					),
 					zc_f_switch( 'perf_block_patterns', __( 'غیرفعال‌سازی الگوهای راه دور گوتنبرگ', 'zarincoach' ), true, __( 'جلوی درخواست اضافه به api.wordpress.org را می‌گیرد.', 'zarincoach' ) ),
 					zc_f_switch( 'perf_log_hygiene_always', __( 'بهداشت لاگ افزونه‌ها حتی در حالت دیباگ', 'zarincoach' ), false, __( 'هشدار، اعلان و دپریکیشن‌های درونی المنتور — مثل «Attempt to read property "ID" on null» در document.php که باگ شناخته‌شده‌ی خود المنتور است و قالب در آن هیچ نقشی ندارد — با WP_DEBUG روشن هم به debug.log نمایش داده نمی‌شوند. خطاهای قالب، هسته و بقیه‌ی افزونه‌ها دست‌نخورده می‌مانند. پیش‌فرض: خاموش.', 'zarincoach' ) ),
+					zc_f_switch( 'log_collect_runtime', __( 'لاگ اجرایی زنده (ایمیل/HTTP/پایگاه‌داده)', 'zarincoach' ), true, __( 'شکست ارسال ایمیل‌ها، خطاهای HTTP API و خطاهای پایگاه‌داده در فایل محافظت‌شده‌ی zarincoach-logs/runtime.log ثبت می‌شود و در «اطلاعات سیستم ← مرکز لاگ سیستم» قابل مشاهده و دانلود است. چرخش خودکار در ۱ مگابایت. پیش‌فرض: روشن.', 'zarincoach' ) ),
 				),
 				array( 'subsection' => true )
 			),

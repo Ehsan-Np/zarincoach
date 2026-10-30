@@ -6,7 +6,7 @@
  * توسعه: احسان نادری‌پناه | زرین‌کد — Zarincode.com
  *
  * @package ZarinCoach
- * @version 2.7.5
+ * @version 2.8.0
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 /* ------------------------------------------------------------------ *
  * ثابت‌های قالب
  * ------------------------------------------------------------------ */
-define( 'ZC_VERSION', '2.7.5' );
+define( 'ZC_VERSION', '2.8.0' );
 define( 'ZC_DIR', get_template_directory() );
 define( 'ZC_URI', get_template_directory_uri() );
 define( 'ZC_OPT', 'zc_options' );       // کلید تنظیمات در جدول wp_options
@@ -31,6 +31,7 @@ require_once ZC_DIR . '/inc/toc.php';
 require_once ZC_DIR . '/inc/share.php';
 require_once ZC_DIR . '/inc/trust-badges.php';
 require_once ZC_DIR . '/inc/woo-downloads.php';  // مرکز دانلود — سازگاری محصولات دیجیتال با ووکامرس
+require_once ZC_DIR . '/inc/system-logs.php';     // مرکز لاگ سیستم — جمع‌آوری/تریاژ/دانلود لاگ از همه‌ی منابع
 require_once ZC_DIR . '/inc/setup.php';
 require_once ZC_DIR . '/inc/palette.php';
 require_once ZC_DIR . '/inc/redux-loader.php';   // بارگذاری Redux Framework توکار
