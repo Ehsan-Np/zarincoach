@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ZarinCoach 2.7.4\n"
+"Project-Id-Version: ZarinCoach 2.7.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/zarincoach\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T19:21:59+00:00\n"
+"POT-Creation-Date: 2026-10-30T19:37:17+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -120,7 +120,7 @@ msgid "سربرگ داخلی قالب"
 msgstr ""
 
 #: inc/admin-layout.php:27
-#: inc/options-panel.php:1615
+#: inc/options-panel.php:1616
 msgid "سربرگ سایت"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgid "پاورقی داخلی قالب"
 msgstr ""
 
 #: inc/admin-layout.php:34
-#: inc/options-panel.php:1616
+#: inc/options-panel.php:1617
 msgid "پاورقی سایت"
 msgstr ""
 
@@ -412,7 +412,7 @@ msgstr ""
 
 #: inc/admin-layout.php:483
 #: inc/admin.php:642
-#: inc/options-panel.php:1657
+#: inc/options-panel.php:1658
 msgid "المنتور"
 msgstr ""
 
@@ -947,7 +947,7 @@ msgid "ویرایش خانه با المنتور"
 msgstr ""
 
 #: inc/admin-widgets.php:295
-#: inc/options-panel.php:1673
+#: inc/options-panel.php:1674
 #: inc/options.php:139
 #: inc/options.php:165
 msgid "مدیریت ویجت‌ها"
@@ -1384,7 +1384,7 @@ msgid "لوگو و نماد سایت"
 msgstr ""
 
 #: inc/admin.php:189
-#: inc/options-panel.php:1698
+#: inc/options-panel.php:1699
 msgid "کدهای سفارشی"
 msgstr ""
 
@@ -2512,7 +2512,7 @@ msgstr ""
 #: inc/cpt.php:121
 #: inc/elementor/widgets/class-zc-widget-faq.php:32
 #: inc/options-panel.php:525
-#: inc/options-panel.php:1629
+#: inc/options-panel.php:1630
 #: inc/options-sections-home.php:40
 #: inc/options-sections-home.php:56
 #: inc/options-sections-home.php:594
@@ -2696,7 +2696,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-schema.php:32
 #: inc/elementor/widgets/class-zc-widget-schema.php:93
 #: inc/options-panel.php:521
-#: inc/options-panel.php:1623
+#: inc/options-panel.php:1624
 #: inc/options-sections-home.php:36
 #: inc/options-sections-home.php:52
 #: inc/options-sections-home.php:347
@@ -3860,7 +3860,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-about.php:32
 #: inc/elementor/widgets/class-zc-widget-footer-about.php:65
 #: inc/options-panel.php:519
-#: inc/options-panel.php:1621
+#: inc/options-panel.php:1622
 #: inc/options-sections-home.php:34
 #: inc/options-sections-home.php:50
 #: inc/options-sections-home.php:205
@@ -3990,7 +3990,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-about.php:160
 #: inc/elementor/widgets/class-zc-widget-about.php:196
 #: inc/elementor/widgets/class-zc-widget-list.php:32
-#: inc/options-panel.php:1635
+#: inc/options-panel.php:1636
 msgid "فهرست ویژگی‌ها"
 msgstr ""
 
@@ -4077,7 +4077,7 @@ msgid "فاصله‌ی پاراگراف‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-book.php:35
-#: inc/options-panel.php:1642
+#: inc/options-panel.php:1643
 msgid "معرفی کتاب"
 msgstr ""
 
@@ -4366,7 +4366,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:32
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:206
 #: inc/options-panel.php:1164
-#: inc/options-panel.php:1632
+#: inc/options-panel.php:1633
 msgid "اطلاعات تماس"
 msgstr ""
 
@@ -4609,7 +4609,7 @@ msgid "قاب نقشه"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-courses.php:35
-#: inc/options-panel.php:1640
+#: inc/options-panel.php:1641
 msgid "دوره‌ها و گواهی‌ها"
 msgstr ""
 
@@ -4883,7 +4883,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:32
 #: inc/options-panel.php:527
-#: inc/options-panel.php:1630
+#: inc/options-panel.php:1631
 #: inc/options-sections-home.php:42
 #: inc/options-sections-home.php:58
 #: inc/options-sections-home.php:681
@@ -5754,7 +5754,7 @@ msgid "(فقط برای مدیر) کد نمادها را در همین ویجت 
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-form.php:32
-#: inc/options-panel.php:1633
+#: inc/options-panel.php:1634
 msgid "فرم رزرو/تماس"
 msgstr ""
 
@@ -6368,7 +6368,7 @@ msgid "نوبت‌دهی: شنبه تا چهارشنبه ۱۶ تا ۲۰:۳۰ —
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-heading.php:32
-#: inc/options-panel.php:1619
+#: inc/options-panel.php:1620
 msgid "سربرگ بخش"
 msgstr ""
 
@@ -6579,7 +6579,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-marquee.php:32
 #: inc/options-panel.php:518
-#: inc/options-panel.php:1634
+#: inc/options-panel.php:1635
 msgid "نوار کلمات"
 msgstr ""
 
@@ -6646,7 +6646,7 @@ msgid "کلمات و جداکننده"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-page-title.php:35
-#: inc/options-panel.php:1617
+#: inc/options-panel.php:1618
 msgid "عنوان برگه"
 msgstr ""
 
@@ -6715,7 +6715,7 @@ msgid "فاصله تا عنوان"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-posts.php:32
-#: inc/options-panel.php:1631
+#: inc/options-panel.php:1632
 #: inc/options-sections-home.php:41
 #: inc/options-sections-home.php:57
 #: inc/options-sections-home.php:638
@@ -6981,7 +6981,7 @@ msgid "مطلبی یافت نشد."
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-pricing.php:32
-#: inc/options-panel.php:1628
+#: inc/options-panel.php:1629
 msgid "بسته‌های همراهی"
 msgstr ""
 
@@ -7079,7 +7079,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-process.php:32
 #: inc/options-panel.php:522
-#: inc/options-panel.php:1625
+#: inc/options-panel.php:1626
 #: inc/options-sections-home.php:37
 #: inc/options-sections-home.php:53
 #: inc/options-sections-home.php:428
@@ -7572,7 +7572,7 @@ msgid "محصولات بعدی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:35
-#: inc/options-panel.php:1638
+#: inc/options-panel.php:1639
 msgid "رزومه — معرفی حرفه‌ای"
 msgstr ""
 
@@ -7955,7 +7955,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-schemas.php:32
 #: inc/options-panel.php:317
 #: inc/options-panel.php:1068
-#: inc/options-panel.php:1624
+#: inc/options-panel.php:1625
 msgid "کتابخانه‌ی طرحواره‌ها"
 msgstr ""
 
@@ -8129,7 +8129,7 @@ msgid "نام گروه"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-services.php:32
-#: inc/options-panel.php:1622
+#: inc/options-panel.php:1623
 #: inc/options-sections-home.php:35
 #: inc/options-sections-home.php:51
 #: inc/options-sections-home.php:281
@@ -8511,7 +8511,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:320
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:35
 #: inc/options-panel.php:1258
-#: inc/options-panel.php:1637
+#: inc/options-panel.php:1638
 msgid "نمادهای اعتماد"
 msgstr ""
 
@@ -8735,7 +8735,7 @@ msgid "رنگ آیکن‌های اجتماعی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-skills.php:34
-#: inc/options-panel.php:1641
+#: inc/options-panel.php:1642
 msgid "حوزه‌های تخصصی"
 msgstr ""
 
@@ -8783,7 +8783,7 @@ msgid "عنوان، متن، برچسب‌ها و پیوند"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-stats.php:32
-#: inc/options-panel.php:1626
+#: inc/options-panel.php:1627
 #: inc/options-sections-home.php:38
 #: inc/options-sections-home.php:54
 #: inc/options-sections-home.php:503
@@ -9039,7 +9039,7 @@ msgid "نظر بعدی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-text.php:34
-#: inc/options-panel.php:1620
+#: inc/options-panel.php:1621
 msgid "متن و محتوا"
 msgstr ""
 
@@ -9311,7 +9311,7 @@ msgid "پیوند صفحه‌ی جاری"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-timeline.php:35
-#: inc/options-panel.php:1639
+#: inc/options-panel.php:1640
 msgid "خط زمانی سوابق"
 msgstr ""
 
@@ -9414,7 +9414,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-toc.php:63
 #: inc/elementor/widgets/class-zc-widget-toc.php:70
 #: inc/options-panel.php:897
-#: inc/options-panel.php:1636
+#: inc/options-panel.php:1637
 #: inc/toc.php:23
 msgid "فهرست مطالب"
 msgstr ""
@@ -9735,7 +9735,7 @@ msgstr ""
 
 #: inc/icons.php:191
 #: inc/options-panel.php:340
-#: inc/options-panel.php:1589
+#: inc/options-panel.php:1590
 msgid "امنیت"
 msgstr ""
 
@@ -11673,146 +11673,154 @@ msgstr ""
 msgid "جلوی درخواست اضافه به api.wordpress.org را می‌گیرد."
 msgstr ""
 
-#: inc/options-panel.php:1591
+#: inc/options-panel.php:1569
+msgid "بهداشت لاگ افزونه‌ها حتی در حالت دیباگ"
+msgstr ""
+
+#: inc/options-panel.php:1569
+msgid "هشدار، اعلان و دپریکیشن‌های درونی المنتور — مثل «Attempt to read property \"ID\" on null» در document.php که باگ شناخته‌شده‌ی خود المنتور است و قالب در آن هیچ نقشی ندارد — با WP_DEBUG روشن هم به debug.log نمایش داده نمی‌شوند. خطاهای قالب، هسته و بقیه‌ی افزونه‌ها دست‌نخورده می‌مانند. پیش‌فرض: خاموش."
+msgstr ""
+
+#: inc/options-panel.php:1592
 msgid "سخت‌سازی سبک و بی‌خطر وردپرس؛ بدون تداخل با المنتور، فرم‌ها و افزونه‌های امنیتی."
 msgstr ""
 
-#: inc/options-panel.php:1593
+#: inc/options-panel.php:1594
 msgid "غیرفعال‌سازی XML-RPC"
 msgstr ""
 
-#: inc/options-panel.php:1593
+#: inc/options-panel.php:1594
 msgid "رایج‌ترین مسیر حمله‌ی حدس رمز. اگر از اپ موبایل وردپرس یا Jetpack استفاده می‌کنید، خاموش کنید."
 msgstr ""
 
-#: inc/options-panel.php:1594
+#: inc/options-panel.php:1595
 msgid "جلوگیری از شناسایی نام کاربری"
 msgstr ""
 
-#: inc/options-panel.php:1594
+#: inc/options-panel.php:1595
 msgid "مسدود کردن ?author=N و فهرست کاربران REST برای بازدیدکنندگان."
 msgstr ""
 
-#: inc/options-panel.php:1595
+#: inc/options-panel.php:1596
 msgid "پیام خطای ورود یکسان"
 msgstr ""
 
-#: inc/options-panel.php:1595
+#: inc/options-panel.php:1596
 msgid "مشخص نمی‌کند نام کاربری اشتباه است یا رمز."
 msgstr ""
 
-#: inc/options-panel.php:1596
+#: inc/options-panel.php:1597
 msgid "غیرفعال‌سازی ویرایشگر فایل"
 msgstr ""
 
-#: inc/options-panel.php:1596
+#: inc/options-panel.php:1597
 msgid "ویرایش مستقیم کد قالب و افزونه‌ها از پیشخوان بسته می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1597
+#: inc/options-panel.php:1598
 msgid "سرآیندهای امنیتی HTTP"
 msgstr ""
 
-#: inc/options-panel.php:1597
+#: inc/options-panel.php:1598
 msgid "X-Content-Type-Options، Referrer-Policy، X-Frame-Options (SAMEORIGIN) و Permissions-Policy."
 msgstr ""
 
-#: inc/options-panel.php:1618
+#: inc/options-panel.php:1619
 #: inc/options-sections-home.php:87
 msgid "سربرگ اصلی"
 msgstr ""
 
-#: inc/options-panel.php:1627
+#: inc/options-panel.php:1628
 msgid "تجربه‌ی مراجعان"
 msgstr ""
 
-#: inc/options-panel.php:1646
+#: inc/options-panel.php:1647
 msgid "فروشگاه — محصولات"
 msgstr ""
 
-#: inc/options-panel.php:1647
+#: inc/options-panel.php:1648
 msgid "فروشگاه — دسته‌بندی محصولات"
 msgstr ""
 
-#: inc/options-panel.php:1648
+#: inc/options-panel.php:1649
 msgid "فروشگاه — محصول ویژه"
 msgstr ""
 
-#: inc/options-panel.php:1649
+#: inc/options-panel.php:1650
 msgid "فروشگاه — بنر تخفیف"
 msgstr ""
 
-#: inc/options-panel.php:1650
+#: inc/options-panel.php:1651
 msgid "فروشگاه — مزایای خرید"
 msgstr ""
 
-#: inc/options-panel.php:1659
+#: inc/options-panel.php:1660
 msgid "ویجت‌های اختصاصی زرین‌کوچ در دسته‌ی «زرین‌کوچ» پنل المنتور."
 msgstr ""
 
-#: inc/options-panel.php:1664
+#: inc/options-panel.php:1665
 msgid "ویجت‌های فعال"
 msgstr ""
 
-#: inc/options-panel.php:1666
+#: inc/options-panel.php:1667
 msgid "ویجت‌های خاموش از فهرست ویرایشگر المنتور پنهان می‌شوند تا پنل خلوت‌تر شود؛ صفحاتی که قبلاً از آن‌ها استفاده کرده‌اند بدون تغییر نمایش داده می‌شوند."
 msgstr ""
 
 #. translators: %s: پیوند صفحه‌ی مدیریت ویجت‌ها
-#: inc/options-panel.php:1672
+#: inc/options-panel.php:1673
 #, php-format
 msgid "برای جستجو، مشاهده‌ی صفحه‌های استفاده‌کننده و روشن/خاموش کردن گروهی، به %s بروید."
 msgstr ""
 
-#: inc/options-panel.php:1677
+#: inc/options-panel.php:1678
 msgid "استایل قالب در ویرایشگر"
 msgstr ""
 
-#: inc/options-panel.php:1677
+#: inc/options-panel.php:1678
 msgid "برای نمایش دقیق ویجت‌ها هنگام ویرایش."
 msgstr ""
 
-#: inc/options-panel.php:1678
+#: inc/options-panel.php:1679
 msgid "مقادیر پیش‌فرض از پنل"
 msgstr ""
 
-#: inc/options-panel.php:1678
+#: inc/options-panel.php:1679
 msgid "فیلدهای خالی ویجت‌ها (تلفن، لوگو، پیوند رزرو و…) از همین پنل خوانده می‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1700
+#: inc/options-panel.php:1701
 msgid "CSS و کدهای ابزارهای آمار (Analytics، Clarity و…) بدون دستکاری فایل‌های قالب."
 msgstr ""
 
-#: inc/options-panel.php:1702
+#: inc/options-panel.php:1703
 msgid "CSS سفارشی"
 msgstr ""
 
-#: inc/options-panel.php:1702
+#: inc/options-panel.php:1703
 msgid "بعد از استایل قالب بارگذاری می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1703
+#: inc/options-panel.php:1704
 msgid "کدهای head"
 msgstr ""
 
-#: inc/options-panel.php:1703
+#: inc/options-panel.php:1704
 msgid "پیش از بسته شدن تگ head؛ تگ script را هم بنویسید."
 msgstr ""
 
-#: inc/options-panel.php:1704
+#: inc/options-panel.php:1705
 msgid "کدهای ابتدای body"
 msgstr ""
 
-#: inc/options-panel.php:1704
+#: inc/options-panel.php:1705
 msgid "بلافاصله پس از باز شدن تگ body (مثل noscript گوگل تگ منیجر)."
 msgstr ""
 
-#: inc/options-panel.php:1705
+#: inc/options-panel.php:1706
 msgid "کدهای انتهای صفحه"
 msgstr ""
 
-#: inc/options-panel.php:1705
+#: inc/options-panel.php:1706
 msgid "پیش از بسته شدن تگ body."
 msgstr ""
 

@@ -346,6 +346,22 @@ if ( ! function_exists( 'zc_thirdparty_log_hygiene' ) ) :
 		);
 	}
 endif;
-if ( apply_filters( 'zc_thirdparty_log_hygiene', ! WP_DEBUG ) ) {
-	add_action( 'after_setup_theme', 'zc_thirdparty_log_hygiene', 40 );
-}
+if ( ! function_exists( 'zc_thirdparty_log_hygiene_boot' ) ) :
+	/**
+	 * تصمیمِ فعال‌سازی بهداشت لاگ — نسخه‌ی ۲.۷.۵.
+	 *
+	 * به‌صورت دیرهنگام (بعد از بارگذاری تنظیمات پنل) ارزیابی می‌شود تا کلید پنل هم مؤثر باشد:
+	 * پیش‌فرض همان رفتار ۲.۷.۱ است (فقط با WP_DEBUG خاموش)؛ با کلید «بهداشت لاگ افزونه‌ها حتی
+	 * در حالت دیباگ» در پنل ← سرعت ← پیشخوان و پایگاه داده، هشدارهای درونی المنتور که در
+	 * بررسی‌های ۲.۷.۱ و ۲.۷.۵ بی‌اثر تشخیص داده شده‌اند با WP_DEBUG روشن هم بی‌صدا می‌شوند.
+	 *
+	 * @return void
+	 */
+	function zc_thirdparty_log_hygiene_boot() {
+		$always = function_exists( 'zc_switch' ) && zc_switch( 'perf_log_hygiene_always', false );
+		if ( apply_filters( 'zc_thirdparty_log_hygiene', ! WP_DEBUG || $always ) ) {
+			add_action( 'after_setup_theme', 'zc_thirdparty_log_hygiene', 40 );
+		}
+	}
+endif;
+add_action( 'after_setup_theme', 'zc_thirdparty_log_hygiene_boot', 39 );

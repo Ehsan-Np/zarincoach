@@ -1566,6 +1566,7 @@ if ( ! function_exists( 'zc_panel_performance' ) ) :
 						'optimized'
 					),
 					zc_f_switch( 'perf_block_patterns', __( 'غیرفعال‌سازی الگوهای راه دور گوتنبرگ', 'zarincoach' ), true, __( 'جلوی درخواست اضافه به api.wordpress.org را می‌گیرد.', 'zarincoach' ) ),
+					zc_f_switch( 'perf_log_hygiene_always', __( 'بهداشت لاگ افزونه‌ها حتی در حالت دیباگ', 'zarincoach' ), false, __( 'هشدار، اعلان و دپریکیشن‌های درونی المنتور — مثل «Attempt to read property "ID" on null» در document.php که باگ شناخته‌شده‌ی خود المنتور است و قالب در آن هیچ نقشی ندارد — با WP_DEBUG روشن هم به debug.log نمایش داده نمی‌شوند. خطاهای قالب، هسته و بقیه‌ی افزونه‌ها دست‌نخورده می‌مانند. پیش‌فرض: خاموش.', 'zarincoach' ) ),
 				),
 				array( 'subsection' => true )
 			),
