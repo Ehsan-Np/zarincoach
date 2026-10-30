@@ -872,7 +872,7 @@ if ( ! function_exists( 'zc_logs_system_card' ) ) :
 				.zc-logs-chip.is-danger { background: #fbeaea; color: #b32d2e; }
 				.zc-logs-chip.is-info { background: #e8eefc; color: #1d4ed8; }
 				.zc-logs-sub { margin: 10px 0 6px; font-size: 13px; }
-				.zc-logs-table { width: 100%; border-spacing: 0; border-collapse: collapse; }
+				.zc-logs-table { width: 100%; border-spacing: 0; }
 				.zc-logs-table th { text-align: right; font-size: 11.5px; color: #6b7280; padding: 6px 8px; border-bottom: 2px solid #e5e8ef; }
 				.zc-logs-table td { font-size: 12.5px; padding: 8px; border-bottom: 1px solid #f0f1f4; vertical-align: top; }
 				.zc-logs-num { font-weight: 700; color: #1D3A72; white-space: nowrap; }
