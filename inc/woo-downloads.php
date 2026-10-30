@@ -40,6 +40,56 @@ if ( ! function_exists( 'zc_dl_register' ) ) :
 	}
 endif;
 
+if ( ! function_exists( 'zc_dl_click_heal' ) ) :
+	/**
+	 * ترمیم لحظه‌ی کلیک دانلود.
+	 *
+	 * ووکامرس هنگام بارگذاری محصول، اعتبارسنجی فایل را روی «مقدار خام ذخیره‌شده» انجام می‌دهد؛
+	 * مسیرِ دیسکِ هاست در دایرکتوری‌های مجاز نیفتد و دانلود با «لینک نامعتبر» رد می‌شود.
+	 * این تابع پیش از download_product() ووکامرس (init اولویت ۱ < ۱۰)، متای همان محصول را
+	 * در صورت نیاز بازسازی می‌کند تا خودِ کلیک، وضعیت را سالم کند؛ هزینه‌ی حالت عادی یک get_post_meta است.
+	 *
+	 * @return void
+	 */
+	function zc_dl_click_heal() {
+		if ( ! class_exists( 'WooCommerce' ) || ! function_exists( 'zc_switch' ) || ! zc_switch( 'dl_normalize', true ) ) {
+			return;
+		}
+		if ( empty( $_GET['download_file'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- لینک دانلود bearer است.
+			return;
+		}
+		$pid = absint( wp_unslash( $_GET['download_file'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		if ( ! $pid ) {
+			return;
+		}
+		$raw = get_post_meta( $pid, '_downloadable_files', true );
+		if ( ! is_array( $raw ) ) {
+			return;
+		}
+		$changed = false;
+		foreach ( $raw as $key => $f ) {
+			if ( is_array( $f ) && ! empty( $f['file'] ) && is_string( $f['file'] ) && zc_dl_file_needs_repair( $f['file'] ) ) {
+				$fixed = zc_dl_normalize_path( $f['file'] );
+				if ( '' !== $fixed && $fixed !== $f['file'] ) {
+					$raw[ $key ]['file'] = $fixed;
+					if ( array_key_exists( 'enabled', $raw[ $key ] ) ) {
+						$raw[ $key ]['enabled'] = true; // اگر ووکامرس قبلاً غیرفعالش کرده باشد، فعال شود.
+					}
+					$changed = true;
+				}
+			}
+		}
+		if ( $changed ) {
+			update_post_meta( $pid, '_downloadable_files', $raw );
+			clean_post_cache( $pid );
+			if ( function_exists( 'wc_delete_product_transients' ) ) {
+				wc_delete_product_transients( $pid );
+			}
+		}
+	}
+endif;
+add_action( 'init', 'zc_dl_click_heal', 1 );
+
 if ( ! function_exists( 'zc_dl_setup' ) ) :
 	/**
 	 * ثبت قلاب‌ها.
@@ -51,10 +101,10 @@ if ( ! function_exists( 'zc_dl_setup' ) ) :
 			return;
 		}
 
-		/* نرمال‌سازی مسیر فایل‌های دانلودی (پیش‌فرض: روشن). */
+		/* نرمال‌سازی مسیر فایل‌های دانلودی (پیش‌فرض: روشن).
+		   نام درست فیلتر محصول/متغیر: woocommerce_product_file_download_path (متغیر هم از همین متد ارث می‌برد). */
 		if ( zc_switch( 'dl_normalize', true ) ) {
-			add_filter( 'woocommerce_product_get_file_download_path', 'zc_dl_normalize_path', 20 );
-			add_filter( 'woocommerce_product_variation_get_file_download_path', 'zc_dl_normalize_path', 20 );
+			add_filter( 'woocommerce_product_file_download_path', 'zc_dl_normalize_path', 20 );
 			add_filter( 'woocommerce_download_product_filepath', 'zc_dl_normalize_path', 20 );
 			add_filter( 'woocommerce_downloadable_file_exists', 'zc_dl_file_exists', 20, 2 );
 		}
@@ -85,8 +135,20 @@ endif;
 
 if ( ! function_exists( 'zc_dl_normalize_path' ) ) :
 	/**
-	 * نگاشت نشانی فایل دانلودی به مسیر واقعی روی دیسک، حتی وقتی پیشوند نشانی
-	 * ذخیره‌شده با پیشوند فعلی سایت در http/https یا www تفاوت دارد.
+	 * نرمال‌سازی نشانی/مسیر فایل دانلودی — نسخه‌ی ۲.۷.۳.
+	 *
+	 * اصل: خروجی این تابع همیشه یک «نشانی وب» صحیح است؛ هرگز مسیر دیسک هاست
+	 * برگردانده نمی‌شود (مسیر دیسک در روش ریدایرکت به شکل
+	 * «دامنه + مسیر هاست» به کاربر نمایش داده می‌شد).
+	 *
+	 *  ۱) هر مقداری که پوشه‌ی بارگذاری (wp-content/uploads) در آن دیده شود و
+	 *     پیشوندش با پیشوند فعلی سایت یکی نیست — مانند مسیر دیسک
+	 *     /home/USER/example.ir/wp-content/uploads/... یا نشانی
+	 *     https://example.ir/home/USER/... — از همان نقطه با پیشوند فعلی
+	 *     بازسازی می‌شود.
+	 *  ۲) مسیر دیسکِ برابر با basedir (پوشه‌ی بارگذاری سفارشی) به نشانی تبدیل می‌شود.
+	 *  ۳) نشانی هم‌میزبان با پیشوند قدیمی (http/https/www/دامنه‌ی قدیمی) با
+	 *     پیشوند فعلی سایت بازنویسی می‌شود.
 	 *
 	 * @param string $path نشانی یا مسیر فایل.
 	 * @return string
@@ -95,47 +157,33 @@ if ( ! function_exists( 'zc_dl_normalize_path' ) ) :
 		if ( ! is_string( $path ) || '' === $path || '[' === substr( $path, 0, 1 ) ) {
 			return $path;
 		}
+
+		$up       = wp_get_upload_dir();
+		$base_url = untrailingslashit( $up['baseurl'] );
+		$marker   = '/wp-content/uploads/';
+
+		/* ۱) بازسازی از نشانه‌ی پوشه‌ی بارگذاری — مقتدرترین حالت. */
+		$pos = strpos( $path, $marker );
+		if ( false !== $pos ) {
+			$prefix = untrailingslashit( substr( $path, 0, $pos ) . $marker );
+			if ( $prefix !== $base_url ) {
+				// «مسیر یا نشانی خراب» + «/wp-content/uploads/بقیه» → نشانی صحیح فعلی.
+				return $base_url . substr( $path, $pos + strlen( $marker ) - 1 );
+			}
+			return $path; // پیشوند درست است — دست‌نخورده.
+		}
+
+		/* ۲) مسیر دیسک هم‌ارز basedir (پوشه‌ی بارگذاری سفارشی). */
+		$base_dir = untrailingslashit( $up['basedir'] );
+		if ( '' !== $base_dir && 0 === strpos( $path, $base_dir . '/' ) ) {
+			return $base_url . substr( $path, strlen( $base_dir ) );
+		}
+
+		/* ۳) نشانی هم‌میزبان با پیشوند قدیمی → پیشوند فعلی سایت. */
 		$host = (string) wp_parse_url( $path, PHP_URL_HOST );
 		if ( '' === $host ) {
-			return $path; // مسیر نسبی یا مطلق دیسک — دست‌نخورده.
+			return $path; // مسیر نسبی ریشه — ووکامرس خودش روی دیسک حل می‌کند.
 		}
-
-		$up      = wp_get_upload_dir();
-		$scheme  = is_ssl() ? 'https' : 'http';
-		$in_port = wp_parse_url( $path, PHP_URL_PORT );
-		$port    = $in_port ? ':' . absint( $in_port ) : '';
-		$cand    = array();
-		foreach ( array( true, false ) as $www ) {
-			$h = ( $www ? 'www.' : '' ) . $host;
-			$cand[] = 'http://' . $h . $port;
-			$cand[] = 'https://' . $h . $port;
-		}
-
-		$bases = array(
-			'uploads' => array( untrailingslashit( $up['baseurl'] ), untrailingslashit( $up['basedir'] ) ),
-			'site'    => array( untrailingslashit( site_url( '/' ) ), untrailingslashit( ABSPATH ) ),
-		);
-		if ( is_multisite() ) {
-			$bases['network'] = array( untrailingslashit( network_site_url( '/' ) ), untrailingslashit( ABSPATH ) );
-		}
-
-		foreach ( $bases as $pair ) {
-			$prefix = $pair[0];
-			$root   = $pair[1];
-			foreach ( $cand as $p ) {
-				$full = $p . wp_parse_url( $prefix, PHP_URL_PATH );
-				if ( '' !== $full && 0 === strpos( $path, $full . '/' ) ) {
-					$tail = substr( $path, strlen( $full ) );
-					$real = $root . $tail;
-					if ( @file_exists( $real ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors
-						return $real;
-					}
-				}
-			}
-		}
-
-		// نگاشت پایانی: اگر نشانی متعلق به همین سایت است اما فایل محلی نیست،
-		// نشانی را با پیشوند فعلی سایت بازنویسی کن (اصلاح دامنه‌های قدیمی).
 		$site_hosts = array_unique(
 			array_filter(
 				array(
@@ -144,15 +192,135 @@ if ( ! function_exists( 'zc_dl_normalize_path' ) ) :
 				)
 			)
 		);
-		$port = wp_parse_url( $path, PHP_URL_PORT );
 		foreach ( $site_hosts as $sh ) {
 			if ( zc_dl_host_matches( $host, $sh ) ) {
-				$new = $scheme . '://' . $sh . ( $port ? ':' . absint( $port ) : '' ) . (string) wp_parse_url( $path, PHP_URL_PATH );
+				$qs  = (string) wp_parse_url( $path, PHP_URL_QUERY );
+				$new = home_url( (string) wp_parse_url( $path, PHP_URL_PATH ) ) . ( '' !== $qs ? '?' . $qs : '' );
 				return ( $new !== $path ) ? $new : $path;
 			}
 		}
 
-		return $path;
+		return $path; // فایل بیرونی (CDN/میزبان دیگر) — دست‌نخورده.
+	}
+endif;
+
+if ( ! function_exists( 'zc_dl_file_needs_repair' ) ) :
+	/**
+	 * آیا این مقدارِ ذخیره‌شده در محصول، نشانی وبِ صحیح نیست و باید ترمیم شود؟
+	 *
+	 * @param string $file مقدار ذخیره‌شده.
+	 * @return bool
+	 */
+	function zc_dl_file_needs_repair( $file ) {
+		if ( ! is_string( $file ) || '' === $file || '[' === substr( $file, 0, 1 ) ) {
+			return false;
+		}
+		$up       = wp_get_upload_dir();
+		$base_url = untrailingslashit( $up['baseurl'] );
+		$marker   = '/wp-content/uploads/';
+
+		$pos = strpos( $file, $marker );
+		if ( false !== $pos ) {
+			$prefix = untrailingslashit( substr( $file, 0, $pos ) . $marker );
+			return ( $prefix !== $base_url ); // پیشوند خراب (مسیر دیسک یا پیشوند قدیمی).
+		}
+		$base_dir = untrailingslashit( $up['basedir'] );
+		if ( '' !== $base_dir && 0 === strpos( $file, $base_dir . '/' ) ) {
+			return true; // مسیر دیسک خالص.
+		}
+		return false;
+	}
+endif;
+
+if ( ! function_exists( 'zc_dl_scan_stored_files' ) ) :
+	/**
+	 * اسکن همه‌ی محصولات دانلودی و یافتن فایل‌های با نشانی خراب.
+	 *
+	 * @return array<int, array<string,mixed>> فهرست موارد نیازمند ترمیم.
+	 */
+	function zc_dl_scan_stored_files() {
+		global $wpdb;
+		$bad = array();
+		if ( ! class_exists( 'WooCommerce' ) ) {
+			return $bad;
+		}
+		// جست‌وجوی مستقیم در postmeta: محصولات و متغیرها را هم پوشش می‌دهد و به آبجکت‌سازی ووکامرس وابسته نیست.
+		$rows = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery
+			$wpdb->prepare(
+				"SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key = '_downloadable_files' AND meta_value LIKE %s LIMIT 5000",
+				'%' . $wpdb->esc_like( '/wp-content/uploads/' ) . '%'
+			)
+		);
+		foreach ( (array) $rows as $r ) {
+			$files = maybe_unserialize( $r->meta_value );
+			if ( ! is_array( $files ) ) {
+				continue;
+			}
+			$pid  = (int) $r->post_id;
+			$name = get_the_title( $pid );
+			foreach ( $files as $f ) {
+				if ( ! is_array( $f ) || empty( $f['file'] ) || ! is_string( $f['file'] ) ) {
+					continue;
+				}
+				$file = $f['file'];
+				if ( ! zc_dl_file_needs_repair( $file ) ) {
+					continue;
+				}
+				$fixed = zc_dl_normalize_path( $file );
+				if ( '' === $fixed || $fixed === $file ) {
+					continue;
+				}
+				$bad[] = array(
+					'pid'   => $pid,
+					'name'  => $name ? $name : sprintf( '#%d', $pid ),
+					'file'  => $file,
+					'fixed' => $fixed,
+				);
+			}
+		}
+		return $bad;
+	}
+endif;
+
+if ( ! function_exists( 'zc_dl_repair_stored_files' ) ) :
+	/**
+	 * ترمیم نشانی فایل‌های ذخیره‌شده‌ی محصولات دانلودی.
+	 *
+	 * @return array<string,int> آمار عملیات.
+	 */
+	function zc_dl_repair_stored_files() {
+		$bad   = zc_dl_scan_stored_files();
+		$fixed = 0;
+		foreach ( $bad as $row ) {
+			// نوشتن مستقیم متا: مسیر set_downloads()+save() ووکامرس شیء را درجا جهش می‌دهد و
+			// چون set_prop مقایسه‌ی اکید آرایه انجام می‌دهد، تغییری ثبت نمی‌شود؛ در نتیجه save بدون اثر می‌ماند.
+			$raw = get_post_meta( $row['pid'], '_downloadable_files', true );
+			if ( ! is_array( $raw ) ) {
+				continue;
+			}
+			$changed = false;
+			foreach ( $raw as $key => $f ) {
+				if ( is_array( $f ) && isset( $f['file'] ) && (string) $f['file'] === $row['file'] ) {
+					$raw[ $key ]['file'] = $row['fixed'];
+					if ( array_key_exists( 'enabled', $raw[ $key ] ) ) {
+						$raw[ $key ]['enabled'] = true; // در صورت غیرفعال‌شدن قبلی توسط ووکامرس، فعال شود.
+					}
+					$changed = true;
+				}
+			}
+			if ( $changed ) {
+				update_post_meta( $row['pid'], '_downloadable_files', $raw );
+				clean_post_cache( $row['pid'] );
+				if ( function_exists( 'wc_delete_product_transients' ) ) {
+					wc_delete_product_transients( $row['pid'] );
+				}
+				++$fixed;
+			}
+		}
+		return array(
+			'found' => count( $bad ),
+			'fixed' => $fixed,
+		);
 	}
 endif;
 
@@ -169,7 +337,12 @@ if ( ! function_exists( 'zc_dl_file_exists' ) ) :
 			return true;
 		}
 		$resolved = zc_dl_normalize_path( (string) $file_url );
-		return ( '' !== $resolved && $resolved !== $file_url && @file_exists( $resolved ) ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
+		if ( '' === $resolved || $resolved === $file_url ) {
+			return false;
+		}
+		// خروجی نرمال‌شده نشانی وب است؛ وجود فایل را با مسیر معادل دیسک می‌سنجیم.
+		$parsed = WC_Download_Handler::parse_file_path( $resolved );
+		return ! empty( $parsed['file_path'] ) && @file_exists( $parsed['file_path'] ); // phpcs:ignore WordPress.PHP.NoSilencedErrors
 	}
 endif;
 
@@ -225,6 +398,11 @@ if ( ! function_exists( 'zc_dl_maybe_heal' ) ) :
 			// محدودسازی بدون هیچ دایرکتوری مجاز و بدون امکان افزودن = مسدود شدن همه‌چیز؛ خاموش می‌کنیم.
 			$reg->set_mode( 'disabled' );
 			set_transient( 'zc_dl_notice', 'empty_list', HOUR_IN_SECONDS );
+		}
+
+		/* ترمیم خودکار فایل‌های ذخیره‌شده با نشانی خراب (مسیر دیسک/پیشوند قدیمی). */
+		if ( count( zc_dl_scan_stored_files() ) > 0 ) {
+			zc_dl_repair_stored_files();
 		}
 	}
 endif;
@@ -338,6 +516,21 @@ if ( ! function_exists( 'zc_dl_status' ) ) :
 			'state' => $grant ? 'ok' : 'warn',
 			'hint'  => $grant ? __( 'مجوز دانلود بلافاصله پس از پرداخت صادر می‌شود.', 'zarincoach' ) : __( 'مشتری تا تکمیل دستی سفارش دانلود ندارد.', 'zarincoach' ),
 			'fix'   => $grant ? '' : 'grant_on',
+		);
+
+		/* فایل‌های ذخیره‌شده با نشانی خراب. */
+		$bad_files = zc_dl_scan_stored_files();
+		$rows[]    = array(
+			'key'   => 'files',
+			'label' => __( 'نشانی فایل‌های ذخیره‌شده', 'zarincoach' ),
+			'value' => 0 === count( $bad_files )
+				? __( 'همه صحیح', 'zarincoach' )
+				: sprintf( /* translators: %s: تعداد */ __( '%s فایل با مسیر اشتباه (مسیر هاست به‌جای نشانی)', 'zarincoach' ), number_format_i18n( count( $bad_files ) ) ),
+			'state' => 0 === count( $bad_files ) ? 'ok' : 'danger',
+			'hint'  => 0 === count( $bad_files )
+				? __( 'همه‌ی محصولات دانلودی نشانی وبِ صحیح دارند.', 'zarincoach' )
+				: __( 'این وضعیت عامل «لینک دانلود دامنه+مسیر هاست» است؛ با «ترمیم خودکار» به نشانی صحیح تبدیل می‌شود.', 'zarincoach' ),
+			'fix'   => 0 === count( $bad_files ) ? '' : 'files',
 		);
 
 		/* محافظت از پوشه‌ی دانلودها. */
@@ -589,6 +782,15 @@ if ( ! function_exists( 'zc_dl_ajax_action' ) ) :
 			case 'method_force':
 				update_option( 'woocommerce_file_download_method', 'force' );
 				wp_send_json_success( array( 'message' => __( 'روش دانلود روی «اجبار دانلود» (امن) تنظیم شد.', 'zarincoach' ), 'rows' => zc_dl_status() ) );
+			case 'files':
+				$result = zc_dl_repair_stored_files();
+				wp_send_json_success(
+					array(
+						/* translators: %1$s: یافته‌شده، %2$s: ترمیم‌شده */
+						'message' => sprintf( __( 'اسکن محصولات دانلودی انجام شد: %1$s مورد نیازمند ترمیم بود، %2$s مورد ترمیم شد.', 'zarincoach' ), number_format_i18n( $result['found'] ), number_format_i18n( $result['fixed'] ) ),
+						'rows'    => zc_dl_status(),
+					)
+				);
 			case 'protect':
 				$up      = wp_get_upload_dir();
 				$woo_dir = $up['basedir'] . '/woocommerce_uploads';

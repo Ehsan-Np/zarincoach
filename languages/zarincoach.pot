@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ZarinCoach — قالب روان‌شناسی و کوچینگ مریم جمالی 2.7.2\n"
+"Project-Id-Version: ZarinCoach 2.7.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/zarincoach\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-27T21:11:45+00:00\n"
+"POT-Creation-Date: 2026-10-30T13:49:32+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -635,7 +635,7 @@ msgstr ""
 #: inc/admin.php:415
 #: inc/admin.php:1196
 #: inc/admin.php:1224
-#: inc/woo-downloads.php:557
+#: inc/woo-downloads.php:750
 msgid "دسترسی غیرمجاز."
 msgstr ""
 
@@ -1559,8 +1559,8 @@ msgstr ""
 #: inc/admin.php:1115
 #: inc/admin.php:1138
 #: inc/options-fields.php:57
-#: inc/woo-downloads.php:324
-#: inc/woo-downloads.php:337
+#: inc/woo-downloads.php:502
+#: inc/woo-downloads.php:515
 msgid "فعال"
 msgstr ""
 
@@ -1574,8 +1574,8 @@ msgstr ""
 #: inc/options-fields.php:58
 #: inc/options-panel.php:667
 #: inc/options-panel.php:1564
-#: inc/woo-downloads.php:324
-#: inc/woo-downloads.php:337
+#: inc/woo-downloads.php:502
+#: inc/woo-downloads.php:515
 msgid "غیرفعال"
 msgstr ""
 
@@ -13289,251 +13289,279 @@ msgstr ""
 msgid "کد رسمی درج نشده"
 msgstr ""
 
-#: inc/woo-downloads.php:244
+#: inc/woo-downloads.php:422
 msgid "اجبار دانلود (پیشنهادی)"
 msgstr ""
 
-#: inc/woo-downloads.php:245
+#: inc/woo-downloads.php:423
 msgid "X-Sendfile"
 msgstr ""
 
-#: inc/woo-downloads.php:246
+#: inc/woo-downloads.php:424
 msgid "ریدایرکت مستقیم"
 msgstr ""
 
-#: inc/woo-downloads.php:247
+#: inc/woo-downloads.php:425
 msgid "بدون محافظت"
 msgstr ""
 
-#: inc/woo-downloads.php:251
+#: inc/woo-downloads.php:429
 msgid "روش دانلود فایل"
 msgstr ""
 
-#: inc/woo-downloads.php:255
+#: inc/woo-downloads.php:433
 msgid "مسیر امن؛ فایل مستقیماً در دسترس نیست."
 msgstr ""
 
-#: inc/woo-downloads.php:256
+#: inc/woo-downloads.php:434
 msgid "این روش‌ها فایل را بی‌محافظت می‌کنند؛ «اجبار دانلود» را برگزینید."
 msgstr ""
 
-#: inc/woo-downloads.php:268
-#: inc/woo-downloads.php:277
-#: inc/woo-downloads.php:310
+#: inc/woo-downloads.php:446
+#: inc/woo-downloads.php:455
+#: inc/woo-downloads.php:488
 msgid "محدودسازی دایرکتوری‌های مجاز"
 msgstr ""
 
-#: inc/woo-downloads.php:269
+#: inc/woo-downloads.php:447
 msgid "غیرفعال (پیش‌فرض امن ووکامرس)"
 msgstr ""
 
-#: inc/woo-downloads.php:271
+#: inc/woo-downloads.php:449
 msgid "همه‌ی لینک‌ها پذیرفته می‌شوند؛ نیازی به تغییر نیست."
 msgstr ""
 
-#: inc/woo-downloads.php:278
+#: inc/woo-downloads.php:456
 msgid "فعال با فهرست خالی — همه‌ی دانلودها رد می‌شوند!"
 msgstr ""
 
-#: inc/woo-downloads.php:280
+#: inc/woo-downloads.php:458
 msgid "این عامل خطای «فایل نامعتبر» است؛ هم‌ترازسازی را اجرا کنید."
 msgstr ""
 
 #. translators: %s: تعداد
-#: inc/woo-downloads.php:311
+#: inc/woo-downloads.php:489
 #, php-format
 msgid "فعال با %s مسیر مجاز"
 msgstr ""
 
-#: inc/woo-downloads.php:313
+#: inc/woo-downloads.php:491
 msgid "پوشه‌ی بارگذاری در فهرست مجاز است."
 msgstr ""
 
-#: inc/woo-downloads.php:313
+#: inc/woo-downloads.php:491
 msgid "پوشه‌ی بارگذاری در فهرست نیست؛ هم‌ترازسازی را اجرا کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:323
+#: inc/woo-downloads.php:501
 msgid "اجبار ورود برای دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:327
+#: inc/woo-downloads.php:505
 msgid "لینک‌های ایمیلی برای مهمان‌ها خطای ۴۰۳ می‌دهند؛ فقط اگر عمداً می‌خواهید روشن بماند."
 msgstr ""
 
-#: inc/woo-downloads.php:328
+#: inc/woo-downloads.php:506
 msgid "لینک‌های ایمیلی بدون ورود کار می‌کنند."
 msgstr ""
 
-#: inc/woo-downloads.php:336
+#: inc/woo-downloads.php:514
 msgid "اعطای دانلود پس از پرداخت"
 msgstr ""
 
-#: inc/woo-downloads.php:339
+#: inc/woo-downloads.php:517
 msgid "مجوز دانلود بلافاصله پس از پرداخت صادر می‌شود."
 msgstr ""
 
-#: inc/woo-downloads.php:339
+#: inc/woo-downloads.php:517
 msgid "مشتری تا تکمیل دستی سفارش دانلود ندارد."
 msgstr ""
 
-#: inc/woo-downloads.php:352
-#: inc/woo-downloads.php:361
-#: inc/woo-downloads.php:370
+#: inc/woo-downloads.php:525
+msgid "نشانی فایل‌های ذخیره‌شده"
+msgstr ""
+
+#: inc/woo-downloads.php:527
+msgid "همه صحیح"
+msgstr ""
+
+#. translators: %s: تعداد
+#: inc/woo-downloads.php:528
+#, php-format
+msgid "%s فایل با مسیر اشتباه (مسیر هاست به‌جای نشانی)"
+msgstr ""
+
+#: inc/woo-downloads.php:531
+msgid "همه‌ی محصولات دانلودی نشانی وبِ صحیح دارند."
+msgstr ""
+
+#: inc/woo-downloads.php:532
+msgid "این وضعیت عامل «لینک دانلود دامنه+مسیر هاست» است؛ با «ترمیم خودکار» به نشانی صحیح تبدیل می‌شود."
+msgstr ""
+
+#: inc/woo-downloads.php:545
+#: inc/woo-downloads.php:554
+#: inc/woo-downloads.php:563
 msgid "محافظت از پوشه‌ی دانلودها"
 msgstr ""
 
-#: inc/woo-downloads.php:353
+#: inc/woo-downloads.php:546
 msgid "پوشه‌ی woocommerce_uploads ساخته نشد"
 msgstr ""
 
-#: inc/woo-downloads.php:355
+#: inc/woo-downloads.php:548
 msgid "مجوز نوشتن پوشه‌ی بارگذاری را بررسی کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:362
+#: inc/woo-downloads.php:555
 msgid "فعال (.htaccess)"
 msgstr ""
 
-#: inc/woo-downloads.php:362
+#: inc/woo-downloads.php:555
 msgid "متناسب با میزبان"
 msgstr ""
 
-#: inc/woo-downloads.php:364
+#: inc/woo-downloads.php:557
 msgid "دسترسی مستقیم به فایل‌ها بسته است."
 msgstr ""
 
-#: inc/woo-downloads.php:364
+#: inc/woo-downloads.php:557
 msgid "روی این میزبان محافظت در سطح PHP انجام می‌شود."
 msgstr ""
 
-#: inc/woo-downloads.php:371
+#: inc/woo-downloads.php:564
 msgid "فایل محافظت موجود نیست"
 msgstr ""
 
-#: inc/woo-downloads.php:373
+#: inc/woo-downloads.php:566
 msgid "فایل .htaccess محافظ ساخته شود تا دانلود مستقیم بسته شود."
 msgstr ""
 
-#: inc/woo-downloads.php:409
+#: inc/woo-downloads.php:602
 msgid "ساخت پوشه‌ی woocommerce_uploads ممکن نشد."
 msgstr ""
 
-#: inc/woo-downloads.php:415
+#: inc/woo-downloads.php:608
 msgid "نوشتن فایل آزمایشی ممکن نشد (مجوز پوشه‌ی بارگذاری)."
 msgstr ""
 
-#: inc/woo-downloads.php:418
+#: inc/woo-downloads.php:611
 msgid "ساخت فایل آزمایشی در پوشه‌ی امن دانلودها"
 msgstr ""
 
-#: inc/woo-downloads.php:423
+#: inc/woo-downloads.php:616
 msgid "فایل آزمایشی مرکز دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:427
-#: inc/woo-downloads.php:429
+#: inc/woo-downloads.php:620
+#: inc/woo-downloads.php:622
 msgid "اعتبارسنجی لینک (همان بررسی صفحه‌ی ویرایش محصول)"
 msgstr ""
 
-#: inc/woo-downloads.php:436
+#: inc/woo-downloads.php:629
 msgid "— تست دانلود زرین‌کوچ (حذف خودکار)"
 msgstr ""
 
-#: inc/woo-downloads.php:446
+#: inc/woo-downloads.php:639
 msgid "ساخت محصول دانلودی آزمایشی"
 msgstr ""
 
-#: inc/woo-downloads.php:453
+#: inc/woo-downloads.php:646
 msgid "ساخت سفارش آزمایشی ممکن نشد."
 msgstr ""
 
-#: inc/woo-downloads.php:461
+#: inc/woo-downloads.php:654
 msgid "تست مرکز دانلود زرین‌کوچ"
 msgstr ""
 
-#: inc/woo-downloads.php:467
+#: inc/woo-downloads.php:660
 msgid "صدور مجوز دانلود پس از تکمیل سفارش"
 msgstr ""
 
-#: inc/woo-downloads.php:484
-#: inc/woo-downloads.php:489
+#: inc/woo-downloads.php:677
+#: inc/woo-downloads.php:682
 msgid "دریافت فایل از طریق HTTP"
 msgstr ""
 
-#: inc/woo-downloads.php:484
+#: inc/woo-downloads.php:677
 msgid "میزبان اجازه‌ی درخواست به خودش را نمی‌دهد (حلقه‌ی بازگشت مسدود است)؛ زنجیره تا پیش از این گام تأیید شد — برای تأیید نهایی، لینک دانلود را در مرورگر باز کنید."
 msgstr ""
 
 #. translators: %s: کد وضعیت
-#: inc/woo-downloads.php:489
+#: inc/woo-downloads.php:682
 #, php-format
 msgid "کد پاسخ: %s"
 msgstr ""
 
-#: inc/woo-downloads.php:493
-#: inc/woo-downloads.php:495
+#: inc/woo-downloads.php:686
+#: inc/woo-downloads.php:688
 msgid "خطای غیرمنتظره در تست"
 msgstr ""
 
-#: inc/woo-downloads.php:576
+#: inc/woo-downloads.php:769
 msgid "دایرکتوری‌های مجاز با پوشه‌ی بارگذاری هم‌تراز شد."
 msgstr ""
 
-#: inc/woo-downloads.php:582
+#: inc/woo-downloads.php:775
 msgid "محدودسازی دایرکتوری‌ها غیرفعال شد (پیش‌فرض امن ووکامرس)."
 msgstr ""
 
-#: inc/woo-downloads.php:585
+#: inc/woo-downloads.php:778
 msgid "اجبار ورود برای دانلود خاموش شد؛ لینک‌های ایمیلی بدون ۴۰۳ کار می‌کنند."
 msgstr ""
 
-#: inc/woo-downloads.php:588
+#: inc/woo-downloads.php:781
 msgid "دانلودها بلافاصله پس از پرداخت فعال می‌شوند."
 msgstr ""
 
-#: inc/woo-downloads.php:591
+#: inc/woo-downloads.php:784
 msgid "روش دانلود روی «اجبار دانلود» (امن) تنظیم شد."
 msgstr ""
 
-#: inc/woo-downloads.php:602
+#. translators: %1$s: یافته‌شده، %2$s: ترمیم‌شده
+#: inc/woo-downloads.php:790
+#, php-format
+msgid "اسکن محصولات دانلودی انجام شد: %1$s مورد نیازمند ترمیم بود، %2$s مورد ترمیم شد."
+msgstr ""
+
+#: inc/woo-downloads.php:804
 msgid "محافظت پوشه‌ی دانلودها برقرار شد."
 msgstr ""
 
-#: inc/woo-downloads.php:605
+#: inc/woo-downloads.php:807
 msgid "کنش نامعتبر است."
 msgstr ""
 
-#: inc/woo-downloads.php:625
+#: inc/woo-downloads.php:827
 msgid "در حال اجرای تست…"
 msgstr ""
 
-#: inc/woo-downloads.php:626
+#: inc/woo-downloads.php:828
 msgid "عملیات ناموفق بود؛ دوباره تلاش کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:653
+#: inc/woo-downloads.php:855
 msgid "مرکز دانلود (محصولات دیجیتال)"
 msgstr ""
 
-#: inc/woo-downloads.php:654
+#: inc/woo-downloads.php:856
 msgid "سلامت کامل زنجیره‌ی دانلود ووکامرس: مجوزها، دایرکتوری‌های مجاز، محافظت پوشه و تست واقعی دریافت فایل."
 msgstr ""
 
-#: inc/woo-downloads.php:666
-#: inc/woo-downloads.php:692
+#: inc/woo-downloads.php:868
+#: inc/woo-downloads.php:894
 msgid "اصلاح خودکار"
 msgstr ""
 
-#: inc/woo-downloads.php:674
+#: inc/woo-downloads.php:876
 msgid "اجرای تست کامل دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:734
+#: inc/woo-downloads.php:936
 msgid "زنجیره سالم است (یک هشدار): "
 msgstr ""
 
-#: inc/woo-downloads.php:737
+#: inc/woo-downloads.php:939
 msgid "تست کامل موفق بود — زنجیره‌ی دانلود سالم است."
 msgstr ""
 
