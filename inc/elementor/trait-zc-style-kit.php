@@ -1440,8 +1440,13 @@ if ( ! trait_exists( 'ZC_Style_Kit' ) ) :
 			$this->zc_toggles( array() );
 
 			// ۴) چیدمان بخش.
+			// v2.7.4: شناسه‌ی این بخش یکتا شد (zs_section_layout)؛ پیش‌تر «zs_layout» بود که با
+			// بخش خودکار «چیدمان و فاصله‌ها» (کیت v2.6.0، همان شناسه) برخورد می‌کرد و المنتور
+			// این بخش را بی‌صدا رد می‌کرد → خطای «Cannot redeclare control zs_layout» در debug.log
+			// (یک نامه به‌ازای هر ویجت در هر بار باز شدن ویرایشگر) و از دست رفتن همین کنترل‌ها.
+			// شناسه‌ی کنترل‌های داخل بخش تغییری نکرده تا تنظیمات ذخیره‌شده معتبر بماند.
 			$this->start_controls_section(
-				'zs_layout',
+				'zs_section_layout',
 				array(
 					'label' => __( 'چیدمان و فاصله‌های بخش', 'zarincoach' ),
 					'tab'   => \Elementor\Controls_Manager::TAB_STYLE,

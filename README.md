@@ -2,9 +2,9 @@
 
 قالب اختصاصی **مریم جمالی** — [Maryam-Jamali.ir](https://maryam-jamali.ir) | طراحی و توسعه: **احسان نادری‌پناه — زرین‌کد ([Zarincode.com](https://zarincode.com))**
 
-نسخه: **۲.۷.۳** | متن دامنه (Text Domain): `zarincoach` | مجوز: [GPL v3 یا بالاتر](LICENSE)
+نسخه: **۲.۷.۴** | متن دامنه (Text Domain): `zarincoach` | مجوز: [GPL v3 یا بالاتر](LICENSE)
 
-[![Version](https://img.shields.io/badge/version-2.7.3-1D3A72)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-2.7.4-1D3A72)](CHANGELOG.md)
 [![CI](https://github.com/Ehsan-Np/zarincoach/actions/workflows/ci.yml/badge.svg)](https://github.com/Ehsan-Np/zarincoach/actions/workflows/ci.yml)
 [![WordPress](https://img.shields.io/badge/WordPress-6.0%E2%80%937.1-21759B?logo=wordpress)](#۲-نیازمندیها)
 [![PHP](https://img.shields.io/badge/PHP-7.4%E2%80%938.4-777BB4?logo=php&logoColor=white)](#۲-نیازمندیها)
@@ -392,6 +392,10 @@ zarincoach/
 ## ۱۳. تغییرات نسخه‌ها
 
 تاریخچه‌ی کامل همه‌ی نسخه‌ها (۱.۲.۰ تا امروز) در **[CHANGELOG.md](CHANGELOG.md)** است. خلاصه‌ی دو نسخه‌ی اخیر:
+
+**۲.۷.۴** — رفع برخورد شناسه‌ی بخش «چیدمان» در ویرایشگر المنتور
+
+- بخش «چیدمان و فاصله‌های بخش» (پدینگ/عرض محتوا/زمینه/حاشیه/گردی/اشکال تزئینی/انیمیشن ظهور) پس از v2.6.0 به‌خاطر هم‌نامی با بخش خودکار «چیدمان و فاصله‌ها» به‌صورت بی‌صدا از پنل ویرایشگر حذف می‌شد و برای هر ویجت یک هشدار «Cannot redeclare control zs_layout» در debug.log می‌نوشت. شناسه‌ی بخش یکتا شد (zs_section_layout)؛ شناسه‌ی کنترل‌ها دست‌نخورده ماند و کنترل‌ها به ویرایشگر برگشتند. (تشخیص از debug.log واقعی سایت: ۳۹ هشدار در یک بار باز کردن ویرایشگر.)
 
 **۲.۷.۳** — ریشه‌یابی و رفع کامل «لینک دانلود = دامنه + مسیر دیسک هاست»
 
