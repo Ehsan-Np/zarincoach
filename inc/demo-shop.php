@@ -524,6 +524,11 @@ if ( ! function_exists( 'zc_demo_shop_install' ) ) :
 			return __( 'ووکامرس فعال نیست؛ دموی فروشگاه رد شد.', 'zarincoach' );
 		}
 
+		/* دایرکتوری‌های مجاز دانلود پیش از ساخت محصولات هم‌تراز شود (بستر CLI/Admin). */
+		if ( function_exists( 'zc_dl_ensure_directories' ) ) {
+			zc_dl_ensure_directories();
+		}
+
 		zc_demo_shop_settings();
 		$pages = zc_demo_shop_pages();
 		zc_demo_shop_shipping();

@@ -581,3 +581,70 @@ add_filter(
 		return in_array( get_woocommerce_currency(), array( 'IRT', 'IRR', 'IRHT', 'IRHR' ), true ) ? 0 : $decimals;
 	}
 );
+
+/* =========================================================================
+ * قیمت خوانا: «میلیون/هزار تومان» (v2.8.1)
+ * ========================================================================= */
+
+if ( ! function_exists( 'zc_wc_price_word' ) ) :
+	/**
+	 * نمایش خوانای قیمت: 2000000 ← «۲ میلیون تومان»، 390000 ← «۳۹۰ هزار تومان».
+	 *
+	 * روی خروجی wc_price در سراسر فروشگاه اعمال می‌شود؛ مقادیر زیر ۱۰۰۰ به‌صورت
+	 * پیش‌فرض ووکامرس می‌مانند. در پیشخوان (جز ایجکس) عدد دقیق حفظ می‌شود.
+	 *
+	 * @param string    $return            خروجی wc_price.
+	 * @param string    $price             قیمتِ قالب‌بندی‌شده (رشته).
+	 * @param array     $args              آرگومان‌ها.
+	 * @param float|int $unformatted_price قیمت خام عددی (آرگومان ۴).
+	 * @param mixed     $original_price    قیمت اصلی.
+	 * @return string
+	 */
+	function zc_wc_price_word( $return, $price, $args = array(), $unformatted_price = null, $original_price = null ) {
+		if ( ! function_exists( 'zc_switch' ) || ! zc_switch( 'wc_price_word', true ) ) {
+			return $return;
+		}
+		if ( is_admin() && ! wp_doing_ajax() ) {
+			return $return; // پیشخوان: عدد دقیق.
+		}
+		// نکته: آرگومان دوم این فیلتر «رشته‌ی قالب‌بندی‌شده» است؛ عدد خام در آرگومان چهارم می‌آید.
+		if ( is_numeric( $unformatted_price ) ) {
+			$p = (float) $unformatted_price;
+		} else {
+			$sep = isset( $args['thousand_separator'] ) ? (string) $args['thousand_separator'] : ',';
+			$p   = (float) str_replace( array( ',', $sep, '&nbsp;' ), '', (string) $price );
+		}
+		if ( $p <= 0 ) {
+			return $return;
+		}
+		$abs = abs( $p );
+		if ( $abs >= 1000000 ) {
+			$n    = round( $p / 1000000, 2 );
+			$unit = __( 'میلیون تومان', 'zarincoach' );
+		} elseif ( $abs >= 1000 ) {
+			$n    = round( $p / 1000 );
+			$unit = __( 'هزار تومان', 'zarincoach' );
+		} else {
+			return $return;
+		}
+		$num  = rtrim( rtrim( number_format( $n, 2, '.', '' ), '0' ), '.' );
+		// ممیز فارسی برای اعداد اعشاری (۱٫۵).
+		$num  = str_replace( '.', '٫', $num );
+		$text = zc_digits_to_persian( $num ) . ' ' . $unit;
+		return '<span class="woocommerce-Price-amount amount zc-price-word"><bdi>' . esc_html( $text ) . '</bdi></span>';
+	}
+endif;
+add_filter( 'wc_price', 'zc_wc_price_word', 100, 5 );
+
+/* لیبل دسترس‌پذیری ستاره‌ها به فارسی (وقتی ترجمه‌ی ووکامرس نصب نیست). */
+add_filter(
+	'gettext',
+	static function ( $translated, $text, $domain ) {
+		if ( 'woocommerce' === $domain && 'Rated %s out of 5' === $text && 0 === strpos( get_locale(), 'fa' ) ) {
+			return __( 'امتیاز %s از ۵', 'zarincoach' );
+		}
+		return $translated;
+	},
+	10,
+	3
+);

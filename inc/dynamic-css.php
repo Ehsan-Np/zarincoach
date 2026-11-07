@@ -162,11 +162,15 @@ if ( ! function_exists( 'zc_no_js_theme_script' ) ) :
 		}
 
 		if ( 'auto' === $mode ) {
+			// فقط وقتی مدیر «خودکار بر اساس سیستم کاربر» را انتخاب کرده، ترجیح سیستم
+			// مرجع است؛ وگرنه هر گوشی بسته به تم خودش رنگ متفاوتی می‌دید (v2.8.1).
 			echo "<script>(function(){try{var m=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>"; // phpcs:ignore
 			return;
 		}
 
-		echo "<script>(function(){try{var s=localStorage.getItem('zc-theme');if(!s){s=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',s);}catch(e){}})();</script>"; // phpcs:ignore
+		// حالت «با کلید تغییر در سربرگ» (پیش‌فرض) و «غیرفعال»: رنگ پایه‌ی سایت روشن
+		// می‌ماند؛ تاریک فقط با انتخاب خودِ بازدیدکننده (ذخیره در مرورگر).
+		echo "<script>(function(){try{var s=localStorage.getItem('zc-theme');document.documentElement.setAttribute('data-theme','dark'===s?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();</script>"; // phpcs:ignore
 	}
 endif;
 add_action( 'wp_head', 'zc_no_js_theme_script', 1 );

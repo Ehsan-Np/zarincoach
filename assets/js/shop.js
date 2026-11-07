@@ -96,10 +96,24 @@
     return !form.querySelector('input[type="file"]');
   }
 
+  /* v2.8.1: ردیابی مطمئن دکمه‌ی کلیک‌شده. در Safari قدیمی‌تر از ۱۶.۴ ویژگی
+     event.submitter وجود ندارد و تپ روی دکمه در iOS هم فوکوس (activeElement)
+     نمی‌دهد → شناسایی «خرید فوری» می‌شکست و فرم قورت داده می‌شد. */
+  var lastClickedSubmit = null;
+  doc.addEventListener(
+    'click',
+    function (e) {
+      var t = e.target;
+      lastClickedSubmit = t && t.closest && t.closest('button[type="submit"], button:not([type]), input[type="submit"]');
+    },
+    true
+  );
+
   doc.addEventListener('submit', function (e) {
     var form = e.target;
     if (!form.matches || !form.matches('form.cart') || !form.closest('.zc-sp, .elementor-widget-woocommerce-product-add-to-cart, .zc-product-spot')) { return; }
-    var submitter = e.submitter || doc.activeElement;
+    var submitter = e.submitter || lastClickedSubmit || doc.activeElement;
+    lastClickedSubmit = null;
     if (submitter && submitter.name === 'zc_buy_now') { return; } // خرید فوری ← تسویه‌حساب
     if (!ajaxSingleEnabled(form)) { return; }
     var btn = form.querySelector('.single_add_to_cart_button');
@@ -371,6 +385,15 @@
       });
     }
   }
+
+  /* v2.8.1: دکمه‌ی بزرگنمایی گالری محصول — باز کردن تصویر بزرگ (Photoswipe ووکامرس). */
+  doc.addEventListener('click', function (e) {
+    var z = e.target && e.target.closest ? e.target.closest('[data-zc-zoom-open]') : null;
+    if (!z) { return; }
+    var wrap = z.closest('.zc-sp__gallery') || doc;
+    var link = wrap.querySelector('.woocommerce-product-gallery__image a') || wrap.querySelector('.zc-sp__gallery a[href]');
+    if (link) { link.click(); }
+  });
 
   /* ---------------------------------------------------------------------
    * کپی کد تخفیف

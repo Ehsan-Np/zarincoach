@@ -395,6 +395,8 @@ while ( have_posts() ) :
 								'text'  => $sc_cta_btn,
 								'url'   => $sc_cta_url,
 								'style' => 'primary',
+								/* v2.8.1: امکان خاموش‌کردن دکمه‌ی رزرو در موبایل از پنل */
+								'class' => zc_switch( 'sc_cta_hide_mobile', false ) ? 'max-lg:hidden' : '',
 							)
 						);
 					}

@@ -41,6 +41,11 @@ if ( post_password_required() ) {
 			 */
 			do_action( 'woocommerce_before_single_product_summary' );
 			?>
+			<?php if ( zc_switch( 'sp_gallery_zoom', true ) ) : ?>
+				<button type="button" class="zc-zoom-open" data-zc-zoom-open aria-label="<?php esc_attr_e( 'بزرگنمایی تصویر محصول', 'zarincoach' ); ?>" title="<?php esc_attr_e( 'بزرگنمایی تصویر', 'zarincoach' ); ?>">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5M11 8v6M8 11h6"/></svg>
+				</button>
+			<?php endif; ?>
 		</div>
 
 		<div class="summary entry-summary zc-sp__summary">

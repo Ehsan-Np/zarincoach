@@ -94,16 +94,18 @@ if ( ! function_exists( 'zc_panel_shop' ) ) :
 				array(
 					zc_f_group( 'sp_layout_group', __( 'چیدمان', 'zarincoach' ) ),
 					zc_f_switch( 'sp_sticky_gallery', __( 'گالری چسبان هنگام اسکرول', 'zarincoach' ), true ),
+					zc_f_switch( 'sp_gallery_zoom', __( 'دکمه‌ی بزرگنمایی تصویر', 'zarincoach' ), true, __( 'دکمه‌ی گرد با آیکن وسط‌چین روی گوشه‌ی تصویر؛ با کلیک، تصویر بزرگ (گالری کامل) باز می‌شود — در موبایل هم کار می‌کند.', 'zarincoach' ) ),
 					zc_f_switch( 'sp_sections_nav', __( 'منوی چسبان بخش‌ها (توضیحات، مشخصات، پرسش‌ها، دیدگاه‌ها)', 'zarincoach' ), true ),
 					zc_f_switch( 'sp_variation_pills', __( 'انتخاب گونه با دکمه به‌جای فهرست کشویی', 'zarincoach' ), true ),
 					zc_f_slider( 'sp_related_count', __( 'تعداد محصولات مرتبط', 'zarincoach' ), 4, 0, 8, 1, __( '۰ = پنهان.', 'zarincoach' ) ),
 
 					zc_f_group( 'sp_sales_group', __( 'ابزارهای فروش', 'zarincoach' ) ),
+					zc_f_switch( 'wc_price_word', __( 'قیمت خوانا («میلیون/هزار تومان»)', 'zarincoach' ), true, __( 'به‌جای «2,000,000 تومان» ← «۲ میلیون تومان»؛ مبالغ زیر یک میلیون به شکل «هزار تومان». در سراسر فروشگاه (صفحه‌ی محصول، فروشگاه، سبد و تسویه‌حساب) اعمال می‌شود.', 'zarincoach' ) ),
 					zc_f_switch( 'sp_buy_now', __( 'دکمه‌ی «خرید فوری»', 'zarincoach' ), true, __( 'افزودن به سبد و انتقال مستقیم به تسویه‌حساب.', 'zarincoach' ) ),
 					zc_f_switch( 'sp_sticky_bar', __( 'نوار چسبان خرید', 'zarincoach' ), true, __( 'وقتی دکمه‌ی خرید از دید خارج شود، پایین صفحه نمایش داده می‌شود.', 'zarincoach' ) ),
 					zc_f_switch( 'sp_countdown', __( 'شمارش معکوس پایان تخفیف', 'zarincoach' ), true, __( 'برای تخفیف‌های زمان‌دار («زمان‌بندی» قیمت فروش ویژه).', 'zarincoach' ) ),
-					zc_f_switch( 'sp_stock_bar', __( 'نوار کمبود موجودی', 'zarincoach' ), true, __( 'برای محصولاتی که مدیریت موجودی دارند.', 'zarincoach' ) ),
-					zc_req( zc_f_slider( 'sp_stock_threshold', __( 'نمایش وقتی موجودی کمتر یا برابر', 'zarincoach' ), 10, 1, 50, 1 ), 'sp_stock_bar' ),
+					zc_f_switch( 'sp_stock_bar', __( 'نمایش موجودی قابل سفارش', 'zarincoach' ), true, __( 'تعداد باقی‌مانده‌ی قابل سفارش برای محصولاتی که مدیریت موجودی دارند نمایش داده می‌شود؛ برای موجودی کم، هشدار «فقط X عدد» با نوار رنگی.', 'zarincoach' ) ),
+					zc_req( zc_f_slider( 'sp_stock_threshold', __( 'آستانه‌ی هشدار کمبود', 'zarincoach' ), 10, 1, 50, 1, __( 'موجودی کمتر یا مساوی این عدد «فقط X عدد» نمایش داده می‌شود؛ بیشتر از آن به شکل عادی «X عدد قابل سفارش».', 'zarincoach' ) ), 'sp_stock_bar' ),
 					zc_f_switch( 'sp_share', __( 'دکمه‌های اشتراک‌گذاری', 'zarincoach' ), true ),
 
 					zc_f_group( 'sp_delivery_group', __( 'زمان و نحوه‌ی تحویل', 'zarincoach' ) ),

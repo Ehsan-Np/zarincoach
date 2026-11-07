@@ -1086,6 +1086,7 @@ if ( ! function_exists( 'zc_panel_schemas' ) ) :
 					zc_req( zc_f_text( 'sc_cta_btn_text', __( 'متن دکمه', 'zarincoach' ), 'رزرو جلسه‌ی ارزیابی' ), 'sc_cta_enable' ),
 					zc_req( zc_f_ltr( 'sc_cta_btn_url', __( 'پیوند دکمه', 'zarincoach' ), '', __( 'خالی = برگه‌ی رزرو نوبت.', 'zarincoach' ) ), 'sc_cta_enable' ),
 					zc_req( zc_f_switch( 'sc_cta_back', __( 'دکمه‌ی «بازگشت به کتابخانه»', 'zarincoach' ), true ), 'sc_cta_enable' ),
+					zc_f_switch( 'sc_cta_hide_mobile', __( 'پنهان کردن دکمه‌ی رزرو در موبایل', 'zarincoach' ), false, __( 'در نمایشگرهای کوچک (کوچک‌تر از لپ‌تاپ) دکمه‌ی «رزرو جلسه‌ی ارزیابی» نمایش داده نمی‌شود.', 'zarincoach' ) ),
 				)
 			),
 		);

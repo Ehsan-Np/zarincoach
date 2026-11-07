@@ -2,14 +2,14 @@
 # This file is distributed under the GNU General Public License v3 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: ZarinCoach 2.8.0\n"
+"Project-Id-Version: ZarinCoach 2.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/theme/zarincoach\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-30T19:49:49+00:00\n"
+"POT-Creation-Date: 2026-11-07T19:52:42+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: zarincoach\n"
@@ -72,8 +72,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:194
 #: inc/icons.php:199
 #: inc/options-panel.php:989
-#: inc/options-panel.php:1175
-#: inc/options-panel.php:1327
+#: inc/options-panel.php:1176
+#: inc/options-panel.php:1328
 #: inc/share.php:26
 #: inc/template-tags.php:808
 msgid "ایمیل"
@@ -120,7 +120,7 @@ msgid "سربرگ داخلی قالب"
 msgstr ""
 
 #: inc/admin-layout.php:27
-#: inc/options-panel.php:1617
+#: inc/options-panel.php:1618
 msgid "سربرگ سایت"
 msgstr ""
 
@@ -137,7 +137,7 @@ msgid "پاورقی داخلی قالب"
 msgstr ""
 
 #: inc/admin-layout.php:34
-#: inc/options-panel.php:1618
+#: inc/options-panel.php:1619
 msgid "پاورقی سایت"
 msgstr ""
 
@@ -412,7 +412,7 @@ msgstr ""
 
 #: inc/admin-layout.php:483
 #: inc/admin.php:642
-#: inc/options-panel.php:1659
+#: inc/options-panel.php:1660
 msgid "المنتور"
 msgstr ""
 
@@ -635,7 +635,7 @@ msgstr ""
 #: inc/admin.php:415
 #: inc/admin.php:1196
 #: inc/admin.php:1224
-#: inc/woo-downloads.php:750
+#: inc/woo-downloads.php:766
 msgid "دسترسی غیرمجاز."
 msgstr ""
 
@@ -947,7 +947,7 @@ msgid "ویرایش خانه با المنتور"
 msgstr ""
 
 #: inc/admin-widgets.php:295
-#: inc/options-panel.php:1675
+#: inc/options-panel.php:1676
 #: inc/options.php:139
 #: inc/options.php:165
 msgid "مدیریت ویجت‌ها"
@@ -1384,7 +1384,7 @@ msgid "لوگو و نماد سایت"
 msgstr ""
 
 #: inc/admin.php:189
-#: inc/options-panel.php:1700
+#: inc/options-panel.php:1701
 msgid "کدهای سفارشی"
 msgstr ""
 
@@ -1559,8 +1559,8 @@ msgstr ""
 #: inc/admin.php:1115
 #: inc/admin.php:1138
 #: inc/options-fields.php:57
-#: inc/woo-downloads.php:502
-#: inc/woo-downloads.php:515
+#: inc/woo-downloads.php:518
+#: inc/woo-downloads.php:531
 msgid "فعال"
 msgstr ""
 
@@ -1573,9 +1573,9 @@ msgstr ""
 #: inc/admin.php:1138
 #: inc/options-fields.php:58
 #: inc/options-panel.php:667
-#: inc/options-panel.php:1564
-#: inc/woo-downloads.php:502
-#: inc/woo-downloads.php:515
+#: inc/options-panel.php:1565
+#: inc/woo-downloads.php:518
+#: inc/woo-downloads.php:531
 msgid "غیرفعال"
 msgstr ""
 
@@ -1971,9 +1971,9 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-cta.php:121
 #: inc/elementor/widgets/class-zc-widget-hero.php:167
 #: inc/icons.php:197
-#: inc/options-panel.php:1212
-#: inc/options-panel.php:1323
-#: inc/options-panel.php:1363
+#: inc/options-panel.php:1213
+#: inc/options-panel.php:1324
+#: inc/options-panel.php:1364
 msgid "بله"
 msgstr ""
 
@@ -2086,7 +2086,7 @@ msgstr ""
 #: inc/admin.php:871
 #: inc/admin.php:872
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:409
-#: inc/options-panel.php:1391
+#: inc/options-panel.php:1392
 msgid "سئو"
 msgstr ""
 
@@ -2512,7 +2512,7 @@ msgstr ""
 #: inc/cpt.php:121
 #: inc/elementor/widgets/class-zc-widget-faq.php:32
 #: inc/options-panel.php:525
-#: inc/options-panel.php:1631
+#: inc/options-panel.php:1632
 #: inc/options-sections-home.php:40
 #: inc/options-sections-home.php:56
 #: inc/options-sections-home.php:594
@@ -2696,7 +2696,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-schema.php:32
 #: inc/elementor/widgets/class-zc-widget-schema.php:93
 #: inc/options-panel.php:521
-#: inc/options-panel.php:1625
+#: inc/options-panel.php:1626
 #: inc/options-sections-home.php:36
 #: inc/options-sections-home.php:52
 #: inc/options-sections-home.php:347
@@ -2796,7 +2796,7 @@ msgid "دمو با موفقیت و از صفر نصب شد."
 msgstr ""
 
 #. translators: 1: محصولات 2: دسته‌ها
-#: inc/demo-shop.php:729
+#: inc/demo-shop.php:734
 #, php-format
 msgid "فروشگاه آماده شد: %1$d محصول نمونه در %2$d دسته، کد تخفیف WELCOME15، ارسال پستی و پرداخت آفلاین."
 msgstr ""
@@ -2912,8 +2912,8 @@ msgstr ""
 #: inc/elementor/trait-zc-style-kit.php:1418
 #: inc/elementor/widgets/class-zc-widget-courses.php:333
 #: inc/elementor/widgets/class-zc-widget-cta.php:70
-#: inc/elementor/widgets/class-zc-widget-cta.php:196
-#: inc/elementor/widgets/class-zc-widget-cta.php:222
+#: inc/elementor/widgets/class-zc-widget-cta.php:226
+#: inc/elementor/widgets/class-zc-widget-cta.php:252
 #: inc/elementor/widgets/class-zc-widget-footer-location.php:110
 #: inc/elementor/widgets/class-zc-widget-hero.php:236
 #: inc/elementor/widgets/class-zc-widget-hero.php:348
@@ -2947,8 +2947,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-toc.php:68
 #: inc/options-panel.php:837
 #: inc/options-panel.php:1084
-#: inc/options-panel.php:1113
-#: inc/options-panel.php:1119
+#: inc/options-panel.php:1114
+#: inc/options-panel.php:1120
 #: inc/options-sections-home.php:225
 #: inc/options-sections-home.php:301
 #: inc/options-sections-home.php:367
@@ -2996,7 +2996,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:104
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:147
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:189
-#: inc/options-panel.php:1307
+#: inc/options-panel.php:1308
 #: inc/options-sections-shop.php:38
 msgid "راست"
 msgstr ""
@@ -3027,7 +3027,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-header-menu.php:101
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:108
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:197
-#: inc/options-panel.php:1308
+#: inc/options-panel.php:1309
 #: inc/options-sections-shop.php:39
 msgid "چپ"
 msgstr ""
@@ -3068,8 +3068,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-pricing.php:132
 #: inc/elementor/widgets/class-zc-widget-site-header.php:237
 #: inc/options-panel.php:1086
-#: inc/options-panel.php:1272
-#: inc/options-panel.php:1355
+#: inc/options-panel.php:1273
+#: inc/options-panel.php:1356
 #: inc/options-sections-home.php:267
 msgid "متن دکمه"
 msgstr ""
@@ -3490,7 +3490,7 @@ msgstr ""
 #: inc/elementor/trait-zc-style-kit.php:711
 #: inc/elementor/trait-zc-style-kit.php:902
 #: inc/elementor/trait-zc-style-kit.php:1236
-#: inc/options-panel.php:1562
+#: inc/options-panel.php:1563
 #: inc/woocommerce/loop.php:497
 msgid "پیش‌فرض"
 msgstr ""
@@ -3615,7 +3615,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-products.php:157
 #: inc/elementor/widgets/class-zc-widget-site-header.php:212
 #: inc/elementor/widgets/class-zc-widget-site-header.php:227
-#: inc/options-sections-shop.php:116
+#: inc/options-sections-shop.php:118
 #: inc/toc.php:292
 msgid "نمایش"
 msgstr ""
@@ -3860,7 +3860,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-about.php:32
 #: inc/elementor/widgets/class-zc-widget-footer-about.php:65
 #: inc/options-panel.php:519
-#: inc/options-panel.php:1623
+#: inc/options-panel.php:1624
 #: inc/options-sections-home.php:34
 #: inc/options-sections-home.php:50
 #: inc/options-sections-home.php:205
@@ -3898,8 +3898,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-about.php:123
 #: inc/elementor/widgets/class-zc-widget-book.php:129
 #: inc/elementor/widgets/class-zc-widget-cta.php:80
-#: inc/elementor/widgets/class-zc-widget-cta.php:197
-#: inc/elementor/widgets/class-zc-widget-cta.php:223
+#: inc/elementor/widgets/class-zc-widget-cta.php:227
+#: inc/elementor/widgets/class-zc-widget-cta.php:253
 #: inc/elementor/widgets/class-zc-widget-header-topbar.php:194
 #: inc/elementor/widgets/class-zc-widget-hero.php:341
 #: inc/elementor/widgets/class-zc-widget-list.php:65
@@ -3910,9 +3910,9 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-text.php:74
 #: inc/elementor/widgets/class-zc-widget-text.php:329
 #: inc/options-panel.php:1085
-#: inc/options-panel.php:1114
-#: inc/options-panel.php:1120
-#: inc/options-panel.php:1271
+#: inc/options-panel.php:1115
+#: inc/options-panel.php:1121
+#: inc/options-panel.php:1272
 #: inc/options-sections-home.php:231
 #: inc/options-sections-home.php:701
 msgid "متن"
@@ -3990,7 +3990,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-about.php:160
 #: inc/elementor/widgets/class-zc-widget-about.php:196
 #: inc/elementor/widgets/class-zc-widget-list.php:32
-#: inc/options-panel.php:1637
+#: inc/options-panel.php:1638
 msgid "فهرست ویژگی‌ها"
 msgstr ""
 
@@ -4036,7 +4036,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:236
 #: inc/elementor/widgets/class-zc-widget-courses.php:301
 #: inc/elementor/widgets/class-zc-widget-cta.php:61
-#: inc/elementor/widgets/class-zc-widget-cta.php:195
+#: inc/elementor/widgets/class-zc-widget-cta.php:225
 #: inc/elementor/widgets/class-zc-widget-footer-copyright.php:133
 #: inc/elementor/widgets/class-zc-widget-footer-domain.php:99
 #: inc/elementor/widgets/class-zc-widget-hero.php:76
@@ -4077,7 +4077,7 @@ msgid "فاصله‌ی پاراگراف‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-book.php:35
-#: inc/options-panel.php:1644
+#: inc/options-panel.php:1645
 msgid "معرفی کتاب"
 msgstr ""
 
@@ -4189,12 +4189,12 @@ msgid "توضیحات"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-book.php:230
-#: inc/elementor/widgets/class-zc-widget-cta.php:207
+#: inc/elementor/widgets/class-zc-widget-cta.php:237
 msgid "پنل و چیدمان"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-book.php:232
-#: inc/elementor/widgets/class-zc-widget-cta.php:209
+#: inc/elementor/widgets/class-zc-widget-cta.php:239
 #: inc/elementor/widgets/class-zc-widget-header-search.php:166
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:183
 #: inc/elementor/widgets/class-zc-widget-shop-promo.php:180
@@ -4262,7 +4262,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-breadcrumb.php:36
 #: inc/elementor/widgets/class-zc-widget-page-title.php:111
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:70
-#: inc/options-panel.php:1408
+#: inc/options-panel.php:1409
 msgid "مسیر راهنما (Breadcrumb)"
 msgstr ""
 
@@ -4365,8 +4365,8 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:32
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:206
-#: inc/options-panel.php:1164
-#: inc/options-panel.php:1634
+#: inc/options-panel.php:1165
+#: inc/options-panel.php:1635
 msgid "اطلاعات تماس"
 msgstr ""
 
@@ -4383,7 +4383,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:92
 #: inc/elementor/widgets/class-zc-widget-footer-location.php:163
-#: inc/options-panel.php:1176
+#: inc/options-panel.php:1177
 #: inc/template-tags.php:809
 msgid "نشانی"
 msgstr ""
@@ -4391,7 +4391,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:102
 #: inc/elementor/widgets/class-zc-widget-contact.php:158
 #: inc/elementor/widgets/class-zc-widget-contact.php:280
-#: inc/options-panel.php:1178
+#: inc/options-panel.php:1179
 #: inc/template-tags.php:810
 msgid "ساعات پاسخ‌گویی"
 msgstr ""
@@ -4413,7 +4413,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-footer-location.php:263
 #: inc/elementor/widgets/class-zc-widget-header-cta.php:176
 #: inc/helpers.php:610
-#: inc/options-panel.php:1169
+#: inc/options-panel.php:1170
 msgid "تلفن رزرو نوبت"
 msgstr ""
 
@@ -4445,9 +4445,9 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:171
 #: inc/elementor/widgets/class-zc-widget-cta.php:120
 #: inc/options-panel.php:984
-#: inc/options-panel.php:1211
-#: inc/options-panel.php:1322
-#: inc/options-panel.php:1362
+#: inc/options-panel.php:1212
+#: inc/options-panel.php:1323
+#: inc/options-panel.php:1363
 #: inc/share.php:21
 msgid "تلگرام"
 msgstr ""
@@ -4455,22 +4455,22 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-contact.php:173
 #: inc/elementor/widgets/class-zc-widget-cta.php:124
 #: inc/helpers.php:682
-#: inc/options-panel.php:1217
-#: inc/options-panel.php:1326
+#: inc/options-panel.php:1218
+#: inc/options-panel.php:1327
 msgid "اینستاگرام"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:174
-#: inc/options-panel.php:1213
-#: inc/options-panel.php:1324
+#: inc/options-panel.php:1214
+#: inc/options-panel.php:1325
 msgid "ایتا"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-contact.php:175
 #: inc/elementor/widgets/class-zc-widget-cta.php:122
 #: inc/options-panel.php:985
-#: inc/options-panel.php:1215
-#: inc/options-panel.php:1325
+#: inc/options-panel.php:1216
+#: inc/options-panel.php:1326
 #: inc/share.php:22
 msgid "واتس‌اپ"
 msgstr ""
@@ -4525,7 +4525,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-skills.php:95
 #: inc/elementor/widgets/class-zc-widget-skills.php:189
 #: inc/template-tags.php:533
-#: inc/woocommerce/single.php:515
+#: inc/woocommerce/single.php:521
 msgid "برچسب‌ها"
 msgstr ""
 
@@ -4539,8 +4539,8 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-header-topbar.php:151
 #: inc/elementor/widgets/class-zc-widget-header-topbar.php:184
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:316
-#: inc/options-panel.php:1206
-#: inc/options-panel.php:1216
+#: inc/options-panel.php:1207
+#: inc/options-panel.php:1217
 msgid "شبکه‌های اجتماعی"
 msgstr ""
 
@@ -4609,7 +4609,7 @@ msgid "قاب نقشه"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-courses.php:35
-#: inc/options-panel.php:1642
+#: inc/options-panel.php:1643
 msgid "دوره‌ها و گواهی‌ها"
 msgstr ""
 
@@ -4783,7 +4783,7 @@ msgid "فاصله از بالا"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-courses.php:310
-#: inc/elementor/widgets/class-zc-widget-cta.php:230
+#: inc/elementor/widgets/class-zc-widget-cta.php:260
 #: inc/elementor/widgets/class-zc-widget-header-cart.php:110
 #: inc/elementor/widgets/class-zc-widget-header-cart.php:112
 #: inc/elementor/widgets/class-zc-widget-header-social.php:93
@@ -4838,7 +4838,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-courses.php:330
 #: inc/elementor/widgets/class-zc-widget-products.php:231
 #: inc/elementor/widgets/class-zc-widget-products.php:369
-#: inc/woocommerce/single.php:496
+#: inc/woocommerce/single.php:502
 #: single-zc_schema.php:191
 msgid "دسته"
 msgstr ""
@@ -4883,7 +4883,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:32
 #: inc/options-panel.php:527
-#: inc/options-panel.php:1632
+#: inc/options-panel.php:1633
 #: inc/options-sections-home.php:42
 #: inc/options-sections-home.php:58
 #: inc/options-sections-home.php:681
@@ -4896,7 +4896,7 @@ msgid "نکته زیر دکمه‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:99
-#: inc/elementor/widgets/class-zc-widget-cta.php:201
+#: inc/elementor/widgets/class-zc-widget-cta.php:231
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:122
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:249
 msgid "آیکن یادداشت"
@@ -4907,8 +4907,8 @@ msgid "خالی = آیکن ساعت."
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:111
-#: inc/elementor/widgets/class-zc-widget-cta.php:198
-#: inc/elementor/widgets/class-zc-widget-cta.php:233
+#: inc/elementor/widgets/class-zc-widget-cta.php:228
+#: inc/elementor/widgets/class-zc-widget-cta.php:263
 #: inc/elementor/widgets/class-zc-widget-hero.php:148
 #: inc/elementor/widgets/class-zc-widget-hero.php:318
 #: inc/elementor/widgets/class-zc-widget-hero.php:358
@@ -4916,8 +4916,8 @@ msgid "دکمه اول"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:112
-#: inc/elementor/widgets/class-zc-widget-cta.php:199
-#: inc/elementor/widgets/class-zc-widget-cta.php:234
+#: inc/elementor/widgets/class-zc-widget-cta.php:229
+#: inc/elementor/widgets/class-zc-widget-cta.php:264
 #: inc/elementor/widgets/class-zc-widget-hero.php:149
 #: inc/elementor/widgets/class-zc-widget-hero.php:319
 #: inc/elementor/widgets/class-zc-widget-hero.php:359
@@ -4939,7 +4939,7 @@ msgid "نمایش فرم رزرو"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-cta.php:146
-#: inc/options-panel.php:1184
+#: inc/options-panel.php:1185
 msgid "شورت‌کد فرم دلخواه"
 msgstr ""
 
@@ -4947,7 +4947,24 @@ msgstr ""
 msgid "در صورت خالی بودن، فرم داخلی [zc_contact] نمایش داده می‌شود."
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:159
+#: inc/elementor/widgets/class-zc-widget-cta.php:157
+#: inc/options-panel.php:1346
+msgid "نمایش در موبایل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-cta.php:166
+msgid "پنهان کردن دکمه اول در موبایل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-cta.php:170
+msgid "برای مواقعی که لینک دکمه در صفحه‌ی کوچک کاربرد ندارد."
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-cta.php:177
+msgid "پنهان کردن دکمه دوم در موبایل"
+msgstr ""
+
+#: inc/elementor/widgets/class-zc-widget-cta.php:189
 #: inc/elementor/widgets/class-zc-widget-form.php:130
 #: inc/elementor/widgets/class-zc-widget-heading.php:107
 #: inc/elementor/widgets/class-zc-widget-hero.php:262
@@ -4956,32 +4973,32 @@ msgstr ""
 msgid "استایل"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:167
+#: inc/elementor/widgets/class-zc-widget-cta.php:197
 msgid "نسخه تیره"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:177
+#: inc/elementor/widgets/class-zc-widget-cta.php:207
 msgid "اشکال رنگی"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:200
+#: inc/elementor/widgets/class-zc-widget-cta.php:230
 msgid "یادداشت پایین"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:202
+#: inc/elementor/widgets/class-zc-widget-cta.php:232
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:454
 msgid "بافت پس‌زمینه"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:210
+#: inc/elementor/widgets/class-zc-widget-cta.php:240
 msgid "ستون‌ها (متن / فرم)"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:211
+#: inc/elementor/widgets/class-zc-widget-cta.php:241
 msgid "رنگ لایه‌ی بافت"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:212
+#: inc/elementor/widgets/class-zc-widget-cta.php:242
 #: inc/elementor/widgets/class-zc-widget-page-title.php:233
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:464
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:329
@@ -4989,7 +5006,7 @@ msgstr ""
 msgid "رنگ نور اول"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:213
+#: inc/elementor/widgets/class-zc-widget-cta.php:243
 #: inc/elementor/widgets/class-zc-widget-page-title.php:234
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:465
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:330
@@ -4997,32 +5014,32 @@ msgstr ""
 msgid "رنگ نور دوم"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:218
+#: inc/elementor/widgets/class-zc-widget-cta.php:248
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:192
 #: inc/elementor/widgets/class-zc-widget-shop-promo.php:186
 msgid "برچسب، عنوان و متن"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:220
+#: inc/elementor/widgets/class-zc-widget-cta.php:250
 msgid "قاب برچسب"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:221
+#: inc/elementor/widgets/class-zc-widget-cta.php:251
 msgid "متن برچسب"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:224
+#: inc/elementor/widgets/class-zc-widget-cta.php:254
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:248
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:280
 msgid "یادداشت"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:225
+#: inc/elementor/widgets/class-zc-widget-cta.php:255
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:281
 msgid "رنگ آیکن یادداشت"
 msgstr ""
 
-#: inc/elementor/widgets/class-zc-widget-cta.php:232
+#: inc/elementor/widgets/class-zc-widget-cta.php:262
 #: inc/elementor/widgets/class-zc-widget-footer-about.php:133
 #: inc/elementor/widgets/class-zc-widget-hero.php:357
 #: inc/elementor/widgets/class-zc-widget-product-cats.php:203
@@ -5755,7 +5772,7 @@ msgid "(فقط برای مدیر) کد نمادها را در همین ویجت 
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-form.php:32
-#: inc/options-panel.php:1635
+#: inc/options-panel.php:1636
 msgid "فرم رزرو/تماس"
 msgstr ""
 
@@ -6065,7 +6082,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:141
 #: inc/elementor/widgets/class-zc-widget-site-header.php:246
 #: inc/options-panel.php:1087
-#: inc/options-panel.php:1356
+#: inc/options-panel.php:1357
 msgid "پیوند دکمه"
 msgstr ""
 
@@ -6076,7 +6093,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:151
 #: inc/elementor/widgets/class-zc-widget-header-drawer.php:193
-#: inc/options-panel.php:1168
+#: inc/options-panel.php:1169
 msgid "تلفن‌ها"
 msgstr ""
 
@@ -6369,7 +6386,7 @@ msgid "نوبت‌دهی: شنبه تا چهارشنبه ۱۶ تا ۲۰:۳۰ —
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-heading.php:32
-#: inc/options-panel.php:1621
+#: inc/options-panel.php:1622
 msgid "سربرگ بخش"
 msgstr ""
 
@@ -6580,7 +6597,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-marquee.php:32
 #: inc/options-panel.php:518
-#: inc/options-panel.php:1636
+#: inc/options-panel.php:1637
 msgid "نوار کلمات"
 msgstr ""
 
@@ -6647,7 +6664,7 @@ msgid "کلمات و جداکننده"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-page-title.php:35
-#: inc/options-panel.php:1619
+#: inc/options-panel.php:1620
 msgid "عنوان برگه"
 msgstr ""
 
@@ -6716,7 +6733,7 @@ msgid "فاصله تا عنوان"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-posts.php:32
-#: inc/options-panel.php:1633
+#: inc/options-panel.php:1634
 #: inc/options-sections-home.php:41
 #: inc/options-sections-home.php:57
 #: inc/options-sections-home.php:638
@@ -6983,7 +7000,7 @@ msgid "مطلبی یافت نشد."
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-pricing.php:32
-#: inc/options-panel.php:1630
+#: inc/options-panel.php:1631
 msgid "بسته‌های همراهی"
 msgstr ""
 
@@ -7081,7 +7098,7 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-process.php:32
 #: inc/options-panel.php:522
-#: inc/options-panel.php:1627
+#: inc/options-panel.php:1628
 #: inc/options-sections-home.php:37
 #: inc/options-sections-home.php:53
 #: inc/options-sections-home.php:428
@@ -7314,7 +7331,7 @@ msgid "ویژگی‌های کلیدی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-product-spotlight.php:120
-#: inc/options-sections-shop.php:104
+#: inc/options-sections-shop.php:106
 msgid "شمارش معکوس پایان تخفیف"
 msgstr ""
 
@@ -7574,7 +7591,7 @@ msgid "محصولات بعدی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:35
-#: inc/options-panel.php:1640
+#: inc/options-panel.php:1641
 msgid "رزومه — معرفی حرفه‌ای"
 msgstr ""
 
@@ -7604,7 +7621,7 @@ msgid "نقش‌ها و برچسب‌ها"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-resume-hero.php:122
-#: inc/options-panel.php:1430
+#: inc/options-panel.php:1431
 msgid "هر مورد در یک خط."
 msgstr ""
 
@@ -7957,7 +7974,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-schemas.php:32
 #: inc/options-panel.php:317
 #: inc/options-panel.php:1068
-#: inc/options-panel.php:1626
+#: inc/options-panel.php:1627
 msgid "کتابخانه‌ی طرحواره‌ها"
 msgstr ""
 
@@ -8131,7 +8148,7 @@ msgid "نام گروه"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-services.php:32
-#: inc/options-panel.php:1624
+#: inc/options-panel.php:1625
 #: inc/options-sections-home.php:35
 #: inc/options-sections-home.php:51
 #: inc/options-sections-home.php:281
@@ -8284,7 +8301,7 @@ msgid "لینک دانلود بلافاصله پس از پرداخت"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-shop-benefits.php:146
-#: inc/woocommerce/single.php:279
+#: inc/woocommerce/single.php:285
 msgid "ارسال به سراسر ایران"
 msgstr ""
 
@@ -8512,8 +8529,8 @@ msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-site-footer.php:320
 #: inc/elementor/widgets/class-zc-widget-trust-badges.php:35
-#: inc/options-panel.php:1258
-#: inc/options-panel.php:1639
+#: inc/options-panel.php:1259
+#: inc/options-panel.php:1640
 msgid "نمادهای اعتماد"
 msgstr ""
 
@@ -8737,7 +8754,7 @@ msgid "رنگ آیکن‌های اجتماعی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-skills.php:34
-#: inc/options-panel.php:1643
+#: inc/options-panel.php:1644
 msgid "حوزه‌های تخصصی"
 msgstr ""
 
@@ -8785,7 +8802,7 @@ msgid "عنوان، متن، برچسب‌ها و پیوند"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-stats.php:32
-#: inc/options-panel.php:1628
+#: inc/options-panel.php:1629
 #: inc/options-sections-home.php:38
 #: inc/options-sections-home.php:54
 #: inc/options-sections-home.php:503
@@ -8892,7 +8909,7 @@ msgid "خالی = متن ثبت‌شده در تنظیمات قالب (بخش ن
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-testimonials.php:213
-#: inc/options-panel.php:1266
+#: inc/options-panel.php:1267
 msgid "متن پیوند منبع"
 msgstr ""
 
@@ -9041,7 +9058,7 @@ msgid "نظر بعدی"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-text.php:34
-#: inc/options-panel.php:1622
+#: inc/options-panel.php:1623
 msgid "متن و محتوا"
 msgstr ""
 
@@ -9313,7 +9330,7 @@ msgid "پیوند صفحه‌ی جاری"
 msgstr ""
 
 #: inc/elementor/widgets/class-zc-widget-timeline.php:35
-#: inc/options-panel.php:1641
+#: inc/options-panel.php:1642
 msgid "خط زمانی سوابق"
 msgstr ""
 
@@ -9416,7 +9433,7 @@ msgstr ""
 #: inc/elementor/widgets/class-zc-widget-toc.php:63
 #: inc/elementor/widgets/class-zc-widget-toc.php:70
 #: inc/options-panel.php:897
-#: inc/options-panel.php:1638
+#: inc/options-panel.php:1639
 #: inc/toc.php:23
 msgid "فهرست مطالب"
 msgstr ""
@@ -9644,7 +9661,7 @@ msgid "(در حال درج توسط مدیر سایت)"
 msgstr ""
 
 #: inc/helpers.php:1244
-#: inc/options-panel.php:1255
+#: inc/options-panel.php:1256
 msgid "کد نظام روان‌شناسی"
 msgstr ""
 
@@ -9719,7 +9736,7 @@ msgid "زمان"
 msgstr ""
 
 #: inc/icons.php:186
-#: inc/options-panel.php:1305
+#: inc/options-panel.php:1306
 msgid "موقعیت"
 msgstr ""
 
@@ -9737,7 +9754,7 @@ msgstr ""
 
 #: inc/icons.php:191
 #: inc/options-panel.php:340
-#: inc/options-panel.php:1591
+#: inc/options-panel.php:1592
 msgid "امنیت"
 msgstr ""
 
@@ -9905,7 +9922,7 @@ msgid "نصب شده"
 msgstr ""
 
 #: inc/options-panel.php:286
-#: inc/options-panel.php:1117
+#: inc/options-panel.php:1118
 msgid "حالت تعمیر و نگهداری"
 msgstr ""
 
@@ -9954,7 +9971,7 @@ msgid "سئو و اسکیما"
 msgstr ""
 
 #: inc/options-panel.php:339
-#: inc/options-panel.php:1503
+#: inc/options-panel.php:1504
 msgid "سرعت"
 msgstr ""
 
@@ -10753,7 +10770,7 @@ msgid "دکمه‌های اشتراک در سه جایگاه: کنار نویس�
 msgstr ""
 
 #: inc/options-panel.php:974
-#: inc/options-sections-shop.php:107
+#: inc/options-sections-shop.php:109
 msgid "دکمه‌های اشتراک‌گذاری"
 msgstr ""
 
@@ -10762,12 +10779,12 @@ msgid "«بیشتر» منوی اشتراک خود دستگاه را باز می
 msgstr ""
 
 #: inc/options-panel.php:986
-#: inc/options-panel.php:1221
+#: inc/options-panel.php:1222
 msgid "ایکس (توییتر)"
 msgstr ""
 
 #: inc/options-panel.php:987
-#: inc/options-panel.php:1218
+#: inc/options-panel.php:1219
 #: inc/share.php:24
 msgid "لینکدین"
 msgstr ""
@@ -10912,927 +10929,931 @@ msgstr ""
 msgid "دکمه‌ی «بازگشت به کتابخانه»"
 msgstr ""
 
-#: inc/options-panel.php:1108
+#: inc/options-panel.php:1089
+msgid "پنهان کردن دکمه‌ی رزرو در موبایل"
+msgstr ""
+
+#: inc/options-panel.php:1089
+msgid "در نمایشگرهای کوچک (کوچک‌تر از لپ‌تاپ) دکمه‌ی «رزرو جلسه‌ی ارزیابی» نمایش داده نمی‌شود."
+msgstr ""
+
+#: inc/options-panel.php:1109
 msgid "صفحات ویژه"
 msgstr ""
 
-#: inc/options-panel.php:1110
+#: inc/options-panel.php:1111
 msgid "صفحه‌ی خطای ۴۰۴ و حالت تعمیر و نگهداری."
 msgstr ""
 
-#: inc/options-panel.php:1112
+#: inc/options-panel.php:1113
 msgid "صفحه‌ی ۴۰۴"
 msgstr ""
 
-#: inc/options-panel.php:1115
+#: inc/options-panel.php:1116
 msgid "متن دکمه‌ی بازگشت"
 msgstr ""
 
-#: inc/options-panel.php:1117
+#: inc/options-panel.php:1118
 msgid "سایت برای بازدیدکنندگان با کد ۵۰۳ (استاندارد گوگل برای توقف موقت) بسته می‌شود؛ مدیران و ویرایشگران سایت را عادی می‌بینند."
 msgstr ""
 
-#: inc/options-panel.php:1118
+#: inc/options-panel.php:1119
 msgid "فعال‌سازی"
 msgstr ""
 
-#: inc/options-panel.php:1121
+#: inc/options-panel.php:1122
 msgid "زمان تقریبی بازگشت"
 msgstr ""
 
-#: inc/options-panel.php:1121
+#: inc/options-panel.php:1122
 msgid "اختیاری؛ مثال: «تا ساعت ۱۸ امروز»."
 msgstr ""
 
-#: inc/options-panel.php:1122
+#: inc/options-panel.php:1123
 msgid "نمایش راه‌های تماس"
 msgstr ""
 
-#: inc/options-panel.php:1166
+#: inc/options-panel.php:1167
 msgid "یک منبع واحد برای سربرگ، پاورقی، دکمه‌ی شناور، نوار موبایل، صفحه‌ی تماس، صفحات قوانین و اسکیما."
 msgstr ""
 
-#: inc/options-panel.php:1169
+#: inc/options-panel.php:1170
 msgid "تلفن اصلی؛ در دکمه‌های تماس و اسکیما استفاده می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1170
+#: inc/options-panel.php:1171
 msgid "برچسب تلفن رزرو"
 msgstr ""
 
-#: inc/options-panel.php:1171
+#: inc/options-panel.php:1172
 msgid "تلفن دوم / مطب"
 msgstr ""
 
-#: inc/options-panel.php:1171
+#: inc/options-panel.php:1172
 msgid "اختیاری؛ برای حذف، خالی بگذارید."
 msgstr ""
 
-#: inc/options-panel.php:1172
+#: inc/options-panel.php:1173
 msgid "برچسب تلفن دوم"
 msgstr ""
 
-#: inc/options-panel.php:1174
+#: inc/options-panel.php:1175
 msgid "نشانی و ساعات"
 msgstr ""
 
-#: inc/options-panel.php:1177
+#: inc/options-panel.php:1178
 #: inc/woocommerce/setup.php:555
 msgid "شهر"
 msgstr ""
 
-#: inc/options-panel.php:1179
+#: inc/options-panel.php:1180
 msgid "کد نقشه (iframe)"
 msgstr ""
 
-#: inc/options-panel.php:1179
+#: inc/options-panel.php:1180
 msgid "کد جاسازی نقشه (نشان، بلد یا گوگل). بارگذاری تنبل انجام می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1181
+#: inc/options-panel.php:1182
 msgid "فرم تماس"
 msgstr ""
 
-#: inc/options-panel.php:1182
+#: inc/options-panel.php:1183
 msgid "فرم تماس داخلی"
 msgstr ""
 
-#: inc/options-panel.php:1182
+#: inc/options-panel.php:1183
 msgid "فرم امن و سبک با شورت‌کد [zc_contact] و ویجت «فرم رزرو/تماس»."
 msgstr ""
 
-#: inc/options-panel.php:1183
+#: inc/options-panel.php:1184
 msgid "ایمیل دریافت پیام‌ها"
 msgstr ""
 
-#: inc/options-panel.php:1183
+#: inc/options-panel.php:1184
 msgid "خالی = ایمیل مدیر سایت."
 msgstr ""
 
-#: inc/options-panel.php:1184
+#: inc/options-panel.php:1185
 msgid "برای Contact Form 7 و افزونه‌های مشابه؛ جایگزین فرم داخلی می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1186
+#: inc/options-panel.php:1187
 msgid "اطلاعات و ارتباط"
 msgstr ""
 
-#: inc/options-panel.php:1202
+#: inc/options-panel.php:1203
 msgid "نشانی کامل یا شناسه با @"
 msgstr ""
 
-#: inc/options-panel.php:1208
+#: inc/options-panel.php:1209
 msgid "موارد خالی هیچ‌جا نمایش داده نمی‌شوند. همه‌ی نشانی‌ها به‌طور خودکار به اسکیمای Person (sameAs) افزوده می‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1210
+#: inc/options-panel.php:1211
 msgid "پیام‌رسان‌ها"
 msgstr ""
 
-#: inc/options-panel.php:1214
+#: inc/options-panel.php:1215
 msgid "روبیکا"
 msgstr ""
 
-#: inc/options-panel.php:1215
+#: inc/options-panel.php:1216
 msgid "شماره با پیش‌شماره یا پیوند کامل."
 msgstr ""
 
-#: inc/options-panel.php:1219
+#: inc/options-panel.php:1220
 msgid "یوتیوب"
 msgstr ""
 
-#: inc/options-panel.php:1220
+#: inc/options-panel.php:1221
 msgid "آپارات"
 msgstr ""
 
-#: inc/options-panel.php:1241
+#: inc/options-panel.php:1242
 msgid "حقوقی و نمادها"
 msgstr ""
 
-#: inc/options-panel.php:1243
+#: inc/options-panel.php:1244
 msgid "این مقادیر در پاورقی، رزومه، اسکیما و متن برگه‌های قوانین (شورت‌کد [zc_info]) استفاده می‌شوند. فقط اطلاعات واقعی و قابل استعلام وارد کنید."
 msgstr ""
 
-#: inc/options-panel.php:1245
+#: inc/options-panel.php:1246
 msgid "ارائه‌دهنده و دامنه‌ی رسمی"
 msgstr ""
 
-#: inc/options-panel.php:1246
+#: inc/options-panel.php:1247
 msgid "نام ارائه‌دهنده‌ی خدمات"
 msgstr ""
 
-#: inc/options-panel.php:1247
+#: inc/options-panel.php:1248
 msgid "دامنه‌ی رسمی"
 msgstr ""
 
-#: inc/options-panel.php:1247
+#: inc/options-panel.php:1248
 msgid "بدون http؛ مثال: Maryam-Jamali.ir"
 msgstr ""
 
-#: inc/options-panel.php:1248
+#: inc/options-panel.php:1249
 msgid "اطلاعیه‌ی دامنه‌ی رسمی"
 msgstr ""
 
-#: inc/options-panel.php:1250
+#: inc/options-panel.php:1251
 msgid "مدرک و مجوزهای حرفه‌ای"
 msgstr ""
 
-#: inc/options-panel.php:1251
+#: inc/options-panel.php:1252
 msgid "مدرک تحصیلی"
 msgstr ""
 
-#: inc/options-panel.php:1252
+#: inc/options-panel.php:1253
 msgid "عنوان مجوز حرفه‌ای"
 msgstr ""
 
-#: inc/options-panel.php:1253
+#: inc/options-panel.php:1254
 msgid "شماره‌ی پروانه‌ی اشتغال"
 msgstr ""
 
-#: inc/options-panel.php:1253
+#: inc/options-panel.php:1254
 msgid "صادرشده از سازمان نظام روان‌شناسی و مشاوره."
 msgstr ""
 
-#: inc/options-panel.php:1254
+#: inc/options-panel.php:1255
 msgid "عنوان کد عضویت"
 msgstr ""
 
-#: inc/options-panel.php:1255
+#: inc/options-panel.php:1256
 msgid "خالی = نمایش داده نمی‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1256
+#: inc/options-panel.php:1257
 msgid "اطلاعیه‌ی موارد اضطراری"
 msgstr ""
 
-#: inc/options-panel.php:1258
+#: inc/options-panel.php:1259
 msgid "کد HTML هر نماد را از پنل مربوط کپی کنید. در ویجت «نمادهای اعتماد» و پاورقی نمایش داده می‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1259
+#: inc/options-panel.php:1260
 msgid "اینماد (نماد اعتماد الکترونیکی)"
 msgstr ""
 
-#: inc/options-panel.php:1259
+#: inc/options-panel.php:1260
 msgid "از enamad.ir؛ خالی = جای‌نگهدار."
 msgstr ""
 
-#: inc/options-panel.php:1260
+#: inc/options-panel.php:1261
 msgid "نشان ساماندهی"
 msgstr ""
 
-#: inc/options-panel.php:1260
+#: inc/options-panel.php:1261
 msgid "از samandehi.ir"
 msgstr ""
 
-#: inc/options-panel.php:1261
+#: inc/options-panel.php:1262
 msgid "نشان اعتماد زرین‌پال"
 msgstr ""
 
-#: inc/options-panel.php:1262
+#: inc/options-panel.php:1263
 msgid "نشان درگاه پی (Pay.ir)"
 msgstr ""
 
-#: inc/options-panel.php:1264
+#: inc/options-panel.php:1265
 msgid "منبع نظرات مراجعان"
 msgstr ""
 
-#: inc/options-panel.php:1264
+#: inc/options-panel.php:1265
 msgid "طبق آیین‌نامه‌ی اخلاقی، منبع نظرات باید شفاف باشد. زیر همه‌ی بخش‌های نظرات نمایش داده می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1265
+#: inc/options-panel.php:1266
 msgid "یادداشت منبع"
 msgstr ""
 
-#: inc/options-panel.php:1267
+#: inc/options-panel.php:1268
 msgid "نشانی منبع"
 msgstr ""
 
-#: inc/options-panel.php:1269
+#: inc/options-panel.php:1270
 #: inc/site-tools.php:132
 msgid "اعلان کوکی"
 msgstr ""
 
-#: inc/options-panel.php:1269
+#: inc/options-panel.php:1270
 msgid "نوار کوچک و سبک پایین صفحه؛ پس از تأیید، تا یک سال نمایش داده نمی‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1270
+#: inc/options-panel.php:1271
 msgid "نمایش اعلان"
 msgstr ""
 
-#: inc/options-panel.php:1273
+#: inc/options-panel.php:1274
 msgid "متن پیوند سیاست کوکی‌ها"
 msgstr ""
 
-#: inc/options-panel.php:1273
+#: inc/options-panel.php:1274
 msgid "به برگه‌ی «سیاست کوکی‌ها» (یا در نبود آن، حریم خصوصی) پیوند داده می‌شود. خالی = بدون پیوند."
 msgstr ""
 
-#: inc/options-panel.php:1293
+#: inc/options-panel.php:1294
 msgid "ارتباط سریع"
 msgstr ""
 
-#: inc/options-panel.php:1295
+#: inc/options-panel.php:1296
 msgid "دکمه‌ی شناور پشتیبانی و نوار رزرو موبایل؛ مستقل از المنتور در همه‌ی صفحات."
 msgstr ""
 
-#: inc/options-panel.php:1298
+#: inc/options-panel.php:1299
 msgid "دکمه‌ی شناور ارتباط"
 msgstr ""
 
-#: inc/options-panel.php:1298
+#: inc/options-panel.php:1299
 msgid "دکمه‌ای گرد در گوشه‌ی صفحه که کانال‌های ارتباطی را باز می‌کند."
 msgstr ""
 
-#: inc/options-panel.php:1299
+#: inc/options-panel.php:1300
 msgid "نمایش دکمه‌ی شناور"
 msgstr ""
 
-#: inc/options-panel.php:1312
+#: inc/options-panel.php:1313
 msgid "عنوان پنجره"
 msgstr ""
 
-#: inc/options-panel.php:1313
+#: inc/options-panel.php:1314
 msgid "متن راهنما"
 msgstr ""
 
-#: inc/options-panel.php:1317
+#: inc/options-panel.php:1318
 msgid "کانال‌ها"
 msgstr ""
 
-#: inc/options-panel.php:1319
+#: inc/options-panel.php:1320
 msgid "مقادیر از «اطلاعات تماس» و «شبکه‌های اجتماعی» خوانده می‌شوند؛ کانال‌های خالی نمایش داده نمی‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1321
+#: inc/options-panel.php:1322
 msgid "تماس تلفنی (رزرو)"
 msgstr ""
 
-#: inc/options-panel.php:1328
+#: inc/options-panel.php:1329
 msgid "صفحه‌ی رزرو آنلاین"
 msgstr ""
 
-#: inc/options-panel.php:1343
+#: inc/options-panel.php:1344
 msgid "پیوند صفحه‌ی رزرو"
 msgstr ""
 
-#: inc/options-panel.php:1344
+#: inc/options-panel.php:1345
 msgid "تپش ملایم"
 msgstr ""
 
-#: inc/options-panel.php:1345
-msgid "نمایش در موبایل"
-msgstr ""
-
-#: inc/options-panel.php:1345
+#: inc/options-panel.php:1346
 msgid "در موبایل بالای نوار رزرو قرار می‌گیرد."
 msgstr ""
 
-#: inc/options-panel.php:1350
+#: inc/options-panel.php:1351
 msgid "نوار رزرو ثابت موبایل"
 msgstr ""
 
-#: inc/options-panel.php:1351
+#: inc/options-panel.php:1352
 msgid "نمایش نوار پایین در موبایل"
 msgstr ""
 
-#: inc/options-panel.php:1359
+#: inc/options-panel.php:1360
 msgid "دکمه‌ی کناری"
 msgstr ""
 
-#: inc/options-panel.php:1361
+#: inc/options-panel.php:1362
 msgid "تماس تلفنی"
 msgstr ""
 
-#: inc/options-panel.php:1364
+#: inc/options-panel.php:1365
 msgid "اولین شبکه‌ی اجتماعی"
 msgstr ""
 
-#: inc/options-panel.php:1365
+#: inc/options-panel.php:1366
 msgid "بدون دکمه"
 msgstr ""
 
-#: inc/options-panel.php:1393
+#: inc/options-panel.php:1394
 msgid "عنوان‌ها، متا، robots، canonical، اوپن‌گراف، نقشه‌ی سایت و گراف کامل اسکیما. برای هر برگه/نوشته هم جعبه‌ی «سئو» در ویرایشگر وجود دارد."
 msgstr ""
 
-#: inc/options-panel.php:1395
+#: inc/options-panel.php:1396
 msgid "سیستم سئوی داخلی"
 msgstr ""
 
-#: inc/options-panel.php:1395
+#: inc/options-panel.php:1396
 msgid "با نصب Yoast، Rank Math، AIOSEO، SEOPress یا The SEO Framework خودکار کنار می‌رود."
 msgstr ""
 
-#: inc/options-panel.php:1396
+#: inc/options-panel.php:1397
 msgid "ادغام اسکیمای قالب با Yoast SEO"
 msgstr ""
 
-#: inc/options-panel.php:1396
+#: inc/options-panel.php:1397
 msgid "با Yoast SEO / Premium فعال: گره‌های تخصصی قالب (مطب، پروانه و اعتبارنامه‌ها، خدمات، محصولات، پرسش‌ها، طرحواره‌ها) در یک گراف واحد با Yoast ادغام می‌شوند و مسیر راهنمای Yoast همان مسیر راهنمای قالب می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1399
+#: inc/options-panel.php:1400
 msgid "جداکننده‌ی عنوان"
 msgstr ""
 
-#: inc/options-panel.php:1408
+#: inc/options-panel.php:1409
 msgid "همراه با اسکیمای BreadcrumbList."
 msgstr ""
 
-#: inc/options-panel.php:1409
+#: inc/options-panel.php:1410
 msgid "ایندکس و نقشه‌ی سایت"
 msgstr ""
 
-#: inc/options-panel.php:1409
+#: inc/options-panel.php:1410
 msgid "جلوگیری از صفحات کم‌ارزش و تکراری در نتایج گوگل."
 msgstr ""
 
-#: inc/options-panel.php:1410
+#: inc/options-panel.php:1411
 msgid "noindex بایگانی برچسب‌ها"
 msgstr ""
 
-#: inc/options-panel.php:1410
+#: inc/options-panel.php:1411
 msgid "پیوندها همچنان دنبال می‌شوند (follow)."
 msgstr ""
 
-#: inc/options-panel.php:1411
+#: inc/options-panel.php:1412
 msgid "noindex بایگانی‌های تاریخ"
 msgstr ""
 
-#: inc/options-panel.php:1412
+#: inc/options-panel.php:1413
 msgid "انتقال ۳۰۱ صفحات پیوست"
 msgstr ""
 
-#: inc/options-panel.php:1412
+#: inc/options-panel.php:1413
 msgid "به نوشته‌ی والد یا خود فایل."
 msgstr ""
 
-#: inc/options-panel.php:1413
+#: inc/options-panel.php:1414
 msgid "انتقال ۳۰۱ بایگانی نویسنده"
 msgstr ""
 
-#: inc/options-panel.php:1413
+#: inc/options-panel.php:1414
 msgid "به برگه‌ی «درباره من»؛ سایت تک‌نویسنده است."
 msgstr ""
 
-#: inc/options-panel.php:1414
+#: inc/options-panel.php:1415
 msgid "بهینه‌سازی نقشه‌ی سایت وردپرس"
 msgstr ""
 
-#: inc/options-panel.php:1414
+#: inc/options-panel.php:1415
 msgid "حذف کاربران، قالب‌های المنتور و صفحات noindex؛ افزودن lastmod."
 msgstr ""
 
-#: inc/options-panel.php:1416
+#: inc/options-panel.php:1417
 msgid "فنی"
 msgstr ""
 
-#: inc/options-panel.php:1421
+#: inc/options-panel.php:1422
 msgid "هویت حرفه‌ای"
 msgstr ""
 
-#: inc/options-panel.php:1423
+#: inc/options-panel.php:1424
 msgid "اسکیمای Person برای E-E-A-T. طبق آیین‌نامه‌ی نظام روان‌شناسی، عنوان یا مدرک خلاف واقع ممنوع است. مدرک و شماره‌ی پروانه از «حقوقی و نمادها» خوانده می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1425
+#: inc/options-panel.php:1426
 msgid "نام کامل"
 msgstr ""
 
-#: inc/options-panel.php:1426
+#: inc/options-panel.php:1427
 msgid "نام لاتین"
 msgstr ""
 
-#: inc/options-panel.php:1427
+#: inc/options-panel.php:1428
 msgid "عنوان تخصصی"
 msgstr ""
 
-#: inc/options-panel.php:1428
+#: inc/options-panel.php:1429
 msgid "معرفی کوتاه"
 msgstr ""
 
-#: inc/options-panel.php:1429
+#: inc/options-panel.php:1430
 msgid "تصویر پروفایل"
 msgstr ""
 
-#: inc/options-panel.php:1430
+#: inc/options-panel.php:1431
 msgid "حوزه‌های تخصص (knowsAbout)"
 msgstr ""
 
-#: inc/options-panel.php:1434
+#: inc/options-panel.php:1435
 msgid "پروفایل‌های رسمی (sameAs)"
 msgstr ""
 
-#: inc/options-panel.php:1436
+#: inc/options-panel.php:1437
 msgid "نشانی کامل صفحات رسمی؛ شبکه‌های اجتماعی خودکار افزوده می‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1438
+#: inc/options-panel.php:1439
 msgid "افزودن نشانی"
 msgstr ""
 
-#: inc/options-panel.php:1443
+#: inc/options-panel.php:1444
 msgid "نویسنده‌ی همه‌ی مقالات همین شخص است"
 msgstr ""
 
-#: inc/options-panel.php:1443
+#: inc/options-panel.php:1444
 msgid "author مقاله‌ها در اسکیما به همین Person متصل می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1450
+#: inc/options-panel.php:1451
 msgid "صفحه‌ی اصلی و اشتراک"
 msgstr ""
 
-#: inc/options-panel.php:1452
+#: inc/options-panel.php:1453
 msgid "عنوان و توضیح صفحه‌ی اصلی در نتایج گوگل و تصویر پیش‌فرض اشتراک‌گذاری."
 msgstr ""
 
-#: inc/options-panel.php:1454
+#: inc/options-panel.php:1455
 msgid "عنوان صفحه‌ی اصلی"
 msgstr ""
 
-#: inc/options-panel.php:1454
+#: inc/options-panel.php:1455
 msgid "حداکثر حدود ۶۰ نویسه."
 msgstr ""
 
-#: inc/options-panel.php:1455
+#: inc/options-panel.php:1456
 msgid "توضیح متای صفحه‌ی اصلی"
 msgstr ""
 
-#: inc/options-panel.php:1455
+#: inc/options-panel.php:1456
 msgid "حداکثر حدود ۱۵۵ نویسه."
 msgstr ""
 
-#: inc/options-panel.php:1456
+#: inc/options-panel.php:1457
 msgid "تصویر پیش‌فرض اشتراک‌گذاری"
 msgstr ""
 
-#: inc/options-panel.php:1456
+#: inc/options-panel.php:1457
 msgid "۱۲۰۰×۶۳۰ پیکسل (JPEG). برای نوشته‌ها تصویر شاخص اولویت دارد."
 msgstr ""
 
-#: inc/options-panel.php:1457
+#: inc/options-panel.php:1458
 msgid "نام کاربری ایکس"
 msgstr ""
 
-#: inc/options-panel.php:1457
+#: inc/options-panel.php:1458
 msgid "با @؛ برای twitter:site."
 msgstr ""
 
-#: inc/options-panel.php:1464
+#: inc/options-panel.php:1465
 msgid "کسب‌وکار محلی"
 msgstr ""
 
-#: inc/options-panel.php:1466
+#: inc/options-panel.php:1467
 msgid "اسکیمای ProfessionalService برای نتایج محلی و نقشه‌ی گوگل."
 msgstr ""
 
-#: inc/options-panel.php:1468
+#: inc/options-panel.php:1469
 msgid "اسکیمای کسب‌وکار محلی"
 msgstr ""
 
-#: inc/options-panel.php:1471
+#: inc/options-panel.php:1472
 msgid "نام کسب‌وکار"
 msgstr ""
 
-#: inc/options-panel.php:1472
+#: inc/options-panel.php:1473
 msgid "نشانی خیابان"
 msgstr ""
 
-#: inc/options-panel.php:1472
+#: inc/options-panel.php:1473
 msgid "بدون شهر و استان."
 msgstr ""
 
-#: inc/options-panel.php:1473
+#: inc/options-panel.php:1474
 #: inc/woocommerce/setup.php:550
 msgid "استان"
 msgstr ""
 
-#: inc/options-panel.php:1474
+#: inc/options-panel.php:1475
 msgid "کد پستی"
 msgstr ""
 
-#: inc/options-panel.php:1474
+#: inc/options-panel.php:1475
 msgid "اختیاری."
 msgstr ""
 
-#: inc/options-panel.php:1475
+#: inc/options-panel.php:1476
 msgid "عرض جغرافیایی"
 msgstr ""
 
-#: inc/options-panel.php:1475
+#: inc/options-panel.php:1476
 msgid "از پین دقیق مطب (مثال: 28.97778). خالی = بدون geo."
 msgstr ""
 
-#: inc/options-panel.php:1476
+#: inc/options-panel.php:1477
 msgid "طول جغرافیایی"
 msgstr ""
 
-#: inc/options-panel.php:1476
+#: inc/options-panel.php:1477
 msgid "مثال: 50.83930"
 msgstr ""
 
-#: inc/options-panel.php:1477
+#: inc/options-panel.php:1478
 msgid "ساعات کاری (اسکیما)"
 msgstr ""
 
-#: inc/options-panel.php:1477
+#: inc/options-panel.php:1478
 msgid "روزها: Sa Su Mo Tu We Th Fr؛ چند بازه با کاما. مثال: Sa-We 16:00-20:30, Th 10:00-13:00"
 msgstr ""
 
-#: inc/options-panel.php:1478
+#: inc/options-panel.php:1479
 msgid "بازه‌ی قیمت"
 msgstr ""
 
-#: inc/options-panel.php:1479
+#: inc/options-panel.php:1480
 msgid "محدوده‌ی خدمت‌رسانی"
 msgstr ""
 
-#: inc/options-panel.php:1479
+#: inc/options-panel.php:1480
 msgid "هر مورد در یک خط؛ «ایران» = جلسات آنلاین در سراسر کشور."
 msgstr ""
 
-#: inc/options-panel.php:1505
+#: inc/options-panel.php:1506
 msgid "بهینه‌سازی Core Web Vitals بدون نیاز به افزونه. اگر افزونه‌ی کش دارید، گزینه‌های مشابه را فقط در یکی فعال کنید."
 msgstr ""
 
-#: inc/options-panel.php:1507
+#: inc/options-panel.php:1508
 msgid "فایل‌ها و منابع"
 msgstr ""
 
-#: inc/options-panel.php:1508
+#: inc/options-panel.php:1509
 msgid "بارگذاری تأخیری اسکریپت‌ها (defer)"
 msgstr ""
 
-#: inc/options-panel.php:1509
+#: inc/options-panel.php:1510
 msgid "جاوااسکریپت فشرده‌ی قالب"
 msgstr ""
 
-#: inc/options-panel.php:1509
+#: inc/options-panel.php:1510
 msgid "در حالت SCRIPT_DEBUG همیشه نسخه‌ی کامل بارگذاری می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1510
+#: inc/options-panel.php:1511
 msgid "حذف ?ver= از نشانی منابع"
 msgstr ""
 
-#: inc/options-panel.php:1511
+#: inc/options-panel.php:1512
 msgid "حذف استایل‌های اضافی گوتنبرگ"
 msgstr ""
 
-#: inc/options-panel.php:1512
+#: inc/options-panel.php:1513
 msgid "حذف jQuery Migrate"
 msgstr ""
 
-#: inc/options-panel.php:1513
+#: inc/options-panel.php:1514
 msgid "حذف Dashicons برای بازدیدکنندگان"
 msgstr ""
 
-#: inc/options-panel.php:1514
+#: inc/options-panel.php:1515
 msgid "حذف اسکریپت ایموجی"
 msgstr ""
 
-#: inc/options-panel.php:1515
+#: inc/options-panel.php:1516
 msgid "حذف اسکریپت جاسازی (oEmbed)"
 msgstr ""
 
-#: inc/options-panel.php:1516
+#: inc/options-panel.php:1517
 msgid "پاک‌سازی head"
 msgstr ""
 
-#: inc/options-panel.php:1516
+#: inc/options-panel.php:1517
 msgid "حذف پیوندهای RSD، WLW، shortlink، REST، کشف oEmbed و resource hints پیش‌فرض."
 msgstr ""
 
-#: inc/options-panel.php:1517
+#: inc/options-panel.php:1518
 msgid "تصاویر و رسانه"
 msgstr ""
 
-#: inc/options-panel.php:1518
+#: inc/options-panel.php:1519
 msgid "بارگذاری تنبل تصاویر و iframeها"
 msgstr ""
 
-#: inc/options-panel.php:1519
+#: inc/options-panel.php:1520
 msgid "تولید خودکار WebP"
 msgstr ""
 
-#: inc/options-panel.php:1519
+#: inc/options-panel.php:1520
 msgid "اندازه‌های فرعی JPEG/PNG جدید به WebP ساخته می‌شوند (۲۵ تا ۴۰٪ سبک‌تر)؛ اگر سرور پشتیبانی کند."
 msgstr ""
 
-#: inc/options-panel.php:1520
+#: inc/options-panel.php:1521
 msgid "آواتار محلی به‌جای Gravatar"
 msgstr ""
 
-#: inc/options-panel.php:1520
+#: inc/options-panel.php:1521
 msgid "بدون درخواست به Gravatar (کند و ناپایدار در ایران)."
 msgstr ""
 
-#: inc/options-panel.php:1521
+#: inc/options-panel.php:1522
 msgid "شبکه و پیش‌بارگذاری"
 msgstr ""
 
-#: inc/options-panel.php:1522
+#: inc/options-panel.php:1523
 msgid "پیش‌بارگذاری هوشمند صفحات"
 msgstr ""
 
-#: inc/options-panel.php:1522
+#: inc/options-panel.php:1523
 msgid "با Speculation Rules وردپرس؛ صفحه با نشانه‌ی قصد کاربر (هاور/لمس) از پیش واکشی می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1526
+#: inc/options-panel.php:1527
 msgid "پیش‌اتصال (Preconnect)"
 msgstr ""
 
-#: inc/options-panel.php:1528
+#: inc/options-panel.php:1529
 msgid "دامنه‌های خارجی پرکاربرد، بدون پروتکل (مثال: www.googletagmanager.com)."
 msgstr ""
 
-#: inc/options-panel.php:1529
+#: inc/options-panel.php:1530
 msgid "افزودن دامنه"
 msgstr ""
 
-#: inc/options-panel.php:1539
+#: inc/options-panel.php:1540
 msgid "بهینه‌سازی المنتور"
 msgstr ""
 
-#: inc/options-panel.php:1541
+#: inc/options-panel.php:1542
 msgid "حذف بار اضافه‌ی المنتور برای بازدیدکنندگان؛ مدیران همیشه همه‌چیز را دریافت می‌کنند."
 msgstr ""
 
-#: inc/options-panel.php:1543
+#: inc/options-panel.php:1544
 msgid "قطع Google Fonts المنتور"
 msgstr ""
 
-#: inc/options-panel.php:1543
+#: inc/options-panel.php:1544
 msgid "فونت سایت (آراد) محلی است."
 msgstr ""
 
-#: inc/options-panel.php:1544
+#: inc/options-panel.php:1545
 msgid "حذف آیکن‌فونت‌های بلااستفاده"
 msgstr ""
 
-#: inc/options-panel.php:1544
+#: inc/options-panel.php:1545
 msgid "eicons و Font Awesome فقط در صفحاتی که ویجت آیکن هسته‌ی المنتور دارند."
 msgstr ""
 
-#: inc/options-panel.php:1545
+#: inc/options-panel.php:1546
 msgid "درون‌خطی کردن CSSهای کوچک"
 msgstr ""
 
-#: inc/options-panel.php:1545
+#: inc/options-panel.php:1546
 msgid "فایل‌های CSS کمتر از ۸ کیلوبایت داخل HTML قرار می‌گیرند."
 msgstr ""
 
-#: inc/options-panel.php:1546
+#: inc/options-panel.php:1547
 msgid "حذف هوشمند جاوااسکریپت و jQuery"
 msgstr ""
 
-#: inc/options-panel.php:1546
+#: inc/options-panel.php:1547
 msgid "در صفحاتی که فقط ویجت‌های زرین‌کوچ و ویجت‌های ساده دارند. اگر افزونه‌ای به‌هم ریخت، خاموش کنید."
 msgstr ""
 
-#: inc/options-panel.php:1552
+#: inc/options-panel.php:1553
 msgid "پیشخوان و پایگاه داده"
 msgstr ""
 
-#: inc/options-panel.php:1554
+#: inc/options-panel.php:1555
 msgid "کاهش بار سرور و حجم پایگاه داده."
 msgstr ""
 
-#: inc/options-panel.php:1556
+#: inc/options-panel.php:1557
 msgid "حداکثر نسخه‌های ذخیره‌شده"
 msgstr ""
 
-#: inc/options-panel.php:1556
+#: inc/options-panel.php:1557
 msgid "برای هر نوشته؛ ۰ = بدون نسخه."
 msgstr ""
 
-#: inc/options-panel.php:1557
+#: inc/options-panel.php:1558
 msgid "فاصله‌ی ذخیره‌ی خودکار"
 msgstr ""
 
-#: inc/options-panel.php:1557
+#: inc/options-panel.php:1558
 #: inc/woocommerce/setup.php:290
 #: inc/woocommerce/single.php:169
 msgid "ثانیه"
 msgstr ""
 
-#: inc/options-panel.php:1560
+#: inc/options-panel.php:1561
 msgid "ضربان وردپرس (Heartbeat)"
 msgstr ""
 
-#: inc/options-panel.php:1563
+#: inc/options-panel.php:1564
 msgid "بهینه (فقط در ویرایشگر)"
 msgstr ""
 
-#: inc/options-panel.php:1568
+#: inc/options-panel.php:1569
 msgid "غیرفعال‌سازی الگوهای راه دور گوتنبرگ"
 msgstr ""
 
-#: inc/options-panel.php:1568
+#: inc/options-panel.php:1569
 msgid "جلوی درخواست اضافه به api.wordpress.org را می‌گیرد."
 msgstr ""
 
-#: inc/options-panel.php:1569
+#: inc/options-panel.php:1570
 msgid "بهداشت لاگ افزونه‌ها حتی در حالت دیباگ"
 msgstr ""
 
-#: inc/options-panel.php:1569
+#: inc/options-panel.php:1570
 msgid "هشدار، اعلان و دپریکیشن‌های درونی المنتور — مثل «Attempt to read property \"ID\" on null» در document.php که باگ شناخته‌شده‌ی خود المنتور است و قالب در آن هیچ نقشی ندارد — با WP_DEBUG روشن هم به debug.log نمایش داده نمی‌شوند. خطاهای قالب، هسته و بقیه‌ی افزونه‌ها دست‌نخورده می‌مانند. پیش‌فرض: خاموش."
 msgstr ""
 
-#: inc/options-panel.php:1570
+#: inc/options-panel.php:1571
 msgid "لاگ اجرایی زنده (ایمیل/HTTP/پایگاه‌داده)"
 msgstr ""
 
-#: inc/options-panel.php:1570
+#: inc/options-panel.php:1571
 msgid "شکست ارسال ایمیل‌ها، خطاهای HTTP API و خطاهای پایگاه‌داده در فایل محافظت‌شده‌ی zarincoach-logs/runtime.log ثبت می‌شود و در «اطلاعات سیستم ← مرکز لاگ سیستم» قابل مشاهده و دانلود است. چرخش خودکار در ۱ مگابایت. پیش‌فرض: روشن."
 msgstr ""
 
-#: inc/options-panel.php:1593
+#: inc/options-panel.php:1594
 msgid "سخت‌سازی سبک و بی‌خطر وردپرس؛ بدون تداخل با المنتور، فرم‌ها و افزونه‌های امنیتی."
 msgstr ""
 
-#: inc/options-panel.php:1595
+#: inc/options-panel.php:1596
 msgid "غیرفعال‌سازی XML-RPC"
 msgstr ""
 
-#: inc/options-panel.php:1595
+#: inc/options-panel.php:1596
 msgid "رایج‌ترین مسیر حمله‌ی حدس رمز. اگر از اپ موبایل وردپرس یا Jetpack استفاده می‌کنید، خاموش کنید."
 msgstr ""
 
-#: inc/options-panel.php:1596
+#: inc/options-panel.php:1597
 msgid "جلوگیری از شناسایی نام کاربری"
 msgstr ""
 
-#: inc/options-panel.php:1596
+#: inc/options-panel.php:1597
 msgid "مسدود کردن ?author=N و فهرست کاربران REST برای بازدیدکنندگان."
 msgstr ""
 
-#: inc/options-panel.php:1597
+#: inc/options-panel.php:1598
 msgid "پیام خطای ورود یکسان"
 msgstr ""
 
-#: inc/options-panel.php:1597
+#: inc/options-panel.php:1598
 msgid "مشخص نمی‌کند نام کاربری اشتباه است یا رمز."
 msgstr ""
 
-#: inc/options-panel.php:1598
+#: inc/options-panel.php:1599
 msgid "غیرفعال‌سازی ویرایشگر فایل"
 msgstr ""
 
-#: inc/options-panel.php:1598
+#: inc/options-panel.php:1599
 msgid "ویرایش مستقیم کد قالب و افزونه‌ها از پیشخوان بسته می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1599
+#: inc/options-panel.php:1600
 msgid "سرآیندهای امنیتی HTTP"
 msgstr ""
 
-#: inc/options-panel.php:1599
+#: inc/options-panel.php:1600
 msgid "X-Content-Type-Options، Referrer-Policy، X-Frame-Options (SAMEORIGIN) و Permissions-Policy."
 msgstr ""
 
-#: inc/options-panel.php:1620
+#: inc/options-panel.php:1621
 #: inc/options-sections-home.php:87
 msgid "سربرگ اصلی"
 msgstr ""
 
-#: inc/options-panel.php:1629
+#: inc/options-panel.php:1630
 msgid "تجربه‌ی مراجعان"
 msgstr ""
 
-#: inc/options-panel.php:1648
+#: inc/options-panel.php:1649
 msgid "فروشگاه — محصولات"
 msgstr ""
 
-#: inc/options-panel.php:1649
+#: inc/options-panel.php:1650
 msgid "فروشگاه — دسته‌بندی محصولات"
 msgstr ""
 
-#: inc/options-panel.php:1650
+#: inc/options-panel.php:1651
 msgid "فروشگاه — محصول ویژه"
 msgstr ""
 
-#: inc/options-panel.php:1651
+#: inc/options-panel.php:1652
 msgid "فروشگاه — بنر تخفیف"
 msgstr ""
 
-#: inc/options-panel.php:1652
+#: inc/options-panel.php:1653
 msgid "فروشگاه — مزایای خرید"
 msgstr ""
 
-#: inc/options-panel.php:1661
+#: inc/options-panel.php:1662
 msgid "ویجت‌های اختصاصی زرین‌کوچ در دسته‌ی «زرین‌کوچ» پنل المنتور."
 msgstr ""
 
-#: inc/options-panel.php:1666
+#: inc/options-panel.php:1667
 msgid "ویجت‌های فعال"
 msgstr ""
 
-#: inc/options-panel.php:1668
+#: inc/options-panel.php:1669
 msgid "ویجت‌های خاموش از فهرست ویرایشگر المنتور پنهان می‌شوند تا پنل خلوت‌تر شود؛ صفحاتی که قبلاً از آن‌ها استفاده کرده‌اند بدون تغییر نمایش داده می‌شوند."
 msgstr ""
 
 #. translators: %s: پیوند صفحه‌ی مدیریت ویجت‌ها
-#: inc/options-panel.php:1674
+#: inc/options-panel.php:1675
 #, php-format
 msgid "برای جستجو، مشاهده‌ی صفحه‌های استفاده‌کننده و روشن/خاموش کردن گروهی، به %s بروید."
 msgstr ""
 
-#: inc/options-panel.php:1679
+#: inc/options-panel.php:1680
 msgid "استایل قالب در ویرایشگر"
 msgstr ""
 
-#: inc/options-panel.php:1679
+#: inc/options-panel.php:1680
 msgid "برای نمایش دقیق ویجت‌ها هنگام ویرایش."
 msgstr ""
 
-#: inc/options-panel.php:1680
+#: inc/options-panel.php:1681
 msgid "مقادیر پیش‌فرض از پنل"
 msgstr ""
 
-#: inc/options-panel.php:1680
+#: inc/options-panel.php:1681
 msgid "فیلدهای خالی ویجت‌ها (تلفن، لوگو، پیوند رزرو و…) از همین پنل خوانده می‌شوند."
 msgstr ""
 
-#: inc/options-panel.php:1702
+#: inc/options-panel.php:1703
 msgid "CSS و کدهای ابزارهای آمار (Analytics، Clarity و…) بدون دستکاری فایل‌های قالب."
 msgstr ""
 
-#: inc/options-panel.php:1704
+#: inc/options-panel.php:1705
 msgid "CSS سفارشی"
 msgstr ""
 
-#: inc/options-panel.php:1704
+#: inc/options-panel.php:1705
 msgid "بعد از استایل قالب بارگذاری می‌شود."
 msgstr ""
 
-#: inc/options-panel.php:1705
+#: inc/options-panel.php:1706
 msgid "کدهای head"
 msgstr ""
 
-#: inc/options-panel.php:1705
+#: inc/options-panel.php:1706
 msgid "پیش از بسته شدن تگ head؛ تگ script را هم بنویسید."
 msgstr ""
 
-#: inc/options-panel.php:1706
+#: inc/options-panel.php:1707
 msgid "کدهای ابتدای body"
 msgstr ""
 
-#: inc/options-panel.php:1706
+#: inc/options-panel.php:1707
 msgid "بلافاصله پس از باز شدن تگ body (مثل noscript گوگل تگ منیجر)."
 msgstr ""
 
-#: inc/options-panel.php:1707
+#: inc/options-panel.php:1708
 msgid "کدهای انتهای صفحه"
 msgstr ""
 
-#: inc/options-panel.php:1707
+#: inc/options-panel.php:1708
 msgid "پیش از بسته شدن تگ body."
 msgstr ""
 
@@ -12113,240 +12134,260 @@ msgid "گالری چسبان هنگام اسکرول"
 msgstr ""
 
 #: inc/options-sections-shop.php:97
-msgid "منوی چسبان بخش‌ها (توضیحات، مشخصات، پرسش‌ها، دیدگاه‌ها)"
+msgid "دکمه‌ی بزرگنمایی تصویر"
+msgstr ""
+
+#: inc/options-sections-shop.php:97
+msgid "دکمه‌ی گرد با آیکن وسط‌چین روی گوشه‌ی تصویر؛ با کلیک، تصویر بزرگ (گالری کامل) باز می‌شود — در موبایل هم کار می‌کند."
 msgstr ""
 
 #: inc/options-sections-shop.php:98
+msgid "منوی چسبان بخش‌ها (توضیحات، مشخصات، پرسش‌ها، دیدگاه‌ها)"
+msgstr ""
+
+#: inc/options-sections-shop.php:99
 msgid "انتخاب گونه با دکمه به‌جای فهرست کشویی"
 msgstr ""
 
-#: inc/options-sections-shop.php:99
+#: inc/options-sections-shop.php:100
 msgid "تعداد محصولات مرتبط"
 msgstr ""
 
-#: inc/options-sections-shop.php:99
+#: inc/options-sections-shop.php:100
 msgid "۰ = پنهان."
 msgstr ""
 
-#: inc/options-sections-shop.php:101
+#: inc/options-sections-shop.php:102
 msgid "ابزارهای فروش"
 msgstr ""
 
-#: inc/options-sections-shop.php:102
-msgid "دکمه‌ی «خرید فوری»"
-msgstr ""
-
-#: inc/options-sections-shop.php:102
-msgid "افزودن به سبد و انتقال مستقیم به تسویه‌حساب."
+#: inc/options-sections-shop.php:103
+msgid "قیمت خوانا («میلیون/هزار تومان»)"
 msgstr ""
 
 #: inc/options-sections-shop.php:103
-msgid "نوار چسبان خرید"
-msgstr ""
-
-#: inc/options-sections-shop.php:103
-msgid "وقتی دکمه‌ی خرید از دید خارج شود، پایین صفحه نمایش داده می‌شود."
+msgid "به‌جای «2,000,000 تومان» ← «۲ میلیون تومان»؛ مبالغ زیر یک میلیون به شکل «هزار تومان». در سراسر فروشگاه (صفحه‌ی محصول، فروشگاه، سبد و تسویه‌حساب) اعمال می‌شود."
 msgstr ""
 
 #: inc/options-sections-shop.php:104
-msgid "برای تخفیف‌های زمان‌دار («زمان‌بندی» قیمت فروش ویژه)."
+msgid "دکمه‌ی «خرید فوری»"
+msgstr ""
+
+#: inc/options-sections-shop.php:104
+msgid "افزودن به سبد و انتقال مستقیم به تسویه‌حساب."
 msgstr ""
 
 #: inc/options-sections-shop.php:105
-msgid "نوار کمبود موجودی"
+msgid "نوار چسبان خرید"
 msgstr ""
 
 #: inc/options-sections-shop.php:105
-msgid "برای محصولاتی که مدیریت موجودی دارند."
+msgid "وقتی دکمه‌ی خرید از دید خارج شود، پایین صفحه نمایش داده می‌شود."
 msgstr ""
 
 #: inc/options-sections-shop.php:106
-msgid "نمایش وقتی موجودی کمتر یا برابر"
+msgid "برای تخفیف‌های زمان‌دار («زمان‌بندی» قیمت فروش ویژه)."
 msgstr ""
 
-#: inc/options-sections-shop.php:109
-msgid "زمان و نحوه‌ی تحویل"
+#: inc/options-sections-shop.php:107
+msgid "نمایش موجودی قابل سفارش"
 msgstr ""
 
-#: inc/options-sections-shop.php:110
-msgid "نمایش کادر تحویل"
+#: inc/options-sections-shop.php:107
+msgid "تعداد باقی‌مانده‌ی قابل سفارش برای محصولاتی که مدیریت موجودی دارند نمایش داده می‌شود؛ برای موجودی کم، هشدار «فقط X عدد» با نوار رنگی."
 msgstr ""
 
-#: inc/options-sections-shop.php:110
-msgid "برای هر محصول می‌توانید در «داده‌های محصول ← زرین‌کوچ» متن اختصاصی بنویسید."
+#: inc/options-sections-shop.php:108
+msgid "آستانه‌ی هشدار کمبود"
+msgstr ""
+
+#: inc/options-sections-shop.php:108
+msgid "موجودی کمتر یا مساوی این عدد «فقط X عدد» نمایش داده می‌شود؛ بیشتر از آن به شکل عادی «X عدد قابل سفارش»."
 msgstr ""
 
 #: inc/options-sections-shop.php:111
-msgid "محصولات دانلودی"
+msgid "زمان و نحوه‌ی تحویل"
 msgstr ""
 
 #: inc/options-sections-shop.php:112
+msgid "نمایش کادر تحویل"
+msgstr ""
+
+#: inc/options-sections-shop.php:112
+msgid "برای هر محصول می‌توانید در «داده‌های محصول ← زرین‌کوچ» متن اختصاصی بنویسید."
+msgstr ""
+
+#: inc/options-sections-shop.php:113
+msgid "محصولات دانلودی"
+msgstr ""
+
+#: inc/options-sections-shop.php:114
 msgid "محصولات فیزیکی"
 msgstr ""
 
-#: inc/options-sections-shop.php:113
+#: inc/options-sections-shop.php:115
 msgid "بسته‌های جلسه"
 msgstr ""
 
-#: inc/options-sections-shop.php:113
+#: inc/options-sections-shop.php:115
 msgid "در صفحه‌ی تشکر و ایمیل سفارش هم نمایش داده می‌شود."
 msgstr ""
 
-#: inc/options-sections-shop.php:115
+#: inc/options-sections-shop.php:117
 msgid "نشان‌های اعتماد زیر دکمه‌ی خرید"
 msgstr ""
 
-#: inc/options-sections-shop.php:120
+#: inc/options-sections-shop.php:122
 msgid "موارد (حداکثر ۳)"
 msgstr ""
 
-#: inc/options-sections-shop.php:122
+#: inc/options-sections-shop.php:124
 msgid "هر خط: «متن | پیوند». پیوند می‌تواند نشانی کامل یا کلید برگه باشد: shipping، refund-policy، contact، terms، privacy."
 msgstr ""
 
-#: inc/options-sections-shop.php:133
+#: inc/options-sections-shop.php:135
 msgid "سبد و تسویه‌حساب"
 msgstr ""
 
-#: inc/options-sections-shop.php:135
+#: inc/options-sections-shop.php:137
 msgid "سبد کشویی، ارسال رایگان و فرم تسویه‌حساب ایرانی."
 msgstr ""
 
-#: inc/options-sections-shop.php:137
+#: inc/options-sections-shop.php:139
 msgid "سبد کشویی"
 msgstr ""
 
-#: inc/options-sections-shop.php:138
+#: inc/options-sections-shop.php:140
 msgid "سبد خرید کشویی"
 msgstr ""
 
-#: inc/options-sections-shop.php:138
+#: inc/options-sections-shop.php:140
 msgid "با کلیک روی دکمه‌ی سبد در سربرگ، سبد از کنار صفحه باز می‌شود."
 msgstr ""
 
-#: inc/options-sections-shop.php:139
+#: inc/options-sections-shop.php:141
 msgid "باز شدن خودکار پس از افزودن محصول"
 msgstr ""
 
 #. translators: %s: واحد پول
-#: inc/options-sections-shop.php:141
+#: inc/options-sections-shop.php:143
 #, php-format
 msgid "حد ارسال رایگان (%s)"
 msgstr ""
 
 #. translators: %s: واحد پول
-#: inc/options-sections-shop.php:141
+#: inc/options-sections-shop.php:143
 msgid "مثلاً 1500000. خالی یا ۰ = غیرفعال. نوار پیشرفت در سبد نمایش داده می‌شود و هزینه‌ی ارسال به‌طور خودکار صفر می‌شود."
 msgstr ""
 
-#: inc/options-sections-shop.php:143
+#: inc/options-sections-shop.php:145
 msgid "تسویه‌حساب"
 msgstr ""
 
-#: inc/options-sections-shop.php:144
+#: inc/options-sections-shop.php:146
 msgid "فرم کوتاه برای سفارش‌های مجازی"
 msgstr ""
 
-#: inc/options-sections-shop.php:144
+#: inc/options-sections-shop.php:146
 msgid "اگر سبد فقط محصول دانلودی یا جلسه باشد، فیلدهای نشانی پستی حذف می‌شوند."
 msgstr ""
 
-#: inc/options-sections-shop.php:145
+#: inc/options-sections-shop.php:147
 msgid "اعتبارسنجی تلفن همراه و کد پستی ایران"
 msgstr ""
 
-#: inc/options-sections-shop.php:145
+#: inc/options-sections-shop.php:147
 msgid "تلفن ۰۹xxxxxxxxx و کد پستی ۱۰ رقمی؛ ارقام فارسی خودکار تبدیل می‌شوند."
 msgstr ""
 
-#: inc/options-sections-shop.php:146
+#: inc/options-sections-shop.php:148
 msgid "لغو خودکار سفارش کارت‌به‌کارت پرداخت‌نشده (ساعت)"
 msgstr ""
 
-#: inc/options-sections-shop.php:146
+#: inc/options-sections-shop.php:148
 msgid "سفارش‌های «در انتظار بررسی» روش کارت‌به‌کارت پس از این مدت لغو و موجودی به انبار برمی‌گردد. ۰ = غیرفعال. با متن برگه‌ی «شرایط خرید، ارسال و مرجوعی» هماهنگ نگه دارید."
 msgstr ""
 
-#: inc/options-sections-shop.php:147
+#: inc/options-sections-shop.php:149
 msgid "فیلد «نام شرکت»"
 msgstr ""
 
-#: inc/options-sections-shop.php:148
+#: inc/options-sections-shop.php:150
 msgid "یادداشت اعتماد زیر دکمه‌ی پرداخت"
 msgstr ""
 
-#: inc/options-sections-shop.php:150
+#: inc/options-sections-shop.php:152
 msgid "ارسال و مرجوعی در نتایج گوگل (اسکیما)"
 msgstr ""
 
 #. translators: %s: واحد پول
-#: inc/options-sections-shop.php:152
+#: inc/options-sections-shop.php:154
 #, php-format
 msgid "هزینه‌ی ارسال پستی (%s)"
 msgstr ""
 
 #. translators: %s: واحد پول
-#: inc/options-sections-shop.php:152
+#: inc/options-sections-shop.php:154
 msgid "برای نمایش هزینه‌ی ارسال در نتایج گوگل (OfferShippingDetails) کالاهای فیزیکی. خالی = اعلام نمی‌شود. با حد ارسال رایگان خودکار ۰ می‌شود."
 msgstr ""
 
-#: inc/options-sections-shop.php:153
+#: inc/options-sections-shop.php:155
 msgid "زمان آماده‌سازی (روز)"
 msgstr ""
 
-#: inc/options-sections-shop.php:153
+#: inc/options-sections-shop.php:155
 msgid "بازه به شکل حداقل-حداکثر؛ مثلاً 0-2"
 msgstr ""
 
-#: inc/options-sections-shop.php:154
+#: inc/options-sections-shop.php:156
 msgid "زمان ارسال پستی (روز)"
 msgstr ""
 
-#: inc/options-sections-shop.php:154
+#: inc/options-sections-shop.php:156
 msgid "بازه به شکل حداقل-حداکثر؛ مثلاً 2-5"
 msgstr ""
 
-#: inc/options-sections-shop.php:155
+#: inc/options-sections-shop.php:157
 msgid "مهلت انصراف کالای فیزیکی (روز)"
 msgstr ""
 
-#: inc/options-sections-shop.php:155
+#: inc/options-sections-shop.php:157
 msgid "حداقل قانونی ۷ روز (ماده‌ی ۳۷ قانون تجارت الکترونیکی). محصولات دانلودی و جلسات پس از تحویل/آغاز خدمت «غیرقابل مرجوعی» اعلام می‌شوند (ماده‌ی ۳۸)."
 msgstr ""
 
-#: inc/options-sections-shop.php:162
+#: inc/options-sections-shop.php:164
 msgid "محصولات دانلودی — مرکز دانلود"
 msgstr ""
 
-#: inc/options-sections-shop.php:164
+#: inc/options-sections-shop.php:166
 msgid "سازگاری امن دانلود فایل‌های دیجیتال با ووکامرس: بدون خطای ۴۰۳ یا «لینک نامعتبر». وضعیت زنده و تست کامل دریافت فایل در «اطلاعات سیستم ← مرکز دانلود»."
 msgstr ""
 
-#: inc/options-sections-shop.php:167
+#: inc/options-sections-shop.php:169
 msgid "هم‌ترازسازی و نرمال‌سازی"
 msgstr ""
 
-#: inc/options-sections-shop.php:168
+#: inc/options-sections-shop.php:170
 msgid "هم‌ترازسازی خودکار دایرکتوری‌های مجاز دانلود"
 msgstr ""
 
-#: inc/options-sections-shop.php:168
+#: inc/options-sections-shop.php:170
 msgid "اگر محدودسازی «دایرکتوری‌های مجاز» در ووکامرس فعال باشد، پوشه‌ی بارگذاری و woocommerce_uploads به‌طور خودکار در فهرست مجازها می‌مانند و فهرست خالی (که همه‌ی دانلودها را مسدود می‌کند) به‌صورت ایمن خاموش می‌شود."
 msgstr ""
 
-#: inc/options-sections-shop.php:169
+#: inc/options-sections-shop.php:171
 msgid "اصلاح خودکار مسیر فایل‌ها پس از انتقال دامنه یا https"
 msgstr ""
 
-#: inc/options-sections-shop.php:169
+#: inc/options-sections-shop.php:171
 msgid "نشانی‌های ذخیره‌شده که با پیشوند فعلی سایت (http/https یا www) تفاوت دارند هنگام دانلود به مسیر واقعی روی هاست نگاشت می‌شوند؛ برای نصب‌های زیرپوشه‌ای هم دقیق است."
 msgstr ""
 
-#: inc/options-sections-shop.php:170
+#: inc/options-sections-shop.php:172
 msgid "پیشنهاد"
 msgstr ""
 
-#: inc/options-sections-shop.php:170
+#: inc/options-sections-shop.php:172
 msgid "برای محصولات دیجیتال، فایل‌ها را در کتابخانه‌ی رسانه (پوشه‌ی بارگذاری) نگه دارید و روش دانلود را «اجبار دانلود» بگذارید تا لینک مستقیم فایل لو نرود."
 msgstr ""
 
@@ -13542,279 +13583,279 @@ msgstr ""
 msgid "کد رسمی درج نشده"
 msgstr ""
 
-#: inc/woo-downloads.php:422
+#: inc/woo-downloads.php:438
 msgid "اجبار دانلود (پیشنهادی)"
 msgstr ""
 
-#: inc/woo-downloads.php:423
+#: inc/woo-downloads.php:439
 msgid "X-Sendfile"
 msgstr ""
 
-#: inc/woo-downloads.php:424
+#: inc/woo-downloads.php:440
 msgid "ریدایرکت مستقیم"
 msgstr ""
 
-#: inc/woo-downloads.php:425
+#: inc/woo-downloads.php:441
 msgid "بدون محافظت"
 msgstr ""
 
-#: inc/woo-downloads.php:429
+#: inc/woo-downloads.php:445
 msgid "روش دانلود فایل"
 msgstr ""
 
-#: inc/woo-downloads.php:433
+#: inc/woo-downloads.php:449
 msgid "مسیر امن؛ فایل مستقیماً در دسترس نیست."
 msgstr ""
 
-#: inc/woo-downloads.php:434
+#: inc/woo-downloads.php:450
 msgid "این روش‌ها فایل را بی‌محافظت می‌کنند؛ «اجبار دانلود» را برگزینید."
 msgstr ""
 
-#: inc/woo-downloads.php:446
-#: inc/woo-downloads.php:455
-#: inc/woo-downloads.php:488
+#: inc/woo-downloads.php:462
+#: inc/woo-downloads.php:471
+#: inc/woo-downloads.php:504
 msgid "محدودسازی دایرکتوری‌های مجاز"
 msgstr ""
 
-#: inc/woo-downloads.php:447
+#: inc/woo-downloads.php:463
 msgid "غیرفعال (پیش‌فرض امن ووکامرس)"
 msgstr ""
 
-#: inc/woo-downloads.php:449
+#: inc/woo-downloads.php:465
 msgid "همه‌ی لینک‌ها پذیرفته می‌شوند؛ نیازی به تغییر نیست."
 msgstr ""
 
-#: inc/woo-downloads.php:456
+#: inc/woo-downloads.php:472
 msgid "فعال با فهرست خالی — همه‌ی دانلودها رد می‌شوند!"
 msgstr ""
 
-#: inc/woo-downloads.php:458
+#: inc/woo-downloads.php:474
 msgid "این عامل خطای «فایل نامعتبر» است؛ هم‌ترازسازی را اجرا کنید."
 msgstr ""
 
 #. translators: %s: تعداد
-#: inc/woo-downloads.php:489
+#: inc/woo-downloads.php:505
 #, php-format
 msgid "فعال با %s مسیر مجاز"
 msgstr ""
 
-#: inc/woo-downloads.php:491
+#: inc/woo-downloads.php:507
 msgid "پوشه‌ی بارگذاری در فهرست مجاز است."
 msgstr ""
 
-#: inc/woo-downloads.php:491
+#: inc/woo-downloads.php:507
 msgid "پوشه‌ی بارگذاری در فهرست نیست؛ هم‌ترازسازی را اجرا کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:501
+#: inc/woo-downloads.php:517
 msgid "اجبار ورود برای دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:505
+#: inc/woo-downloads.php:521
 msgid "لینک‌های ایمیلی برای مهمان‌ها خطای ۴۰۳ می‌دهند؛ فقط اگر عمداً می‌خواهید روشن بماند."
 msgstr ""
 
-#: inc/woo-downloads.php:506
+#: inc/woo-downloads.php:522
 msgid "لینک‌های ایمیلی بدون ورود کار می‌کنند."
 msgstr ""
 
-#: inc/woo-downloads.php:514
+#: inc/woo-downloads.php:530
 msgid "اعطای دانلود پس از پرداخت"
 msgstr ""
 
-#: inc/woo-downloads.php:517
+#: inc/woo-downloads.php:533
 msgid "مجوز دانلود بلافاصله پس از پرداخت صادر می‌شود."
 msgstr ""
 
-#: inc/woo-downloads.php:517
+#: inc/woo-downloads.php:533
 msgid "مشتری تا تکمیل دستی سفارش دانلود ندارد."
 msgstr ""
 
-#: inc/woo-downloads.php:525
+#: inc/woo-downloads.php:541
 msgid "نشانی فایل‌های ذخیره‌شده"
 msgstr ""
 
-#: inc/woo-downloads.php:527
+#: inc/woo-downloads.php:543
 msgid "همه صحیح"
 msgstr ""
 
 #. translators: %s: تعداد
-#: inc/woo-downloads.php:528
+#: inc/woo-downloads.php:544
 #, php-format
 msgid "%s فایل با مسیر اشتباه (مسیر هاست به‌جای نشانی)"
 msgstr ""
 
-#: inc/woo-downloads.php:531
+#: inc/woo-downloads.php:547
 msgid "همه‌ی محصولات دانلودی نشانی وبِ صحیح دارند."
 msgstr ""
 
-#: inc/woo-downloads.php:532
+#: inc/woo-downloads.php:548
 msgid "این وضعیت عامل «لینک دانلود دامنه+مسیر هاست» است؛ با «ترمیم خودکار» به نشانی صحیح تبدیل می‌شود."
 msgstr ""
 
-#: inc/woo-downloads.php:545
-#: inc/woo-downloads.php:554
-#: inc/woo-downloads.php:563
+#: inc/woo-downloads.php:561
+#: inc/woo-downloads.php:570
+#: inc/woo-downloads.php:579
 msgid "محافظت از پوشه‌ی دانلودها"
 msgstr ""
 
-#: inc/woo-downloads.php:546
+#: inc/woo-downloads.php:562
 msgid "پوشه‌ی woocommerce_uploads ساخته نشد"
 msgstr ""
 
-#: inc/woo-downloads.php:548
+#: inc/woo-downloads.php:564
 msgid "مجوز نوشتن پوشه‌ی بارگذاری را بررسی کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:555
+#: inc/woo-downloads.php:571
 msgid "فعال (.htaccess)"
 msgstr ""
 
-#: inc/woo-downloads.php:555
+#: inc/woo-downloads.php:571
 msgid "متناسب با میزبان"
 msgstr ""
 
-#: inc/woo-downloads.php:557
+#: inc/woo-downloads.php:573
 msgid "دسترسی مستقیم به فایل‌ها بسته است."
 msgstr ""
 
-#: inc/woo-downloads.php:557
+#: inc/woo-downloads.php:573
 msgid "روی این میزبان محافظت در سطح PHP انجام می‌شود."
 msgstr ""
 
-#: inc/woo-downloads.php:564
+#: inc/woo-downloads.php:580
 msgid "فایل محافظت موجود نیست"
 msgstr ""
 
-#: inc/woo-downloads.php:566
+#: inc/woo-downloads.php:582
 msgid "فایل .htaccess محافظ ساخته شود تا دانلود مستقیم بسته شود."
 msgstr ""
 
-#: inc/woo-downloads.php:602
+#: inc/woo-downloads.php:618
 msgid "ساخت پوشه‌ی woocommerce_uploads ممکن نشد."
 msgstr ""
 
-#: inc/woo-downloads.php:608
+#: inc/woo-downloads.php:624
 msgid "نوشتن فایل آزمایشی ممکن نشد (مجوز پوشه‌ی بارگذاری)."
 msgstr ""
 
-#: inc/woo-downloads.php:611
+#: inc/woo-downloads.php:627
 msgid "ساخت فایل آزمایشی در پوشه‌ی امن دانلودها"
 msgstr ""
 
-#: inc/woo-downloads.php:616
+#: inc/woo-downloads.php:632
 msgid "فایل آزمایشی مرکز دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:620
-#: inc/woo-downloads.php:622
+#: inc/woo-downloads.php:636
+#: inc/woo-downloads.php:638
 msgid "اعتبارسنجی لینک (همان بررسی صفحه‌ی ویرایش محصول)"
 msgstr ""
 
-#: inc/woo-downloads.php:629
+#: inc/woo-downloads.php:645
 msgid "— تست دانلود زرین‌کوچ (حذف خودکار)"
 msgstr ""
 
-#: inc/woo-downloads.php:639
+#: inc/woo-downloads.php:655
 msgid "ساخت محصول دانلودی آزمایشی"
 msgstr ""
 
-#: inc/woo-downloads.php:646
+#: inc/woo-downloads.php:662
 msgid "ساخت سفارش آزمایشی ممکن نشد."
 msgstr ""
 
-#: inc/woo-downloads.php:654
+#: inc/woo-downloads.php:670
 msgid "تست مرکز دانلود زرین‌کوچ"
 msgstr ""
 
-#: inc/woo-downloads.php:660
+#: inc/woo-downloads.php:676
 msgid "صدور مجوز دانلود پس از تکمیل سفارش"
 msgstr ""
 
-#: inc/woo-downloads.php:677
-#: inc/woo-downloads.php:682
+#: inc/woo-downloads.php:693
+#: inc/woo-downloads.php:698
 msgid "دریافت فایل از طریق HTTP"
 msgstr ""
 
-#: inc/woo-downloads.php:677
+#: inc/woo-downloads.php:693
 msgid "میزبان اجازه‌ی درخواست به خودش را نمی‌دهد (حلقه‌ی بازگشت مسدود است)؛ زنجیره تا پیش از این گام تأیید شد — برای تأیید نهایی، لینک دانلود را در مرورگر باز کنید."
 msgstr ""
 
 #. translators: %s: کد وضعیت
-#: inc/woo-downloads.php:682
+#: inc/woo-downloads.php:698
 #, php-format
 msgid "کد پاسخ: %s"
 msgstr ""
 
-#: inc/woo-downloads.php:686
-#: inc/woo-downloads.php:688
+#: inc/woo-downloads.php:702
+#: inc/woo-downloads.php:704
 msgid "خطای غیرمنتظره در تست"
 msgstr ""
 
-#: inc/woo-downloads.php:769
+#: inc/woo-downloads.php:785
 msgid "دایرکتوری‌های مجاز با پوشه‌ی بارگذاری هم‌تراز شد."
 msgstr ""
 
-#: inc/woo-downloads.php:775
+#: inc/woo-downloads.php:791
 msgid "محدودسازی دایرکتوری‌ها غیرفعال شد (پیش‌فرض امن ووکامرس)."
 msgstr ""
 
-#: inc/woo-downloads.php:778
+#: inc/woo-downloads.php:794
 msgid "اجبار ورود برای دانلود خاموش شد؛ لینک‌های ایمیلی بدون ۴۰۳ کار می‌کنند."
 msgstr ""
 
-#: inc/woo-downloads.php:781
+#: inc/woo-downloads.php:797
 msgid "دانلودها بلافاصله پس از پرداخت فعال می‌شوند."
 msgstr ""
 
-#: inc/woo-downloads.php:784
+#: inc/woo-downloads.php:800
 msgid "روش دانلود روی «اجبار دانلود» (امن) تنظیم شد."
 msgstr ""
 
 #. translators: %1$s: یافته‌شده، %2$s: ترمیم‌شده
-#: inc/woo-downloads.php:790
+#: inc/woo-downloads.php:806
 #, php-format
 msgid "اسکن محصولات دانلودی انجام شد: %1$s مورد نیازمند ترمیم بود، %2$s مورد ترمیم شد."
 msgstr ""
 
-#: inc/woo-downloads.php:804
+#: inc/woo-downloads.php:820
 msgid "محافظت پوشه‌ی دانلودها برقرار شد."
 msgstr ""
 
-#: inc/woo-downloads.php:807
+#: inc/woo-downloads.php:823
 msgid "کنش نامعتبر است."
 msgstr ""
 
-#: inc/woo-downloads.php:827
+#: inc/woo-downloads.php:843
 msgid "در حال اجرای تست…"
 msgstr ""
 
-#: inc/woo-downloads.php:828
+#: inc/woo-downloads.php:844
 msgid "عملیات ناموفق بود؛ دوباره تلاش کنید."
 msgstr ""
 
-#: inc/woo-downloads.php:855
+#: inc/woo-downloads.php:871
 msgid "مرکز دانلود (محصولات دیجیتال)"
 msgstr ""
 
-#: inc/woo-downloads.php:856
+#: inc/woo-downloads.php:872
 msgid "سلامت کامل زنجیره‌ی دانلود ووکامرس: مجوزها، دایرکتوری‌های مجاز، محافظت پوشه و تست واقعی دریافت فایل."
 msgstr ""
 
-#: inc/woo-downloads.php:868
-#: inc/woo-downloads.php:894
+#: inc/woo-downloads.php:884
+#: inc/woo-downloads.php:910
 msgid "اصلاح خودکار"
 msgstr ""
 
-#: inc/woo-downloads.php:876
+#: inc/woo-downloads.php:892
 msgid "اجرای تست کامل دانلود"
 msgstr ""
 
-#: inc/woo-downloads.php:936
+#: inc/woo-downloads.php:952
 msgid "زنجیره سالم است (یک هشدار): "
 msgstr ""
 
-#: inc/woo-downloads.php:939
+#: inc/woo-downloads.php:955
 msgid "تست کامل موفق بود — زنجیره‌ی دانلود سالم است."
 msgstr ""
 
@@ -13942,7 +13983,7 @@ msgid "برای پیگیری سفارش، دریافت فایل یا هماهن�
 msgstr ""
 
 #: inc/woocommerce/admin.php:34
-#: inc/woocommerce/single.php:489
+#: inc/woocommerce/single.php:495
 msgid "نوع تحویل"
 msgstr ""
 
@@ -14005,7 +14046,7 @@ msgid "خالی = متن پیش‌فرض نوع تحویل از تنظیمات �
 msgstr ""
 
 #: inc/woocommerce/admin.php:107
-#: inc/woocommerce/single.php:456
+#: inc/woocommerce/single.php:462
 msgid "پرسش‌های متداول"
 msgstr ""
 
@@ -14296,6 +14337,19 @@ msgstr ""
 msgid "کد پستی ۱۰ رقمی"
 msgstr ""
 
+#: inc/woocommerce/setup.php:623
+msgid "میلیون تومان"
+msgstr ""
+
+#: inc/woocommerce/setup.php:626
+msgid "هزار تومان"
+msgstr ""
+
+#: inc/woocommerce/setup.php:644
+#, php-format
+msgid "امتیاز %s از ۵"
+msgstr ""
+
 #. translators: 1: مبلغ صرفه‌جویی 2: درصد
 #: inc/woocommerce/single.php:124
 #, php-format
@@ -14306,75 +14360,83 @@ msgstr ""
 msgid "فرصت خرید با تخفیف:"
 msgstr ""
 
-#. translators: %s: تعداد باقی‌مانده
-#: inc/woocommerce/single.php:236
+#: inc/woocommerce/single.php:237
 #, php-format
 msgid "فقط %s عدد در انبار باقی مانده است"
 msgstr ""
 
-#: inc/woocommerce/single.php:256
+#: inc/woocommerce/single.php:238
+#, php-format
+msgid "%s عدد قابل سفارش باقی مانده است"
+msgstr ""
+
+#: inc/woocommerce/single.php:241
+msgid "موجودی این محصول به پایان رسیده است"
+msgstr ""
+
+#: inc/woocommerce/single.php:262
 msgid "موجود در انبار"
 msgstr ""
 
-#: inc/woocommerce/single.php:274
+#: inc/woocommerce/single.php:280
 msgid "تحویل فوری و دائمی"
 msgstr ""
 
-#: inc/woocommerce/single.php:284
+#: inc/woocommerce/single.php:290
 msgid "هماهنگی زمان جلسه"
 msgstr ""
 
-#: inc/woocommerce/single.php:375
+#: inc/woocommerce/single.php:381
 msgid "اشتراک‌گذاری:"
 msgstr ""
 
-#: inc/woocommerce/single.php:396
+#: inc/woocommerce/single.php:402
 msgid "خرید فوری"
 msgstr ""
 
-#: inc/woocommerce/single.php:446
+#: inc/woocommerce/single.php:452
 msgid "معرفی محصول"
 msgstr ""
 
-#: inc/woocommerce/single.php:450
+#: inc/woocommerce/single.php:456
 msgid "مشخصات"
 msgstr ""
 
 #. translators: %s: تعداد دیدگاه
-#: inc/woocommerce/single.php:465
+#: inc/woocommerce/single.php:471
 #, php-format
 msgid "دیدگاه خریداران (%s)"
 msgstr ""
 
-#: inc/woocommerce/single.php:466
+#: inc/woocommerce/single.php:472
 msgid "دیدگاه خریداران"
 msgstr ""
 
-#: inc/woocommerce/single.php:492
+#: inc/woocommerce/single.php:498
 msgid "شناسه‌ی محصول"
 msgstr ""
 
-#: inc/woocommerce/single.php:499
+#: inc/woocommerce/single.php:505
 msgid "وزن"
 msgstr ""
 
-#: inc/woocommerce/single.php:502
+#: inc/woocommerce/single.php:508
 msgid "ابعاد"
 msgstr ""
 
-#: inc/woocommerce/single.php:564
+#: inc/woocommerce/single.php:570
 msgid "بخش‌های صفحه‌ی محصول"
 msgstr ""
 
-#: inc/woocommerce/single.php:598
+#: inc/woocommerce/single.php:604
 msgid "شاید این‌ها را هم دوست داشته باشید"
 msgstr ""
 
-#: inc/woocommerce/single.php:604
+#: inc/woocommerce/single.php:610
 msgid "پیشنهاد مکمل برای این محصول"
 msgstr ""
 
-#: inc/woocommerce/single.php:638
+#: inc/woocommerce/single.php:644
 msgid "انتخاب و خرید"
 msgstr ""
 
@@ -14456,7 +14518,7 @@ msgstr ""
 msgid "بعدی"
 msgstr ""
 
-#: single-zc_schema.php:404
+#: single-zc_schema.php:406
 msgid "بازگشت به کتابخانه"
 msgstr ""
 
@@ -14589,6 +14651,14 @@ msgstr ""
 
 #: woocommerce/archive-product.php:77
 msgid "بستن فیلترها"
+msgstr ""
+
+#: woocommerce/content-single-product.php:45
+msgid "بزرگنمایی تصویر محصول"
+msgstr ""
+
+#: woocommerce/content-single-product.php:45
+msgid "بزرگنمایی تصویر"
 msgstr ""
 
 #: woocommerce/loop/result-count.php:22

@@ -1483,8 +1483,15 @@ if ( ! function_exists( 'zc_theme_color_meta' ) ) :
 			printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( $brand ) );
 			return;
 		}
-		printf( '<meta name="theme-color" content="%s" media="(prefers-color-scheme: light)">' . "\n", esc_attr( $light ) );
-		printf( '<meta name="theme-color" content="%s" media="(prefers-color-scheme: dark)">' . "\n", esc_attr( $dark ) );
+		// v2.8.1: نوار مرورگر همیشه هم‌راستا با منطق رنگ سایت باشد؛ فقط وقتی مدیر حالت
+		// «خودکار بر اساس سیستم کاربر» را انتخاب کرده، رنگ نوار هم از سیستم کاربر پیروی می‌کند
+		// (وگرنه هر گوشی بسته به تم خودش نوار متفاوتی می‌دید).
+		if ( 'auto' === (string) zc_opt( 'general_dark_mode', 'toggle' ) ) {
+			printf( '<meta name="theme-color" content="%s" media="(prefers-color-scheme: light)">' . "\n", esc_attr( $light ) );
+			printf( '<meta name="theme-color" content="%s" media="(prefers-color-scheme: dark)">' . "\n", esc_attr( $dark ) );
+			return;
+		}
+		printf( '<meta name="theme-color" content="%s">' . "\n", esc_attr( $light ) );
 	}
 endif;
 add_action( 'wp_head', 'zc_theme_color_meta', 2 );

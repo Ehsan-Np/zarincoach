@@ -151,6 +151,36 @@ if ( ! class_exists( 'ZC_Widget_Cta' ) ) :
 				)
 			);
 
+			$this->add_control(
+				'heading_mobile',
+				array(
+					'label'     => __( 'نمایش در موبایل', 'zarincoach' ),
+					'type'      => \Elementor\Controls_Manager::HEADING,
+					'separator' => 'before',
+				)
+			);
+
+			$this->add_control(
+				'hide_primary_mobile',
+				array(
+					'label'        => __( 'پنهان کردن دکمه اول در موبایل', 'zarincoach' ),
+					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'return_value' => 'yes',
+					'default'      => '',
+					'description'  => __( 'برای مواقعی که لینک دکمه در صفحه‌ی کوچک کاربرد ندارد.', 'zarincoach' ),
+				)
+			);
+
+			$this->add_control(
+				'hide_secondary_mobile',
+				array(
+					'label'        => __( 'پنهان کردن دکمه دوم در موبایل', 'zarincoach' ),
+					'type'         => \Elementor\Controls_Manager::SWITCHER,
+					'return_value' => 'yes',
+					'default'      => '',
+				)
+			);
+
 			$this->end_controls_section();
 
 			$this->start_controls_section(
@@ -289,21 +319,23 @@ if ( ! class_exists( 'ZC_Widget_Cta' ) ) :
 								<?php endif; ?>
 
 								<div class="zc-cta-actions mt-6 flex flex-wrap items-center gap-3">
-									<?php
-									if ( '' !== $primary_text ) {
-										zc_button(
-											$this->zc_button_icon_args(
-												array(
-													'text'  => $primary_text,
-													'url'   => $primary_url,
-													'class' => 'zc-btn-lg zc-cta-btn1',
-												),
-												$settings,
-												'primary_'
-											)
-										);
-									}
-									if ( '' !== $secondary_text && '' !== $secondary_url ) {
+								<?php
+								$hide_pm = ! empty( $settings['hide_primary_mobile'] ) && 'yes' === (string) $settings['hide_primary_mobile'];
+								$hide_sm = ! empty( $settings['hide_secondary_mobile'] ) && 'yes' === (string) $settings['hide_secondary_mobile'];
+								if ( '' !== $primary_text && ! $hide_pm ) {
+									zc_button(
+										$this->zc_button_icon_args(
+											array(
+												'text'  => $primary_text,
+												'url'   => $primary_url,
+												'class' => 'zc-btn-lg zc-cta-btn1',
+											),
+											$settings,
+											'primary_'
+										)
+									);
+								}
+								if ( '' !== $secondary_text && '' !== $secondary_url && ! $hide_sm ) {
 										zc_button(
 											$this->zc_button_icon_args(
 												array(

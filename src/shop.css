@@ -13,9 +13,9 @@
   display: inline-block;
   overflow: hidden;
   width: 5.4em;
-  height: 1.1em;
+  height: 1.35em;
   font-size: 0.9rem;
-  line-height: 1;
+  line-height: 1.35;
   vertical-align: middle;
   white-space: nowrap;
 }
@@ -26,6 +26,7 @@
   inset-block-start: 0;
   inset-inline-start: 0;
   font-size: 0.9rem;
+  line-height: 1.35;
   letter-spacing: 0.12em;
 }
 .star-rating::before {
@@ -1104,6 +1105,39 @@ ul.products li.product-category mark {
 .woocommerce-product-gallery__image a {
   display: block;
 }
+/* v2.8.1: دکمه‌ی بزرگنمایی اختصاصی قالب — همیشه سر جای خودش (گوشه‌ی چپ تصویر در RTL)
+   با آیکن کاملاً وسط‌چین؛ تریگر پیش‌فرض ووکامرس (اگر نسخه‌ای آن را چاپ کند) پنهان می‌شود. */
+.zc-zoom-open {
+  position: absolute;
+  z-index: 7;
+  inset-block-start: 1rem;
+  inset-inline-end: 1rem;
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 0.92);
+  color: #0b1b3a;
+  box-shadow: 0 8px 20px -10px rgba(8, 21, 48, 0.5);
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s;
+}
+.zc-zoom-open svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  display: block;
+}
+.zc-zoom-open:hover {
+  background: #fff;
+  transform: scale(1.06);
+}
+[data-theme='dark'] .zc-zoom-open {
+  background: rgb(16 22 42 / 0.88);
+  color: #d6b56e;
+}
 .woocommerce-product-gallery__trigger {
   position: absolute;
   z-index: 6;
@@ -1119,6 +1153,7 @@ ul.products li.product-category mark {
   box-shadow: 0 8px 20px -10px rgba(8, 21, 48, 0.5);
   font-size: 0;
   text-indent: -999px;
+  display: none; /* v2.8.1: جای دکمه‌ی اختصاصی zc-zoom-open */
 }
 .woocommerce-product-gallery__trigger::before {
   content: '';

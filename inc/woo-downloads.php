@@ -111,6 +111,10 @@ if ( ! function_exists( 'zc_dl_setup' ) ) :
 
 		/* هم‌ترازسازی خودکار دایرکتوری‌های مجاز (پیش‌فرض: روشن). */
 		add_action( 'admin_init', 'zc_dl_maybe_heal' );
+		/* v2.8.1: در بسترهای بدون پیشخوان (WP-CLI مثل نصب دمو) هم هم‌ترازسازی شود. */
+		if ( defined( 'WP_CLI' ) && WP_CLI ) {
+			add_action( 'init', 'zc_dl_maybe_heal', 50 );
+		}
 
 		/* کارت مرکز دانلود در صفحه‌ی اطلاعات سیستم. */
 		add_action( 'admin_enqueue_scripts', 'zc_dl_system_assets' );
@@ -358,12 +362,24 @@ if ( ! function_exists( 'zc_dl_ensure_directories' ) ) :
 			return array();
 		}
 		$up   = wp_get_upload_dir();
-		$adds = array(
-			'uploads'          => $reg->add_approved_directory( untrailingslashit( $up['basedir'] ), true ),
-			'uploads_url'      => $reg->add_approved_directory( untrailingslashit( $up['baseurl'] ), true ),
-			'woo_uploads'      => $reg->add_approved_directory( $up['basedir'] . '/woocommerce_uploads', true ),
-			'woo_uploads_url'  => $reg->add_approved_directory( $up['baseurl'] . '/woocommerce_uploads', true ),
+		$urls = array(
+			'uploads'         => untrailingslashit( $up['basedir'] ),
+			'uploads_url'     => untrailingslashit( $up['baseurl'] ),
+			'woo_uploads'     => untrailingslashit( $up['basedir'] . '/woocommerce_uploads' ),
+			'woo_uploads_url' => untrailingslashit( $up['baseurl'] . '/woocommerce_uploads' ),
 		);
+		$adds = array();
+		foreach ( $urls as $key => $url ) {
+			// v2.8.1: اگر ردیفیِ «غیرفعال» برای همین مسیر وجود دارد (دام auto-add بسترهای
+			// بدون کاربر مدیر، مثل CLI/کرون)، همان ردیف فعال شود؛ add_approved_directory
+			// در ووکامرس ردیف موجود را — حتی غیرفعال — همان‌طور نگه می‌دارد.
+			$existing = ( method_exists( $reg, 'get_by_url' ) ) ? $reg->get_by_url( $url ) : false;
+			if ( $existing && is_object( $existing ) && method_exists( $existing, 'get_enabled' ) && method_exists( $existing, 'get_id' ) && ! $existing->get_enabled() && method_exists( $reg, 'update_approved_directory' ) ) {
+				$adds[ $key ] = $reg->update_approved_directory( (int) $existing->get_id(), $url, true );
+				continue;
+			}
+			$adds[ $key ] = $reg->add_approved_directory( $url, true );
+		}
 		return $adds;
 	}
 endif;

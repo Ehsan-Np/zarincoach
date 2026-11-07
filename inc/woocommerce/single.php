@@ -222,19 +222,25 @@ if ( ! function_exists( 'zc_wc_single_stock_bar' ) ) :
 	 */
 	function zc_wc_single_stock_bar() {
 		$product = zc_wc_current_product();
-		if ( ! $product || ! zc_switch( 'sp_stock_bar', true ) || ! $product->managing_stock() || ! $product->is_in_stock() ) {
+		if ( ! $product || ! zc_switch( 'sp_stock_bar', true ) || ! $product->managing_stock() ) {
 			return;
 		}
-		$qty       = (int) $product->get_stock_quantity();
+		$qty = (int) $product->get_stock_quantity();
+		if ( $qty < 0 ) {
+			return;
+		}
 		$threshold = max( 1, (int) zc_opt( 'sp_stock_threshold', 10 ) );
-		if ( $qty <= 0 || $qty > $threshold ) {
-			return;
-		}
-		$width = max( 8, min( 100, (int) round( ( $qty / $threshold ) * 100 ) ) );
-		echo '<div class="zc-stockbar">';
+		$width     = max( 6, min( 100, (int) round( ( $qty / $threshold ) * 100 ) ) );
+		$urgent    = $qty > 0 && $qty <= $threshold;
 		/* translators: %s: تعداد باقی‌مانده */
-		echo '<p>' . zc_icon( 'alert', 'h-4 w-4', false ) . esc_html( sprintf( __( 'فقط %s عدد در انبار باقی مانده است', 'zarincoach' ), zc_digits_to_persian( (string) $qty ) ) ) . '</p>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo '<span class="zc-stockbar__track"><span style="width:' . (int) $width . '%"></span></span>';
+		$label = $urgent
+			? sprintf( __( 'فقط %s عدد در انبار باقی مانده است', 'zarincoach' ), zc_digits_to_persian( (string) $qty ) )
+			: sprintf( __( '%s عدد قابل سفارش باقی مانده است', 'zarincoach' ), zc_digits_to_persian( (string) $qty ) );
+		$out = $qty > 0
+			? '<p>' . zc_icon( $urgent ? 'alert' : 'check', 'h-4 w-4', false ) . esc_html( $label ) . '</p><span class="zc-stockbar__track"><span style="width:' . $width . '%"></span></span>'
+			: '<p>' . zc_icon( 'alert', 'h-4 w-4', false ) . esc_html__( 'موجودی این محصول به پایان رسیده است', 'zarincoach' ) . '</p>';
+		echo '<div class="zc-stockbar' . ( $urgent || 0 === $qty ? ' is-urgent' : '' ) . '" data-zc-stockbar data-zc-stock-qty="' . esc_attr( (string) $qty ) . '">'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo $out; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		echo '</div>';
 	}
 endif;
