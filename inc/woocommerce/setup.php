@@ -636,6 +636,103 @@ if ( ! function_exists( 'zc_wc_price_word' ) ) :
 endif;
 add_filter( 'wc_price', 'zc_wc_price_word', 100, 5 );
 
+/* واحد پول همیشه «پس از» عدد بیاید: «200 تومان» نه «تومان 200» (v2.9.1).
+   فرمت پیش‌فرض ووکامرس (left) در صفحه‌ی راست‌به‌چپ نماد را سمت راستِ عدد می‌گذارد؛
+   برای همه‌ی ارزهای ایرانی، قالب استاندارد «عدد + فاصله + واحد» تحمیل می‌شود —
+   مستقل از تنظیم «جایگاه نماد پول» فروشگاه. */
+add_filter(
+	'wc_price_args',
+	static function ( $args ) {
+		if ( in_array( get_woocommerce_currency(), array( 'IRT', 'IRR', 'IRHT', 'IRHR' ), true ) ) {
+			$args['price_format'] = '%2$s&nbsp;%1$s';
+		}
+		return $args;
+	},
+	10
+);
+
+/* ارقام فارسی/عربی ← لاتین (برای مقادیر عددی ووکامرس). */
+if ( ! function_exists( 'zc_wc_latin_digits' ) ) :
+	/**
+	 * تبدیل ارقام فارسی و عربی یک رشته به لاتین؛ برای «تعداد» و هر ورودی عددی.
+	 *
+	 * @param string $value ورودی خام.
+	 * @return string
+	 */
+	function zc_wc_latin_digits( $value ) {
+		return strtr(
+			(string) $value,
+			array(
+				'۰' => '0', '۱' => '1', '۲' => '2', '۳' => '3', '۴' => '4',
+				'۵' => '5', '۶' => '6', '۷' => '7', '۸' => '8', '۹' => '9',
+				'٠' => '0', '١' => '1', '٢' => '2', '٣' => '3', '٤' => '4',
+				'٥' => '5', '٦' => '6', '٧' => '7', '٨' => '8', '٩' => '9',
+			)
+		);
+	}
+endif;
+
+/* تضمین سمت سرور: اگر تعداد با رقم فارسی رسید (لینک افزودن به سبد یا مرورگر بدون JS)،
+   ووکامرس آن را صفر نمی‌کند و محصول با تعداد درست اضافه می‌شود. */
+add_filter(
+	'woocommerce_add_to_cart_quantity',
+	static function ( $quantity ) {
+		$latin = zc_wc_latin_digits( (string) $quantity );
+		$trimmed = preg_replace( '/[^0-9.,]/', '', $latin );
+		return '' !== $trimmed ? $trimmed : $quantity;
+	},
+	5
+);
+
+/* پاک‌سازی زودهنگام ورودی‌های عددی فرم‌ها (تعداد سبد خرید و افزودن به سبد). */
+if ( ! function_exists( 'zc_wc_latinize_qty' ) ) :
+	/**
+	 * نرمال‌سازی ارقام یک کلید (اسکالر یا آرایه‌ای مانند محصولات گروهی) در یک ابرمتغیر.
+	 *
+	 * @param array  $arr ابرمتغیر (با ارجاع).
+	 * @param string $key کلید هدف.
+	 * @return void
+	 */
+	function zc_wc_latinize_qty( &$arr, $key ) {
+		if ( ! isset( $arr[ $key ] ) ) {
+			return;
+		}
+		if ( is_string( $arr[ $key ] ) ) {
+			$arr[ $key ] = zc_wc_latin_digits( $arr[ $key ] );
+			return;
+		}
+		if ( is_array( $arr[ $key ] ) ) {
+			array_walk_recursive(
+				$arr[ $key ],
+				static function ( &$value ) {
+					if ( is_string( $value ) ) {
+						$value = zc_wc_latin_digits( $value );
+					}
+				}
+			);
+		}
+	}
+endif;
+add_action(
+	'wp_loaded',
+	static function () {
+		zc_wc_latinize_qty( $_REQUEST, 'quantity' ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- فقط نرمال‌سازی ارقام.
+		zc_wc_latinize_qty( $_POST, 'quantity' ); // phpcs:ignore
+		zc_wc_latinize_qty( $_GET, 'quantity' ); // phpcs:ignore
+		if ( isset( $_POST['cart'] ) && is_array( $_POST['cart'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
+			array_walk_recursive(
+				$_POST['cart'], // phpcs:ignore WordPress.Security.NonceVerification.Missing
+				static function ( &$value ) {
+					if ( is_string( $value ) ) {
+						$value = zc_wc_latin_digits( $value );
+					}
+				}
+			);
+		}
+	},
+	1
+);
+
 /* لیبل دسترس‌پذیری ستاره‌ها به فارسی (وقتی ترجمه‌ی ووکامرس نصب نیست). */
 add_filter(
 	'gettext',

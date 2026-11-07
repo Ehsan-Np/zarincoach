@@ -210,13 +210,57 @@
   }
   initCountdowns();
 
-  /* ---------------------------------------------------------------------
-   * دکمه‌های ± تعداد
-   * ------------------------------------------------------------------- */
+  /* v2.9.1: ارقام فارسی/عربی در فیلد تعداد. input[type=number] رقم فارسی را
+     رد می‌کند و کادر خالی می‌شود (گزارش کارفرما). قالب، فیلد را به متن با
+     inputmode=numeric تبدیل می‌کند و هر ورودی را بلافاصله به رقم لاتین نرمال
+     می‌کند تا هم نمایش درست بماند و هم مقدار POST همیشه عددی باشد. */
+  var FA_MAP = { '۰': '0', '۱': '1', '۲': '2', '۳': '3', '۴': '4', '۵': '5', '۶': '6', '۷': '7', '۸': '8', '۹': '9', '٠': '0', '١': '1', '٢': '2', '٣': '3', '٤': '4', '٥': '5', '٦': '6', '٧': '7', '٨': '8', '٩': '9' };
+  function latinDigits(s) { return String(s).replace(/[۰-۹٠-٩]/g, function (d) { return FA_MAP[d] || d; }); }
+  function isQtyInput(t) { return t && t.matches && t.matches('input.qty'); }
+
+  /* برای فیلدهای number که هنوز به text تبدیل نشده‌اند (بدون JS بازسازی): رقم فارسی را
+     بگیر، به لاتین بچرخان و مستقیم در مقدار بنویس (ورودی number سِلکشن ندارد). */
+  doc.addEventListener('beforeinput', function (e) {
+    var t = e.target;
+    if (!isQtyInput(t) || t.type !== 'number' || !e.data || !/[۰-۹٠-٩]/.test(e.data)) { return; }
+    e.preventDefault();
+    var fixed = latinDigits(e.data);
+    var base = latinDigits(t.value).replace(/[^0-9.]/g, '');
+    t.value = t._zcAllSel ? fixed : base + fixed;
+    t._zcAllSel = false;
+    t.dispatchEvent(new Event('input', { bubbles: true }));
+    t.dispatchEvent(new Event('change', { bubbles: true }));
+  });
+  doc.addEventListener('keydown', function (e) {
+    var t = e.target;
+    if (isQtyInput(t) && (e.ctrlKey || e.metaKey) && (e.key === 'a' || e.key === 'A' || e.key === 'ا')) { t._zcAllSel = true; }
+  });
+
+  /* نرمال‌سازی زنده‌ی هر ورودی تعداد: ارقام فارسی → لاتین، حذف نویسه‌های غیرعددی. */
+  doc.addEventListener('input', function (e) {
+    var t = e.target;
+    if (!isQtyInput(t)) { return; }
+    var v = t.value;
+    if (t.type === 'number') {
+      if (t.validity && t.validity.badInput) { t.value = ''; return; }
+      var lv = latinDigits(v);
+      if (lv !== v) { t.value = lv; }
+    } else {
+      var n = latinDigits(v).replace(/[^0-9.,]/g, '');
+      if (n !== v) { t.value = n; }
+    }
+  }, true);
+
   function initQty(ctx) {
     $$('.quantity', ctx).forEach(function (q) {
       var input = q.querySelector('input.qty');
       if (!input || input.type === 'hidden' || q.classList.contains('has-steps') || q.closest('.woocommerce-mini-cart')) { return; }
+      /* text + inputmode=numeric: تایپ رقم فارسی کار می‌کند و نرمال‌ساز به لاتین می‌گرداند. */
+      if (input.type === 'number') {
+        input.type = 'text';
+        input.setAttribute('inputmode', 'numeric');
+        if (!input.getAttribute('pattern')) { input.setAttribute('pattern', '[0-9]*'); }
+      }
       q.classList.add('has-steps');
       var mk = function (dir) {
         var b = doc.createElement('button');
@@ -228,7 +272,8 @@
           var step = parseFloat(input.step) || 1;
           var min = input.min !== '' ? parseFloat(input.min) : 0;
           var max = input.max !== '' ? parseFloat(input.max) : Infinity;
-          var val = (parseFloat(input.value) || 0) + dir * step;
+          var cur = parseFloat(latinDigits(input.value));
+          var val = (cur || 0) + dir * step;
           val = Math.min(max, Math.max(min, val));
           if (String(val) !== input.value) {
             input.value = val;
@@ -243,7 +288,7 @@
       var minus = mk(-1);
       var plus = mk(1);
       var sync = function () {
-        var v = parseFloat(input.value) || 0;
+        var v = parseFloat(latinDigits(input.value)) || 0;
         minus.disabled = input.min !== '' && v <= parseFloat(input.min);
         plus.disabled = input.max !== '' && v >= parseFloat(input.max);
       };
@@ -257,7 +302,7 @@
   }
   initQty();
   onBody('updated_wc_div updated_cart_totals wc_fragments_refreshed', function () { initQty(); });
-  onBody('found_variation', function () { setTimeout(function () { $$('.quantity.has-steps input.qty').forEach(function (i) { i.dispatchEvent(new Event('change')); }); }, 0); });
+  onBody('found_variation', function () { setTimeout(function () { initQty(); $$('.quantity.has-steps input.qty').forEach(function (i) { i.dispatchEvent(new Event('change')); }); }, 0); });
 
   /* ---------------------------------------------------------------------
    * انتخاب گونه با دکمه (به‌جای فهرست کشویی)
